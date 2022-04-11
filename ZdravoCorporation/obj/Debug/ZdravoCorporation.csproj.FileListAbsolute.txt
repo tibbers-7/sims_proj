@@ -1,0 +1,17 @@
+C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\ZdravoCorporation.csprojAssemblyReference.cache
+C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\MainWindow.g.cs
+C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\ManagerWindow.g.cs
+C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\App.g.cs
+C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\ZdravoCorporation_MarkupCompile.cache
+C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\ZdravoCorporation_MarkupCompile.lref
+C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\bin\Debug\ZdravoCorporation.exe.config
+C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\bin\Debug\ZdravoCorporation.exe
+C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\bin\Debug\ZdravoCorporation.pdb
+C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\MainWindow.baml
+C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\ManagerWindow.baml
+C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\ZdravoCorporation.g.resources
+C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\ZdravoCorporation.Properties.Resources.resources
+C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\ZdravoCorporation.csproj.GenerateResource.cache
+C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\ZdravoCorporation.csproj.CoreCompileInputs.cache
+C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\ZdravoCorporation.exe
+C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\ZdravoCorporation.pdb
