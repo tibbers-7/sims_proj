@@ -55,14 +55,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddPatient.xaml.cs">
+      <DependentUpon>AddPatient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controller\AppointmentController.cs" />
+    <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\RoomController.cs" />
     <Compile Include="FileHandler\AppointmentFileHandler.cs" />
+    <Compile Include="FileHandler\PatientFileHandler.cs" />
     <Compile Include="FileHandler\RoomFileHandler.cs" />
+    <Compile Include="MainWindow1.xaml.cs">
+      <DependentUpon>MainWindow1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ManagerWindow.xaml.cs">
       <DependentUpon>ManagerWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Appointment.cs" />
+    <Compile Include="Model\Gender.cs" />
     <Compile Include="Model\Serializable.cs" />
     <Compile Include="Model\DinamicEquipment.cs" />
     <Compile Include="Model\Doctor.cs" />
@@ -78,7 +87,15 @@
     <Compile Include="Repo\PatientRepository.cs" />
     <Compile Include="Repo\RoomRepository.cs" />
     <Compile Include="Service\AppointmentService.cs" />
+    <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\RoomService.cs" />
+    <Compile Include="UpdatePatient.xaml.cs">
+      <DependentUpon>UpdatePatient.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AddPatient.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -91,9 +108,17 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MainWindow1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ManagerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdatePatient.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

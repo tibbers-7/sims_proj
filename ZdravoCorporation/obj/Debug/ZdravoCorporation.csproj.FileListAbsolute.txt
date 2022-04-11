@@ -15,3 +15,14 @@ C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\ZdravoCorporati
 C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\ZdravoCorporation.csproj.CoreCompileInputs.cache
 C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\ZdravoCorporation.exe
 C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\ZdravoCorporation.pdb
+C:\Users\Branka Kljajic\sims_proj\ZdravoCorporation\obj\Debug\ZdravoCorporation.csprojAssemblyReference.cache
+C:\Users\Branka Kljajic\sims_proj\ZdravoCorporation\obj\Debug\MainWindow.g.cs
+C:\Users\Branka Kljajic\sims_proj\ZdravoCorporation\obj\Debug\ManagerWindow.g.cs
+C:\Users\Branka Kljajic\sims_proj\ZdravoCorporation\obj\Debug\App.g.cs
+C:\Users\Branka Kljajic\sims_proj\ZdravoCorporation\obj\Debug\ZdravoCorporation_MarkupCompile.cache
+C:\Users\Branka Kljajic\sims_proj\ZdravoCorporation\obj\Debug\ZdravoCorporation_MarkupCompile.lref
+C:\Users\Branka Kljajic\sims_proj\ZdravoCorporation\obj\Debug\ZdravoCorporation.exe
+C:\Users\Branka Kljajic\sims_proj\ZdravoCorporation\obj\Debug\ZdravoCorporation.pdb
+C:\Users\Branka Kljajic\sims_proj\ZdravoCorporation\obj\Debug\AddPatient.g.cs
+C:\Users\Branka Kljajic\sims_proj\ZdravoCorporation\obj\Debug\MainWindow1.g.cs
+C:\Users\Branka Kljajic\sims_proj\ZdravoCorporation\obj\Debug\UpdatePatient.g.cs

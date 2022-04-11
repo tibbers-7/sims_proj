@@ -33,7 +33,13 @@ namespace ZdravoCorporation
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            MainWindow1 mw = new MainWindow1();
+            mw.Show();
+        }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

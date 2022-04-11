@@ -1,0 +1,17 @@
+﻿<Window x:Class="ZdravoCorporation.MainWindow1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="0,0,0,-16">
+        <DataGrid Name="tabela" CanUserAddRows="False" CanUserResizeColumns="True" CanUserSortColumns="True" IsReadOnly="True" Margin="16,10,10,95"/>
+        <Button Content="Dodaj" Name="btnDodaj" HorizontalAlignment="Left" Margin="38,377,0,0" VerticalAlignment="Top" Height="25" Width="108" Click="btnDodaj_Click"/>
+        <Button Content="Izmeni" Name="btnIzmeni" HorizontalAlignment="Left" Margin="232,377,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.18,-0.419" Height="25" Width="110" Click="btnIzmeni_Click"/>
+        <Button Content="Obrisi" Name="btnObrisi" HorizontalAlignment="Left" Margin="438,377,0,0" VerticalAlignment="Top" Height="25" Width="111" Click="btnObrisi_Click"/>
+        <Button Content="Osvezi prikaz" HorizontalAlignment="Left" Margin="651,377,0,0" VerticalAlignment="Top" Height="25" Width="111" Click="Button_Click"/>
+
+    </Grid>
+</Window>

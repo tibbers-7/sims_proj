@@ -2,6 +2,7 @@ using System;
 using Model;
 using System.Collections.Generic;
 using Repo;
+using Repository;
 
 namespace Service
 {

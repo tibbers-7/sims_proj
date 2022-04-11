@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Branka Kljajic\sims_proj\ZdravoCorporation\App.xaml
-2-927574799
+5-273985156
 
-281186642041
+34-1379411072
 13-1505183044
-MainWindow.xaml;ManagerWindow.xaml;
+AddPatient.xaml;MainWindow.xaml;MainWindow1.xaml;ManagerWindow.xaml;UpdatePatient.xaml;
 
 True
 

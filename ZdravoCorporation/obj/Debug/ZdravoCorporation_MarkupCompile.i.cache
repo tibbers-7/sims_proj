@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\obj\Debug\
+C:\Users\Branka Kljajic\sims_proj\ZdravoCorporation\obj\Debug\
 ZdravoCorporation
 none
 false
 DEBUG;TRACE
-C:\Users\Branka Kljajic\source\repos\ZdravoCorporation\App.xaml
-2-927574799
+C:\Users\Branka Kljajic\sims_proj\ZdravoCorporation\App.xaml
+5-273985156
 
-281186642041
+352073196857
 13-1505183044
-MainWindow.xaml;ManagerWindow.xaml;
+AddPatient.xaml;MainWindow.xaml;MainWindow1.xaml;ManagerWindow.xaml;UpdatePatient.xaml;
 
-True
+False
 
