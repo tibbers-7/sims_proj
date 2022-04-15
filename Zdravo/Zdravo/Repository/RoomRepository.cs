@@ -45,8 +45,18 @@ namespace Repository
       {
             
       }
-      
-      public void DeleteById(int id)
+
+        //internal Room GetById(int id)
+        //{
+        //    foreach (Room r in rooms)
+        //    {
+        //        if (r.id==id) return r;
+        //    }
+
+        //    return null;
+        //}
+
+        public void DeleteById(int id)
       {
             int selected = -1;
             int i = 0;

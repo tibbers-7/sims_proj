@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Zdravo
 {
     /// <summary>
@@ -28,7 +29,7 @@ namespace Zdravo
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
-            string[] lines = System.IO.File.ReadAllLines("data/accounts.txt");
+            string[] lines = System.IO.File.ReadAllLines("accounts.txt");
             foreach(string s in lines)
             {
                 string[] parameters = s.Split(',');

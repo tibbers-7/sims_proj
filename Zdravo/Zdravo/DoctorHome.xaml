@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo"
         mc:Ignorable="d"
-        Title="DoctorHome" Height="450" Width="800">
+        Title="AppointmentWindow" Height="450" Width="800">
     <Grid>
-        <TabControl>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="85*"/>
+            <ColumnDefinition Width="624*"/>
+            <ColumnDefinition Width="91*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.ColumnSpan="3">
             <TabItem Header="Pregledi">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
@@ -16,80 +21,32 @@
                     </Grid.ColumnDefinitions>
                     <GroupBox Header="Opcije" Margin="10,10,10,271">
                         <Grid Margin="0,0,127,0">
+                            <Button Content="Nov pregled"  Height="55" Margin="16,24,27,23" Click="Button_Click"/>
                             <Button Content="Zahtevi" Margin="149,24,-111,23"/>
-                            <Button Content="Novi pregled" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="55" Width="101" Click="Button_Click"/>
                         </Grid>
 
                     </GroupBox>
-                    <GroupBox Header="Odabir vremena" Margin="10,147,10,10">
-                        <Grid>
-                            <DatePicker HorizontalAlignment="Center" Width="190" Margin="0,10,0,165" RenderTransformOrigin="0.565,-1.254"/>
-                            <TextBox Margin="64,106,152,76"></TextBox>
-                            <TextBox Margin="155,107,63,76"/>
-                            <Button Content="Obriši" Margin="13,189,152,10"></Button>
-                            <Button Content="Prihvati" Margin="155,189,13,10"/>
-                            <Label Content="^" HorizontalAlignment="Left" Margin="81,75,0,0" VerticalAlignment="Top"/>
-                            <Label Content="^" HorizontalAlignment="Left" Margin="82,155,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
-                                <Label.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform Angle="180.355"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </Label.RenderTransform>
-                            </Label>
-                            <Label Content="^" HorizontalAlignment="Left" Margin="171,75,0,0" VerticalAlignment="Top"/>
-                            <Label Content="^" HorizontalAlignment="Left" Margin="172,155,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
-                                <Label.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform Angle="180.355"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </Label.RenderTransform>
-                            </Label>
-                            <Label Content="^" HorizontalAlignment="Left" Margin="172,155,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
-                                <Label.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform Angle="180.355"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </Label.RenderTransform>
-                            </Label>
-                            <Label Content=":" HorizontalAlignment="Left" Margin="131,114,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
-                                <Label.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform Angle="180.355"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </Label.RenderTransform>
-                            </Label>
-                        </Grid>
-                    </GroupBox>
+                    <GroupBox Header="Odabir vremena" Margin="10,147,10,10"/>
 
                     <DataGrid x:Name="AppointmentTable"
                               IsReadOnly ="True"  SelectionMode="Single"
-                              ItemsSource="{Binding Path=apCollection}"
+                              ItemsSource="{Binding appointments, UpdateSourceTrigger=PropertyChanged}"
+                              AutoGenerateColumns="False"
                               Margin="0,10,10,10" Grid.Column="1">
+                        
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="JMBG" />
-                            <DataGridTextColumn Header="Sala" />
-                            <DataGridTextColumn Header="Datum" />
-                            <DataGridTextColumn Header="Vreme" />
-                            <DataGridTextColumn Header="Trajanje" />
-
-
-
-
+                            <DataGridTextColumn Header="JMBG" Binding="{Binding patient}"/>
+                            <DataGridTextColumn Header="Prostorija" Binding="{Binding room}"  />
+                            <DataGridTextColumn Header="Datum" Binding="{Binding date}" />
+                            <DataGridTextColumn Header="Vreme" Binding="{Binding time}"/>
+                            <DataGridTextColumn Header="Trajanje" Binding="{Binding duration}" />
 
                         </DataGrid.Columns>
-
+                        <DataGrid.Resources>
+                            <Style TargetType="DataGridRow">
+                                <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                            </Style>
+                        </DataGrid.Resources>
                     </DataGrid>
 
                 </Grid>

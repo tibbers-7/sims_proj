@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\noviProjekat\Zdravo\Zdravo\obj\Debug\netcoreapp3.1\
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\netcoreapp3.1\
 Zdravo
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-D:\noviProjekat\Zdravo\Zdravo\App.xaml
-4-652965671
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\App.xaml
+6-20921255
 
-261754100407
+341383195977
 192-1533232326
-DoctorHome.xaml;MainWindow.xaml;ManagerHome.xaml;SekretarHome.xaml;
+DoctorHome.xaml;DoctorWindows\AppointmentMenu.xaml;DoctorWindows\NewAppointment.xaml;MainWindow.xaml;ManagerHome.xaml;SekretarHome.xaml;
 
-True
+False
 

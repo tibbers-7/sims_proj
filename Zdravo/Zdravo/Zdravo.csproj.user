@@ -21,6 +21,12 @@
     <Page Update="DoctorHome.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="DoctorWindows\AppointmentMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="DoctorWindows\NewAppointment.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

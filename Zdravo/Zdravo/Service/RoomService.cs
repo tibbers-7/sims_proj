@@ -22,8 +22,19 @@ namespace Service
       {
             return roomRepo.GetAll();
       }
-      
-      public Model.Room GetById(int id)
+
+        public ObservableCollection<int> getAllIds()
+        {
+            ObservableCollection<int> ids = new ObservableCollection<int>();
+            foreach (Room room in roomRepo.GetAll())
+            {
+                ids.Add(room.id);
+            }
+
+            return ids;
+        }
+
+        public Model.Room GetById(int id)
       {
             return roomRepo.GetById(id);
       }
