@@ -10,6 +10,9 @@
     <Compile Update="DoctorHome.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="DoctorWindows\AppointmentReport.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="ManagerHome.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,6 +25,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DoctorWindows\AppointmentMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="DoctorWindows\AppointmentReport.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DoctorWindows\NewAppointment.xaml">

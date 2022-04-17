@@ -15,7 +15,6 @@ namespace FileHandler
    public class AppointmentFileHandler
    {
       private static readonly string filePath= "appointments.csv";
-        private static char DELIMITER = ',';
 
         public ObservableCollection<Appointment> Read()
       {
@@ -25,7 +24,9 @@ namespace FileHandler
 
             foreach (string line in File.ReadLines(filePath))
             {
-                    Regex regexObj = new Regex("(\\d+),(\\w+),(\\d+/\\d+/\\d+),(\\d{2}:\\d{2}),(\\d+),(\\d+)");
+                    
+
+                    Regex regexObj = new Regex("(\\d+),(\\d+),(\\w+),(\\d+/\\d+/\\d+),(\\d+:\\d{2}),(\\d+),(\\d+),(Y|N)");
                     Match matchResult = regexObj.Match(line);
                     if (matchResult.Success)
                     {
@@ -35,7 +36,7 @@ namespace FileHandler
                     }
                     else
                     {
-                     
+                        if (line.Equals("")) break;
                         throw new ArgumentException("Regex issue");
                     }
                 
@@ -48,35 +49,65 @@ namespace FileHandler
 
         }
       
+       // j:
+       // 0 - add new appointment
+       // 1 - update appointment
+       // 2 - delete appointment
       public void Write(Appointment apt, int j)
       {
             string[] lines = System.IO.File.ReadAllLines(filePath);
-            string[] newLines = new string[lines.Length + 1];
-            for (int i = 0; i < lines.Length; i++)
-            {
-                newLines[i] = lines[i];
-            }
+            ObservableCollection<Appointment> apList = Read();
+            string[] newLines=new string[lines.Length];
+
             switch (j)
             {
                 //add new
                 case 0:
                     {
+                        newLines = new string[lines.Length + 1];
+                        for (int i = 0; i < lines.Length; i++)
+                        {
+                            newLines[i] = lines[i];
+                        }
                         newLines[lines.Length] = apt.toCSV();
                         
-
-                        System.IO.File.WriteAllText(filePath, "");
-                        System.IO.File.WriteAllLines(filePath, newLines);
                         break;
                     }
                 //update
                 case 1:
+                    { 
+                        int i = 0;
+                        foreach (Appointment newApt in apList)
+                        {
+                            if (newApt.Id == apt.Id) newLines[i] = apt.toCSV(); 
+                            else newLines[i] = newApt.toCSV();
+                            i++;
+                        }
+                        break;
+                    }
+
+                 //delete
+                case 2:
                     {
+                        newLines = new string[lines.Length - 1];
+                        int i = 0;
+                        foreach (Appointment newApt in apList)
+                        {
+                            if (newApt.Id != apt.Id)
+                            {
+                                newLines[i] = newApt.toCSV();
+                                i++;
+                            }
+                        }
                         break;
                     }
             }
 
-            
-      }
+            System.IO.File.WriteAllText(filePath, "");
+            System.IO.File.WriteAllLines(filePath, newLines);
+
+
+        }
    
    }
 }

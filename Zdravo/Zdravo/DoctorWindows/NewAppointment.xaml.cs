@@ -24,19 +24,22 @@ namespace Zdravo
     /// Window with a form for adding a new user or updating existing one
     /// </summary>
     public partial class NewAppointment: Window { 
-        private NewAppointmentViewModel viewModel = new NewAppointmentViewModel();
+        private NewAppointmentViewModel viewModel;
 
         
         //when adding a new user id is 0
         public NewAppointment(int id)
         {
             InitializeComponent();
+            viewModel = new NewAppointmentViewModel(id);
             DataContext = viewModel;  
+
+            
         }
         
 
         //Schedule btn
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ScheduleButton_Click(object sender, RoutedEventArgs e)
         {
             bool success=viewModel.CreateAppointment();
             if (success)
@@ -51,10 +54,14 @@ namespace Zdravo
         }
 
         //CLose btn
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        private void ViewPatient_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

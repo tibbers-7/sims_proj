@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo"
         mc:Ignorable="d"
-        Title="AppointmentMenu" Height="189" Width="537">
+        Title="AppointmentMenu" Height="198" Width="554">
     <Grid>
-        <Button Content="Izvestaj" HorizontalAlignment="Left" Margin="51,50,0,0" VerticalAlignment="Top" Height="71" Width="83" Click="Report_Click"/>
-        <Button Content="Izmena" HorizontalAlignment="Left" Margin="171,0,0,0" VerticalAlignment="Center" Height="71" Width="83" Click="Change_Click"/>
-        <Button Content="Obrisi" HorizontalAlignment="Left" Margin="294,0,0,0" VerticalAlignment="Center" Height="71" Width="83" Click="Delete_Click"/>
-        <Button Content="Otkazi" HorizontalAlignment="Left" Margin="404,0,0,0" VerticalAlignment="Center" Height="71" Width="83" Click="Cancel_Click"/>
+        <Button Content="Izveštaj" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="71" Width="83" Click="Report_Click" Margin="58,0,0,0"/>
+        <Button Content="Izmena" HorizontalAlignment="Left" VerticalAlignment="Center" Height="71" Width="82" Click="Update_Click" Margin="177,0,0,0"/>
+        <Button Content="Obriši" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="71" Width="83" Click="Delete_Click" Margin="295,0,0,0"/>
+        <Button Content="Otkaži" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="71" Width="83" Click="Cancel_Click" Margin="416,0,0,0"/>
 
     </Grid>
 </Window>

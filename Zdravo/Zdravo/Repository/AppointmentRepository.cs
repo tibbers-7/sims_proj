@@ -9,7 +9,7 @@ using System;
 using System.Collections;
 using System.Collections.ObjectModel;
 
-namespace Repo
+namespace Repository
 {
    public class AppointmentRepository
    {
@@ -31,9 +31,10 @@ namespace Repo
       
       public Appointment GetByID(int idAppointment)
       {
+            appointments=fileHandler.Read();
             foreach (Appointment appointment in appointments)
             {
-                if (appointment.id == idAppointment)
+                if (appointment.Id == idAppointment)
                 {
                     return appointment; 
                 }
@@ -42,18 +43,15 @@ namespace Repo
             return null;
       }
       
-      public Boolean DeleteAppointment(int idAppointment)
+      public bool DeleteAppointment(int idAppointment)
       {
-            foreach (Appointment appointment in appointments)
-            {
-                if (appointment.id == idAppointment)
-                {
-                    appointments.RemoveAt(idAppointment);
-                    return true;
-                }
-            }
 
-            return false;
+            Appointment appt= GetByID(idAppointment);
+            if (appt == null) return false;
+                
+                fileHandler.Write(appt, 2);
+                appointments = fileHandler.Read();
+                return true;
         }
       
       public void CreateAppointment(Appointment appointment)

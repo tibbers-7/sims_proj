@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
@@ -45,8 +46,39 @@ namespace Zdravo
                 return rooms; }
             set { rooms = rs.getAllIds(); }
         }
+        private bool emergency;
+        public bool Emergency { get { return emergency; } set { emergency = value; } }
+
+        Appointment appt;
+        
 
         private AppointmentController ac= new AppointmentController();
+
+        public NewAppointmentViewModel(int id)
+        {
+
+            // overriding the default empty window with specific appointment details
+            if (id != 0)
+            {
+                appt = ac.GetAppointment(id);
+                patientId = appt.Patient;
+                roomId = appt.Room;  
+                duration = appt.Duration;
+
+                Regex regexObj = new Regex("(\\d+)/(\\d+)/(\\d{4})");
+                Match matchResult = regexObj.Match(appt.Date.ToString());
+                month=int.Parse(matchResult.Groups[1].Value);
+                day=int.Parse(matchResult.Groups[2].Value);
+                year=int.Parse(matchResult.Groups[3].Value);
+
+                regexObj = new Regex("(\\d+):(\\d{2})");
+                matchResult = regexObj.Match(appt.Time.ToString());
+                hour=int.Parse(matchResult.Groups[1].Value);
+                minutes=int.Parse(matchResult.Groups[2].Value);
+
+                
+            }
+        }
         public bool CreateAppointment()
         {
             DateOnly date = new DateOnly(Year,Month,Day);

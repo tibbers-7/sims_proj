@@ -33,7 +33,7 @@ namespace Service
         ObservableCollection<Appointment> result= new ObservableCollection<Appointment>();
          foreach (Appointment appt in appointmentRepo.GetAll())
             {
-                if (appt.doctor==idDoctor) result.Add(appt);
+                if (appt.Doctor==idDoctor) result.Add(appt);
             }
 
          return result;
@@ -44,7 +44,7 @@ namespace Service
             ObservableCollection<Appointment> result = new ObservableCollection<Appointment>();
             foreach (Appointment appt in appointmentRepo.GetAll())
             {
-                if (appt.room.Equals(idRoom)) result.Add(appt);
+                if (appt.Room.Equals(idRoom)) result.Add(appt);
             }
 
             return result;
@@ -57,7 +57,7 @@ namespace Service
             ObservableCollection<Appointment> result = new ObservableCollection<Appointment>();
             foreach (Appointment appt in appointmentRepo.GetAll())
             {
-                if (appt.patient == idPatient) result.Add(appt);
+                if (appt.Patient == idPatient) result.Add(appt);
             }
 
             return result;
@@ -68,10 +68,20 @@ namespace Service
         {
             appointmentRepo.CreateAppointment(appt);
         }
-      public void DeleteAppointment(int idAppointment)
+
+        internal Appointment GetAppointment(int id)
+        {
+            return appointmentRepo.GetByID(id);
+        }
+
+        public bool DeleteAppointment(int idAppointment)
       {
-         throw new NotImplementedException();
+         return appointmentRepo.DeleteAppointment(idAppointment);
       }
-   
-   }
+
+        internal bool UpdateAppointment(int id)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

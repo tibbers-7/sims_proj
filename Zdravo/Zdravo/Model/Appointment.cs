@@ -10,36 +10,58 @@ namespace Model
 {
    public class Appointment
    {
-      public int id { get; set; }
-        public TimeOnly time { get; set; }
-        public DateOnly date { get; set; }
-        public int duration     { get; set; }
-      
-    //TODO: Change to appropriate classes after their implementation
-      public int doctor     { get; set; }
-      public int patient { get; set; }   
-        public int room { get; set; }
+        private int id;
+        public int Id { get { return id; } set { id = value; } }
+        private TimeOnly time;
+        public TimeOnly Time { get { return time; } set { time = value; } }
+        private DateOnly date;
+        public DateOnly Date { get { return date; } set { date = value; } }
+        private int duration;
+        public int Duration { get { return duration; } set { duration = value; } }
+
+        //TODO: Change to appropriate classes after their implementation
+        private int doctor;
+        public int Doctor { get { return doctor; } set { doctor = value; } }
+        private int patient;
+        public int Patient { get { return patient; } set { patient = value; } }
+        private int room;
+        public int Room { get { return room; } set { room = value; } }
+        private bool emergency;
+        public string EmergencyChar { get { if (emergency) return "DA"; else return "NE"; } set { if (value.Equals("DA")) emergency = true; else emergency = false; } }
+
 
 
         public void fromCSV(GroupCollection csvValues)
         {
             Console.WriteLine(csvValues[0]);
-            patient = int.Parse(csvValues[1].Value);
-            room = int.Parse(csvValues[2].Value);
-            date = DateOnly.Parse(csvValues[3].Value);
-            time = TimeOnly.Parse(csvValues[4].Value);
-            duration = int.Parse(csvValues[5].Value);
-            doctor = int.Parse(csvValues[6].Value);
+            id= int.Parse(csvValues[1].Value);
+            patient = int.Parse(csvValues[2].Value);
+            room = int.Parse(csvValues[3].Value);
+            date = DateOnly.Parse(csvValues[4].Value);
+            time = TimeOnly.Parse(csvValues[5].Value);
+            duration = int.Parse(csvValues[6].Value);
+            doctor = int.Parse(csvValues[7].Value);
+            switch (csvValues[8].Value)
+            {
+                case "Y":
+                    emergency = true;
+                    break;
+                case "N":
+                    emergency = false;
+                    break;
+            }
 
         }
 
         internal string toCSV()
         {
-            //3253,38G,2022/01/01,13:00,30,32
-            Regex regexObj = new Regex("(\\d{2}:\\d{2})");
+            //1,3253,38G,2022/01/01,13:00,30,32
+            Regex regexObj = new Regex("\\d+:\\d{2}");
             Match matchResult = regexObj.Match(time.ToString());
-            string _time=matchResult.Groups[0].Value;
-            string res = patient.ToString() + "," + room + "," + date.ToString() + "," + _time.ToString() + "," + duration.ToString() + "," + doctor.ToString();
+            string _time=matchResult.Value;
+            char _emergency;
+            if (emergency) _emergency = 'Y'; else _emergency = 'N';
+            string res = id.ToString()+","+patient.ToString() + "," + room + "," + date.ToString() + "," + _time + "," + duration.ToString() + "," + doctor.ToString()+","+_emergency;
             return res;
         }
     }        

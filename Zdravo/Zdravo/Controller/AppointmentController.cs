@@ -38,7 +38,7 @@ namespace Controller
             TimeOnly _time = new TimeOnly(hours, minutes);
 
             if (isValid) {
-                Appointment appt = new Appointment() { date = _date, time = _time, doctor = 32, duration = 30, patient = patientId, room = roomId };
+                Appointment appt = new Appointment() { Date = _date, Time = _time, Doctor = 32, Duration = 30, Patient = patientId, Room = roomId };
                 service.CreateAppointment(appt);
             }
 
@@ -47,7 +47,17 @@ namespace Controller
 
         }
 
-        public Boolean CheckRoomAvailability(int idRoom)
+        public bool DeleteAppointment(int id)
+        {
+            return service.DeleteAppointment(id);
+        }
+
+        public bool UpdateAppointment(int id)
+        {
+            return service.UpdateAppointment(id);
+        }
+
+        public bool CheckRoomAvailability(int idRoom)
       {
          throw new NotImplementedException();
       }
@@ -56,11 +66,27 @@ namespace Controller
           return service.GetAll();
       }
        
-        public Boolean patientExists(int id)
+        public bool PatientExists(int id)
         {
             if (service.GetByPatientID(id) == null) return false;
             return true;
         }
 
+        public Appointment GetAppointment(int id)
+        {
+            return service.GetAppointment(id);
+        }
+
+        public bool IsReportAvailable(int id)
+        {
+            Appointment appt = GetAppointment(id);
+            DateTime datetime = appt.Date.ToDateTime(appt.Time);
+            int cmp = DateTime.Compare(DateTime.Now, datetime);
+            if (cmp>0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
