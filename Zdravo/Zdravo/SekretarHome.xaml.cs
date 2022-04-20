@@ -11,6 +11,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Repository;
 using Model;
+using Service;
+using Controller;
 namespace Zdravo
 {
     /// <summary>
@@ -21,6 +23,43 @@ namespace Zdravo
         public SekretarHome()
         {
             InitializeComponent();
+            PatientRepository p = new PatientRepository();
+            List<Patient> patients = p.GetAll();
+            table.ItemsSource = patients;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string id = null;
+            Patient izabran = (Patient)table.SelectedValue;
+            PatientService service = new PatientService();
+            service.checkId();
+            AddPatient addp = new AddPatient();
+            addp.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            PatientRepository p = new PatientRepository();
+            List<Patient> patients = p.GetAll();
+            table.ItemsSource = patients;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Patient izabran = (Patient)table.SelectedValue;
+            if (izabran != null)
+            {
+                PatientView.UpdatePatient update = new PatientView.UpdatePatient(izabran.Ime, izabran.Prezime, izabran.Id, izabran.KorisnickoIme, izabran.Lozinka, izabran.BrojTelefona, izabran.DatumRodjenja, izabran.pol, izabran.GuestNalog, izabran.Adresa, izabran.Mail);
+                update.Show();
+            }
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Patient izabran = (Patient)table.SelectedValue;
+            PatientController controller = new PatientController();
+            controller.DeletePatient(izabran);
             PatientRepository p = new PatientRepository();
             List<Patient> patients = p.GetAll();
             table.ItemsSource = patients;

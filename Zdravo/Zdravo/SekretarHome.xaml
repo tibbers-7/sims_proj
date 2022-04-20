@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo"
         mc:Ignorable="d"
-        Title="SekretarHome" Height="450" Width="800">
-    <Grid>
+        Title="SekretarHome" Height="474" Width="800">
+    <Grid Margin="0,0,10,-6">
         <DataGrid Name="table" Margin="10,10,20,87"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="56,381,0,0" VerticalAlignment="Top" Height="34" Width="95"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="217,381,0,0" VerticalAlignment="Top" Height="34" Width="99"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="413,384,0,0" VerticalAlignment="Top" Height="31" Width="103"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="618,384,0,0" VerticalAlignment="Top" Height="31" Width="96"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="56,393,0,0" VerticalAlignment="Top" Height="34" Width="95" Click="Button_Click"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="218,393,0,0" VerticalAlignment="Top" Height="34" Width="99" Click="Button_Click_2"/>
+        <Button Content="Remove" HorizontalAlignment="Left" Margin="414,393,0,0" VerticalAlignment="Top" Height="30" Width="103" Click="Button_Click_3"/>
+        <Button Content="Refresh" HorizontalAlignment="Left" Margin="618,392,0,0" VerticalAlignment="Top" Height="31" Width="96" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

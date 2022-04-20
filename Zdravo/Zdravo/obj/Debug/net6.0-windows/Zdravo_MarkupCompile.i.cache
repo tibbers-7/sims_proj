@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\
 Zdravo
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\App.xaml
-71395497973
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\App.xaml
+9-2043673513
 
-421500221317
-1941645785384
-DoctorHome.xaml;DoctorWindows\AppointmentMenu.xaml;DoctorWindows\AppointmentReport.xaml;DoctorWindows\NewAppointment.xaml;MainWindow.xaml;ManagerHome.xaml;SekretarHome.xaml;
+441790718885
+194-1951243044
+DoctorHome.xaml;DoctorWindows\AppointmentMenu.xaml;DoctorWindows\AppointmentReport.xaml;DoctorWindows\NewAppointment.xaml;MainWindow.xaml;ManagerHome.xaml;PatientView\AddPatient.xaml;PatientView\UpdatePatient.xaml;SekretarHome.xaml;
 
-True
+False
 
