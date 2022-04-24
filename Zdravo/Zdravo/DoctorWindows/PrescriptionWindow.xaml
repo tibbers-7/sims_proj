@@ -1,0 +1,32 @@
+﻿<Window x:Class="Zdravo.DoctorWindows.PrescriptionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zdravo.DoctorWindows"
+        mc:Ignorable="d"
+        Title="PrescriptionWindow" Height="443" Width="358">
+
+    <Window.Resources>
+        <DataTemplate x:Key="highlightRow">
+            <TextBlock Text="{Binding MyProperty}"/>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=isAllergic}">
+                    <DataTrigger.Value>
+                        true
+                    </DataTrigger.Value>
+                    <DataTrigger.Setters>
+                        <Setter Property="ListBox.Foreground" Value="Red"/>
+                    </DataTrigger.Setters>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <ListBox SelectedItem="{Binding SelectedDrug}" ItemsSource="{Binding Drugs}" Margin="42,31,42,98"/>
+        <Button Content="Prihvati" Margin="87,351,191,28" Click="AcceptButton_Click" />
+        <Button Content="Otkaži" Margin="201,351,77,28" Click="CancelButton_Click"/>
+
+    </Grid>
+</Window>

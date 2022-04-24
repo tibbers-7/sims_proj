@@ -70,3 +70,9 @@ D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\AddPatient.baml
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\UpdatePatient.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\UpdatePatient.baml
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\PrescriptionWindow.g.cs
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\AddPatient.g.cs
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\UpdatePatient.g.cs
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\PrescriptionWindow.baml
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\AddPatient.baml
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\UpdatePatient.baml

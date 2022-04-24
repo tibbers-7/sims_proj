@@ -8,6 +8,7 @@ using Model;
 using System;
 using System.Collections;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Repository
 {
@@ -15,16 +16,18 @@ namespace Repository
    {
       private static int idCounter=0;
       public AppointmentFileHandler fileHandler=new AppointmentFileHandler();
-      private ObservableCollection<Appointment> appointments { get; set; }
+        private ObservableCollection<Appointment> appointments;
+        private int idCount;
 
         public AppointmentRepository()
         {
             appointments = fileHandler.Read();
+            idCount= appointments.Count;
         }
 
         public ObservableCollection<Appointment> GetAll()
       {
-
+            appointments = fileHandler.Read();
             return appointments;
          
       }
@@ -56,9 +59,16 @@ namespace Repository
       
       public void CreateAppointment(Appointment appointment)
       {
-            appointments.Add(appointment);
+            idCount = appointments.Last().Id+1;
+            appointment.Id = idCount;
             fileHandler.Write(appointment,0);
+            appointments = fileHandler.Read();
       }
-   
-   }
+
+        internal void UpdateAppointment(Appointment appt)
+        {
+            fileHandler.Write(appt,1);
+            appointments = fileHandler.Read();
+        }
+    }
 }

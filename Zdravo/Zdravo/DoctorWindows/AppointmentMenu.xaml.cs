@@ -58,8 +58,9 @@ namespace Zdravo
         }
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            NewAppointment updateAppointment = new NewAppointment(id);
+            NewAppointment updateAppointment = new NewAppointment(callerWindow,id);
             updateAppointment.Show();
+            this.Close();
         }
         private void Report_Click(object sender, RoutedEventArgs e)
         {

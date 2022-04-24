@@ -79,9 +79,10 @@ namespace Service
          return appointmentRepo.DeleteAppointment(idAppointment);
       }
 
-        internal bool UpdateAppointment(int id)
+        internal void UpdateAppointment(Appointment appt)
         {
-            throw new NotImplementedException();
+            appointmentRepo.UpdateAppointment(appt);
+
         }
     }
 }

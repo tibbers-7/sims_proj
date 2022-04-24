@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Zdravo.ViewModel
 {
@@ -14,6 +15,7 @@ namespace Zdravo.ViewModel
     {
         AppointmentController apController;
         private ObservableCollection<Appointment> appointments;
+        private DataGrid table;
 
         public ObservableCollection<Appointment> Appointments
         {
@@ -32,8 +34,9 @@ namespace Zdravo.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public DoctorHomeViewModel()
+        public DoctorHomeViewModel(DataGrid table)
         {
+            this.table = table;
             apController = new AppointmentController();
             appointments = apController.GetAll();
         }
@@ -46,12 +49,14 @@ namespace Zdravo.ViewModel
         }
         public void RefreshAppointments()
         {
-            appointments = apController.GetAll();
+            
+            Appointments = apController.GetAll();
+            table.ItemsSource = Appointments;
         }
 
         public void NewAppointment()
         {
-             NewAppointment newAppointment = new NewAppointment(0);
+             NewAppointment newAppointment = new NewAppointment(this,0);
              newAppointment.Show();
         }
 
