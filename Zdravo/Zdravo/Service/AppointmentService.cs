@@ -7,7 +7,11 @@ using Model;
 using Repo;
 using Repository;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Zdravo.DoctorWindows;
+using Zdravo.Model;
+using Zdravo.Repository;
 
 namespace Service
 {
@@ -16,7 +20,8 @@ namespace Service
       private AppointmentRepository appointmentRepo;
       private DoctorRepository doctorRepo;
       private RoomRepository roomRepo;
-      private PatientRepository patientRepo;
+      private PatientRepository patientRepo=new PatientRepository();
+      private DrugRepository drugRepository=new DrugRepository();
       
         public AppointmentService()
         {
@@ -63,8 +68,18 @@ namespace Service
             return result;
         }
 
-       
-      public void CreateAppointment(Appointment appt)
+        internal bool CheckAllergies(int appointmentId, string SelectedDrug)
+        {
+            Appointment appointment = appointmentRepo.GetByID(appointmentId);
+            Patient patient = patientRepo.GetById(appointment.Patient);
+            foreach(string drug in patient.Allergens)
+            {
+                if (drug.Equals(SelectedDrug)) return false;
+            }
+            return true;
+        }
+
+        public void CreateAppointment(Appointment appt)
         {
             appointmentRepo.CreateAppointment(appt);
         }
@@ -83,6 +98,17 @@ namespace Service
         {
             appointmentRepo.UpdateAppointment(appt);
 
+        }
+
+        public ObservableCollection<String> GetAllDrugs()
+        {
+            return new ObservableCollection<String>(drugRepository.GetAllDrugs());
+        }
+
+        public ApptReport CreateReport(DateTime date,string report, string diagnosis)
+        {
+            ApptReport rpt = new ApptReport() { Date = date, Report=report, Diagnosis=diagnosis };
+            return rpt;
         }
     }
 }

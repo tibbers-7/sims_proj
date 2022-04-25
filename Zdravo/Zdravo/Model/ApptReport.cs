@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 namespace Zdravo.Model
 {
     // APPOINTMENT REPORT
-    internal class ApptReport
+    public class ApptReport
     {
-        private DateOnly date;
-        public DateOnly Date { get { return date; } set { date = value; } }
+        private int id;
+        public int Id { get { return id; } set { id = value; } }
+        private DateTime date;
+        public DateTime Date { get { return date; } set { date = value; } }
         private string diagnosis;
         public string Diagnosis { get { return diagnosis; } set { diagnosis = value; } }
         private string report;

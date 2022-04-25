@@ -39,6 +39,7 @@ namespace Zdravo.ViewModel
             this.table = table;
             apController = new AppointmentController();
             appointments = apController.GetAll();
+            
         }
 
         public void MenuShow(int rowId)

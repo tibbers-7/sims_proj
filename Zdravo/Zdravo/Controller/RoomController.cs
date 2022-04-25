@@ -2,6 +2,7 @@ using System;
 using Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Zdravo;
 
 namespace Controller
 {
@@ -13,7 +14,7 @@ namespace Controller
             roomService = new Service.RoomService();
         }
       
-      public void Create(int id, int floor, Model.RoomType type)
+      public void Create(int id, int floor, RoomType type)
       {
             var newRoom = new Room { id = id, floor = floor, type = type};
             roomService.Create(newRoom);
@@ -29,7 +30,7 @@ namespace Controller
             return roomService.GetById(id);
         }
       
-      public void Update(int id, Model.RoomType type)
+      public void Update(int id, RoomType type)
       {
             roomService.Update(id, type);
         }

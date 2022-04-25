@@ -7,4 +7,36 @@
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="DoctorWindows\accept.png" />
+    <None Remove="DoctorWindows\cancel.png" />
+    <None Remove="DoctorWindows\delete.png" />
+    <None Remove="DoctorWindows\drug.png" />
+    <None Remove="DoctorWindows\edit.png" />
+    <None Remove="DoctorWindows\report.png" />
+    <None Remove="images\accept.png" />
+    <None Remove="images\addNew.png" />
+    <None Remove="images\cancel.png" />
+    <None Remove="images\delete.png" />
+    <None Remove="images\drug.png" />
+    <None Remove="images\edit.png" />
+    <None Remove="images\list.png" />
+    <None Remove="images\report.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\accept.png" />
+    <Resource Include="images\addNew.png" />
+    <Resource Include="images\cancel.png" />
+    <Resource Include="images\delete.png" />
+    <Resource Include="images\drug.png" />
+    <Resource Include="images\edit.png" />
+    <Resource Include="images\list.png" />
+    <Resource Include="images\report.png" />
+  </ItemGroup>
+
 </Project>

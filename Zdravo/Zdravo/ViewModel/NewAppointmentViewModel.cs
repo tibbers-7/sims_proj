@@ -75,6 +75,7 @@ namespace Zdravo
                 matchResult = regexObj.Match(appt.Time.ToString());
                 hour=int.Parse(matchResult.Groups[1].Value);
                 minutes=int.Parse(matchResult.Groups[2].Value);
+                emergency = appt.Emergency;
 
                 
             }
@@ -83,9 +84,9 @@ namespace Zdravo
         { 
                 if (id == 0)
                 {
-                    return ac.CreateAppointment(patientId, roomId, hour, minutes, duration,day,month,year);
+                    return ac.CreateAppointment(patientId, roomId, hour, minutes, duration,day,month,year,emergency);
                 }
-                else return ac.UpdateAppointment(id, patientId, roomId, hour, minutes, duration,day,month,year);
+                else return ac.UpdateAppointment(id, patientId, roomId, hour, minutes, duration,day,month,year,emergency);
 
          }
             

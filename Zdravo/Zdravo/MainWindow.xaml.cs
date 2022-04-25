@@ -29,7 +29,7 @@ namespace Zdravo
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
-            string[] lines = System.IO.File.ReadAllLines("accounts.txt");
+            string[] lines = System.IO.File.ReadAllLines("data/accounts.txt");
             foreach(string s in lines)
             {
                 string[] parameters = s.Split(',');

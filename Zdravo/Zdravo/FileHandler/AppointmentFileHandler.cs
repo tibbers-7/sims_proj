@@ -14,7 +14,7 @@ namespace FileHandler
 {
    public class AppointmentFileHandler
    {
-      private static readonly string filePath= "appointments.csv";
+      private static readonly string filePath= "data/appointments.csv";
 
         public ObservableCollection<Appointment> Read()
       {

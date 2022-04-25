@@ -2,6 +2,7 @@ using System;
 using Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Zdravo;
 
 namespace Service
 {
@@ -39,7 +40,7 @@ namespace Service
             return roomRepo.GetById(id);
       }
       
-      public void Update(int id, Model.RoomType type)
+      public void Update(int id, RoomType type)
       {
             roomRepo.Update(id, type);
       }

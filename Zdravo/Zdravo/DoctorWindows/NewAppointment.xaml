@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo"
-
+        
         mc:Ignorable="d"
-        Title="NewAppointment" Height="479" Width="475">
+        Title="NewAppointment" Height="506" Width="478" FontSize="15">
 
     <Window.Resources>
         <ControlTemplate x:Key="validationTemplate">
@@ -27,11 +27,15 @@
     </Window.Resources>
 
 
-    <Grid Margin="0,0,0,-6" >
-        <GroupBox Header="Pacijent" Margin="6,7,10,367"/>
-        <Label Content="JMBG pacijenta:" HorizontalAlignment="Left" Margin="42,36,0,0" VerticalAlignment="Top"/>
+    <Grid Margin="0,0,0,-6" Background="#FFDBC0E6" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="111*"/>
+            <ColumnDefinition Width="364*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Pacijent" Margin="6,7,10,394" Grid.ColumnSpan="2" Background="#FF8AB6DD"/>
+        <Label Content="JMBG:" HorizontalAlignment="Left" Margin="42,36,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" 
-                  x:Name="patientId_tb" HorizontalAlignment="Left" Margin="148,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" Background="#FFE7D2D2" >
+                  x:Name="patientId_tb" HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Background="#FFE7D2D2" Grid.Column="1" Height="25" >
             <Binding Path="PatientId" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <local:NumericValidation ValidationStep="RawProposedValue"/>
@@ -39,14 +43,14 @@
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
-        <Label Content="Sala:" HorizontalAlignment="Left" Margin="42,107,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.293,0.522"/>
-        <CheckBox IsChecked="{Binding Emergency}" x:Name="emergency_cb" Content="Hitno" HorizontalAlignment="Left" Margin="356,294,0,0" VerticalAlignment="Top"/>
-        <Button Content="Pregled Pacijenta" HorizontalAlignment="Left" Margin="336,36,0,0" VerticalAlignment="Top" Height="29" Width="104" Click="ViewPatient_Click"/>
+        <Label Content="Sala:" HorizontalAlignment="Left" Margin="47,235,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.293,0.522"/>
+        <CheckBox IsChecked="{Binding Emergency}" x:Name="emergency_cb" Content="Hitno" HorizontalAlignment="Left" Margin="245,294,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Button x:Name="ViewPatient" Content="Pregled Pacijenta" HorizontalAlignment="Left" Margin="225,36,0,0" VerticalAlignment="Top" Height="29" Width="104" Click="ViewPatient_Click" Grid.Column="1" FontSize="12" Background="MidnightBlue" Foreground="White"/>
 
         <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
             
         
-                 x:Name="hour_tb"  Margin="293,195,131,235">
+                 x:Name="hour_tb"  Margin="182,145,131,285" Grid.Column="1">
             <Binding Path="Hour" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
@@ -56,7 +60,7 @@
             </Binding>
         </TextBox>
         <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"
-                 x:Name="minutes_tb"  Margin="384,196,42,235">
+                 x:Name="minutes_tb"  Margin="273,146,42,285" Grid.Column="1">
             <Binding Path="Minutes" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <local:NumericValidation ValidationStep="RawProposedValue"/>
@@ -66,8 +70,8 @@
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
-        <Label Content="^" HorizontalAlignment="Left" Margin="310,164,0,0" VerticalAlignment="Top"/>
-        <Label Content="^" HorizontalAlignment="Left" Margin="311,243,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+        <Label Content="^" HorizontalAlignment="Left" Margin="199,114,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="^" HorizontalAlignment="Left" Margin="200,193,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -77,8 +81,8 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label Content="^" HorizontalAlignment="Left" Margin="400,164,0,0" VerticalAlignment="Top"/>
-        <Label Content="^" HorizontalAlignment="Left" Margin="401,243,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+        <Label Content="^" HorizontalAlignment="Left" Margin="289,114,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="^" HorizontalAlignment="Left" Margin="290,193,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -88,13 +92,21 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <TextBox HorizontalAlignment="Left" Margin="55,306,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="223" Height="102"/>
-        <Button x:Name="Schedule" Content="Zakaži" Margin="313,333,97,88" Click="ScheduleButton_Click"/>
-        <Button Content="Otkaži" Margin="400,333,15,88" Click="CancelButton_Click"/>
-        <ComboBox x:Name="rooms_cb" SelectedItem="{Binding RoomId}" ItemsSource="{Binding Rooms}" Margin="103,109,283,0" VerticalAlignment="Top" RenderTransformOrigin="4.783,1.026"/>
-        <Label Content="Trajanje:" HorizontalAlignment="Left" Margin="293,107,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="55,317,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="223" Height="102" Grid.ColumnSpan="2"/>
+        <Button x:Name="Schedule" Content="" Margin="198,327,106,94" Click="ScheduleButton_Click" Grid.Column="1" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/images/accept.png"/>
+            </Button.Background>
+        </Button>
+        <Button Content="" Margin="289,326,14,94" Click="CancelButton_Click" Grid.Column="1" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/images/cancel.png"/>
+            </Button.Background>
+        </Button>
+        <ComboBox x:Name="rooms_cb" SelectedItem="{Binding RoomId}" ItemsSource="{Binding Rooms}" Margin="110,239,276,0" VerticalAlignment="Top" RenderTransformOrigin="4.783,1.026" Grid.ColumnSpan="2"/>
+        <Label Content="Trajanje:" HorizontalAlignment="Left" Margin="183,236,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"
-            x:Name="duration_tb" HorizontalAlignment="Left" Margin="356,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" Background="#FFE7D2D2" Height="32">
+            x:Name="duration_tb" HorizontalAlignment="Left" Margin="246,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" Background="#FFE7D2D2" Height="32" Grid.Column="1">
             <Binding Path="Duration" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <local:NumericValidation ValidationStep="RawProposedValue"/>
@@ -102,14 +114,14 @@
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
-        <GroupBox Header="Datum" Margin="20,152,221,192">
+        <GroupBox Header="Datum" Margin="20,102,221,260" Grid.ColumnSpan="2" Background="#FF8AB6DD">
 
         </GroupBox>
-        <GroupBox Header="Vreme" Margin="260,151,14,193"/>
+        <GroupBox Header="Vreme" Margin="149,101,14,260" Grid.Column="1" Background="#FF8AB6DD"/>
         <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
             
         
-            x:Name="hour_tb_Copy"  Margin="293,195,131,235">
+            x:Name="hour_tb_Copy"  Margin="182,145,131,296" Grid.Column="1">
             <Binding Path="Hour" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
@@ -119,7 +131,7 @@
             </Binding>
         </TextBox>
         <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"
-            x:Name="minutes_tb_Copy"  Margin="384,196,42,235">
+            x:Name="minutes_tb_Copy"  Margin="273,146,42,296" Grid.Column="1">
             <Binding Path="Minutes" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <local:NumericValidation ValidationStep="RawProposedValue"/>
@@ -132,7 +144,7 @@
         <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
             
         
-            x:Name="day_tb"  Margin="34,205,399,224">
+            x:Name="day_tb"  Margin="34,153,35,286">
             <Binding Path="Day" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
@@ -144,7 +156,7 @@
         <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
             
         
-            x:Name="month_tb"  Margin="97,206,335,224">
+            x:Name="month_tb"  Margin="97,154,335,286" Grid.ColumnSpan="2">
             <Binding Path="Month" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
@@ -156,7 +168,7 @@
         <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
             
         
-            x:Name="year_tb"  Margin="160,206,237,224">
+            x:Name="year_tb"  Margin="49,154,237,286" Grid.Column="1">
             <Binding Path="Year" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
@@ -165,9 +177,15 @@
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
-        <Label Content="/" FontSize="10pt" HorizontalAlignment="Left" Margin="77,206,0,224" Height="39" RenderTransformOrigin="1.294,-0.653"/>
-        <Label Content="/" FontSize="10pt" HorizontalAlignment="Left" Margin="140,206,0,224" RenderTransformOrigin="25.685,0.599" Height="39"/>
-        <Label Content="Razlog posete" Margin="58,276,254,167"/>
+        <Label Content="/" FontSize="10pt" HorizontalAlignment="Left" Margin="77,156,0,274" Height="39" RenderTransformOrigin="1.294,-0.653"/>
+        <Label Content="/" FontSize="10pt" HorizontalAlignment="Left" Margin="29,156,0,274" RenderTransformOrigin="25.685,0.599" Height="39" Grid.Column="1"/>
+        <Label Content="Razlog posete" Margin="58,276,254,157" Grid.ColumnSpan="2"/>
+        <Label Content="Dan" HorizontalAlignment="Center" Margin="0,129,0,0" VerticalAlignment="Top"/>
+        <Label Content="Mesec" HorizontalAlignment="Left" Margin="96,130,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label Content="Godina" HorizontalAlignment="Left" Margin="64,130,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content=":" FontSize="10pt" HorizontalAlignment="Left" Margin="245,146,0,284" RenderTransformOrigin="25.685,0.599" Height="39" Grid.Column="1"/>
+        <Label Content="Zakaži" Grid.Column="1" Margin="199,388,106,50"/>
+        <Label Content="Otkaži" Grid.Column="1" Margin="291,388,16,49"/>
 
     </Grid>
 

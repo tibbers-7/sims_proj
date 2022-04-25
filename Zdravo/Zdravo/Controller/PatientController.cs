@@ -12,6 +12,7 @@ using FileHandler;
 using Repository;
 using System.Collections.Generic;
 using System.Windows.Controls;
+using Zdravo;
 
 namespace Controller
 {

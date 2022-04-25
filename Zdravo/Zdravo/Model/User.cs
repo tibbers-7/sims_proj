@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using System;
+using Zdravo;
 using ZdravoCorporation.Model;
 
 namespace Model
@@ -34,7 +35,7 @@ namespace Model
       private string Email;
         public string Mail => Email;
         private AccountType accType;
-        public User(string fn,string ln,int i,string un,string pas,string pn,DateTime date,Gender g,string ad,bool gu,string mejl,AccountType accountType)
+        public User(string fn,string ln,int i,string un,string pas,string pn,DateTime date, Gender g,string ad,bool gu,string mejl,AccountType accountType)
         {
             firstName = fn;
             lastName = ln;

@@ -17,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Zdravo.DoctorWindows;
 using Zdravo.ViewModel;
 
 namespace Zdravo
@@ -27,13 +28,20 @@ namespace Zdravo
     public partial class NewAppointment: Window { 
         private NewAppointmentViewModel viewModel;
         private DoctorHomeViewModel callerWindow;
+        private int id;
 
         
         //when adding a new user id is 0
         public NewAppointment(DoctorHomeViewModel callerWindow, int id)
         {
+            
             InitializeComponent();
+            if (id == 0)
+            {
+                ViewPatient.IsEnabled = false;
+            }
             this.callerWindow = callerWindow;
+            this.id = id;
             viewModel = new NewAppointmentViewModel(id);
             DataContext = viewModel;  
 
@@ -69,7 +77,8 @@ namespace Zdravo
 
         private void ViewPatient_Click(object sender, RoutedEventArgs e)
         {
-
+            PatientChart chartWindow = new PatientChart(id);
+            chartWindow.Show();
         }
     }
 }

@@ -9,31 +9,41 @@ using Repository;
 using Service;
 using System;
 using System.Collections.ObjectModel;
+using Zdravo.Model;
 
 namespace Controller
 {
    public class AppointmentController
    {
-      public AppointmentService service { get; }
+        private AppointmentService service;
+      private PatientRepository patientRepository;
+        private RoomController roomController;
 
       public AppointmentController()
         {
             service = new AppointmentService();
+
+            //CHANGE
+            patientRepository = new PatientRepository();
+            roomController = new RoomController();
         }
 
-     
-      
-      public int CreateAppointment(int patientId,int roomId, int hours, int minutes, int duration, int day, int month, int year)
+        public ObservableCollection<Appointment> GetAppointments()
+        {
+            return service.GetAll();
+        }
+
+        // creating should immediately link it to the patient and the room
+        public int CreateAppointment(int patientId,int roomId, int hours, int minutes, int duration, int day, int month, int year, bool emergency)
       {
             int errorCode=0;
-            PatientRepository patientRepo = new PatientRepository();
-            RoomRepository roomRepo = new RoomRepository();
             DateOnly date = new DateOnly();
 
-            Patient p = patientRepo.GetById(patientId);
-            Room r = roomRepo.GetById(roomId);
+            Patient p = patientRepository.GetById(patientId);
+            Room r = roomController.GetById(roomId);
 
             // uncomment when implemented crossrepo validation
+
 /*            if (p == null) errorCode = 1;
             if(r == null) errorCode = 2;*/
             try
@@ -42,20 +52,19 @@ namespace Controller
             }
             catch (Exception e)
             {
+                // Invalid date error
                 errorCode = 3;
             }
             
 
-           
-
             TimeOnly _time = new TimeOnly(hours, minutes);
             DateTime datetime = date.ToDateTime(_time);
             int cmp = DateTime.Compare(datetime,DateTime.Now);
-            if (cmp < 0) errorCode = 4;
+            if (cmp < 0) errorCode = 4;   // Cannot make appointment in the past
 
 
             if (errorCode==0) {
-                Appointment appt = new Appointment() { Date = date, Time = _time, Doctor = 32, Duration = 30, Patient = patientId, Room = roomId };
+                Appointment appt = new Appointment() { Date = date, Time = _time, Doctor = 32, Duration = duration, Patient = patientId, Room = roomId, Emergency=emergency };
                 service.CreateAppointment(appt);
             }
 
@@ -64,22 +73,13 @@ namespace Controller
 
         }
 
-        internal bool CheckAllergies(int appointmentId, string selectedDrug)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal ObservableCollection<string> GetAllDrugs()
-        {
-            throw new NotImplementedException();
-        }
-
         public bool DeleteAppointment(int id)
         {
             return service.DeleteAppointment(id);
         }
 
-        public int UpdateAppointment(int id, int patientId,int roomId,int hours,int minutes,int duration, int day, int month, int year)
+        //should update in the patient's list too
+        public int UpdateAppointment(int id, int patientId, int roomId, int hours, int minutes, int duration, int day, int month, int year, bool emergency)
         {
             int errorCode = 0;
             DateOnly date = new DateOnly();
@@ -92,19 +92,42 @@ namespace Controller
             {
                 errorCode = 3;
             }
-            DateTime datetime = date.ToDateTime(_time);
-            int cmp = DateTime.Compare(datetime, DateTime.Now);
-            if (cmp < 0) errorCode = 4;
 
-            Appointment appt = new Appointment() {Id=id, Date = date, Time = _time, Doctor = 32, Duration = duration, Patient = patientId, Room = roomId };
+            // add proper doctor id
+            Appointment appt = new Appointment() { Id = id, Date = date, Time = _time, Doctor = 32, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency };
             service.UpdateAppointment(appt);
             return errorCode;
         }
+
+        //link report to patient
+        internal void CreateReport(int apptId,DateTime date, string diagnosis, string report)
+        {
+            ApptReport rpt=service.CreateReport(date, diagnosis, report);
+            Appointment appt=service.GetAppointment(apptId);
+
+            // Change to controller later
+            Patient p = patientRepository.GetById(appt.Patient);
+
+        }
+
+        internal bool CheckAllergies(int appointmentId, string selectedDrug)
+        {
+            return service.CheckAllergies(appointmentId,selectedDrug);
+        }
+
+        internal ObservableCollection<string> GetAllDrugs()
+        {
+            return service.GetAllDrugs();
+        }
+
+        
 
         public bool CheckRoomAvailability(int idRoom)
       {
          throw new NotImplementedException();
       }
+
+
       public ObservableCollection<Appointment> GetAll()
         {
           return service.GetAll();
@@ -132,9 +155,6 @@ namespace Controller
             }
             return false;
         }
-        public ObservableCollection<Appointment> GetAppointments()
-        {
-            return service.GetAll();
-        }
+        
     }
 }
