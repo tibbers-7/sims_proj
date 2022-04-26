@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Service;
 using Repository;
 using Controller;
+using Zdravo.ViewModel;
 
 namespace Zdravo
 {
@@ -22,6 +23,7 @@ namespace Zdravo
     /// </summary>
     public partial class AddPatient : Window
     {
+        private PatientsViewModel viewModel = new PatientsViewModel();
         public AddPatient()
         {
             InitializeComponent();
@@ -40,6 +42,7 @@ namespace Zdravo
             PatientController controller = new PatientController();
             repo.addPatient(controller.CreatePatient(tbIme, tbPrezime, Int16.Parse(tbId.Text), tbUsername, tbSifra, tbTelefon, tbDatum, cbPol, tbAdresa, checkBoxGuest, tbMail));
             this.Close();
+            viewModel.Refresh();
         }
     }
 }
