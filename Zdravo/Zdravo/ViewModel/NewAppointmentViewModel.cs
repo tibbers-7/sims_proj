@@ -49,14 +49,14 @@ namespace Zdravo
         private bool emergency;
         public bool Emergency { get { return emergency; } set { emergency = value; } }
 
-        Appointment appt;
-        
+        private Appointment appt;
+        private int id;
 
         private AppointmentController ac= new AppointmentController();
 
         public NewAppointmentViewModel(int id)
         {
-
+            this.id = id;
             // overriding the default empty window with specific appointment details
             if (id != 0)
             {
@@ -75,17 +75,24 @@ namespace Zdravo
                 matchResult = regexObj.Match(appt.Time.ToString());
                 hour=int.Parse(matchResult.Groups[1].Value);
                 minutes=int.Parse(matchResult.Groups[2].Value);
+                emergency = appt.Emergency;
 
                 
             }
         }
-        public bool CreateAppointment()
-        {
-            DateOnly date = new DateOnly(Year,Month,Day);
-            return ac.CreateAppointment(patientId, roomId, hour, minutes, date);
-        }
-        
+        public int CreateAppointment()
+        { 
+                if (id == 0)
+                {
+                    return ac.CreateAppointment(patientId, roomId, hour, minutes, duration,day,month,year,emergency);
+                }
+                else return ac.UpdateAppointment(id, patientId, roomId, hour, minutes, duration,day,month,year,emergency);
+
+         }
+            
     }
+      
+}
 
     
-}
+

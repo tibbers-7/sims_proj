@@ -36,6 +36,12 @@ namespace Zdravo
             this.callerWindow = callerWindow;
             apptController = new AppointmentController();
             InitializeComponent();
+            if (!apptController.IsReportAvailable(id))
+            {
+                PrescriptionBtn.IsEnabled = false;
+                ReportBtn.IsEnabled = false;
+            }
+            
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -58,20 +64,22 @@ namespace Zdravo
         }
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            NewAppointment updateAppointment = new NewAppointment(id);
+            NewAppointment updateAppointment = new NewAppointment(callerWindow,id);
             updateAppointment.Show();
+            this.Close();
         }
         private void Report_Click(object sender, RoutedEventArgs e)
         {
-            if (apptController.IsReportAvailable(id))
-            {
-                AppointmentReport reportWindow = new AppointmentReport();
+                Report reportWindow = new Report(id);
                 reportWindow.Show();
-            }
-            else MessageBox.Show("Nije moguće pisati izveštaj pre početka pregleda. Molimo Vas da sačekate.","Obaveštenje");
  
         }
 
-        
+        private void Prescription_Click(object sender, RoutedEventArgs e)
+        {
+                PrescriptionWindow prescriptionWindow = new PrescriptionWindow(id);
+                prescriptionWindow.Show();
+            
+        }
     }
 }

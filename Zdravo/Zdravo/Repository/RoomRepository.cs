@@ -2,6 +2,7 @@ using System;
 using Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Zdravo;
 
 namespace Repository
 {
@@ -84,7 +85,7 @@ namespace Repository
             return null;
         }
       
-      public void Update(int id, Model.RoomType type)
+      public void Update(int id, RoomType type)
       {
             foreach (Room room in rooms)
             {

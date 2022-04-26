@@ -25,12 +25,14 @@ namespace Zdravo
     /// </summary>
     public partial class DoctorHome : Window
     {
-       
-        private DoctorHomeViewModel viewModel=new DoctorHomeViewModel();
+
+        private DoctorHomeViewModel viewModel;
         public DoctorHome()
         {
             InitializeComponent();
+            viewModel = new DoctorHomeViewModel(AppointmentTable);
             DataContext = viewModel;
+            
         }
 
         private void NewAppointment_Click(object sender, RoutedEventArgs e)
@@ -47,6 +49,5 @@ namespace Zdravo
         }
 
         
-
     }
 }

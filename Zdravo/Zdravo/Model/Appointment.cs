@@ -27,9 +27,11 @@ namespace Model
         private int room;
         public int Room { get { return room; } set { room = value; } }
         private bool emergency;
+        public bool Emergency { get { return emergency; } set { emergency = value; } }
         public string EmergencyChar { get { if (emergency) return "DA"; else return "NE"; } set { if (value.Equals("DA")) emergency = true; else emergency = false; } }
 
-
+        private bool hasPassed;
+        public bool HasPassed { get { return hasPassed; } set { hasPassed = value; } }
 
         public void fromCSV(GroupCollection csvValues)
         {
@@ -41,15 +43,10 @@ namespace Model
             time = TimeOnly.Parse(csvValues[5].Value);
             duration = int.Parse(csvValues[6].Value);
             doctor = int.Parse(csvValues[7].Value);
-            switch (csvValues[8].Value)
-            {
-                case "Y":
-                    emergency = true;
-                    break;
-                case "N":
-                    emergency = false;
-                    break;
-            }
+            if (csvValues[8].Value == "Y") emergency = true; else emergency= false;
+ 
+            DateTime apptDT = date.ToDateTime(time);
+            if (apptDT < DateTime.Now) hasPassed = true; else hasPassed = false;
 
         }
 

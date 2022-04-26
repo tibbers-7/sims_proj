@@ -16,16 +16,24 @@ namespace Repository
 {
    public class PatientRepository
    {
+      private List<Patient> patients;
       public Patient GetById(int id)
       {
-         // TODO: implement
+         foreach(Patient patient in patients)
+            {
+                if(patient.Id == id) return patient;
+            }
          return null;
       }
+
+        public PatientRepository()
+        {
+            fileHandler = new PatientFileHandler();
+            patients = fileHandler.Load();
+        }
       
       public List<Patient> GetAll()
       {
-            fileHandler = new PatientFileHandler();
-            List<Patient> patients = new List<Patient>();
             patients = fileHandler.Load();
             return patients;
       }

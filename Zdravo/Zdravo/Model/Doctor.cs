@@ -4,6 +4,7 @@
 // Purpose: Definition of Class Doctor
 
 using System;
+using Zdravo;
 
 namespace Model
 {

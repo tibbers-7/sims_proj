@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zdravo.Model
 {
-    internal class Prescription
+    public class Prescription
     {
         //TODO: change to class instead of ids
         private int drugId;
