@@ -87,3 +87,5 @@ D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindo
 >>>>>>> 72466b1a91f1aed7a185958c1bedcfa9d6c2ccf6
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\MedicalRecord.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\MedicalRecord.baml
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\Allergens.g.cs
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\Allergens.baml
