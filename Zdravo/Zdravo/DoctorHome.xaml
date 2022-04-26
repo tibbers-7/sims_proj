@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
         <TabControl Grid.ColumnSpan="3">
             <TabItem Header="Pregledi">
-                <Grid Background="#FFEFDEF3">
+                <Grid Background="#FFEFDEF3" Height="387" Margin="0,0,-2,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="31*"/>
                         <ColumnDefinition Width="270*"/>
@@ -42,7 +42,7 @@
                               IsReadOnly ="True"  SelectionMode="Single"
                               ItemsSource="{Binding Appointments, UpdateSourceTrigger=PropertyChanged}"
                               AutoGenerateColumns="False"
-                              Margin="0,10,10,10" Grid.Column="2" >
+                              Margin="0,10,10,46" Grid.Column="2" >
                         <DataGrid.CellStyle>
                             <Style TargetType="{x:Type DataGridCell}">
                                 <Style.Triggers>
@@ -79,6 +79,7 @@
                             </Style>
                         </DataGrid.Resources>
                     </DataGrid>
+                    <Button Grid.Column="2" Content="Log out" HorizontalAlignment="Left" Margin="361,355,0,0" VerticalAlignment="Top" Height="22" Width="106" Click="Button_Click"/>
 
 
                 </Grid>

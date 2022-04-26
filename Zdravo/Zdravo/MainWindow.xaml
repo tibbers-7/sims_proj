@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="403" Width="436">
-    <Grid>
-        <Label Content="Username&#xD;&#xA;" HorizontalAlignment="Left" Margin="76,108,0,0" VerticalAlignment="Top"/>
-        <Label Content="Password&#xD;&#xA;" HorizontalAlignment="Left" Margin="76,179,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="tbUsername" HorizontalAlignment="Left" Margin="196,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="tbPassword" HorizontalAlignment="Left" Margin="196,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Log in&#xD;&#xA;" HorizontalAlignment="Left" Margin="157,278,0,0" VerticalAlignment="Top" Height="26" Width="87" Click="Button_Click"/>
-
+        Title="MainWindow" Height="244" Width="360"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,0,3">
+        <TextBox Name="tbUsername"  HorizontalAlignment="Left" Margin="67,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" Height="30"/>
+        <PasswordBox Name="tbPassword" HorizontalAlignment="Left" Margin="67,109,0,0" VerticalAlignment="Top" Width="208" Height="28"/>
+        <Button Content="Log in&#xD;&#xA;" HorizontalAlignment="Left" Margin="137,170,0,0" VerticalAlignment="Top" Height="26" Width="87" Click="Button_Click"/>
+        <Label Content="Username" FontFamily="Italic" HorizontalAlignment="Left" Margin="67,18,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password" FontFamily="Italic" HorizontalAlignment="Left" Margin="67,83,0,0" VerticalAlignment="Top"/>
+        <Label Content="" Name="errorLabel" HorizontalAlignment="Left" Margin="67,142,0,0" VerticalAlignment="Top" Foreground="Red" FontWeight="Bold"/>
     </Grid>
 </Window>
