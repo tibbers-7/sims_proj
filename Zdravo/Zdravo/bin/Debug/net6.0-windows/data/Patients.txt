@@ -1,8 +1,2 @@
-<<<<<<< HEAD
 Darko,Filipovic,1,darkofilipovic,sifra123,11,5/5/2005 12:00:00 AM,F,Novosadska 3,false,darko@gmail.com,
-adam,a,2,a,aa,a,3/3/2000 12:00:00 AM,F,da,false,da,
-=======
-Darko,Filipovic,1,darkofilipovic,sifra123,11,5/5/2005 12:00:00 AM,F,Novosadska 3,false,darko@gmail.com
-Jelena,Capik,2,jelenacapikaada,sifra3123212,041421,2/2/2000 12:00:00 AM,F,Futoska 6,false,@gmail.com
-Milica,Simic,3,msimic,123,3233,2/1/2019 12:00:00 AM,F,x,false,msimic@gmail.com
->>>>>>> abd3a09a4ba01d990de275db660994e424cf6d7f
+Jelenaa,Capik,2,jelenacapikaada,sifra3123212,041421,2/2/2000 12:00:00 AM,F,Futoska 6,false,@gmail.com,
