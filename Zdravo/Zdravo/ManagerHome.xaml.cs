@@ -152,5 +152,12 @@ namespace Zdravo
             roomController.Update(id, type1);
             dataGridRooms.Items.Refresh();
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            MainWindow m = new MainWindow();
+            m.Show();
+            this.Close();
+        }
     }
 }

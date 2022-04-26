@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\App.xaml
 11-1680114602
 
-52-849995970
+53-594346198
 1941645785384
 DoctorHome.xaml;DoctorWindows\AppointmentMenu.xaml;DoctorWindows\NewAppointment.xaml;DoctorWindows\PatientChart.xaml;DoctorWindows\PrescriptionWindow.xaml;DoctorWindows\Report.xaml;MainWindow.xaml;ManagerHome.xaml;PatientView\AddPatient.xaml;PatientView\UpdatePatient.xaml;SekretarHome.xaml;
 
-False
+True
 

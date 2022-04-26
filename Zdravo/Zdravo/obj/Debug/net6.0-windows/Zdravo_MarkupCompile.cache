@@ -4,16 +4,21 @@
 winexe
 C#
 .cs
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\
 Zdravo
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\App.xaml
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\App.xaml
 11-1680114602
 
+<<<<<<< HEAD
 481255943690
 1941645785384
+=======
+47-641285061
+194-1951243044
+>>>>>>> 72466b1a91f1aed7a185958c1bedcfa9d6c2ccf6
 DoctorHome.xaml;DoctorWindows\AppointmentMenu.xaml;DoctorWindows\NewAppointment.xaml;DoctorWindows\PatientChart.xaml;DoctorWindows\PrescriptionWindow.xaml;DoctorWindows\Report.xaml;MainWindow.xaml;ManagerHome.xaml;PatientView\AddPatient.xaml;PatientView\UpdatePatient.xaml;SekretarHome.xaml;
 
 False

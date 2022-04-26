@@ -24,6 +24,7 @@
         <TextBox HorizontalAlignment="Left" Margin="598,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=Type,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
         <Button Content="Dodaj" HorizontalAlignment="Left" Margin="458,267,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.461,0.444" Height="21" Width="84" Click="Button_Click_1"/>
         <Button Content="Izmeni" HorizontalAlignment="Left" Margin="622,267,0,0" VerticalAlignment="Top" Height="21" Width="96" Click="Button_Click_2"/>
+        <Button Content="Log out" HorizontalAlignment="Left" Margin="683,373,0,0" VerticalAlignment="Top" Height="27" Width="81" Click="Button_Click_3"/>
 
     </Grid>
 </Window>

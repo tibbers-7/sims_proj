@@ -13,6 +13,8 @@ using Repository;
 using Model;
 using Service;
 using Controller;
+using Zdravo.ViewModel;
+
 namespace Zdravo
 {
     /// <summary>
@@ -20,12 +22,14 @@ namespace Zdravo
     /// </summary>
     public partial class SekretarHome : Window
     {
+        private PatientsViewModel viewModel = new PatientsViewModel();
         public SekretarHome()
         {
             InitializeComponent();
-            PatientRepository p = new PatientRepository();
-            List<Patient> patients = p.GetAll();
-            table.ItemsSource = patients;
+            // PatientRepository p = new PatientRepository();
+            //   List<Patient> patients = p.GetAll();
+            //  table.ItemsSource = patients;
+            DataContext = viewModel;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -36,13 +40,17 @@ namespace Zdravo
             service.checkId();
             AddPatient addp = new AddPatient();
             addp.Show();
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            PatientRepository p = new PatientRepository();
-            List<Patient> patients = p.GetAll();
-            table.ItemsSource = patients;
+            //  PatientRepository p = new PatientRepository();
+            //List<Patient> patients = p.GetAll();
+            //table.ItemsSource = patients;
+            viewModel.Refresh();
+            this.DataContext = null;
+             this.DataContext = viewModel;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -60,9 +68,19 @@ namespace Zdravo
             Patient izabran = (Patient)table.SelectedValue;
             PatientController controller = new PatientController();
             controller.DeletePatient(izabran);
-            PatientRepository p = new PatientRepository();
-            List<Patient> patients = p.GetAll();
-            table.ItemsSource = patients;
+            // PatientRepository p = new PatientRepository();
+            //  List<Patient> patients = p.GetAll();
+            //  table.ItemsSource = patients;
+            viewModel.Refresh();
+            this.DataContext = null;
+            this.DataContext = viewModel;
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            MainWindow m = new MainWindow();
+            m.Show();
+            this.Close();
         }
     }
 }

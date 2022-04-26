@@ -11,6 +11,7 @@ using Service;
 using FileHandler;
 using Repository;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Zdravo;
 
 namespace FileHandler
@@ -42,7 +43,29 @@ namespace FileHandler
             return pacijenti;
       }
       
+        public ObservableCollection<Patient> read()
+        {
+            ObservableCollection<Patient> pacijenti = new ObservableCollection<Patient>();
+            string[] lines = System.IO.File.ReadAllLines(filepath);
+            foreach (var s in lines)
+            {
+                string[] ss = s.Split(',');
+                //(string fn, string ln, int i, string un, string pas, string pn, DateTime date, Gender g, string ad, bool gu,int cardNumber)
+                int id = Int32.Parse(ss[2]);
+                DateTime datum;
+                datum = Convert.ToDateTime(ss[6]);
+                Gender pol;
+                if (ss[7].Equals("M")) pol = Gender.male;
+                else pol = Gender.female;
+                bool guest = false;
+                if (ss[9].Equals("true")) guest = true;
+                Patient p = new Patient(ss[0], ss[1], id, ss[3], ss[4], ss[5], datum, pol, ss[8], guest, ss[10]);
+                pacijenti.Add(p);
+            }
+            Console.WriteLine("ISPIIIIIIIIS");
+            return pacijenti;
 
+        }
       public void deleteById(int id)
         {
             
