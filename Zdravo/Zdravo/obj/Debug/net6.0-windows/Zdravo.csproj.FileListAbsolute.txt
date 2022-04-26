@@ -34,12 +34,18 @@ D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\AddPatient.baml
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\UpdatePatient.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\UpdatePatient.baml
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.exe
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.deps.json
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.runtimeconfig.json
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.dll
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.pdb
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo.csproj.AssemblyReference.cache
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorHome.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\AppointmentMenu.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\NewAppointment.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\PatientChart.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\PrescriptionWindow.g.cs
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\Report.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\MainWindow.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\ManagerHome.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\AddPatient.g.cs
@@ -49,16 +55,12 @@ C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\App.g.c
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo_MarkupCompile.cache
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo_MarkupCompile.lref
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.exe
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.deps.json
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.runtimeconfig.json
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.dll
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.pdb
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorHome.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\AppointmentMenu.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\NewAppointment.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\PatientChart.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\PrescriptionWindow.baml
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\Report.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\MainWindow.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\ManagerHome.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\AddPatient.baml
@@ -74,11 +76,12 @@ C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\refint\
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo.pdb
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo.genruntimeconfig.cache
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\ref\Zdravo.dll
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\Report.g.cs
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\Report.baml
+<<<<<<< HEAD
+=======
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\PatientChart.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\PrescriptionWindow.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\Report.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\PatientChart.baml
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\PrescriptionWindow.baml
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\Report.baml
+>>>>>>> 72466b1a91f1aed7a185958c1bedcfa9d6c2ccf6

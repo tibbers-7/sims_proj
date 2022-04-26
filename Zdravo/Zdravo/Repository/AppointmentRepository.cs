@@ -9,6 +9,7 @@ using System;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Zdravo.Repository;
 
 namespace Repository
 {
@@ -16,13 +17,17 @@ namespace Repository
    {
       private static int idCounter=0;
       public AppointmentFileHandler fileHandler=new AppointmentFileHandler();
+        private PatientRepository patientRepository=new PatientRepository();
         private ObservableCollection<Appointment> appointments;
+        private ReportRepository reportRepo;
         private int idCount;
 
         public AppointmentRepository()
         {
             appointments = fileHandler.Read();
             idCount= appointments.Count;
+            reportRepo = new ReportRepository();
+
         }
 
         public ObservableCollection<Appointment> GetAll()
@@ -51,6 +56,8 @@ namespace Repository
 
             Appointment appt= GetByID(idAppointment);
             if (appt == null) return false;
+
+            patientRepository.GetById(appt.Patient).RemoveAppt(appt);
                 
                 fileHandler.Write(appt, 2);
                 appointments = fileHandler.Read();
@@ -70,5 +77,7 @@ namespace Repository
             fileHandler.Write(appt,1);
             appointments = fileHandler.Read();
         }
+
+        
     }
 }

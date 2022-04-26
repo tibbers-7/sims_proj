@@ -11,12 +11,14 @@ using Service;
 using FileHandler;
 using Repository;
 using System.Collections.Generic;
+using Zdravo.Repository;
 
 namespace Repository
 {
    public class PatientRepository
    {
       private List<Patient> patients;
+        private ReportRepository reportRepo;
       public Patient GetById(int id)
       {
          foreach(Patient patient in patients)
@@ -30,11 +32,12 @@ namespace Repository
         {
             fileHandler = new PatientFileHandler();
             patients = fileHandler.Load();
+            //reportRepo = new ReportRepository();
         }
       
       public List<Patient> GetAll()
       {
-            patients = fileHandler.Load();
+            //patients = fileHandler.Load();
             return patients;
       }
       

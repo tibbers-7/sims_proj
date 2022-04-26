@@ -10,6 +10,7 @@ using Service;
 using System;
 using System.Collections.ObjectModel;
 using Zdravo.Model;
+using Zdravo.Repository;
 
 namespace Controller
 {
@@ -18,6 +19,7 @@ namespace Controller
         private AppointmentService service;
       private PatientRepository patientRepository;
         private RoomController roomController;
+        private ReportRepository reportRepo;
 
       public AppointmentController()
         {
@@ -26,6 +28,7 @@ namespace Controller
             //CHANGE
             patientRepository = new PatientRepository();
             roomController = new RoomController();
+            reportRepo = new ReportRepository();
         }
 
         public ObservableCollection<Appointment> GetAppointments()
@@ -102,12 +105,14 @@ namespace Controller
         //link report to patient
         internal void CreateReport(int apptId,DateTime date, string diagnosis, string report)
         {
-            ApptReport rpt=service.CreateReport(date, diagnosis, report);
+            Report rpt=service.CreateReport(date, diagnosis, report);
             Appointment appt=service.GetAppointment(apptId);
 
             // Change to controller later
             Patient p = patientRepository.GetById(appt.Patient);
-
+            p.AddReport(rpt);
+            
+            reportRepo.AddReport(rpt);
         }
 
         internal bool CheckAllergies(int appointmentId, string selectedDrug)
@@ -148,13 +153,11 @@ namespace Controller
         {
             Appointment appt = GetAppointment(id);
             DateTime datetime = appt.Date.ToDateTime(appt.Time);
-            int cmp = DateTime.Compare(DateTime.Now, datetime);
-            if (cmp>0)
-            {
-                return true;
-            }
+            if (DateTime.Compare(DateTime.Now, datetime) > 0) return true;
             return false;
         }
+
+        
         
     }
 }

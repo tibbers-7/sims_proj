@@ -35,7 +35,6 @@ namespace Model
 
         public void fromCSV(GroupCollection csvValues)
         {
-            Console.WriteLine(csvValues[0]);
             id= int.Parse(csvValues[1].Value);
             patient = int.Parse(csvValues[2].Value);
             room = int.Parse(csvValues[3].Value);
