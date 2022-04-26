@@ -78,15 +78,12 @@ C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo.
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\ref\Zdravo.dll
 <<<<<<< HEAD
 =======
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\Report.g.cs
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\Report.baml
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\PatientChart.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\PrescriptionWindow.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\Report.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\PatientChart.baml
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\PrescriptionWindow.baml
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorWindows\Report.baml
-<<<<<<< HEAD
 >>>>>>> 72466b1a91f1aed7a185958c1bedcfa9d6c2ccf6
-=======
->>>>>>> 72466b1a91f1aed7a185958c1bedcfa9d6c2ccf6
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\MedicalRecord.g.cs
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\MedicalRecord.baml

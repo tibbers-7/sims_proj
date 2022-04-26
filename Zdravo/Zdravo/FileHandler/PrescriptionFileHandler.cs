@@ -69,7 +69,7 @@ namespace Zdravo.FileHandler
                         int i = 0;
                         foreach (Prescription newPrescription in apList)
                         {
-                            if (newPrescription.Id != prescription.Id)
+                       //     if (newPrescription.Id != prescription.Id)
                             {
                                 newLines[i] = newPrescription.toCSV();
                                 i++;
