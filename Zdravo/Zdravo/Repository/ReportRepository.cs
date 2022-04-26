@@ -20,7 +20,7 @@ namespace Zdravo.Repository
             apptReports = fileHandler.Read();
             foreach(Report report in apptReports)
             {
-                patientRepo.GetById(report.PatientId).AddReport(report);
+                //greska   patientRepo.GetById(report.PatientId).AddReport(report);
             }
         }
 

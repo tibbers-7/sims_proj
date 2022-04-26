@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\App.xaml
-12239139050
+12-144308541
 
-54961395324
+54-1569554681
 194-1951243044
-DoctorHome.xaml;DoctorWindows\AppointmentMenu.xaml;DoctorWindows\NewAppointment.xaml;DoctorWindows\PatientChart.xaml;DoctorWindows\PrescriptionWindow.xaml;DoctorWindows\Report.xaml;MainWindow.xaml;ManagerHome.xaml;PatientView\AddPatient.xaml;PatientView\MedicalRecord.xaml;PatientView\UpdatePatient.xaml;SekretarHome.xaml;
+DoctorHome.xaml;DoctorWindows\AppointmentMenu.xaml;DoctorWindows\NewAppointment.xaml;DoctorWindows\PatientChart.xaml;DoctorWindows\PrescriptionWindow.xaml;DoctorWindows\Report.xaml;MainWindow.xaml;ManagerHome.xaml;PatientView\AddPatient.xaml;PatientView\Allergens.xaml;PatientView\UpdatePatient.xaml;SekretarHome.xaml;
 
-False
+True
 

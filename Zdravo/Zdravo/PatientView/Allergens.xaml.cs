@@ -11,17 +11,21 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Model;
 
 namespace Zdravo.PatientView
 {
     /// <summary>
-    /// Interaction logic for MedicalRecord.xaml
+    /// Interaction logic for Allergens.xaml
     /// </summary>
-    public partial class MedicalRecord : Window
+    public partial class Allergens : Window
     {
-        public MedicalRecord()
+        public Allergens(Patient patient)
         {
             InitializeComponent();
+            tbName.Text = patient.Ime;
+            tbLastName.Text = patient.Prezime;
+            tbId.Text=patient.Id.ToString();
         }
     }
 }

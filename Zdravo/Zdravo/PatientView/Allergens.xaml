@@ -1,0 +1,21 @@
+﻿<Window x:Class="Zdravo.PatientView.Allergens"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zdravo.PatientView"
+        mc:Ignorable="d"
+        Title="Allergens" Height="459" Width="404">
+    <Grid Margin="0,0,10,7">
+        <Label FontSize="20" Content="Patient info:" HorizontalAlignment="Left" Margin="24,79,0,0" VerticalAlignment="Top"/>
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="24,135,0,0" VerticalAlignment="Top"/>
+        <Label Content="Last name:" HorizontalAlignment="Left" Margin="24,166,0,0" VerticalAlignment="Top"/>
+        <Label Content="ID :" HorizontalAlignment="Left" Margin="24,197,0,0" VerticalAlignment="Top"/>
+        <TextBlock TextDecorations="Underline" Name="tbId" HorizontalAlignment="Left" Margin="120,202,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBlock TextDecorations="Underline" Name="tbName" HorizontalAlignment="Left" Margin="120,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBlock TextDecorations="Underline" Name="tbLastName" HorizontalAlignment="Left" Margin="120,171,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBlock TextDecorations="Underline" HorizontalAlignment="Left" Margin="24,10,0,0" TextWrapping="Wrap" Text="Allergens" VerticalAlignment="Top" FontSize="36"/>
+        <DataGrid ColumnWidth="*" d:ItemsSource="{d:SampleData ItemCount=4}" Margin="24,242,22,10"/>
+
+    </Grid>
+</Window>

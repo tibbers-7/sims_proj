@@ -85,9 +85,9 @@ namespace Zdravo
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
-            Patient izabran = (Patient)table.SelectedValue;
-            MedicalRecord m = new MedicalRecord();
-            m.Show();
+            Patient selectedPatient = (Patient)table.SelectedValue;
+            Allergens a = new Allergens(selectedPatient);
+            a.Show();
         }
     }
 }
