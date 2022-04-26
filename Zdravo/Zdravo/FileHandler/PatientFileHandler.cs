@@ -25,6 +25,7 @@ namespace FileHandler
             List<Patient> pacijenti = new List<Patient>();
             foreach(var s in lines)
             {
+                if (s.Equals("")) break;
                 string[] ss=s.Split(',');
                 //(string fn, string ln, int i, string un, string pas, string pn, DateTime date, Gender g, string ad, bool gu,int cardNumber)
                 int id = Int32.Parse(ss[2]);

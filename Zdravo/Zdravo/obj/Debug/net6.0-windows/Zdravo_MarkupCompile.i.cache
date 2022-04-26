@@ -12,8 +12,13 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\App.xaml
 11-1680114602
 
+<<<<<<< HEAD
+53-594346198
+1941645785384
+=======
 49-2076303339
 194-1951243044
+>>>>>>> 72466b1a91f1aed7a185958c1bedcfa9d6c2ccf6
 DoctorHome.xaml;DoctorWindows\AppointmentMenu.xaml;DoctorWindows\NewAppointment.xaml;DoctorWindows\PatientChart.xaml;DoctorWindows\PrescriptionWindow.xaml;DoctorWindows\Report.xaml;MainWindow.xaml;ManagerHome.xaml;PatientView\AddPatient.xaml;PatientView\UpdatePatient.xaml;SekretarHome.xaml;
 
 True
