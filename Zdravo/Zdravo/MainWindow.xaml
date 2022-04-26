@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="244" Width="360"
+        Title="Log in" Height="244" Width="360"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,0,3">
         <TextBox Name="tbUsername"  HorizontalAlignment="Left" Margin="67,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" Height="30"/>
