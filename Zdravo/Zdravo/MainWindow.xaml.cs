@@ -28,13 +28,15 @@ namespace Zdravo
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            bool pronadjen=false;
             string[] lines = System.IO.File.ReadAllLines("data/accounts.txt");
             foreach(string s in lines)
             {
                 string[] parameters = s.Split(',');
-                if (tbUsername.Text.Equals(parameters[0]) && tbPassword.Text.Equals(parameters[1]))
+                String lozinka = tbPassword.Password.ToString();
+                if (tbUsername.Text.Equals(parameters[0]) && lozinka.Equals(parameters[1]))
                 {
+                    pronadjen = true;
                     if (parameters[2].Equals("S")){
                         //otvara se sekretar page
                        
@@ -55,6 +57,11 @@ namespace Zdravo
                         //otvara se lekar page
                     }
                 }
+                
+            }
+            if (!pronadjen)
+            {
+                errorLabel.Content = "Pogresno korisnicko ime ili lozinka!";
             }
         }
     }
