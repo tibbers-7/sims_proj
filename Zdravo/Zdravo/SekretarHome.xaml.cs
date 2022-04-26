@@ -14,7 +14,7 @@ using Model;
 using Service;
 using Controller;
 using Zdravo.ViewModel;
-
+using Zdravo.PatientView;
 namespace Zdravo
 {
     /// <summary>
@@ -81,6 +81,13 @@ namespace Zdravo
             MainWindow m = new MainWindow();
             m.Show();
             this.Close();
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            Patient izabran = (Patient)table.SelectedValue;
+            MedicalRecord m = new MedicalRecord();
+            m.Show();
         }
     }
 }
