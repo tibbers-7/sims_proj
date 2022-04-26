@@ -105,10 +105,12 @@ namespace Service
             return new ObservableCollection<String>(drugRepository.GetAllDrugs());
         }
 
-        public ApptReport CreateReport(DateTime date,string report, string diagnosis)
+        public Zdravo.Model.Report CreateReport(DateTime date,string report, string diagnosis)
         {
-            ApptReport rpt = new ApptReport() { Date = date, Report=report, Diagnosis=diagnosis };
+            Zdravo.Model.Report rpt = new Zdravo.Model.Report() { Date = date, ReportString= report, Diagnosis= diagnosis };
             return rpt;
         }
+
+        
     }
 }
