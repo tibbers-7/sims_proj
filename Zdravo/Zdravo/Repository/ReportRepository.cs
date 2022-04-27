@@ -12,20 +12,33 @@ namespace Zdravo.Repository
     internal class ReportRepository
     {
         private ReportFileHandler fileHandler=new ReportFileHandler();
-        private PatientRepository patientRepo =new PatientRepository();
-        private List<Report> apptReports;
+        public List<Report> apptReports;
+        private int reportCount;
 
         public ReportRepository()
         {
             apptReports = fileHandler.Read();
-            foreach(Report report in apptReports)
+            reportCount = apptReports.Count;
+        }
+
+        public List<Report> GetReports()
+        {
+            return apptReports;
+        }
+
+        public Report GetReportById(int id)
+        {
+            foreach (Report report in apptReports)
             {
-                patientRepo.GetById(report.PatientId).AddReport(report);
+                if (report.Id == id) return report;
             }
+            return null;
         }
 
         public void AddReport(Report report)
         {
+            reportCount=apptReports.Count+1;
+            report.Id = reportCount;
             fileHandler.Write(report,0);
         }
     }

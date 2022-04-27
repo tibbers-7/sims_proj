@@ -11,6 +11,7 @@ namespace Zdravo.Model
     {
         //TODO: change to class instead of ids
         private int id;
+        public int Id { get { return id; } set { id = value; } }
         private int patientId;
         public int PatientId { get { return patientId; } set { patientId = value; } }
         private string drugId;

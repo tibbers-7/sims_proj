@@ -103,15 +103,15 @@ namespace Controller
         }
 
         //link report to patient
-        internal void CreateReport(int apptId,DateTime date, string diagnosis, string report)
+        internal void CreateReport(int apptId,DateOnly date, string diagnosis, string report)
         {
-            Report rpt=service.CreateReport(date, diagnosis, report);
             Appointment appt=service.GetAppointment(apptId);
+            Report rpt = service.CreateReport(date, appt.Patient, report, diagnosis);
 
             // Change to controller later
             Patient p = patientRepository.GetById(appt.Patient);
             p.AddReport(rpt);
-            
+            appt.AddReport(rpt);
             reportRepo.AddReport(rpt);
         }
 
@@ -155,6 +155,11 @@ namespace Controller
             DateTime datetime = appt.Date.ToDateTime(appt.Time);
             if (DateTime.Compare(DateTime.Now, datetime) > 0) return true;
             return false;
+        }
+
+        public Report GetReport(int id)
+        {
+            return reportRepo.GetReportById(id);
         }
 
         

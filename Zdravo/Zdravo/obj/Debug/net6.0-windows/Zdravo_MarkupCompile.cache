@@ -4,27 +4,17 @@
 winexe
 C#
 .cs
-D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\
 Zdravo
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\App.xaml
-11-1680114602
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\App.xaml
+12-206979184
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-481255943690
+53924408151
 1941645785384
-=======
-47-641285061
-194-1951243044
->>>>>>> 72466b1a91f1aed7a185958c1bedcfa9d6c2ccf6
-=======
-47-641285061
-194-1951243044
->>>>>>> 72466b1a91f1aed7a185958c1bedcfa9d6c2ccf6
-DoctorHome.xaml;DoctorWindows\AppointmentMenu.xaml;DoctorWindows\NewAppointment.xaml;DoctorWindows\PatientChart.xaml;DoctorWindows\PrescriptionWindow.xaml;DoctorWindows\Report.xaml;MainWindow.xaml;ManagerHome.xaml;PatientView\AddPatient.xaml;PatientView\UpdatePatient.xaml;SekretarHome.xaml;
+DoctorHome.xaml;DoctorWindows\AppointmentMenu.xaml;DoctorWindows\NewAppointment.xaml;DoctorWindows\PatientApptHistory.xaml;DoctorWindows\PatientChart.xaml;DoctorWindows\PrescriptionWindow.xaml;DoctorWindows\ReportWindow.xaml;MainWindow.xaml;ManagerHome.xaml;PatientView\AddPatient.xaml;PatientView\UpdatePatient.xaml;SekretarHome.xaml;
 
 False
 

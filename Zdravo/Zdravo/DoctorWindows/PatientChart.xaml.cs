@@ -20,9 +20,11 @@ namespace Zdravo.DoctorWindows
     /// </summary>
     public partial class PatientChart : Window
     {
+        private int apptId;
         private PatientChartViewModel viewModel;
         public PatientChart(int id)
         {
+            apptId = id;
             viewModel = new PatientChartViewModel(id);
             this.DataContext = viewModel;
             InitializeComponent();
@@ -47,9 +49,15 @@ namespace Zdravo.DoctorWindows
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void HistoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            PatientApptHistory historyWindow = new PatientApptHistory(apptId);
+            historyWindow.Show();
         }
     }
 }

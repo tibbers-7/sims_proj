@@ -26,7 +26,6 @@ namespace Repository
         {
             appointments = fileHandler.Read();
             idCount= appointments.Count;
-            reportRepo = new ReportRepository();
 
         }
 

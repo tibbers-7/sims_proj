@@ -22,7 +22,7 @@ namespace Model
         public List<Prescription> Prescriptions { get { return prescriptions; } set { prescriptions = value; } }
         private string workPlace;
         private List<Report> reports;
-        public List <Report> Reports { get { return reports; } set { reports = value; } }
+        public List<Report> Reports { get { return reports; } set { reports = value; } }
         public string WorkPlace { get { return workPlace; } set { workPlace = value; } }
         private MarriageStatus status;
         public MarriageStatus Status { get { return status; } set { status = value; } }

@@ -59,8 +59,8 @@
         </StackPanel>
         <ListBox ItemsSource="{Binding Allergens}" Margin="34,453,265,10" FontSize="16" Background="#FF74A6F8" Grid.ColumnSpan="2"/>
         <Label Content="Alergeni" Margin="89,420,237,-14" FontSize="20" Grid.ColumnSpan="2"/>
-        <Button Content="Istorija Izveštaja" Margin="131,425,17,110" Background="MidnightBlue" Foreground="#FFFEFDFD" Grid.Column="1"/>
-        <Button Content="" Margin="201,502,86,20" Foreground="Black" Grid.Column="1" BorderBrush="{x:Null}" Click="Button_Click">
+        <Button Content="Istorija Pregleda" Margin="131,425,17,110" Background="MidnightBlue" Foreground="#FFFEFDFD" Grid.Column="1" Click="HistoryButton_Click"/>
+        <Button Content="" Margin="201,502,86,20" Foreground="Black" Grid.Column="1" BorderBrush="{x:Null}" Click="OkButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/images/accept.png"/>
             </Button.Background>

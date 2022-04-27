@@ -12,8 +12,8 @@ namespace Zdravo.Model
     {
         private int id;
         public int Id { get { return id; } set { id = value; } }
-        private DateTime date;
-        public DateTime Date { get { return date; } set { date = value; } }
+        private DateOnly date;
+        public DateOnly Date { get { return date; } set { date = value; } }
         private string diagnosis;
         public string Diagnosis { get { return diagnosis; } set { diagnosis = value; } }
         private string reportString;
@@ -26,13 +26,13 @@ namespace Zdravo.Model
             id = int.Parse(csvValues[1].Value);
             patientId = int.Parse(csvValues[2].Value);
             diagnosis = csvValues[3].Value;
-            date = DateTime.Parse(csvValues[4].Value);
+            date = DateOnly.Parse(csvValues[4].Value);
             reportString = csvValues[5].Value;
         }
 
         internal string toCSV()
         {
-            return "#"+id.ToString()+"#"+patientId.ToString()+"#"+diagnosis+"#"+DateOnly.FromDateTime(date).ToString()+"#"+ reportString;
+            return "#"+id.ToString()+"#"+patientId.ToString()+"#"+diagnosis+"#"+date.ToString()+"#"+ reportString;
         }
     }
 }

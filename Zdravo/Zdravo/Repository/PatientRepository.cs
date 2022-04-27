@@ -12,14 +12,32 @@ using FileHandler;
 using Repository;
 using System.Collections.Generic;
 using Zdravo.Repository;
+using System.Collections.ObjectModel;
 
 namespace Repository
 {
    public class PatientRepository
    {
-      private List<Patient> patients;
+      private ObservableCollection<Patient> patients;
         private ReportRepository reportRepo;
-      public Patient GetById(int id)
+
+        public PatientRepository()
+        {
+            Init();
+            reportRepo = new ReportRepository();
+        }
+
+        private void Init()
+        {
+            if(patients==null)
+            {
+                fileHandler = new PatientFileHandler();
+                patients = fileHandler.read();
+            }
+        }
+
+
+        public Patient GetById(int id)
       {
          foreach(Patient patient in patients)
             {
@@ -28,14 +46,9 @@ namespace Repository
          return null;
       }
 
-        public PatientRepository()
-        {
-            fileHandler = new PatientFileHandler();
-            patients = fileHandler.Load();
-            //reportRepo = new ReportRepository();
-        }
+        
       
-      public List<Patient> GetAll()
+      public ObservableCollection<Patient> GetAll()
       {
             //patients = fileHandler.Load();
             return patients;

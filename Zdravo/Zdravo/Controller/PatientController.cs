@@ -13,11 +13,14 @@ using Repository;
 using System.Collections.Generic;
 using System.Windows.Controls;
 using Zdravo;
+using System.Collections.ObjectModel;
+using Zdravo.Model;
 
 namespace Controller
 {
    public class PatientController
    {
+        private PatientService service=new PatientService();
         private PatientRepository p;
       public Patient CreatePatient(TextBox tbIme, TextBox tbPrezime, int tbId, TextBox tbUsername, TextBox tbSifra, TextBox tbTelefon, TextBox tbDatum,ComboBox cbPol, TextBox tbAdresa,CheckBox checkBoxGuest, TextBox tbMail)
         {
@@ -46,7 +49,7 @@ namespace Controller
       {
             // TODO: implement
             p = new PatientRepository();
-            List<Patient> patients = p.GetAll();
+            ObservableCollection<Patient> patients = p.GetAll();
             
             if (izabran != null)
             {
@@ -63,6 +66,11 @@ namespace Controller
             }
             return false;
       }
+
+      public ObservableCollection<Report> GetReports(int patientId)
+        {
+            return service.GetReports(patientId);
+        }
       
    
    }

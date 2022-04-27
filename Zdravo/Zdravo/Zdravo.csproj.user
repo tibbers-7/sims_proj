@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="DoctorWindows\PatientApptHistory.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="DoctorWindows\PatientChart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -16,7 +19,7 @@
     <Compile Update="DoctorHome.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="DoctorWindows\Report.xaml.cs">
+    <Compile Update="DoctorWindows\ReportWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="ManagerHome.xaml.cs">
@@ -30,6 +33,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="DoctorWindows\PatientApptHistory.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="DoctorWindows\PatientChart.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -42,7 +48,7 @@
     <Page Update="DoctorWindows\AppointmentMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="DoctorWindows\Report.xaml">
+    <Page Update="DoctorWindows\ReportWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DoctorWindows\NewAppointment.xaml">

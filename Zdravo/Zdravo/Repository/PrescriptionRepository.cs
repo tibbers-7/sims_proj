@@ -23,7 +23,7 @@ namespace Zdravo.Repository
                 patientRepo.GetById(prescription.PatientId).AddPrescription(prescription);
             }
         }
-        public void AddReport(Prescription prescription)
+        public void AddPrescription(Prescription prescription)
         {
             fileHandler.Write(prescription, 0);
         }

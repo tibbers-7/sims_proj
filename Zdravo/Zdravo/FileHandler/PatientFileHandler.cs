@@ -45,6 +45,7 @@ namespace FileHandler
       
         public ObservableCollection<Patient> read()
         {
+            
             ObservableCollection<Patient> pacijenti = new ObservableCollection<Patient>();
             string[] lines = System.IO.File.ReadAllLines(filepath);
             foreach (var s in lines)
