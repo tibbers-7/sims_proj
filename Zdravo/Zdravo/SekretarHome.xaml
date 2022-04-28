@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo"
         mc:Ignorable="d"
-        Title="SekretarHome" Height="474" Width="800">
+        Title="SekretarHome" Height="457" Width="799">
     <Grid Margin="0,0,10,-6">
         <DataGrid ColumnWidth="*" Name="table"  IsReadOnly ="True"  SelectionMode="Single"
-                              ItemsSource="{Binding Patients, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Margin="10,10,20,87">
+                              ItemsSource="{Binding Patients, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Margin="10,10,20,63">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Ime}"/>
                 <DataGridTextColumn Header="Last name" Binding="{Binding Prezime}"/>
@@ -27,11 +27,10 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="24,396,0,0" VerticalAlignment="Top" Height="34" Width="95" Click="Button_Click"/>
-        <Button Content="Edit" HorizontalAlignment="Left" Margin="167,396,0,0" VerticalAlignment="Top" Height="34" Width="99" Click="Button_Click_2"/>
-        <Button Content="Remove" HorizontalAlignment="Left" Margin="319,398,0,0" VerticalAlignment="Top" Height="30" Width="103" Click="Button_Click_3"/>
-        <Button Content="Refresh" HorizontalAlignment="Left" Margin="480,396,0,0" VerticalAlignment="Top" Height="31" Width="96" Click="Button_Click_1"/>
-        <Button Content="Log out" HorizontalAlignment="Left" Margin="634,398,0,0" VerticalAlignment="Top" Width="90" Height="32" Click="Button_Click_4"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="31,379,0,0" VerticalAlignment="Top" Height="34" Width="95" Click="Button_Click"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="223,379,0,0" VerticalAlignment="Top" Height="34" Width="99" Click="Button_Click_2"/>
+        <Button Content="Refresh" HorizontalAlignment="Left" Margin="428,379,0,0" VerticalAlignment="Top" Height="35" Width="97" Click="Button_Click_1"/>
+        <Button Content="Log out" HorizontalAlignment="Left" Margin="629,379,0,0" VerticalAlignment="Top" Width="103" Height="35" Click="Button_Click_4"/>
 
     </Grid>
 </Window>

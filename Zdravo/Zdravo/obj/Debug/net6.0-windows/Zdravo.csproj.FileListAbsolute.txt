@@ -135,3 +135,5 @@ C:\Users\Branka Kljajic\konacno_sims\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-wi
 C:\Users\Branka Kljajic\konacno_sims\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\ref\Zdravo.dll
 C:\Users\Branka Kljajic\konacno_sims\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\managerView\Equipment.g.cs
 C:\Users\Branka Kljajic\konacno_sims\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\managerView\Equipment.baml
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\managerView\Equipment.g.cs
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\managerView\Equipment.baml
