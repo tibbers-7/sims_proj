@@ -38,7 +38,7 @@ namespace Zdravo
             Patient izabran = (Patient)table.SelectedValue;
             PatientService service = new PatientService();
             service.checkId();
-            AddPatient addp = new AddPatient();
+            AddPatient addp = new AddPatient(this);
             addp.Show();
 
         }
@@ -58,7 +58,7 @@ namespace Zdravo
             Patient izabran = (Patient)table.SelectedValue;
             if (izabran != null)
             {
-                PatientView.UpdatePatient update = new PatientView.UpdatePatient(izabran.Ime, izabran.Prezime, izabran.Id, izabran.KorisnickoIme, izabran.Lozinka, izabran.BrojTelefona, izabran.DatumRodjenja, izabran.pol, izabran.GuestNalog, izabran.Adresa, izabran.Mail);
+                PatientView.UpdatePatient update = new PatientView.UpdatePatient(izabran.Ime, izabran.Prezime, izabran.Id, izabran.KorisnickoIme, izabran.Lozinka, izabran.BrojTelefona, izabran.DatumRodjenja, izabran.pol, izabran.GuestNalog, izabran.Adresa, izabran.Mail,this);
                 update.Show();
             }
         }
