@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using Zdravo;
@@ -11,6 +12,8 @@ namespace Model
       public int id { get; set; }
       public int floor { get; set; }
       public RoomType type { get; set; }
+
+       public ObservableCollection<StaticEquipment> equipment { get; set; }
 
       public System.Collections.Generic.List<StaticEquipment> staticEquipment;
       
@@ -87,6 +90,18 @@ namespace Model
             tmpStaticEquipment.Clear();
          }
       }
+
+        public void AddEquipment(StaticEquipment eq) {
+            if (equipment == null)
+            {
+                equipment = new ObservableCollection<StaticEquipment>();
+                equipment.Add(eq);
+            }
+            else {
+                equipment.Add(eq);
+            }
+            
+        }
 
         public void fromCSV(string[] values)
         {

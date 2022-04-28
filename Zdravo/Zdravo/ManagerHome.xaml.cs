@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
+using Zdravo.managerView;
 
 namespace Zdravo
 {
@@ -158,6 +159,13 @@ namespace Zdravo
             MainWindow m = new MainWindow();
             m.Show();
             this.Close();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            Room selectedRoom = (Room)dataGridRooms.SelectedItem;
+            Equipment eq = new Equipment(selectedRoom);
+            eq.Show();
         }
     }
 }

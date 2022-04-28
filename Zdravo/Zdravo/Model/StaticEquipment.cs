@@ -8,6 +8,8 @@ namespace Model
       public string name { get; set; }
       public int amount { get; set; }
 
+        public int roomId { get; set; }
+
       public Room room;
       
       /// <summary>
