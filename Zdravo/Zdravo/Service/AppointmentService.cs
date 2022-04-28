@@ -22,6 +22,7 @@ namespace Service
       private RoomRepository roomRepo;
       private PatientRepository patientRepo=new PatientRepository();
       private DrugRepository drugRepository=new DrugRepository();
+        private ReportRepository reportRepo=new ReportRepository();
       
         public AppointmentService()
         {
@@ -84,6 +85,7 @@ namespace Service
             appointmentRepo.CreateAppointment(appt);
         }
 
+
         internal Appointment GetAppointment(int id)
         {
             return appointmentRepo.GetByID(id);
@@ -105,12 +107,27 @@ namespace Service
             return new ObservableCollection<String>(drugRepository.GetAllDrugs());
         }
 
-        public Zdravo.Model.Report CreateReport(DateOnly date,int patientId,string report, string diagnosis)
+        public Report CreateReport(DateOnly date,int patientId,string report, string diagnosis)
         {
-            Zdravo.Model.Report rpt = new Zdravo.Model.Report() {PatientId=patientId, Date = date, ReportString= report, Diagnosis= diagnosis };
+            Report rpt = new Report() {PatientId=patientId, Date = date, ReportString= report, Diagnosis= diagnosis };
             return rpt;
         }
 
-        
+        internal Report UpdateReport(int patientId,int reportId, DateOnly date, string diagnosis, string reportString)
+        {
+            Report rpt=new Report() { PatientId=patientId, Id=reportId, ReportString= reportString, Diagnosis=diagnosis,Date=date };
+            reportRepo.UpdateReport(rpt);
+            return rpt;
+        }
+
+        internal void AddReport(Report rpt)
+        {
+            reportRepo.AddReport(rpt);
+        }
+
+        internal Report GetReportById(int id)
+        {
+            return reportRepo.GetReportById(id);
+        }
     }
 }

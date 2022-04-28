@@ -10,7 +10,7 @@
         <TabControl>
             <TabItem Header="Izveštaji">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="reportTable" ItemsSource="{Binding Reports}" AutoGenerateColumns="False" IsReadOnly ="True" SelectionMode="Single">
+                    <DataGrid x:Name="reportTable" ItemsSource="{Binding Reports, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" IsReadOnly ="True" SelectionMode="Single" ColumnWidth="*">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Datum" Binding="{Binding Date}"/>

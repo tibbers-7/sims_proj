@@ -7,15 +7,18 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using Zdravo.DoctorWindows;
 using Zdravo.Model;
 
 namespace Zdravo.ViewModel
 {
-    internal class HistoryViewModel: INotifyPropertyChanged
+    public class HistoryViewModel: INotifyPropertyChanged
     {
         private ObservableCollection<Report> reports;
         private int patientId;
+        private DataGrid table;
+
         public ObservableCollection<Report> Reports
         {
             get
@@ -33,31 +36,43 @@ namespace Zdravo.ViewModel
         private PatientController patientController = new PatientController();
         private AppointmentController appointmentController = new AppointmentController();
 
+        public HistoryViewModel(int id, DataGrid table)
+        {
+            Appointment appt = appointmentController.GetAppointment(id);
+            this.table = table;
+            patientId = appt.Patient;
+            reports = patientController.GetReports(appt.Patient);
+        }
+
         internal void ShowReport(int reportId)
         {
             foreach(Report r in reports)
             {
                 if(r.Id == reportId)
                 {
-                    ReportWindow reportWindow = new ReportWindow(0,reportId);
+                    ReportWindow reportWindow = new ReportWindow(0,reportId,1,this);
                     reportWindow.Show();
+
+                    if (!reportWindow.IsActive) RefreshReports();
                 }
             }
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public HistoryViewModel(int id)
-        {
-            Appointment appt=appointmentController.GetAppointment(id);
-            patientId = appt.Patient;
-            reports= patientController.GetReports(appt.Patient);
-        }
-
+        
         protected void NotifyPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void RefreshReports()
+        {
+
+            reports = patientController.GetReports(patientId);
+            //table.ItemsSource = Reports;
         }
     }
 }

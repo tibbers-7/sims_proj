@@ -13,6 +13,8 @@ namespace Zdravo.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private int apptId;
+        private int reportId;
+        private int patientId;
         private int day;
         private int month;
         private int year;
@@ -29,6 +31,7 @@ namespace Zdravo.ViewModel
         public ReportViewModel(int apptId,int reportId)
         {
             this.apptId = apptId;
+            this.reportId = reportId;
             if(reportId != 0)
             {
 
@@ -38,18 +41,31 @@ namespace Zdravo.ViewModel
                 year = r.Date.Year;
                 diagnosis=r.Diagnosis;
                 reportString = r.ReportString;
+                patientId=r.PatientId;
             }
             else
             {
                 day = DateTime.Now.Day;
                 month=DateTime.Now.Month;
                 year=DateTime.Now.Year;
+                date =DateOnly.FromDateTime(DateTime.Now);
             }
         }
 
-        internal void AcceptClick()
+        internal void AcceptClick(int operation)
         {
-            appointmentController.CreateReport(apptId,date, diagnosis, reportString);
+            switch (operation)
+            {
+                //Add report
+                case 0:
+                    appointmentController.CreateReport(apptId, date, diagnosis, reportString);
+                    break;
+                case 1: 
+                    date=new DateOnly(Year,Month,Day);
+                    appointmentController.UpdateReport(patientId,reportId, date, diagnosis, reportString);
+                    break;
+            }
+            
         }
     }
 }

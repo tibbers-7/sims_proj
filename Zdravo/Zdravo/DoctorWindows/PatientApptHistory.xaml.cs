@@ -25,7 +25,7 @@ namespace Zdravo.DoctorWindows
         public PatientApptHistory(int id)
         {
             InitializeComponent();
-            viewModel = new HistoryViewModel(id);
+            viewModel = new HistoryViewModel(id,reportTable);
             this.DataContext=viewModel;
         }
         private void Row_DoubleClick(object sender, RoutedEventArgs e)

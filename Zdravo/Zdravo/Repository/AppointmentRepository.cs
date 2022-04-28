@@ -56,6 +56,7 @@ namespace Repository
             Appointment appt= GetByID(idAppointment);
             if (appt == null) return false;
 
+            if (patientRepository.GetById(appt.Patient) == null) return false;
             patientRepository.GetById(appt.Patient).RemoveAppt(appt);
                 
                 fileHandler.Write(appt, 2);

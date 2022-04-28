@@ -19,7 +19,7 @@ namespace Zdravo.Model
         private string reportString;
         public string ReportString { get { return reportString; } set { reportString = value; } }
         private int patientId;
-        public int PatientId { get { return patientId; } set { } }
+        public int PatientId { get { return patientId; } set { patientId = value; } }
 
         internal void fromCSV(GroupCollection csvValues)
         {

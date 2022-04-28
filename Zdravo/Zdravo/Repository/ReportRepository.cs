@@ -41,5 +41,11 @@ namespace Zdravo.Repository
             report.Id = reportCount;
             fileHandler.Write(report,0);
         }
+
+        internal void UpdateReport(Report rpt)
+        {
+            fileHandler.Write(rpt, 1);
+            apptReports = fileHandler.Read();
+        }
     }
 }

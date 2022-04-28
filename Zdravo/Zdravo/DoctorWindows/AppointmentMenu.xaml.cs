@@ -70,7 +70,7 @@ namespace Zdravo
         }
         private void Report_Click(object sender, RoutedEventArgs e)
         {
-                ReportWindow reportWindow = new ReportWindow(id,0);
+                ReportWindow reportWindow = new ReportWindow(id,0,0,null);
                 reportWindow.Show();
  
         }

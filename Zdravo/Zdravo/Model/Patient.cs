@@ -14,8 +14,8 @@ namespace Model
 {
    public class Patient : User
    {
-        private List<Report> appointments;
-        public List<Report> Appointments { get { return appointments; } set { appointments = value; } }
+        private List<Appointment> appointments;
+        public List<Appointment> Appointments { get { return appointments; } set { appointments = value; } }
         private List<string> allergens;
         public List<string> Allergens { get { return allergens; } set { allergens = value; } }
         private List<Prescription> prescriptions;
@@ -29,6 +29,8 @@ namespace Model
 
         public Patient(string fn, string ln, int i, string un, string pas, string pn, DateTime date, Gender g, string ad, bool gu,string mejl) :base(fn,ln,i,un,pas,pn,date,g,ad,gu,mejl)
         {
+            appointments = new List<Appointment>();
+            prescriptions = new List<Prescription>();
             reports = new List<Report>();
         }
 
@@ -36,10 +38,14 @@ namespace Model
         {
             reports.Add(rpt);
         }
+        internal void AddAppt(Appointment appt)
+        {
+            appointments.Add(appt);
+        }
 
         internal void RemoveAppt(Appointment appt)
         {
-            throw new NotImplementedException();
+            appointments.Remove(appt);
         }
 
         public void AddPrescription(Prescription p)

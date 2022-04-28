@@ -21,9 +21,14 @@ namespace Zdravo.DoctorWindows
     public partial class ReportWindow : Window
     {
         private ReportViewModel viewModel;
-        public ReportWindow(int appointmentId,int reportId)
+        private int operation;
+        public DataGrid table;
+        private HistoryViewModel callerWindow;
+        public ReportWindow(int appointmentId,int reportId, int operation, HistoryViewModel callerWindow)
         { 
             InitializeComponent();
+            this.operation = operation;
+            this.callerWindow = callerWindow;
             if(reportId==0)
             {
                 day_tb.IsReadOnly = true;
@@ -42,7 +47,8 @@ namespace Zdravo.DoctorWindows
 
         private void AcceptButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.AcceptClick();
+            viewModel.AcceptClick(operation);
+            if(callerWindow!=null) callerWindow.RefreshReports();
             this.Close();
         }
     }

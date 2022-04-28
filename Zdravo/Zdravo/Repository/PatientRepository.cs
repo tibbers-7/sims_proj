@@ -13,6 +13,7 @@ using Repository;
 using System.Collections.Generic;
 using Zdravo.Repository;
 using System.Collections.ObjectModel;
+using Zdravo.Model;
 
 namespace Repository
 {
@@ -72,6 +73,27 @@ namespace Repository
             fileHandler.updatePatient(p);
         }
         private PatientFileHandler fileHandler;
-   
-   }
+
+        internal void RemoveReport(int patientId, int reportId)
+        {
+            foreach(Patient p in patients)
+            {
+                if (p.Id == patientId)
+                {
+                    p.Reports.Remove(reportRepo.GetReportById(reportId));
+                }
+            }
+        }
+        internal void UpdateReport(Report rpt,int patientId)
+        {
+            foreach(Patient p in patients)
+            {
+                if (p.Id == patientId)
+                {
+                    p.Reports.Remove(reportRepo.GetReportById(rpt.Id));
+                    p.Reports.Add(rpt);
+                }
+            }
+        }
+    }
 }

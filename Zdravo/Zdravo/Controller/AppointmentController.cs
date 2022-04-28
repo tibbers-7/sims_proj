@@ -19,16 +19,14 @@ namespace Controller
         private AppointmentService service;
       private PatientRepository patientRepository;
         private RoomController roomController;
-        private ReportRepository reportRepo;
 
       public AppointmentController()
         {
             service = new AppointmentService();
-
+            roomController = new RoomController();
             //CHANGE
             patientRepository = new PatientRepository();
-            roomController = new RoomController();
-            reportRepo = new ReportRepository();
+            
         }
 
         public ObservableCollection<Appointment> GetAppointments()
@@ -69,12 +67,14 @@ namespace Controller
             if (errorCode==0) {
                 Appointment appt = new Appointment() { Date = date, Time = _time, Doctor = 32, Duration = duration, Patient = patientId, Room = roomId, Emergency=emergency };
                 service.CreateAppointment(appt);
+                p.AddAppt(appt);
             }
 
             return errorCode;
 
 
         }
+
 
         public bool DeleteAppointment(int id)
         {
@@ -112,7 +112,14 @@ namespace Controller
             Patient p = patientRepository.GetById(appt.Patient);
             p.AddReport(rpt);
             appt.AddReport(rpt);
-            reportRepo.AddReport(rpt);
+            service.AddReport(rpt);
+        }
+
+        internal void UpdateReport(int patientId,int reportId, DateOnly date, string diagnosis, string reportString)
+        {
+            service.UpdateReport(patientId,reportId, date, diagnosis, reportString);
+            patientRepository.RemoveReport(patientId,reportId);
+            
         }
 
         internal bool CheckAllergies(int appointmentId, string selectedDrug)
@@ -159,7 +166,7 @@ namespace Controller
 
         public Report GetReport(int id)
         {
-            return reportRepo.GetReportById(id);
+            return service.GetReportById(id);
         }
 
         

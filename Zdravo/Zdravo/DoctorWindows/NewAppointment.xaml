@@ -34,7 +34,7 @@
         </Grid.ColumnDefinitions>
         <GroupBox Header="Pacijent" Margin="6,7,10,394" Grid.ColumnSpan="2" Background="#FF8AB6DD"/>
         <Label Content="JMBG:" HorizontalAlignment="Left" Margin="42,36,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" 
+        <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"  
                   x:Name="patientId_tb" HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Background="#FFE7D2D2" Grid.Column="1" Height="25" >
             <Binding Path="PatientId" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
