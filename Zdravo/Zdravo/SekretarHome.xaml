@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo"
         mc:Ignorable="d"
-        Title="SekretarHome" Height="457" Width="799">
+        Title="SekretarHome" Height="457" Width="799" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,10,-6">
         <DataGrid ColumnWidth="*" Name="table"  IsReadOnly ="True"  SelectionMode="Single"
                               ItemsSource="{Binding Patients, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Margin="10,10,20,63">
@@ -29,8 +29,8 @@
         </DataGrid>
         <Button Content="Add" HorizontalAlignment="Left" Margin="31,374,0,0" VerticalAlignment="Top" Height="34" Width="95" Click="Button_Click"/>
         <Button Content="Edit" HorizontalAlignment="Left" Margin="224,374,0,0" VerticalAlignment="Top" Height="34" Width="99" Click="Button_Click_2"/>
-        <Button Content="Refresh" HorizontalAlignment="Left" Margin="419,374,0,0" VerticalAlignment="Top" Height="35" Width="97" Click="Button_Click_1"/>
-        <Button Content="Log out" HorizontalAlignment="Left" Margin="625,374,0,0" VerticalAlignment="Top" Width="103" Height="35" Click="Button_Click_4"/>
+        <Button Content="Remove" HorizontalAlignment="Left" Margin="419,374,0,0" VerticalAlignment="Top" Height="35" Width="97" Click="Button_Click_3"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="625,374,0,0" VerticalAlignment="Top" Width="103" Height="35" Click="Button_Click_4"/>
 
     </Grid>
 </Window>

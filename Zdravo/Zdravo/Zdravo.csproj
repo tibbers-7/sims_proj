@@ -20,23 +20,51 @@
     <None Remove="DoctorWindows\report.png" />
     <None Remove="images\accept.png" />
     <None Remove="images\addNew.png" />
+    <None Remove="images\calendar.png" />
     <None Remove="images\cancel.png" />
+    <None Remove="images\cart.png" />
     <None Remove="images\delete.png" />
+    <None Remove="images\doctor.png" />
     <None Remove="images\drug.png" />
     <None Remove="images\edit.png" />
+    <None Remove="images\key.png" />
     <None Remove="images\list.png" />
+    <None Remove="images\logout.png" />
+    <None Remove="images\meetings.png" />
     <None Remove="images\report.png" />
+    <None Remove="images\user.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="images\accept.png" />
     <Resource Include="images\addNew.png" />
+    <Resource Include="images\calendar.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="images\cancel.png" />
+    <Resource Include="images\cart.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="images\delete.png" />
+    <Resource Include="images\doctor.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="images\drug.png" />
     <Resource Include="images\edit.png" />
+    <Resource Include="images\key.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="images\list.png" />
+    <Resource Include="images\logout.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\meetings.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="images\report.png" />
+    <Resource Include="images\user.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
