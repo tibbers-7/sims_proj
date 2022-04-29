@@ -28,6 +28,7 @@ namespace FileHandler
                 if (s.Equals("")) break;
                 string[] ss=s.Split(',');
                 //(string fn, string ln, int i, string un, string pas, string pn, DateTime date, Gender g, string ad, bool gu,int cardNumber)
+                //ime prez id
                 int id = Int32.Parse(ss[2]);
                 DateTime datum;
                 datum = Convert.ToDateTime(ss[6]);
@@ -36,7 +37,13 @@ namespace FileHandler
                 else pol = Gender.female;
                 bool guest=false;
                 if (ss[9].Equals("true")) guest = true;
-                Patient p = new Patient(ss[0],ss[1],id,ss[3],ss[4],ss[5],datum,pol,ss[8],guest,ss[10]);
+                List<int> allergenIds = new List<int>();
+                String[] ids = ss[11].Split('.');
+                foreach(string stringic in ids)
+                {
+                    allergenIds.Add(Int32.Parse(stringic));
+                }
+                Patient p = new Patient(ss[0],ss[1],id,ss[3],ss[4],ss[5],datum,pol,ss[8],guest,ss[10],allergenIds);
                 pacijenti.Add(p);
             }
             Console.WriteLine("ISPIIIIIIIIS");
@@ -59,7 +66,15 @@ namespace FileHandler
                 else pol = Gender.female;
                 bool guest = false;
                 if (ss[9].Equals("true")) guest = true;
-                Patient p = new Patient(ss[0], ss[1], id, ss[3], ss[4], ss[5], datum, pol, ss[8], guest, ss[10]);
+                List<int> allergenIds = new List<int>();
+                String[] ids = ss[11].Split('.');
+                int jedan;
+                foreach (string idJedan in ids)
+                {
+                    jedan= Int32.Parse(idJedan);
+                    allergenIds.Add(jedan);
+                }
+                Patient p = new Patient(ss[0], ss[1], id, ss[3], ss[4], ss[5], datum, pol, ss[8], guest, ss[10], allergenIds);
                 pacijenti.Add(p);
             }
             Console.WriteLine("ISPIIIIIIIIS");

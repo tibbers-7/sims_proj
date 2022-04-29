@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
-
+using Zdravo.ViewModel;
 namespace Zdravo.PatientView
 {
     /// <summary>
@@ -20,12 +20,19 @@ namespace Zdravo.PatientView
     /// </summary>
     public partial class Allergens : Window
     {
+        private AllergenViewModel viewModel;
         public Allergens(Patient patient)
         {
             InitializeComponent();
+            viewModel= new AllergenViewModel(patient);
             tbName.Text = patient.Ime;
             tbLastName.Text = patient.Prezime;
             tbId.Text=patient.Id.ToString();
+            DataContext = viewModel;
+        }
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

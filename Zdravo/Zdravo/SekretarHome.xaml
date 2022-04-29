@@ -27,10 +27,10 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="31,379,0,0" VerticalAlignment="Top" Height="34" Width="95" Click="Button_Click"/>
-        <Button Content="Edit" HorizontalAlignment="Left" Margin="223,379,0,0" VerticalAlignment="Top" Height="34" Width="99" Click="Button_Click_2"/>
-        <Button Content="Refresh" HorizontalAlignment="Left" Margin="428,379,0,0" VerticalAlignment="Top" Height="35" Width="97" Click="Button_Click_1"/>
-        <Button Content="Log out" HorizontalAlignment="Left" Margin="629,379,0,0" VerticalAlignment="Top" Width="103" Height="35" Click="Button_Click_4"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="31,374,0,0" VerticalAlignment="Top" Height="34" Width="95" Click="Button_Click"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="224,374,0,0" VerticalAlignment="Top" Height="34" Width="99" Click="Button_Click_2"/>
+        <Button Content="Refresh" HorizontalAlignment="Left" Margin="419,374,0,0" VerticalAlignment="Top" Height="35" Width="97" Click="Button_Click_1"/>
+        <Button Content="Log out" HorizontalAlignment="Left" Margin="625,374,0,0" VerticalAlignment="Top" Width="103" Height="35" Click="Button_Click_4"/>
 
     </Grid>
 </Window>
