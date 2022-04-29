@@ -11,7 +11,7 @@ using Service;
 using FileHandler;
 using Repository;
 using System.Collections.Generic;
-
+using Zdravo.Model;
 namespace Service
 {
    public class PatientService
@@ -28,6 +28,11 @@ namespace Service
             return sifra.ToString();
         }
 
+        public void removeAllergen(Patient patient,Allergen allergen)
+        {
+            p = new PatientRepository();
+            p.removeAllergen(patient,allergen);
+        }
         private PatientRepository p;
    
    }

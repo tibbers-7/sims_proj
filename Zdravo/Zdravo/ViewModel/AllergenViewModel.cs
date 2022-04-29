@@ -10,10 +10,12 @@ using Zdravo.Service;
 using Model;
 using System.ComponentModel;
 using Zdravo.Repository;
+using Repository;
 namespace Zdravo.ViewModel
 {
     public class AllergenViewModel : INotifyPropertyChanged
     {
+        
         private ObservableCollection<Allergen> allergens;
         private AllergenService service;
         private Patient patient;
@@ -29,15 +31,6 @@ namespace Zdravo.ViewModel
             {
                 if (allergens == value)
                     return;
-                // allergens = service.GetAllergensByPatient(patient);
-                //   List<Allergen> allergeniSvi = new List<Allergen>();
-                //   allergeniSvi = repo.getAllAllergens();
-                // ObservableCollection<Allergen> ali = new ObservableCollection<Allergen>();
-                //  ali.Add(new Allergen(1, "ime", "opis"));
-                //  foreach(Allergen a in allergeniSvi)
-                //  {
-                //      ali.Add(a);
-                //   }
                 allergens = patient.Allergens;
                    NotifyPropertyChanged("Allergens");
             }
@@ -51,7 +44,13 @@ namespace Zdravo.ViewModel
         }
         public void Refresh()
         {
-            allergens = service.GetAllergensByPatient(patient);
+            PatientRepository repo = new PatientRepository();
+            List<Patient> patients=repo.GetAll();
+            foreach(Patient pat in patients)
+            {
+                if (pat.Id == patient.Id) allergens = pat.Allergens;
+            }
+            //allergens = service.GetAllergensByPatient(patient);
         }
         protected void NotifyPropertyChanged(string propertyName)
         {

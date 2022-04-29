@@ -14,21 +14,37 @@
         <TextBlock TextDecorations="Underline" Name="tbId" HorizontalAlignment="Left" Margin="120,202,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
         <TextBlock TextDecorations="Underline" Name="tbName" HorizontalAlignment="Left" Margin="120,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
         <TextBlock TextDecorations="Underline" Name="tbLastName" HorizontalAlignment="Left" Margin="120,171,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-        <TextBlock TextDecorations="Underline" HorizontalAlignment="Left" Margin="24,10,0,0" TextWrapping="Wrap" Text="Allergens" VerticalAlignment="Top" FontSize="36"/>
-        <DataGrid ColumnWidth="*" IsReadOnly ="True"  SelectionMode="Single"
+        <TextBlock TextDecorations="Underline" HorizontalAlignment="Left" Margin="120,10,0,0" TextWrapping="Wrap" Text="Allergens" VerticalAlignment="Top" FontSize="36"/>
+        <DataGrid Name="table" ColumnWidth="*" IsReadOnly ="True"  SelectionMode="Single"
                               ItemsSource="{Binding Allergens, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Margin="24,242,22,10">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="0.3*" Header="ID" Binding="{Binding Id}"/>
                 <DataGridTextColumn Width="3*" Header="Naziv" Binding="{Binding Name}" />
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn >
+                    <DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate>
+                            <Button Click="DescriptionClick">Description</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="0.4*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Click="Button_Click_5">Description</Button>
+                            <Button Click="RemoveClick">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/images/delete.png"/>
+                                </Button.Background>
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Rectangle HorizontalAlignment="Left" Height="139" Margin="182,79,0,0" Stroke="Black" VerticalAlignment="Top" Width="190"/>
+        <TextBlock TextDecorations="Underline" HorizontalAlignment="Left" Margin="232,97,0,0" TextWrapping="Wrap" Text="Add new alergen" VerticalAlignment="Top"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="264,164,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.159,0.503" Click="Button_Click"/>
+        <ComboBox Name="comboBox" HorizontalAlignment="Left" Margin="217,127,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Foreground="Red" Name="errorLabel" Content="" HorizontalAlignment="Left" Margin="198,192,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

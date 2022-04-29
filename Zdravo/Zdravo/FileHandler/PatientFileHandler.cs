@@ -13,7 +13,7 @@ using Repository;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Zdravo;
-
+using Zdravo.Model;
 namespace FileHandler
 {
    public class PatientFileHandler
@@ -124,7 +124,12 @@ namespace FileHandler
             string guest = "false";
             if (p.GuestNalog == true) guest = "true";
             if (p.pol == Gender.female) pol = "F";
-            string novaLinija = p.Ime + "," + p.Prezime + "," + p.Id.ToString() + "," + p.KorisnickoIme + "," + p.Lozinka + "," + p.BrojTelefona + "," + p.DatumRodjenja.ToString() + "," + pol + "," + p.Adresa + "," + guest + "," + p.Mail + ",";
+            String allergenIds="";
+            foreach(Allergen allergen in p.Allergens)
+            {
+                allergenIds += allergen.Id.ToString()+',';
+            }
+            string novaLinija = p.Ime + "," + p.Prezime + "," + p.Id.ToString() + "," + p.KorisnickoIme + "," + p.Lozinka + "," + p.BrojTelefona + "," + p.DatumRodjenja.ToString() + "," + pol + "," + p.Adresa + "," + guest + "," + p.Mail + "," + allergenIds;
             for (int i = 0; i < lines.Length; i++)
             {
                
