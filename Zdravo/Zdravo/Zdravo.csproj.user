@@ -25,6 +25,9 @@
     <Compile Update="ManagerHome.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="PatientView\AllergenDescription.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="PatientView\Allergens.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -61,6 +64,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ManagerHome.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PatientView\AllergenDescription.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="PatientView\Allergens.xaml">

@@ -12,7 +12,7 @@ using FileHandler;
 using Repository;
 using System.Collections.Generic;
 using Zdravo.Repository;
-
+using Zdravo.Model;
 namespace Repository
 {
    public class PatientRepository
@@ -34,7 +34,12 @@ namespace Repository
             patients = fileHandler.Load();
             //reportRepo = new ReportRepository();
         }
-      
+      public void removeAllergen(Patient patient,Allergen allergen)
+        {
+            fileHandler = new PatientFileHandler();
+            patient.Allergens.Remove(allergen);
+            fileHandler.updatePatient(patient);
+        }
       public List<Patient> GetAll()
       {
             //patients = fileHandler.Load();
