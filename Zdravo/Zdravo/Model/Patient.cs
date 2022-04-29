@@ -44,13 +44,15 @@ namespace Model
             ObservableCollection<Allergen> allAllergens = repo.getAllAllergens();
             ObservableCollection<Allergen> allergeniPacijenta = new ObservableCollection<Allergen>();
             List<int> ids = allergenIds;
-            foreach(Allergen a in allAllergens)
-            { 
-                foreach (int allergenId in ids)
+
+                foreach (Allergen a in allAllergens)
                 {
-                    if (allergenId == a.Id) allergeniPacijenta.Add(a);
+                    foreach (int allergenId in ids)
+                    {
+                        if (allergenId == a.Id) allergeniPacijenta.Add(a);
+                    }
                 }
-            }
+
             this.allergens = allergeniPacijenta;
         }
         public Patient(string fn, string ln, int i, string un, string pas, string pn, DateTime date, Gender g, string ad, bool gu, string mejl) : base(fn, ln, i, un, pas, pn, date, g, ad, gu, mejl)

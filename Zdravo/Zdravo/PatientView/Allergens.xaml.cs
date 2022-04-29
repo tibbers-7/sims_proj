@@ -54,7 +54,7 @@ namespace Zdravo.PatientView
             PatientService service = new PatientService();
             Allergen allergen =(Allergen) table.SelectedValue;
             service.removeAllergen(patient, allergen);
-            viewModel.Refresh();
+            viewModel=new AllergenViewModel(this.patient);
             DataContext = null;
             DataContext = viewModel;
         }
@@ -71,7 +71,7 @@ namespace Zdravo.PatientView
 
                 }
             }
-            if (ima) errorLabel.Content = "Izabrani alergen se vec nalazi u spisku";
+            if (ima) errorLabel.Content = "ERROR! It is already in a list";
             if (!ima)
             {
                 AllergenRepository repo = new AllergenRepository();
@@ -81,11 +81,10 @@ namespace Zdravo.PatientView
                 {
                     if (a.Name.ToLower().Equals(name.ToLower())) { novi = a; }
                 }
-                Patient noviPatient = this.patient;
-                noviPatient.Allergens.Add(novi);
+                this.patient.Allergens.Add(novi);
                 PatientRepository repos = new PatientRepository();
-                repos.updatePatient(noviPatient);
-
+                repos.updatePatient(this.patient);
+                viewModel = new AllergenViewModel(this.patient);
                 this.DataContext = null;
                 this.DataContext = viewModel;
             }
