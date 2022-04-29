@@ -38,6 +38,14 @@ namespace Zdravo.ViewModel
             //   repo=new AllergenRepository();
             records=repo.GetAllRecords();
         }
+        public AppointmentRecordViewModel(ObservableCollection<AppointmentRecord> rec)
+        {
+            //  service = new AllergenService();
+
+            //   repo=new AllergenRepository();
+            repo = new AppointmentRepository();
+            records = rec;
+        }
         public void Refresh()
         {
             records = repo.GetAllRecords();
