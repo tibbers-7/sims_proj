@@ -42,7 +42,7 @@ namespace Repository
         }
       public List<Patient> GetAll()
       {
-            //patients = fileHandler.Load();
+            patients = fileHandler.Load();
             return patients;
       }
       

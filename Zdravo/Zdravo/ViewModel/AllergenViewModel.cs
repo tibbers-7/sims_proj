@@ -37,9 +37,9 @@ namespace Zdravo.ViewModel
         }
         public AllergenViewModel(Patient p)
         {
-            service = new AllergenService();
+          //  service = new AllergenService();
             this.patient = p;
-            repo=new AllergenRepository();
+         //   repo=new AllergenRepository();
             allergens = patient.Allergens;
         }
         public void Refresh()
