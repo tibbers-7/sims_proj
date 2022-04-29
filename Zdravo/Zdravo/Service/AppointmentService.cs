@@ -72,11 +72,10 @@ namespace Service
         {
             Appointment appointment = appointmentRepo.GetByID(appointmentId);
             Patient patient = patientRepo.GetById(appointment.Patient);
-            foreach(string drug in patient.Allergens)
+            foreach(Allergen a in patient.Allergens)
             {
-                if (drug.Equals(SelectedDrug)) return false;
-            }
-            return true;
+                if (a.Name.Equals(SelectedDrug)) return false;
+            }return true;
         }
 
         public void CreateAppointment(Appointment appt)
