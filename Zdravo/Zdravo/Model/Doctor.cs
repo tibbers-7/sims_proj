@@ -8,14 +8,26 @@ using Zdravo;
 
 namespace Model
 {
-   public class Doctor : User
+   public class Doctor 
    {
-      
-      
-      public Appointment[] appointment;
-        public Doctor(string fn, string ln, int i, string un, string pas, string pn, DateTime date, Gender g, string ad, bool gu, string mejl) : base(fn, ln, i, un, pas, pn, date, g, ad, gu, mejl)
-        {
+        private int id;
+        public int Id => id;
+        
+        private string name;
+        public string Name => name;
 
+        private string lastName;
+        public string LastName => lastName;
+
+        private string specialization;
+        public string Specialization => specialization;
+
+        public Doctor(int id,string name,string ln,string spec)
+        {
+            this.id = id;
+            this.name = name;
+                this.lastName = ln;
+            this.specialization = spec;
         }
     }
 }

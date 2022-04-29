@@ -11,6 +11,7 @@ using Model;
 using System.ComponentModel;
 using Zdravo.Repository;
 using Repository;
+
 namespace Zdravo.ViewModel
 {
     public class AllergenViewModel : INotifyPropertyChanged

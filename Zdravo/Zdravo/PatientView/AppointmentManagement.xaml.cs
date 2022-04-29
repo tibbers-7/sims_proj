@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using Zdravo.ViewModel;
 namespace Zdravo.PatientView
 {
     /// <summary>
@@ -19,9 +19,12 @@ namespace Zdravo.PatientView
     /// </summary>
     public partial class AppointmentManagement : Window
     {
+        private AppointmentRecordViewModel viewModel;
         public AppointmentManagement()
         {
             InitializeComponent();
+            viewModel= new AppointmentRecordViewModel();
+            DataContext = viewModel;
         }
     }
 }

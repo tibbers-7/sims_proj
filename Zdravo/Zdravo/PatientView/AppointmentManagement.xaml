@@ -7,6 +7,17 @@
         mc:Ignorable="d"
         Title="AppointmentManagement" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <DataGrid Name="table" ColumnWidth="*" IsReadOnly ="True"  SelectionMode="Single"
+                              ItemsSource="{Binding Records, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Margin="68,61,109,39">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="0.3*" Header="ID" Binding="{Binding Id}"/>
+                <DataGridTextColumn  Header="Patient" Binding="{Binding PatientInfo}"/>
+                <DataGridTextColumn  Header="Doctor" Binding="{Binding DoctorInfo}"/>
+                <DataGridTextColumn  Header="Specialization" Binding="{Binding DoctorSpecialization}"/>
+                <DataGridTextColumn  Header="Date" Binding="{Binding Date}"/>
+                <DataGridTextColumn  Header="Time" Binding="{Binding Time}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Window>
