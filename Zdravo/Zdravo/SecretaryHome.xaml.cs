@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Zdravo.PatientView;
 
 namespace Zdravo
 {
@@ -39,6 +40,11 @@ namespace Zdravo
             this.Close();
         }
 
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AppointmentManagement am = new AppointmentManagement();
+            am.Show();
+            this.Close();
+        }
     }
 }
