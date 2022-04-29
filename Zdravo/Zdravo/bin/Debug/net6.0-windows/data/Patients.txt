@@ -1,2 +1,2 @@
 darko,filipovicc,0,dada,123456,051320,3/3/2003 12:00:00 AM,M,ilijska 3,false,dkaodkao,1.2
-jelena,capika,2,kopneni,Jelena97,4281041,7/11/1997 12:00:00 AM,F,majeivkca 8 sirig,false,kopneni.slon@gmail.com,1
+jelena,capika,2,kopneni,Jelena97,4281041,7/11/1997 12:00:00 AM,F,majeivkca 8 sirig,false,kopneni.slon@gmail.com,1.2

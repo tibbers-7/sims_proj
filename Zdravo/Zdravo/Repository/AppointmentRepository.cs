@@ -53,7 +53,7 @@ namespace Repository
                 Doctor d = drepo.getById(a.Doctor);
                 if (p!=null && d != null)
                 {
-                    AppointmentRecord record = new AppointmentRecord(a.Id, p.Ime, p.Prezime, d.Name, d.LastName, d.Specialization, a.Date, a.Time);
+                    AppointmentRecord record = new AppointmentRecord(a.Id, p.Ime, p.Prezime, d.Name, d.LastName, d.Specialization, a.Date, a.Time,p.Id.ToString());
                     records.Add(record);
                 }
                 
@@ -61,6 +61,10 @@ namespace Repository
             return records;
 
         }
+       // public ObservableCollection<AppointmentRecord> GetByName()
+       // {
+       //
+       // }
         public Appointment GetByID(int idAppointment)
       {
             appointments=fileHandler.Read();
@@ -81,7 +85,7 @@ namespace Repository
             Appointment appt= GetByID(idAppointment);
             if (appt == null) return false;
 
-            patientRepository.GetById(appt.Patient).RemoveAppt(appt);
+           // patientRepository.GetById(appt.Patient).RemoveAppt(appt);
                 
                 fileHandler.Write(appt, 2);
                 appointments = fileHandler.Read();
