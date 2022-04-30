@@ -39,23 +39,68 @@ namespace FileHandler
                         type1 = RoomType.operatingRoom;
                         break;
                 }
-                ObservableCollection<int> equipmentIds = new ObservableCollection<int>();
+                /*ObservableCollection<int> equipmentIds = new ObservableCollection<int>();
                 int equipmentId = 0;
                 for (int i = 3; i < ss.Length; i++)
                 {
                     equipmentId = Int32.Parse(ss[i]);
                     equipmentIds.Add(equipmentId);
                 }
-                Room room = new Room(id, floor, type1, equipmentIds);
+                Room room = new Room(id, floor, type1, equipmentIds);*/
+                Room room = new Room(id, floor, type1);
                 rooms.Add(room);
             }
             return rooms;
         }
       
-      public void Write(Room newRoom)
+      public void Write(ObservableCollection<Room> rooms)
       {
-         throw new NotImplementedException();
-      }
+            /*string[] lines = System.IO.File.ReadAllLines(filePath);
+            string[] newLines = new string[lines.Length + 1];
+            for (int i = 0; i < lines.Length; i++)
+            {
+                newLines[i] = lines[i];
+            }
+            String rt = "";
+            switch (newRoom.type)
+            {
+                case RoomType.operatingRoom:
+                    rt = "operatingRoom";
+                    break;
+                case RoomType.laboratory:
+                    rt = "laboratory";
+                    break;
+                default:
+                    rt = "operatingRoom";
+                    break;
+            }
+            newLines[lines.Length] = newRoom.id.ToString() + "," + newRoom.floor.ToString() + "," + rt;
+            System.IO.File.WriteAllText(filePath, "");
+            System.IO.File.WriteAllLines(filePath, newLines);*/
+            string[] newLines = new string[rooms.Count];
+            int i = 0;
+            foreach (Room room in rooms) { 
+                string id = room.id.ToString();
+                string floor = room.floor.ToString();
+                string rt = "";
+                switch (room.type)
+                {
+                    case RoomType.operatingRoom:
+                        rt = "operatingRoom";
+                        break;
+                    case RoomType.laboratory:
+                        rt = "laboratory";
+                        break;
+                    default:
+                        rt = "operatingRoom";
+                        break;
+                }
+                newLines[i] = id + "," + floor + "," + rt;
+                i++;
+            }
+            System.IO.File.WriteAllText(filePath, "");
+            System.IO.File.WriteAllLines(filePath, newLines);
+        }
    
    }
 }
