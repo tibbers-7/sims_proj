@@ -16,7 +16,7 @@ namespace Controller
       
       public void Create(int id, int floor, RoomType type)
       {
-            var newRoom = new Room { id = id, floor = floor, type = type};
+            var newRoom = new Room (id, floor, type);
             roomService.Create(newRoom);
       }
       

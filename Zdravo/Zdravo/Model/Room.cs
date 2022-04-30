@@ -16,12 +16,28 @@ namespace Model
        public ObservableCollection<StaticEquipment> equipment { get; set; }
 
       public System.Collections.Generic.List<StaticEquipment> staticEquipment;
-      
-      /// <summary>
-      /// Property for collection of StaticEquipment
-      /// </summary>
-      /// <pdGenerated>Default opposite class collection property</pdGenerated>
-      public System.Collections.Generic.List<StaticEquipment> StaticEquipment
+        private ObservableCollection<int> equipmentIds;
+
+        public Room(int id, int floor, RoomType type, ObservableCollection<int> equipmentIds)
+        {
+            this.id = id;
+            this.floor = floor;
+            this.type = type;
+            this.equipmentIds = equipmentIds;
+        }
+
+        public Room(int id, int floor, RoomType type)
+        {
+            this.id = id;
+            this.floor = floor;
+            this.type = type;
+        }
+
+        /// <summary>
+        /// Property for collection of StaticEquipment
+        /// </summary>
+        /// <pdGenerated>Default opposite class collection property</pdGenerated>
+        public System.Collections.Generic.List<StaticEquipment> StaticEquipment
       {
          get
          {
