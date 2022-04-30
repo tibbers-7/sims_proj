@@ -9,7 +9,7 @@
     <Grid>
         <Label Content="Id prostorije:" HorizontalAlignment="Left" Margin="76,51,0,0" VerticalAlignment="Top"/>
         <TextBox Name="tb_roomId" HorizontalAlignment="Left" Margin="185,59,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <DataGrid x:Name="dataGridEquipment" ItemsSource="{Binding equipment}" IsReadOnly="False" 
+        <DataGrid ColumnWidth="*" x:Name="dataGridEquipment" ItemsSource="{Binding equipment}" IsReadOnly="False" 
                   SelectionMode="Single" AutoGenerateColumns="False" Margin="31,106,132,77">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id opreme" Binding="{Binding id}"/>

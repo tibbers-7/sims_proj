@@ -10,6 +10,13 @@ namespace Model
 
         public int roomId { get; set; }
 
+        public StaticEquipment(int id, string name, int amount, int roomId) { 
+            this.id = id;
+            this.name = name;
+            this.amount = amount;
+            this.roomId = roomId;
+        }
+
       public Room room;
       
       /// <summary>

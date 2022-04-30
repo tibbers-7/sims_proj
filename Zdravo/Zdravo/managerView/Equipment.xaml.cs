@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Zdravo.Controller;
 
 namespace Zdravo.managerView
 {
@@ -24,6 +25,7 @@ namespace Zdravo.managerView
     {
         public ObservableCollection<StaticEquipment> equipment { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
+        private EquipmentController equipmentController;
 
         protected virtual void OnPropertyChanged(string name)
         {
@@ -36,7 +38,18 @@ namespace Zdravo.managerView
         {
             InitializeComponent();
             this.DataContext = this;
-            equipment = room.equipment;
+            equipment = new ObservableCollection<StaticEquipment>();
+            equipmentController = new EquipmentController();
+            ObservableCollection<StaticEquipment> allEquipment = equipmentController.GetAll();
+            foreach (int eqId in room.equipmentIds)
+            {
+                foreach (StaticEquipment eq in allEquipment)
+                {
+                    if (eq.id == eqId) {
+                        equipment.Add(eq);
+                    }
+                }
+            }
             tb_roomId.Text = room.id.ToString();
         }
     }

@@ -132,7 +132,23 @@ namespace Zdravo
                     type1 = RoomType.operatingRoom;
                     break;
             }
-            roomController.Create(id, floor, type1);
+            ObservableCollection<int> equipmentIds = new ObservableCollection<int>();
+            if (cb_sto.IsChecked == true) {
+                equipmentIds.Add(1);
+            }
+            if (cb_stolica.IsChecked == true)
+            {
+                equipmentIds.Add(2);
+            }
+            if (cb_bensedin.IsChecked == true)
+            {
+                equipmentIds.Add(3);
+            }
+            if (cb_hanzaplast.IsChecked == true)
+            {
+                equipmentIds.Add(4);
+            }
+            roomController.Create(id, floor, type1, equipmentIds);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

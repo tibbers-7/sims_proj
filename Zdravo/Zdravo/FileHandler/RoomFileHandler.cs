@@ -39,15 +39,15 @@ namespace FileHandler
                         type1 = RoomType.operatingRoom;
                         break;
                 }
-                /*ObservableCollection<int> equipmentIds = new ObservableCollection<int>();
+                ObservableCollection<int> equipmentIds = new ObservableCollection<int>();
                 int equipmentId = 0;
                 for (int i = 3; i < ss.Length; i++)
                 {
                     equipmentId = Int32.Parse(ss[i]);
                     equipmentIds.Add(equipmentId);
                 }
-                Room room = new Room(id, floor, type1, equipmentIds);*/
-                Room room = new Room(id, floor, type1);
+                Room room = new Room(id, floor, type1, equipmentIds);
+                //Room room = new Room(id, floor, type1);
                 rooms.Add(room);
             }
             return rooms;
@@ -83,6 +83,7 @@ namespace FileHandler
                 string id = room.id.ToString();
                 string floor = room.floor.ToString();
                 string rt = "";
+                string equipmentIdss = "";
                 switch (room.type)
                 {
                     case RoomType.operatingRoom:
@@ -95,7 +96,12 @@ namespace FileHandler
                         rt = "operatingRoom";
                         break;
                 }
-                newLines[i] = id + "," + floor + "," + rt;
+                foreach (int equipmentId in room.equipmentIds) { 
+                    string eid = equipmentId.ToString();
+                    equipmentIdss = equipmentIdss + eid + ",";
+                }
+                equipmentIdss = equipmentIdss.Substring(0, equipmentIdss.Length - 1);
+                newLines[i] = id + "," + floor + "," + rt + "," + equipmentIdss;
                 i++;
             }
             System.IO.File.WriteAllText(filePath, "");
