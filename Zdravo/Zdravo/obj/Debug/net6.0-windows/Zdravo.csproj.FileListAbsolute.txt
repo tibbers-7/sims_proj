@@ -149,3 +149,5 @@ C:\Users\Branka Kljajic\konacno_sims\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-wi
 C:\Users\Branka Kljajic\konacno_sims\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\AllergenDescription.baml
 C:\Users\Branka Kljajic\konacno_sims\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\AppointmentManagement.baml
 C:\Users\Branka Kljajic\konacno_sims\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryHome.baml
+C:\Users\Branka Kljajic\konacno_sims\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\managerView\BasicRenovation.g.cs
+C:\Users\Branka Kljajic\konacno_sims\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\managerView\BasicRenovation.baml

@@ -84,9 +84,9 @@ namespace Zdravo
             rooms = new ObservableCollection<Room>();
             roomController = new RoomController();
             rooms = roomController.GetAll();
-            id = 100;
+            /*id = 100;
             floor = 100;
-            type = "operatingRoom";
+            type = "operatingRoom";*/
         }
         protected virtual void OnPropertyChanged(string name)
         {
@@ -182,6 +182,12 @@ namespace Zdravo
             Room selectedRoom = (Room)dataGridRooms.SelectedItem;
             Equipment eq = new Equipment(selectedRoom);
             eq.Show();
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            BasicRenovation br = new BasicRenovation();
+            br.Show();
         }
     }
 }
