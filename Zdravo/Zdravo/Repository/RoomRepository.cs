@@ -37,6 +37,7 @@ namespace Repository
       public void Create(Room newRoom)
       {
             rooms.Add(newRoom);
+            fileHandler.Write(rooms);
       }
       
       public ObservableCollection<Room> GetAll()
@@ -72,7 +73,7 @@ namespace Repository
             if (selected >= 0) {
                 rooms.RemoveAt(selected);
             }
-            
+            fileHandler.Write(rooms);
         }
       
       public Model.Room GetById(int id)
@@ -94,9 +95,10 @@ namespace Repository
                 if (room.id == id)
                 {
                     room.type = type;
-                    return;
+                    //return;
                 }
             }
+            fileHandler.Write(rooms);
         }
    
    }
