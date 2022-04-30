@@ -16,7 +16,7 @@ namespace Model
        public ObservableCollection<StaticEquipment> equipment { get; set; }
 
       public System.Collections.Generic.List<StaticEquipment> staticEquipment;
-        private ObservableCollection<int> equipmentIds;
+        public ObservableCollection<int> equipmentIds { get; set; }
 
         public Room(int id, int floor, RoomType type, ObservableCollection<int> equipmentIds)
         {

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ManagerHome" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding rooms}" IsReadOnly="False" 
+        <DataGrid ColumnWidth="*" x:Name="dataGridRooms" ItemsSource="{Binding rooms}" IsReadOnly="False" 
                   SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="33,43,0,205" Width="355">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="id" Binding="{Binding id}"/>
@@ -22,16 +22,20 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Obrisi" HorizontalAlignment="Left" Margin="158,267,0,0" VerticalAlignment="Top" Height="21" Width="86" Click="Button_Click"/>
+        <Button Content="Obrisi" HorizontalAlignment="Left" Margin="302,278,0,0" VerticalAlignment="Top" Height="21" Width="86" Click="Button_Click"/>
         <Label Content="Id:&#xD;&#xA;" HorizontalAlignment="Left" Margin="458,51,0,0" VerticalAlignment="Top"/>
         <Label Content="Floor:&#xD;&#xA;" HorizontalAlignment="Left" Margin="458,101,0,0" VerticalAlignment="Top"/>
         <Label Content="Type:&#xD;&#xA;" HorizontalAlignment="Left" Margin="458,153,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="598,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=Id,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}" />
         <TextBox HorizontalAlignment="Left" Margin="598,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=Floor,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox HorizontalAlignment="Left" Margin="598,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=Type,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
-        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="458,267,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.461,0.444" Height="21" Width="84" Click="Button_Click_1"/>
-        <Button Content="Izmeni" HorizontalAlignment="Left" Margin="622,267,0,0" VerticalAlignment="Top" Height="21" Width="96" Click="Button_Click_2"/>
+        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="55,278,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.461,0.444" Height="20" Width="84" Click="Button_Click_1"/>
+        <Button Content="Izmeni" HorizontalAlignment="Left" Margin="180,278,0,0" VerticalAlignment="Top" Height="20" Width="96" Click="Button_Click_2"/>
         <Button Content="Log out" HorizontalAlignment="Left" Margin="683,373,0,0" VerticalAlignment="Top" Height="27" Width="81" Click="Button_Click_3"/>
+        <CheckBox x:Name="cb_sto" Content="sto" HorizontalAlignment="Left" Margin="598,214,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cb_stolica" Content="stolica" HorizontalAlignment="Left" Margin="598,250,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cb_bensedin" Content="bensedin" HorizontalAlignment="Left" Margin="598,286,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cb_hanzaplast" Content="hanzaplast" HorizontalAlignment="Left" Margin="598,328,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

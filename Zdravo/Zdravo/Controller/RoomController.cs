@@ -14,9 +14,9 @@ namespace Controller
             roomService = new Service.RoomService();
         }
       
-      public void Create(int id, int floor, RoomType type)
+      public void Create(int id, int floor, RoomType type, ObservableCollection<int> equipmentIds)
       {
-            var newRoom = new Room (id, floor, type);
+            var newRoom = new Room (id, floor, type, equipmentIds);
             roomService.Create(newRoom);
       }
       
