@@ -17,7 +17,7 @@ namespace Zdravo.Repository
         public BasicRenovationRepository() { 
             bsFileHandler = new BasicRenovationFileHandler();
             renovations = new ObservableCollection<BasicRenovation>();
-            //renovations = bsFileHandler.Read();
+            renovations = bsFileHandler.Read();
         }
 
         public void Create(BasicRenovation newRenovation) { 

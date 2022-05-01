@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,10 +16,15 @@ namespace Zdravo.Controller
             bsService = new BasicRenovationService();
         }
 
-        public void Create(int id, int roomId, string description, DateTime date)
+        public int Create(int id, int roomId, string description, DateTime date)
         {
             var newBasicRenovation = new BasicRenovation(id, roomId, description, date);
-            bsService.Create(newBasicRenovation);
+            int errorCode = bsService.Create(newBasicRenovation);
+            return errorCode;
+        }
+
+        public ObservableCollection<BasicRenovation> GetAll() {
+            return bsService.GetAll();
         }
     }
 }

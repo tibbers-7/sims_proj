@@ -13,7 +13,21 @@ namespace Zdravo.FileHandler
         private string filePath = "data/basicRenovations.txt";
 
         public ObservableCollection<BasicRenovation> Read() {
-            return null;
+            string[] lines = System.IO.File.ReadAllLines(filePath);
+            ObservableCollection<BasicRenovation> renovations = new ObservableCollection<BasicRenovation>();
+            foreach (var s in lines)
+            {
+                if (s.Equals("")) break;
+                string[] ss = s.Split(','); 
+                int id = Int32.Parse(ss[0]);
+                int roomId = Int32.Parse(ss[1]);
+                string description = ss[2];
+                DateTime date = DateTime.Parse(ss[3]);
+                BasicRenovation br = new BasicRenovation(id, roomId, description, date);
+                renovations.Add(br);
+            }
+
+            return renovations;
         }
 
         public void Write(ObservableCollection<BasicRenovation> renovations) {
