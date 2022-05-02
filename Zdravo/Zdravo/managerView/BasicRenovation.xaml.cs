@@ -100,8 +100,24 @@ namespace Zdravo.managerView
         {
             Room selected = (Room)dataGridRooms.SelectedItem;
             int roomId = selected.id;
-            bsConroller.Create(Id, roomId, Description, Date);
-            this.Close();
+            int errorCode = bsConroller.Create(Id, roomId, Description, Date);
+
+            switch (errorCode)
+            {
+                case 0:
+                    this.Close();
+                    break;
+                case 1:
+                    MessageBox.Show("Prostorija je zauzeta za vreme izabranog termina.", "Greška");
+                    break;
+                case 2:
+                    MessageBox.Show("Datum koji ste izabrali je prosao.", "Greska");
+                    break;
+                default:
+                    this.Close();
+                    break;
+            }
+           // this.Close();
         }
     }
 }

@@ -3,15 +3,21 @@ using Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Zdravo;
+using Zdravo.Repository;
+using Zdravo.Model;
 
 namespace Service
 {
    public class RoomService
    {
       private Repository.RoomRepository roomRepo;
+        private Repository.AppointmentRepository appointmentRepo;
+        private BasicRenovationRepository bRenovationRepo;
 
         public RoomService() {
             roomRepo = new Repository.RoomRepository();
+            appointmentRepo = new Repository.AppointmentRepository();
+            bRenovationRepo = new BasicRenovationRepository();
         }
       
       public void Create(Room newRoom)
@@ -54,6 +60,80 @@ namespace Service
       {
             roomRepo.DeleteById(id);
         }
-   
-   }
+
+        public bool IsAvailableAppt1(int roomId, TimeOnly time, DateOnly date) {
+            bool available = true;
+            int cmp;
+            DateTime dateTimeNew = date.ToDateTime(time);
+            ObservableCollection<Appointment> appointments = appointmentRepo.GetAll();
+            foreach (Appointment appointment in appointments) {
+                if (appointment.Room == roomId) {
+                    DateTime dateTimeAppt = appointment.Date.ToDateTime(appointment.Time);
+                    cmp = DateTime.Compare(dateTimeNew, dateTimeAppt);
+                    if (cmp == 0) {
+                        available = false;
+                    }
+                }
+            }
+            return available;
+        }
+
+        public bool IsAvailableRenov1(int roomId, TimeOnly time, DateOnly date) {
+            bool available = true;
+            int cmp;
+            DateTime dateTimeNew = date.ToDateTime(time);
+            ObservableCollection<BasicRenovation> renovations = bRenovationRepo.GetAll();
+            foreach (BasicRenovation renovation in renovations)
+            {
+                if (renovation.RoomId == roomId) { 
+                    cmp = DateTime.Compare(dateTimeNew, renovation.Date);
+                    if (cmp == 0) {
+                        available = false;
+                    }
+                }
+            }
+            return available;
+        }
+
+        public bool IsAvailableAppt(int roomId, DateTime date)
+        {
+            bool available = true;
+            int cmp;
+            ObservableCollection<Appointment> appointments = appointmentRepo.GetAll();
+            foreach (Appointment appointment in appointments)
+            {
+                if (appointment.Room == roomId)
+                {
+                    //DateTime dateTimeAppt = appointment.Date.ToDateTime(appointment.Time);
+                    //cmp = DateTime.Compare(date, dateTimeAppt);
+                    //cmp = date.Date.CompareTo(appointment.Date);
+                    if (true)
+                    {
+                        available = false;
+                    }
+                }
+            }
+            return available;
+        }
+
+        public bool IsAvailableRenov(int roomId, DateTime date)
+        {
+            bool available = true;
+            int cmp;
+            ObservableCollection<BasicRenovation> renovations = bRenovationRepo.GetAll();
+            foreach (BasicRenovation renovation in renovations)
+            {
+                if (renovation.RoomId == roomId)
+                {
+                    cmp = DateTime.Compare(date, renovation.Date);
+                    if (cmp == 0)
+                    {
+                        available = false;
+                    }
+                }
+            }
+            return available;
+        }
+
+    }
 }
