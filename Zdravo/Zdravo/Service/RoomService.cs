@@ -82,11 +82,12 @@ namespace Service
             bool available = true;
             int cmp;
             DateTime dateTimeNew = date.ToDateTime(time);
+            DateTime dateNew = dateTimeNew.Date;
             ObservableCollection<BasicRenovation> renovations = bRenovationRepo.GetAll();
             foreach (BasicRenovation renovation in renovations)
             {
                 if (renovation.RoomId == roomId) { 
-                    cmp = DateTime.Compare(dateTimeNew, renovation.Date);
+                    cmp = DateTime.Compare(dateNew, renovation.Date);
                     if (cmp == 0) {
                         available = false;
                     }
@@ -98,19 +99,25 @@ namespace Service
         public bool IsAvailableAppt(int roomId, DateTime date)
         {
             bool available = true;
-            int cmp;
+            //int cmp;
             ObservableCollection<Appointment> appointments = appointmentRepo.GetAll();
             foreach (Appointment appointment in appointments)
             {
                 if (appointment.Room == roomId)
                 {
-                    //DateTime dateTimeAppt = appointment.Date.ToDateTime(appointment.Time);
+                    DateTime dateTimeAppt = appointment.Date.ToDateTime(appointment.Time);
+                    DateTime dateAppt = dateTimeAppt.Date;
                     //cmp = DateTime.Compare(date, dateTimeAppt);
                     //cmp = date.Date.CompareTo(appointment.Date);
-                    if (true)
-                    {
+                    /*DateOnly dateOnlyAppt = appointment.Date;
+                    string dateAppt = dateOnlyAppt.ToString();*/
+                    if (dateAppt.Equals(date)) {
                         available = false;
                     }
+                    /*if (true)
+                    {
+                        available = false;
+                    }*/
                 }
             }
             return available;
