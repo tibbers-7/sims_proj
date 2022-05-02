@@ -189,5 +189,11 @@ namespace Zdravo
             BasicRenovation br = new BasicRenovation();
             br.Show();
         }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            EquipmentRelocation er = new EquipmentRelocation();
+            er.Show();
+        }
     }
 }
