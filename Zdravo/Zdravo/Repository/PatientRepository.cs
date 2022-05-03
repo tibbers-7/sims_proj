@@ -12,14 +12,26 @@ using FileHandler;
 using Repository;
 using System.Collections.Generic;
 using Zdravo.Repository;
+using System.Collections.ObjectModel;
 using Zdravo.Model;
+
 namespace Repository
 {
    public class PatientRepository
    {
-      private List<Patient> patients;
+      private ObservableCollection<Patient> patients;
         private ReportRepository reportRepo;
-      public Patient GetById(int id)
+
+        public PatientRepository()
+        {
+            fileHandler = new PatientFileHandler();
+            patients = fileHandler.read();
+            reportRepo = new ReportRepository();
+        }
+
+
+
+        public Patient GetById(int id)
       {
          foreach(Patient patient in patients)
             {
@@ -27,22 +39,15 @@ namespace Repository
             }
          return null;
       }
-
-        public PatientRepository()
-        {
-            fileHandler = new PatientFileHandler();
-            patients = fileHandler.Load();
-            //reportRepo = new ReportRepository();
-        }
       public void removeAllergen(Patient patient,Allergen allergen)
         {
             fileHandler = new PatientFileHandler();
             patient.Allergens.Remove(allergen);
             fileHandler.updatePatient(patient);
         }
-      public List<Patient> GetAll()
+      public ObservableCollection<Patient> GetAll()
       {
-            patients = fileHandler.Load();
+            patients = fileHandler.read();
             return patients;
       }
       
@@ -64,6 +69,27 @@ namespace Repository
             fileHandler.updatePatient(p);
         }
         private PatientFileHandler fileHandler;
-   
-   }
+
+        internal void RemoveReport(int patientId, int reportId)
+        {
+            foreach(Patient p in patients)
+            {
+                if (p.Id == patientId)
+                {
+                    p.Reports.Remove(reportRepo.GetReportById(reportId));
+                }
+            }
+        }
+        internal void UpdateReport(Report rpt,int patientId)
+        {
+            foreach(Patient p in patients)
+            {
+                if (p.Id == patientId)
+                {
+                    p.Reports.Remove(reportRepo.GetReportById(rpt.Id));
+                    p.Reports.Add(rpt);
+                }
+            }
+        }
+    }
 }

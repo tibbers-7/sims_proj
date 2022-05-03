@@ -14,13 +14,13 @@
         </Grid.ColumnDefinitions>
         <TabControl Grid.ColumnSpan="3">
             <TabItem Header="Pregledi">
-                <Grid Background="#FFEFDEF3" Height="387" Margin="0,0,-2,0">
+                <Grid Background="#FFACC3EE" Height="387" Margin="0,0,-2,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="31*"/>
                         <ColumnDefinition Width="270*"/>
                         <ColumnDefinition Width="493*"/>
                     </Grid.ColumnDefinitions>
-                    <GroupBox Header="Opcije" Margin="10,10,10,231" Grid.ColumnSpan="2" Background="#FF749DE7">
+                    <GroupBox Header="Opcije" Margin="10,10,10,231" Grid.ColumnSpan="2" Background="#FF6197C6 ">
                         <Grid Margin="0,0,127,0">
                             <Button Content="" Margin="38,13,34,40" Click="NewAppointment_Click" BorderBrush="{x:Null}" Foreground="{x:Null}">
                                 <Button.Background>
@@ -36,13 +36,13 @@
                         </Grid>
 
                     </GroupBox>
-                    <GroupBox Header="Odabir vremena" Margin="10,176,10,10" Grid.ColumnSpan="2" Background="#FF749DE7"/>
+                    <GroupBox Header="Odabir vremena" Margin="10,176,10,10" Grid.ColumnSpan="2" Background="#FF6197C6"/>
 
-                    <DataGrid x:Name="AppointmentTable"
+                    <DataGrid ColumnWidth="*" x:Name="AppointmentTable"
                               IsReadOnly ="True"  SelectionMode="Single"
                               ItemsSource="{Binding Appointments, UpdateSourceTrigger=PropertyChanged}"
                               AutoGenerateColumns="False"
-                              Margin="0,10,10,46" Grid.Column="2" >
+                              Margin="0,10,0,46" Grid.Column="2" HorizontalAlignment="Left" Width="484" Background="#FFDADADA" >
                         <DataGrid.CellStyle>
                             <Style TargetType="{x:Type DataGridCell}">
                                 <Style.Triggers>
@@ -54,10 +54,10 @@
                         </DataGrid.CellStyle>
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
-                            <DataGridTextColumn Header="Patient ID" Binding="{Binding Patient}"/>
-                            <DataGridTextColumn Header="Prostorija" Binding="{Binding Room}"  />
-                            <DataGridTextColumn Header="Datum" Binding="{Binding Date}" />
+                            <DataGridTextColumn Header="ID" Width="2" Binding="{Binding Id}"/>
+                                <DataGridTextColumn Header="JMBG" Binding="{Binding Patient}"/>
+                                <DataGridTextColumn Header="Prostorija" Binding="{Binding Room}"  />
+                            <DataGridTextColumn Header="Datum" Width="1*" Binding="{Binding Date}" />
                             <DataGridTextColumn Header="Vreme" Binding="{Binding Time}"/>
                             <DataGridTextColumn Header="Trajanje" Binding="{Binding Duration}" />
                             <DataGridTextColumn Header="Hitno" Binding="{Binding EmergencyChar}" >

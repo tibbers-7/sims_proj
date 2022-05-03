@@ -36,7 +36,7 @@ namespace Zdravo.PatientView
                 comboBoxDoctors.Items.Add(doctor.Id+"-"+doctor.Name + " " + doctor.LastName+","+doctor.Specialization);
             }
             comboBoxDoctors.SelectedIndex = 0;
-            ObservableCollection<Appointment> appointments = a.GetAll();
+            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(a.GetAll());
             datePicker.SelectedDate = DateTime.Now;
             String date=datePicker.SelectedDate.ToString();
             String datee = date.Split(" ")[0];
@@ -74,7 +74,7 @@ namespace Zdravo.PatientView
         {
             busySlots.Items.Clear();
             AppointmentRepository a = new AppointmentRepository();
-            ObservableCollection<Appointment> appointments = a.GetAll();
+            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(a.GetAll());
             String date = datePicker.SelectedDate.ToString();
             String datee = date.Split(" ")[0];
             DateOnly dateonly = DateOnly.Parse(datee);

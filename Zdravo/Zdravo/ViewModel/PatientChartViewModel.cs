@@ -32,8 +32,8 @@ namespace Zdravo.ViewModel
         private char marriageStatus;
         public char MarriageStatus { get { return marriageStatus; } set { marriageStatus = value; } }
         
-        private ObservableCollection<Allergen> allergens;
-        public ObservableCollection<Allergen> Allergens { get { return allergens; } set { allergens = value; } }
+        private ObservableCollection<string> allergens;
+        public ObservableCollection<string> Allergens { get { return allergens; } set { allergens = value; } }
 
 
         public PatientChartViewModel(int id)
@@ -46,14 +46,14 @@ namespace Zdravo.ViewModel
                 idPatient = p.Id;
                 firstName = p.Ime;
                 lastName = p.Prezime;
-                allergens = new ObservableCollection<Allergen>() { new Allergen(1, "ime alergena", "Opis alergena") };
+                allergens = p.GetAllergens();
                 birthDate = p.DatumRodjenja.ToString("mm.dd.yyyy.");
                 address = p.Adresa;
                 if (p.pol == Zdravo.Gender.male)
                 {
-                    gender = 'M';
+                    gender = 'm';
                 }
-                else gender = 'F';
+                else gender = 'f';
                 switch (p.Status)
                 {
                     case Zdravo.MarriageStatus.married:

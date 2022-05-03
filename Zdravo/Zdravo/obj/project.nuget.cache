@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "8eiznC4GLx+U28SwdEL7A2Uor6aqpyxhAkh35ArKZvNwuiDyn3kUkRhtRhVPabtE0O+2rJuT6+SuATRgbtB/Ww==",
+  "dgSpecHash": "ndIHqXBXDMqF3LKtr3k8jZuLacISWUlkkdwgHC0ZrXHkglY0RUCNQqeA2iSht+lS+9Oz4FY+wpQF+da4tWD0DQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Branka Kljajic\\sims_poslednji\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
+  "projectFilePath": "C:\\Users\\Anja\\Documents\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Anja\\Documents\\sims_proj\\Zdravo\\Zdravo\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

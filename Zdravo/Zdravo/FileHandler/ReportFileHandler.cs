@@ -13,24 +13,24 @@ namespace Zdravo.FileHandler
     internal class ReportFileHandler
     {
         private static readonly string filePath = "data/reports.csv";
-        List<Report> reportList = new List<Report>();
+        
         public List<Report> Read()
         {
 
 
-            
+            List<Report> reportList = new List<Report>();
 
             foreach (string line in File.ReadLines(filePath))
             {
                 //|1|43243|F22|8/10/2021|Polomljena noga
 
-                Regex regexObj = new Regex("#(\\d+)#(\\d+)#(\\w+)#(\\d+/\\d+/\\d+)#(\\w+)");
+                Regex regexObj = new Regex("#(\\d+)#(\\d+)#(\\w+)#(\\d+/\\d+/\\d+)#([\\w\\s]+)");
                 Match matchResult = regexObj.Match(line);
                 if (matchResult.Success)
                 {
                     if (line.Equals("")) break;
                     Report report = new Report();
-                    report.fromCSV(matchResult.Groups);
+                    report.FromCSV(matchResult.Groups);
                     reportList.Add(report);
                 }
                 else
@@ -46,7 +46,7 @@ namespace Zdravo.FileHandler
         public void Write(Report report, int j)
         {
             string[] lines = System.IO.File.ReadAllLines(filePath);
-            List<Report> apList = Read();
+            List<Report> reportList = Read();
             string[] newLines = new string[lines.Length];
 
             switch (j)
@@ -59,7 +59,7 @@ namespace Zdravo.FileHandler
                         {
                             newLines[i] = lines[i];
                         }
-                        newLines[lines.Length] = report.toCSV();
+                        newLines[lines.Length] = report.ToCSV();
 
                         break;
                     }
@@ -67,10 +67,11 @@ namespace Zdravo.FileHandler
                 case 1:
                     {
                         int i = 0;
+                        //newLines = new string[reportList.Count];
                         foreach (Report newReport in reportList)
                         {
-                            if (newReport.Id == report.Id) newLines[i] = report.toCSV();
-                            else newLines[i] = newReport.toCSV();
+                            if (newReport.Id == report.Id) newLines[i] = report.ToCSV();
+                            else newLines[i] = newReport.ToCSV();
                             i++;
                         }
                         break;
@@ -81,11 +82,11 @@ namespace Zdravo.FileHandler
                     {
                         newLines = new string[lines.Length - 1];
                         int i = 0;
-                        foreach (Report newReport in apList)
+                        foreach (Report newReport in reportList)
                         {
                             if (newReport.Id != report.Id)
                             {
-                                newLines[i] = newReport.toCSV();
+                                newLines[i] = newReport.ToCSV();
                                 i++;
                             }
                         }

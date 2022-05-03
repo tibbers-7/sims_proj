@@ -11,15 +11,41 @@ using Service;
 using FileHandler;
 using Repository;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using Zdravo.DoctorWindows;
 using Zdravo.Model;
+using Zdravo.Repository;
+
 namespace Service
 {
+    
    public class PatientService
+
    {
-     public string checkId()
+
+        private PatientRepository p;
+        public PatientService()
         {
             p = new PatientRepository();
-            List<Patient> patients = p.GetAll();
+            ReportRepository reportRepository = new ReportRepository();
+            PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
+            
+            foreach (Report report in reportRepository.reports)
+            {
+                if(p.GetById(report.PatientId)!=null) p.GetById(report.PatientId).AddReport(report);
+            }
+
+            foreach(Prescription presc in prescriptionRepository.prescriptions)
+            {
+                if (p.GetById(presc.PatientId) != null) p.GetById(presc.PatientId).AddPrescription(presc);
+            }
+
+
+        }
+        public string checkId()
+        {
+            
+            ObservableCollection<Patient> patients = p.GetAll();
             int sifra = 0;
             for(int i = 0; i < patients.Count; i++)
             {
@@ -33,7 +59,20 @@ namespace Service
             p = new PatientRepository();
             p.removeAllergen(patient,allergen);
         }
-        private PatientRepository p;
+        internal ObservableCollection<Prescription> GetPrescriptions(int patientId)
+        {
+            Patient patient = p.GetById(patientId);
+            return new ObservableCollection<Prescription>(patient.Prescriptions);
+        }
+
+        internal ObservableCollection<Report> GetReports(int patientId)
+        {
+            Patient patient = p.GetById(patientId);
+            return new ObservableCollection<Report>(patient.Reports);
+        }
+        
    
    }
-}
+
+        
+ }

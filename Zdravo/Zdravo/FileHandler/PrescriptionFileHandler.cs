@@ -15,10 +15,6 @@ namespace Zdravo.FileHandler
         List<Prescription> prescriptionList = new List<Prescription>();
         public List<Prescription> Read()
         {
-
-
-
-
             foreach (string line in File.ReadLines(filePath))
             {
                 if (line.Equals("")) break;
@@ -29,7 +25,7 @@ namespace Zdravo.FileHandler
                 if (matchResult.Success)
                 {
                     Prescription prescription = new Prescription();
-                    prescription.fromCSV(matchResult.Groups);
+                    prescription.FromCSV(matchResult.Groups);
                     prescriptionList.Add(prescription);
                 }
                 else
@@ -57,7 +53,7 @@ namespace Zdravo.FileHandler
                         {
                             newLines[i] = lines[i];
                         }
-                        newLines[lines.Length] = prescription.toCSV();
+                        newLines[lines.Length] = prescription.ToCSV();
 
                         break;
                     }
@@ -71,12 +67,15 @@ namespace Zdravo.FileHandler
                         {
                        //     if (newPrescription.Id != prescription.Id)
                             {
-                                newLines[i] = newPrescription.toCSV();
+                                newLines[i] = newPrescription.ToCSV();
                                 i++;
                             }
                         }
                         break;
                     }
+                default:
+                    return;
+              
             }
 
             System.IO.File.WriteAllText(filePath, "");

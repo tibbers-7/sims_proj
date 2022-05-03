@@ -44,6 +44,10 @@ namespace Controller
       {
             roomService.DeleteById(id);
       }
-   
-   }
+
+        internal ObservableCollection<int> getAllIds()
+        {
+            return roomService.getAllIds();
+        }
+    }
 }

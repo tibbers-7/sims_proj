@@ -65,7 +65,7 @@ namespace Service
             bool available = true;
             int cmp;
             DateTime dateTimeNew = date.ToDateTime(time);
-            ObservableCollection<Appointment> appointments = appointmentRepo.GetAll();
+            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(appointmentRepo.GetAll());
             foreach (Appointment appointment in appointments) {
                 if (appointment.Room == roomId) {
                     DateTime dateTimeAppt = appointment.Date.ToDateTime(appointment.Time);
@@ -100,7 +100,7 @@ namespace Service
         {
             bool available = true;
             //int cmp;
-            ObservableCollection<Appointment> appointments = appointmentRepo.GetAll();
+            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(appointmentRepo.GetAll());
             foreach (Appointment appointment in appointments)
             {
                 if (appointment.Room == roomId)

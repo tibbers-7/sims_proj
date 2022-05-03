@@ -46,7 +46,7 @@ namespace Zdravo.ViewModel
         public void Refresh()
         {
             PatientRepository repo = new PatientRepository();
-            List<Patient> patients=repo.GetAll();
+            ObservableCollection<Patient> patients=repo.GetAll();
             foreach(Patient pat in patients)
             {
                 if (pat.Id == patient.Id) allergens = pat.Allergens;

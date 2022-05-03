@@ -11,21 +11,17 @@ namespace Zdravo.Repository
 {
     internal class PrescriptionRepository
     {
-        private List<Prescription> prescriptions;
+        public List<Prescription> prescriptions;
         private PrescriptionFileHandler fileHandler=new PrescriptionFileHandler();
-        private PatientRepository patientRepo=new PatientRepository();
 
         public PrescriptionRepository()
         {
             prescriptions = fileHandler.Read();
-            foreach (Prescription prescription in prescriptions)
-            {
-                patientRepo.GetById(prescription.PatientId).AddPrescription(prescription);
-            }
         }
-        public void AddReport(Prescription prescription)
+        public void AddPrescription(Prescription prescription)
         {
-            fileHandler.Write(prescription, 0);
+            prescription.Id=prescriptions.Count+1;
+            fileHandler.Write(prescription, 1);
         }
 
     }

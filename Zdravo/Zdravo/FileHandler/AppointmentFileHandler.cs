@@ -16,11 +16,11 @@ namespace FileHandler
    {
       private static readonly string filePath= "data/appointments.csv";
 
-        public ObservableCollection<Appointment> Read()
+        public List<Appointment> Read()
       {
 
-            
-            ObservableCollection<Appointment> apList = new ObservableCollection<Appointment>();
+
+            List<Appointment> apList = new List<Appointment>();
 
             foreach (string line in File.ReadLines(filePath))
             {
@@ -31,7 +31,7 @@ namespace FileHandler
                     if (matchResult.Success)
                     {
                         Appointment ap = new Appointment();
-                        ap.fromCSV(matchResult.Groups);
+                        ap.FromCSV(matchResult.Groups);
                         apList.Add(ap);
                     }
                     else
@@ -56,7 +56,7 @@ namespace FileHandler
       public void Write(Appointment apt, int j)
       {
             string[] lines = System.IO.File.ReadAllLines(filePath);
-            ObservableCollection<Appointment> apList = Read();
+            List<Appointment> apList = Read();
             string[] newLines=new string[lines.Length];
 
             switch (j)
@@ -69,7 +69,7 @@ namespace FileHandler
                         {
                             newLines[i] = lines[i];
                         }
-                        newLines[lines.Length] = apt.toCSV();
+                        newLines[lines.Length] = apt.ToCSV();
                         
                         break;
                     }
@@ -79,8 +79,8 @@ namespace FileHandler
                         int i = 0;
                         foreach (Appointment newApt in apList)
                         {
-                            if (newApt.Id == apt.Id) newLines[i] = apt.toCSV(); 
-                            else newLines[i] = newApt.toCSV();
+                            if (newApt.Id == apt.Id) newLines[i] = apt.ToCSV(); 
+                            else newLines[i] = newApt.ToCSV();
                             i++;
                         }
                         break;
@@ -95,7 +95,7 @@ namespace FileHandler
                         {
                             if (newApt.Id != apt.Id)
                             {
-                                newLines[i] = newApt.toCSV();
+                                newLines[i] = newApt.ToCSV();
                                 i++;
                             }
                         }

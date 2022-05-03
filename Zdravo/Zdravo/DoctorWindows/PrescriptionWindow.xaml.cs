@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace Zdravo.DoctorWindows
     public partial class PrescriptionWindow : Window
     {
         private PrescriptionViewModel viewModel;
+        
         public PrescriptionWindow(int id)
         {
             InitializeComponent();
@@ -39,6 +41,7 @@ namespace Zdravo.DoctorWindows
             if (viewModel.CheckAllergies())
             {
                 this.Close();
+                viewModel.AddPrescription();
             }
             else
             {
