@@ -28,12 +28,14 @@ namespace Zdravo
         private int id;
         private DoctorHomeViewModel callerWindow;
         AppointmentController apptController;
+        private int doctorId;
         
         
-        public AppointmentMenu(int id, DoctorHomeViewModel callerWindow)
+        public AppointmentMenu(int id, DoctorHomeViewModel callerWindow,int doctorId)
         {
             this.id = id;
             this.callerWindow = callerWindow;
+            this.doctorId = doctorId;
             apptController = new AppointmentController();
             InitializeComponent();
             if (!apptController.IsReportAvailable(id))
@@ -64,7 +66,7 @@ namespace Zdravo
         }
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            NewAppointment updateAppointment = new NewAppointment(callerWindow,id);
+            NewAppointment updateAppointment = new NewAppointment(callerWindow,id,doctorId);
             updateAppointment.Show();
             this.Close();
         }

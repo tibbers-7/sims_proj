@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Zdravo.DoctorWindows" xmlns:viewmodel="clr-namespace:Zdravo.ViewModel" xmlns:Zdravo="clr-namespace:Zdravo" x:Class="Zdravo.DoctorWindows.ReportWindow"
+        xmlns:local="clr-namespace:Zdravo" xmlns:viewmodel="clr-namespace:Zdravo.ViewModel" xmlns:Zdravo="clr-namespace:Zdravo" x:Class="Zdravo.DoctorWindows.ReportWindow"
         d:DataContext="{d:DesignInstance Type={x:Type viewmodel:ReportViewModel}}"
         mc:Ignorable="d"
         Title="Izveštaj" Height="405" Width="454">
@@ -24,12 +24,24 @@
         </ControlTemplate>
 
     </Window.Resources>
-    <Grid Background="#FFDBC0E6">
-        <Rectangle HorizontalAlignment="Center" Height="254" Margin="0,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="435" Fill="#FF8AB6DD"/>
+    <Grid Background="#FF6197C6 ">
+        <Rectangle HorizontalAlignment="Center" Height="254" Margin="0,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="435" Fill="#FFB9CFFA"/>
         <Label Content="Datum:" HorizontalAlignment="Left" Margin="9,42,0,0" VerticalAlignment="Top"/>
         <Label Content="Dijagnoza:" HorizontalAlignment="Left" Margin="347,20,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Diagnosis}" HorizontalAlignment="Left" Margin="328,46,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="104"/>
-        <TextBox Text="{Binding ReportString}" HorizontalAlignment="Center" Margin="0,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="411" Background="#FFDEDEDE" Height="139"/>
+        <TextBox x:Name="diagnosis_tb" Validation.ErrorTemplate="{StaticResource validationTemplate}" HorizontalAlignment="Left" Margin="328,46,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="104">
+            <Binding Path="Diagnosis" UpdateSourceTrigger="PropertyChanged">
+                <Binding.ValidationRules>
+                    <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+        <TextBox x:Name="reportString_tb" Validation.ErrorTemplate="{StaticResource validationTemplate}"  HorizontalAlignment="Center" Margin="0,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="411" Background="#FFDEDEDE" Height="139">
+            <Binding Path="ReportString" UpdateSourceTrigger="PropertyChanged">
+                <Binding.ValidationRules>
+                    <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
         <Label Content="Izveštaj:" HorizontalAlignment="Left" Margin="32,80,0,0" VerticalAlignment="Top"/>
         <Button Content="" Margin="140,289,248,37" BorderBrush="{x:Null}" Click="AcceptButton_Click" >
             <Button.Background>

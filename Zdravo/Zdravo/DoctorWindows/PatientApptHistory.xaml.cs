@@ -33,5 +33,10 @@ namespace Zdravo.DoctorWindows
             object item = reportTable.SelectedItem;
             viewModel.ShowReport(int.Parse((reportTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text));
         }
+
+        private void AcceptButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

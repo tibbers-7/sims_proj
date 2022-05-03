@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo.DoctorWindows"
         mc:Ignorable="d"
-        Title="PrescriptionWindow" Height="443" Width="358">
+        Title="Recept" Height="443" Width="358">
 
     <Window.Resources>
         <DataTemplate x:Key="highlightRow">
@@ -23,10 +23,18 @@
 
         </DataTemplate>
     </Window.Resources>
-    <Grid>
+    <Grid Background="#FF6197C6">
         <ListBox SelectedItem="{Binding SelectedDrug}" ItemsSource="{Binding Drugs}" Margin="42,31,42,98"/>
-        <Button Content="Prihvati" Margin="87,351,191,28" Click="AcceptButton_Click" />
-        <Button Content="Otkaži" Margin="201,351,77,28" Click="CancelButton_Click"/>
+        <Button Content="" Margin="87,329,191,28" Click="AcceptButton_Click" BorderBrush="{x:Null}" >
+            <Button.Background>
+                <ImageBrush ImageSource="/images/accept.png"/>
+            </Button.Background>
+        </Button>
+        <Button Content="" Margin="201,329,77,28" Click="CancelButton_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/images/cancel.png"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Window>

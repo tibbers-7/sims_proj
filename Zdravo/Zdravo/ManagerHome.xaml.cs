@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
 using Zdravo.managerView;
+using Zdravo.Service;
+using System.Threading;
 
 namespace Zdravo
 {
@@ -84,9 +86,10 @@ namespace Zdravo
             rooms = new ObservableCollection<Room>();
             roomController = new RoomController();
             rooms = roomController.GetAll();
-            /*id = 100;
-            floor = 100;
-            type = "operatingRoom";*/
+            TimeService ts = new TimeService();
+            Thread th = new Thread(new ThreadStart(ts.ThreadFunction));
+            th.IsBackground = true;
+            th.Start();
         }
         protected virtual void OnPropertyChanged(string name)
         {

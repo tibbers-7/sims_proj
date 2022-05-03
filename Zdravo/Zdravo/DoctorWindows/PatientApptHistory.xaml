@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo.DoctorWindows" xmlns:viewmodel="clr-namespace:Zdravo.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:HistoryViewModel}"
         mc:Ignorable="d"
-        Title="PatientApptHistory" Height="488" Width="474" FontFamily="Segoe UI Semilight" FontSize="20">
+        Title="Istorija izveštaja" Height="558" Width="477" FontFamily="Segoe UI Semilight" FontSize="20">
     <Grid>
         <TabControl>
             <TabItem Header="Izveštaji">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="reportTable" ItemsSource="{Binding Reports, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" IsReadOnly ="True" SelectionMode="Single" ColumnWidth="*">
+                    <DataGrid x:Name="reportTable" ItemsSource="{Binding Reports, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" IsReadOnly ="True" SelectionMode="Single" ColumnWidth="*" Background="#FFACC3EE" Margin="0,0,0,100">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Datum" Binding="{Binding Date}"/>
@@ -26,16 +26,21 @@
             </TabItem>
             <TabItem Header="Recepti">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid ItemsSource="{Binding Prescriptions, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False"  IsReadOnly ="True" SelectionMode="Single" ColumnWidth="*">
+                    <DataGrid ItemsSource="{Binding Prescriptions, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False"  IsReadOnly ="True" SelectionMode="Single" ColumnWidth="*" Background="#FFACC3EE" Margin="0,0,0,100">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Lek" Binding="{Binding DrugId}"  />
-                        <DataGridTextColumn Header="Datum" Binding="{Binding Date}"  />
-                       </DataGrid.Columns>
+                            <DataGridTextColumn Header="Datum" Binding="{Binding Date}"  />
+                        </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
         </TabControl>
+        <Button Content="" Margin="206,450,205,25" BorderBrush="{x:Null}" Click="AcceptButton_Click" >
+            <Button.Background>
+                <ImageBrush ImageSource="/images/accept.png"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Window>

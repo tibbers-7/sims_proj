@@ -31,20 +31,38 @@ namespace Zdravo.DoctorWindows
             if (viewModel.Gender == 'm')
             {
                 male.IsChecked = true;
-            } else female.IsChecked = true;
+                female.IsEnabled = false;
+            }
+            else
+            {
+                female.IsChecked = true;
+                male.IsEnabled = false;
+            }
             switch (viewModel.MarriageStatus)
             {
                 case 'm':
                     married.IsChecked = true;
+                    widow.IsEnabled = false;
+                    divorced.IsEnabled = false;
+                    single.IsEnabled = false;
                     break;
                 case 'w':
                     widow.IsChecked = true;
+                    married.IsChecked = true;
+                    divorced.IsEnabled = false;
+                    single.IsEnabled = false;
                     break;
                 case 'd':
                     divorced.IsChecked = true;
+                    married.IsChecked = true;
+                    widow.IsEnabled = false;
+                    single.IsEnabled = false;
                     break;
                 default:
                     single.IsChecked = true;
+                    married.IsChecked = true;
+                    widow.IsEnabled = false;
+                    divorced.IsEnabled = false;
                     break;
             }
         }

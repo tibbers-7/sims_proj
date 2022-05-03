@@ -46,7 +46,7 @@ namespace Zdravo.ViewModel
 
         public void MenuShow(int rowId)
         {
-            AppointmentMenu menu = new AppointmentMenu(rowId, this);
+            AppointmentMenu menu = new AppointmentMenu(rowId, this,doctorId);
             menu.Show();
             if (!menu.IsActive) RefreshAppointments();
         }
@@ -59,7 +59,7 @@ namespace Zdravo.ViewModel
 
         public void NewAppointment()
         {
-             NewAppointment newAppointment = new NewAppointment(this,0);
+             NewAppointment newAppointment = new NewAppointment(this,0,doctorId);
              newAppointment.Show();
         }
 

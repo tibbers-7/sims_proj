@@ -27,12 +27,12 @@
     </Window.Resources>
 
 
-    <Grid Margin="0,0,0,-6" Background="#FFDBC0E6" >
+    <Grid Margin="0,0,0,-6" Background="#FFACC3EE" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="111*"/>
             <ColumnDefinition Width="364*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="Pacijent" Margin="6,7,10,394" Grid.ColumnSpan="2" Background="#FF8AB6DD"/>
+        <GroupBox Header="Pacijent" Margin="6,7,10,394" Grid.ColumnSpan="2" Background="#FF6197C6"/>
         <Label Content="JMBG:" HorizontalAlignment="Left" Margin="42,36,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"  
                   x:Name="patientId_tb" HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Background="#FFE7D2D2" Grid.Column="1" Height="25" >
@@ -114,10 +114,10 @@
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
-        <GroupBox Header="Datum" Margin="20,102,221,260" Grid.ColumnSpan="2" Background="#FF8AB6DD">
+        <GroupBox Header="Datum" Margin="20,102,221,260" Grid.ColumnSpan="2" Background="#FF6197C6">
 
         </GroupBox>
-        <GroupBox Header="Vreme" Margin="149,101,14,260" Grid.Column="1" Background="#FF8AB6DD"/>
+        <GroupBox Header="Vreme" Margin="149,101,14,260" Grid.Column="1" Background="#FF6197C6"/>
         <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
             
         

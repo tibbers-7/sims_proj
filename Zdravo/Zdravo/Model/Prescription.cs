@@ -15,6 +15,7 @@ namespace Zdravo.Model
         private int patientId;
         public int PatientId { get { return patientId; } set { patientId = value; } }
         private int drugId;
+
         public int DrugId { get { return drugId; } set { drugId = value; } }
         private DateOnly date;
         public DateOnly Date { get { return date; } set { date = value; } }

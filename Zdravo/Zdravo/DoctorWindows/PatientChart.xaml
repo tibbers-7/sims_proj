@@ -24,7 +24,7 @@
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type Rectangle}" BasedOn="{StaticResource rectangleStyle}"></Style>
     </Window.Resources>
-    <Grid Background="#FFDBC0E6">
+    <Grid Background="#FFDADADA">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="84*"/>
             <ColumnDefinition Width="181*"/>

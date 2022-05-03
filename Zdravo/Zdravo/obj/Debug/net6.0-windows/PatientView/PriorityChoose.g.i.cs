@@ -61,7 +61,7 @@ namespace Zdravo.PatientView {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Zdravo;V1.0.0.0;component/patientview/prioritychoose.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Zdravo;component/patientview/prioritychoose.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\PatientView\PriorityChoose.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
