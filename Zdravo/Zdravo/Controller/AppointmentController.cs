@@ -75,7 +75,45 @@ namespace Controller
 
 
         }
+        public int CreateAppointment(int patientId,int doctor, int roomId, int hours, int minutes, int duration, int day, int month, int year, bool emergency)
+        {
+            int errorCode = 0;
+            DateOnly date = new DateOnly();
 
+            Patient p = patientRepository.GetById(patientId);
+            Room r = roomController.GetById(roomId);
+
+            // uncomment when implemented crossrepo validation
+
+            /*            if (p == null) errorCode = 1;
+                        if(r == null) errorCode = 2;*/
+            try
+            {
+                date = new DateOnly(year, month, day);
+            }
+            catch (Exception e)
+            {
+                // Invalid date error
+                errorCode = 3;
+            }
+
+
+            TimeOnly _time = new TimeOnly(hours, minutes);
+            DateTime datetime = date.ToDateTime(_time);
+            int cmp = DateTime.Compare(datetime, DateTime.Now);
+            if (cmp < 0) errorCode = 4;   // Cannot make appointment in the past
+
+
+            if (errorCode == 0)
+            {
+                Appointment appt = new Appointment() { Date = date, Time = _time, Doctor = doctor, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency };
+                service.CreateAppointment(appt);
+            }
+
+            return errorCode;
+
+
+        }
         public bool DeleteAppointment(int id)
         {
             return service.DeleteAppointment(id);

@@ -19,16 +19,18 @@ namespace Zdravo.PatientView
     /// </summary>
     public partial class PriorityChoose : Window
     {
-        public PriorityChoose()
+        private AppointmentManagement ap;
+        public PriorityChoose(AppointmentManagement am)
         {
             InitializeComponent();
+            this.ap = am;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if(cbPriority.SelectedIndex == 0)
             {
-                DoctorPriority f = new DoctorPriority();
+                DoctorPriority f = new DoctorPriority(ap);
                 f.Show();
                 this.Close();
             }else if(cbPriority.SelectedIndex == 1)

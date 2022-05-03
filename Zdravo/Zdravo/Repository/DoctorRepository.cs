@@ -23,6 +23,12 @@ namespace Repo
             }
             return null;
         }
+        public ObservableCollection<Doctor> getAll()
+        {
+            DoctorFileHandler fileHandler = new DoctorFileHandler();
+            this.doctors = fileHandler.Load();
+            return this.doctors;
+        }
 
    }
 }
