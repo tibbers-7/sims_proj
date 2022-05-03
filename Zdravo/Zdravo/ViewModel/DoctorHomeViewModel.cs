@@ -16,6 +16,7 @@ namespace Zdravo.ViewModel
         AppointmentController apController;
         private ObservableCollection<Appointment> appointments;
         private DataGrid table;
+        private int doctorId;
 
         public ObservableCollection<Appointment> Appointments
         {
@@ -27,18 +28,19 @@ namespace Zdravo.ViewModel
             {
                 if (appointments == value)
                     return;
-                appointments = new ObservableCollection<Appointment>(apController.GetAll());
+                appointments = new ObservableCollection<Appointment>(apController.GetAppointmentsForDoctor(doctorId));
                 NotifyPropertyChanged("Appointments");
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public DoctorHomeViewModel(DataGrid table)
+        public DoctorHomeViewModel(DataGrid table,int doctorId)
         {
             this.table = table;
+            this.doctorId=doctorId;
             apController = new AppointmentController();
-            appointments = new ObservableCollection<Appointment>(apController.GetAll());
+            appointments = new ObservableCollection<Appointment>(apController.GetAppointmentsForDoctor(doctorId));
             
         }
 

@@ -1,3 +1,3 @@
-darko,12345,S
-a,1,L
-branka,12345,U
+darko,12345,S,0
+a,1,L,32
+branka,12345,U,0

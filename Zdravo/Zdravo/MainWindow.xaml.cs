@@ -51,7 +51,7 @@ namespace Zdravo
                         this.Close();
                     }
                     if (parameters[2].Equals("L")) {
-                        DoctorHome dh=new DoctorHome();
+                        DoctorHome dh=new DoctorHome(int.Parse(parameters[3]));
                         dh.Show();
                         this.Close();
                         //otvara se lekar page

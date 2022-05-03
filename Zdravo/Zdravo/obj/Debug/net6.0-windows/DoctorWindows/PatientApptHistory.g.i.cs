@@ -62,7 +62,7 @@ namespace Zdravo.DoctorWindows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Zdravo;component/doctorwindows/patientappthistory.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Zdravo;V1.0.0.0;component/doctorwindows/patientappthistory.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\DoctorWindows\PatientApptHistory.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -27,10 +27,10 @@ namespace Zdravo
     {
 
         private DoctorHomeViewModel viewModel;
-        public DoctorHome()
+        public DoctorHome(int doctorId)
         {
             InitializeComponent();
-            viewModel = new DoctorHomeViewModel(AppointmentTable);
+            viewModel = new DoctorHomeViewModel(AppointmentTable,doctorId);
             DataContext = viewModel;
             
         }

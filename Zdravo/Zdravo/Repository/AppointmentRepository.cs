@@ -23,6 +23,7 @@ namespace Repository
       public AppointmentFileHandler fileHandler=new AppointmentFileHandler();
         private PatientRepository patientRepository;
         private List<Appointment> appointments;
+        private List<Appointment> doctorAppts;
         private int idCount;
 
         public AppointmentRepository()
@@ -59,10 +60,22 @@ namespace Repository
             return records;
 
         }
-       // public ObservableCollection<AppointmentRecord> GetByName()
-       // {
-       //
-       // }
+
+        internal List<Appointment> GetAppointmentsForDoctor(int doctorId)
+        {
+            doctorAppts = new List<Appointment>();
+            foreach(Appointment appt in appointments)
+            {
+                if (appt.Doctor == doctorId) doctorAppts.Add(appt);                
+               
+            }
+            return doctorAppts;
+        }
+
+        // public ObservableCollection<AppointmentRecord> GetByName()
+        // {
+        //
+        // }
         public Appointment GetByID(int idAppointment)
       {
             appointments=fileHandler.Read();

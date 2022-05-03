@@ -157,7 +157,7 @@ namespace Zdravo {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Zdravo;component/doctorwindows/newappointment.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Zdravo;V1.0.0.0;component/doctorwindows/newappointment.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\DoctorWindows\NewAppointment.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

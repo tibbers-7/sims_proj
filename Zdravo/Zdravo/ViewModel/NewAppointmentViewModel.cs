@@ -37,14 +37,14 @@ namespace Zdravo
         private int duration;
         public int Duration { get { return duration; } set { duration = value; } }
 
-        private RoomService rs=new RoomService();
+        private RoomController roomController=new RoomController();
         private ObservableCollection<int> rooms;
         public ObservableCollection<int> Rooms
         {
             get {
-                rooms = rs.getAllIds(); 
+                rooms = roomController.getAllIds(); 
                 return rooms; }
-            set { rooms = rs.getAllIds(); }
+            set { rooms = roomController.getAllIds(); }
         }
         private bool emergency;
         public bool Emergency { get { return emergency; } set { emergency = value; } }

@@ -30,6 +30,11 @@ namespace Service
             appointmentRepo= new AppointmentRepository();
         }
 
+        internal List<Appointment> GetAppointmentsForDoctor(int doctorId)
+        {
+            return appointmentRepo.GetAppointmentsForDoctor(doctorId);
+        }
+
         internal List<Appointment> GetAll()
         {
             return appointmentRepo.GetAll();
