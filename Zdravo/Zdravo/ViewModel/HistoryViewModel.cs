@@ -16,21 +16,27 @@ namespace Zdravo.ViewModel
     public class HistoryViewModel: INotifyPropertyChanged
     {
         private ObservableCollection<Report> reports;
+        private ObservableCollection<Prescription> prescriptions;
         private int patientId;
         private DataGrid table;
 
         public ObservableCollection<Report> Reports
         {
-            get
-            {
-                return reports;
-            }
-            set
-            {
-                if (reports == value)
-                    return;
+            get{ return reports;} 
+            set{
+                if (reports == value) return;
                 reports = patientController.GetReports(patientId);
                 NotifyPropertyChanged("Reports");
+            }
+        }
+        public ObservableCollection<Prescription> Prescriptions
+        {
+            get{ return prescriptions;}
+            set
+            {
+                if (prescriptions == value) return;
+                prescriptions = patientController.GetPrescriptions(patientId);
+                NotifyPropertyChanged("Prescriptions");
             }
         }
         private PatientController patientController = new PatientController();
@@ -41,7 +47,8 @@ namespace Zdravo.ViewModel
             Appointment appt = appointmentController.GetAppointment(id);
             this.table = table;
             patientId = appt.Patient;
-            reports = patientController.GetReports(appt.Patient);
+            reports=patientController.GetReports(patientId);
+            prescriptions = patientController.GetPrescriptions(patientId);
         }
 
         internal void ShowReport(int reportId)
@@ -70,8 +77,8 @@ namespace Zdravo.ViewModel
 
         public void RefreshReports()
         {
-
             reports = patientController.GetReports(patientId);
+            prescriptions = patientController.GetPrescriptions(patientId);
             //table.ItemsSource = Reports;
         }
     }

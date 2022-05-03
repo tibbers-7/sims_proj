@@ -67,11 +67,16 @@ namespace Controller
             return false;
       }
 
-      public ObservableCollection<Report> GetReports(int patientId)
+      public ObservableCollection<Prescription> GetPrescriptions(int patientId)
+        {
+            return service.GetPrescriptions(patientId);
+        }
+
+        public ObservableCollection<Report> GetReports(int patientId)
         {
             return service.GetReports(patientId);
         }
-      
-   
-   }
+
+
+    }
 }

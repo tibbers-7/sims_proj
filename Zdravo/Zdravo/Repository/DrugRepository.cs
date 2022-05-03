@@ -1,29 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Zdravo.FileHandler;
+using Zdravo.Model;
 
 namespace Zdravo.Repository
 {
     internal class DrugRepository
     {
-        private List<string> drugs;
-        public List<string> Drugs { get { return drugs; } set { drugs = value; } }
+        private List<Drug> drugs;
+        public List<Drug> Drugs { get { return drugs; } set { drugs = value; } }
+        private DrugFileHandler fileHandler=new DrugFileHandler();
 
         public DrugRepository()
         {
-            drugs = new List<string>() { "AMOXICILLIN","FEBRICET","PANKLAV","BETAKLAV","SINACILIN","MINIRIN","ASPIRIN","BRUFEN"};
+            drugs = fileHandler.Read();
         }
 
-        public void AddDrug(string drugName)
-        {
-            drugs.Add(drugName);
-        }
-
-        public List<string> GetAllDrugs()
+        public List<Drug> GetAllDrugs()
         {
             return drugs;
+        }
+
+        internal List<string> GetAllDrugNames()
+        {
+            List<string> names = new List<string>();
+            foreach(Drug drug in drugs)
+            {
+                names.Add(drug.Name);
+            }
+            return names;
+        }
+
+        internal Drug GetByName(string selectedDrug)
+        {
+            foreach (Drug drug in drugs)
+            {
+                if (drug.Name.Equals(selectedDrug)) return drug;
+            }
+            return null;
         }
     }
 }

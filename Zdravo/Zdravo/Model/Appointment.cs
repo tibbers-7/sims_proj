@@ -41,7 +41,7 @@ namespace Model
         {
             reports = new List<Report>();
         }
-        public void fromCSV(GroupCollection csvValues)
+        public void FromCSV(GroupCollection csvValues)
         {
             id= int.Parse(csvValues[1].Value);
             patient = int.Parse(csvValues[2].Value);
@@ -57,7 +57,7 @@ namespace Model
 
         }
 
-        internal string toCSV()
+        internal string ToCSV()
         {
             //1,3253,38G,2022/01/01,13:00,30,32
             Regex regexObj = new Regex("\\d+:\\d{2}");

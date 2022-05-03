@@ -30,7 +30,7 @@ namespace Zdravo.FileHandler
                 {
                     if (line.Equals("")) break;
                     Report report = new Report();
-                    report.fromCSV(matchResult.Groups);
+                    report.FromCSV(matchResult.Groups);
                     reportList.Add(report);
                 }
                 else
@@ -59,7 +59,7 @@ namespace Zdravo.FileHandler
                         {
                             newLines[i] = lines[i];
                         }
-                        newLines[lines.Length] = report.toCSV();
+                        newLines[lines.Length] = report.ToCSV();
 
                         break;
                     }
@@ -70,8 +70,8 @@ namespace Zdravo.FileHandler
                         //newLines = new string[reportList.Count];
                         foreach (Report newReport in reportList)
                         {
-                            if (newReport.Id == report.Id) newLines[i] = report.toCSV();
-                            else newLines[i] = newReport.toCSV();
+                            if (newReport.Id == report.Id) newLines[i] = report.ToCSV();
+                            else newLines[i] = newReport.ToCSV();
                             i++;
                         }
                         break;
@@ -86,7 +86,7 @@ namespace Zdravo.FileHandler
                         {
                             if (newReport.Id != report.Id)
                             {
-                                newLines[i] = newReport.toCSV();
+                                newLines[i] = newReport.ToCSV();
                                 i++;
                             }
                         }

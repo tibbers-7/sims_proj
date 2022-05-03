@@ -16,8 +16,8 @@ namespace Model
    {
         private List<Appointment> appointments;
         public List<Appointment> Appointments { get { return appointments; } set { appointments = value; } }
-        private List<string> allergens;
-        public List<string> Allergens { get { return allergens; } set { allergens = value; } }
+        private List<Drug> allergens;
+        public List<Drug> Allergens { get { return allergens; } set { allergens = value; } }
         private List<Prescription> prescriptions;
         public List<Prescription> Prescriptions { get { return prescriptions; } set { prescriptions = value; } }
         private string workPlace;

@@ -26,8 +26,12 @@
             </TabItem>
             <TabItem Header="Recepti">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid d:ItemsSource="{Binding prescriptions}">
-                        
+                    <DataGrid ItemsSource="{Binding Prescriptions, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False"  IsReadOnly ="True" SelectionMode="Single" ColumnWidth="*">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Lek" Binding="{Binding DrugId}"  />
+                        <DataGridTextColumn Header="Datum" Binding="{Binding Date}"  />
+                       </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>

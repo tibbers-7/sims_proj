@@ -27,7 +27,7 @@ namespace Zdravo.ViewModel
             {
                 if (appointments == value)
                     return;
-                appointments = apController.GetAll();
+                appointments = new ObservableCollection<Appointment>(apController.GetAll());
                 NotifyPropertyChanged("Appointments");
             }
         }
@@ -38,7 +38,7 @@ namespace Zdravo.ViewModel
         {
             this.table = table;
             apController = new AppointmentController();
-            appointments = apController.GetAll();
+            appointments = new ObservableCollection<Appointment>(apController.GetAll());
             
         }
 
@@ -51,7 +51,7 @@ namespace Zdravo.ViewModel
         public void RefreshAppointments()
         {
             
-            Appointments = apController.GetAll();
+            Appointments = new ObservableCollection<Appointment>(apController.GetAll());
             table.ItemsSource = Appointments;
         }
 

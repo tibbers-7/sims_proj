@@ -21,7 +21,7 @@ namespace Zdravo.Model
         private int patientId;
         public int PatientId { get { return patientId; } set { patientId = value; } }
 
-        internal void fromCSV(GroupCollection csvValues)
+        internal void FromCSV(GroupCollection csvValues)
         {
             id = int.Parse(csvValues[1].Value);
             patientId = int.Parse(csvValues[2].Value);
@@ -30,7 +30,7 @@ namespace Zdravo.Model
             reportString = csvValues[5].Value;
         }
 
-        internal string toCSV()
+        internal string ToCSV()
         {
             return "#"+id.ToString()+"#"+patientId.ToString()+"#"+diagnosis+"#"+date.ToString()+"#"+ reportString;
         }

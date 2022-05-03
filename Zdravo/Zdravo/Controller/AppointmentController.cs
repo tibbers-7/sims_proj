@@ -8,6 +8,7 @@ using Repo;
 using Repository;
 using Service;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Zdravo.Model;
 using Zdravo.Repository;
@@ -17,7 +18,7 @@ namespace Controller
    public class AppointmentController
    {
         private AppointmentService service;
-      private PatientRepository patientRepository;
+       private PatientRepository patientRepository;
         private RoomController roomController;
 
       public AppointmentController()
@@ -29,7 +30,7 @@ namespace Controller
             
         }
 
-        public ObservableCollection<Appointment> GetAppointments()
+        public List<Appointment> GetAppointments()
         {
             return service.GetAll();
         }
@@ -75,6 +76,12 @@ namespace Controller
 
         }
 
+        internal void AddPrescription(int patient, string selectedDrug, DateTime now)
+        {
+            Patient p=patientRepository.GetById(patient);
+            Prescription presc = new Prescription() { Date = DateOnly.FromDateTime(now), PatientId = patient };
+            service.AddPrescription(presc,selectedDrug);
+        }
 
         public bool DeleteAppointment(int id)
         {
@@ -106,20 +113,17 @@ namespace Controller
         internal void CreateReport(int apptId,DateOnly date, string diagnosis, string report)
         {
             Appointment appt=service.GetAppointment(apptId);
-            Report rpt = service.CreateReport(date, appt.Patient, report, diagnosis);
+            Report rpt = new Report() { Date = date, PatientId = appt.Patient, ReportString = report, Diagnosis = diagnosis };
 
             // Change to controller later
             Patient p = patientRepository.GetById(appt.Patient);
             p.AddReport(rpt);
-            appt.AddReport(rpt);
             service.AddReport(rpt);
         }
 
         internal void UpdateReport(int patientId,int reportId, DateOnly date, string diagnosis, string reportString)
         {
             service.UpdateReport(patientId,reportId, date, diagnosis, reportString);
-            patientRepository.RemoveReport(patientId,reportId);
-            
         }
 
         internal bool CheckAllergies(int appointmentId, string selectedDrug)
@@ -127,29 +131,17 @@ namespace Controller
             return service.CheckAllergies(appointmentId,selectedDrug);
         }
 
-        internal ObservableCollection<string> GetAllDrugs()
+        internal ObservableCollection<string> GetAllDrugNames()
         {
-            return service.GetAllDrugs();
+            return new ObservableCollection<string>(service.GetAllDrugNames());
         }
+=
 
-        
-
-        public bool CheckRoomAvailability(int idRoom)
-      {
-         throw new NotImplementedException();
-      }
-
-
-      public ObservableCollection<Appointment> GetAll()
+      public List<Appointment> GetAll()
         {
           return service.GetAll();
       }
        
-        public bool PatientExists(int id)
-        {
-            if (service.GetByPatientID(id) == null) return false;
-            return true;
-        }
 
         public Appointment GetAppointment(int id)
         {

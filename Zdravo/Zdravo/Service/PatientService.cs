@@ -25,12 +25,19 @@ namespace Service
         {
             p = new PatientRepository();
             ReportRepository reportRepository = new ReportRepository();
+            PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
             
-            foreach (Report report in reportRepository.apptReports)
+            foreach (Report report in reportRepository.reports)
             {
-                if(p.GetById(report.PatientId)!=null)
-                p.GetById(report.PatientId).AddReport(report);
+                if(p.GetById(report.PatientId)!=null) p.GetById(report.PatientId).AddReport(report);
             }
+
+            foreach(Prescription presc in prescriptionRepository.prescriptions)
+            {
+                if (p.GetById(presc.PatientId) != null) p.GetById(presc.PatientId).AddPrescription(presc);
+            }
+
+
         }
         public string checkId()
         {
@@ -46,9 +53,15 @@ namespace Service
 
         private PatientRepository p=new PatientRepository();
 
-        internal ObservableCollection<Report> GetReports(int patientId)
+        internal ObservableCollection<Prescription> GetPrescriptions(int patientId)
         {
             Patient patient=p.GetById(patientId);
+            return new ObservableCollection<Prescription>(patient.Prescriptions);
+        }
+
+        internal ObservableCollection<Report> GetReports(int patientId)
+        {
+            Patient patient = p.GetById(patientId);
             return new ObservableCollection<Report>(patient.Reports);
         }
     }

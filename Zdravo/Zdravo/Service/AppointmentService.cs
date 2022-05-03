@@ -18,11 +18,11 @@ namespace Service
    public class AppointmentService
    {
       private AppointmentRepository appointmentRepo;
-      private DoctorRepository doctorRepo;
       private RoomRepository roomRepo;
       private PatientRepository patientRepo=new PatientRepository();
-      private DrugRepository drugRepository=new DrugRepository();
+      private DrugRepository drugRepo=new DrugRepository();
         private ReportRepository reportRepo=new ReportRepository();
+        private PrescriptionRepository prescriptionRepo=new PrescriptionRepository();
       
         public AppointmentService()
         {
@@ -30,13 +30,13 @@ namespace Service
             appointmentRepo= new AppointmentRepository();
         }
 
-        internal ObservableCollection<Appointment> GetAll()
+        internal List<Appointment> GetAll()
         {
             return appointmentRepo.GetAll();
         }
-        public ObservableCollection<Appointment> GetByDoctorID(int idDoctor)
+        public List<Appointment> GetByDoctorID(int idDoctor)
       {
-        ObservableCollection<Appointment> result= new ObservableCollection<Appointment>();
+            List<Appointment> result= new List<Appointment>();
          foreach (Appointment appt in appointmentRepo.GetAll())
             {
                 if (appt.Doctor==idDoctor) result.Add(appt);
@@ -45,9 +45,9 @@ namespace Service
          return result;
       }
       
-      public ObservableCollection<Appointment> GetByRoomID(int idRoom)
+      public List<Appointment> GetByRoomID(int idRoom)
       {
-            ObservableCollection<Appointment> result = new ObservableCollection<Appointment>();
+            List<Appointment> result = new List<Appointment>();
             foreach (Appointment appt in appointmentRepo.GetAll())
             {
                 if (appt.Room.Equals(idRoom)) result.Add(appt);
@@ -58,9 +58,9 @@ namespace Service
 
         
 
-        public ObservableCollection<Appointment> GetByPatientID(int idPatient)
+        public List<Appointment> GetByPatientID(int idPatient)
       {
-            ObservableCollection<Appointment> result = new ObservableCollection<Appointment>();
+            List<Appointment> result = new List<Appointment>();
             foreach (Appointment appt in appointmentRepo.GetAll())
             {
                 if (appt.Patient == idPatient) result.Add(appt);
@@ -69,13 +69,14 @@ namespace Service
             return result;
         }
 
-        internal bool CheckAllergies(int appointmentId, string SelectedDrug)
+        internal bool CheckAllergies(int appointmentId, string selectedDrug)
         {
             Appointment appointment = appointmentRepo.GetByID(appointmentId);
             Patient patient = patientRepo.GetById(appointment.Patient);
-            foreach(string drug in patient.Allergens)
+            if (patient.Allergens == null) return true;
+            foreach(Drug drug in patient.Allergens)
             {
-                if (drug.Equals(SelectedDrug)) return false;
+                if (drug.Name.Equals(selectedDrug)) return false;
             }
             return true;
         }
@@ -91,9 +92,9 @@ namespace Service
             return appointmentRepo.GetByID(id);
         }
 
-        public bool DeleteAppointment(int idAppointment)
+        public bool DeleteAppointment(int id)
       {
-         return appointmentRepo.DeleteAppointment(idAppointment);
+         return appointmentRepo.DeleteAppointment(id);
       }
 
         internal void UpdateAppointment(Appointment appt)
@@ -102,21 +103,12 @@ namespace Service
 
         }
 
-        public ObservableCollection<String> GetAllDrugs()
-        {
-            return new ObservableCollection<String>(drugRepository.GetAllDrugs());
-        }
-
-        public Report CreateReport(DateOnly date,int patientId,string report, string diagnosis)
-        {
-            Report rpt = new Report() {PatientId=patientId, Date = date, ReportString= report, Diagnosis= diagnosis };
-            return rpt;
-        }
 
         internal Report UpdateReport(int patientId,int reportId, DateOnly date, string diagnosis, string reportString)
         {
             Report rpt=new Report() { PatientId=patientId, Id=reportId, ReportString= reportString, Diagnosis=diagnosis,Date=date };
-            reportRepo.UpdateReport(rpt);
+            reportRepo.UpdateReport(rpt); //updating in file
+            patientRepo.UpdateReport(rpt,patientId); //updating in patient list
             return rpt;
         }
 
@@ -128,6 +120,17 @@ namespace Service
         internal Report GetReportById(int id)
         {
             return reportRepo.GetReportById(id);
+        }
+
+        internal void AddPrescription(Prescription p,string selectedDrug)
+        {
+            p.DrugId = drugRepo.GetByName(selectedDrug).Id;
+            prescriptionRepo.AddPrescription(p);
+        }
+
+        internal List<string> GetAllDrugNames()
+        {
+            return drugRepo.GetAllDrugNames();
         }
     }
 }
