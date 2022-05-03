@@ -1,0 +1,30 @@
+﻿<Window x:Class="Zdravo.managerView.EquipmentRelocation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zdravo"
+        mc:Ignorable="d"
+        Title="EquipmentRelocation" Height="450" Width="800">
+    <Grid>
+        <DataGrid ColumnWidth="*" x:Name="dataGridEquipment" ItemsSource="{Binding Equipment}" IsReadOnly="True" 
+                  SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="45,124,0,124" Width="355">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="id" Binding="{Binding id}"/>
+                <DataGridTextColumn Header="naziv" Binding="{Binding name}" />
+                <DataGridTextColumn Header="kolicina" Binding="{Binding amount}" />
+                <DataGridTextColumn Header="prostorija" Binding="{Binding roomId}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid ColumnWidth="*" x:Name="dataGridRooms" ItemsSource="{Binding Rooms}" IsReadOnly="True" 
+                  SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="450,124,0,124" Width="79">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Prostorije" Binding="{Binding id}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DatePicker Name="RelDate" SelectedDate="{Binding Date}" HorizontalAlignment="Left" Margin="606,124,0,0" VerticalAlignment="Top"/>
+        <Button Content="Potvrdi" HorizontalAlignment="Center" Margin="0,355,0,0" VerticalAlignment="Top" Height="32" Width="117" Click="Button_Click"/>
+        <Label Content="Količina:" HorizontalAlignment="Left" Margin="606,284,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="657,288,0,0" TextWrapping="Wrap" Text="{Binding Path=Amount,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+    </Grid>
+</Window>

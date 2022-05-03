@@ -11,6 +11,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Zdravo.Repository;
+using Zdravo.Model;
+using Zdravo.Repository;
+using Repo;
+using Repository;
 
 namespace Repository
 {
@@ -34,8 +38,32 @@ namespace Repository
             return appointments;
          
       }
-      
-      public Appointment GetByID(int idAppointment)
+        public ObservableCollection<AppointmentRecord> GetAllRecords()
+        {
+            PatientRepository prepo = new PatientRepository();
+            DoctorRepository drepo = new DoctorRepository();
+            appointments = fileHandler.Read();
+            ObservableCollection < AppointmentRecord > records = new ObservableCollection<AppointmentRecord>();
+            foreach(Appointment a in appointments)
+            {
+                 Patient p = prepo.GetById(a.Patient);
+               // Patient p = prepo.GetById(0);
+                Doctor d = drepo.getById(a.Doctor);
+                if (p!=null && d != null)
+                {
+                    AppointmentRecord record = new AppointmentRecord(a.Id, p.Ime, p.Prezime, d.Name, d.LastName, d.Specialization, a.Date, a.Time,p.Id.ToString());
+                    records.Add(record);
+                }
+                
+            }
+            return records;
+
+        }
+       // public ObservableCollection<AppointmentRecord> GetByName()
+       // {
+       //
+       // }
+        public Appointment GetByID(int idAppointment)
       {
             appointments=fileHandler.Read();
             foreach (Appointment appointment in appointments)

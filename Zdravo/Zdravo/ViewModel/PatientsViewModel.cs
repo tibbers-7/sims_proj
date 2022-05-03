@@ -26,7 +26,7 @@ namespace Zdravo.ViewModel
                 if (patients == value)
                     return;
                 patients = p.read();
-             //   NotifyPropertyChanged("Appointments");
+                NotifyPropertyChanged("Patients");
             }
         }
 

@@ -24,18 +24,11 @@ namespace Repository
 
         public PatientRepository()
         {
-            Init();
+            fileHandler = new PatientFileHandler();
+            patients = fileHandler.read();
             reportRepo = new ReportRepository();
         }
 
-        private void Init()
-        {
-            if(patients==null)
-            {
-                fileHandler = new PatientFileHandler();
-                patients = fileHandler.read();
-            }
-        }
 
 
         public Patient GetById(int id)
@@ -46,12 +39,15 @@ namespace Repository
             }
          return null;
       }
-
-        
-      
+      public void removeAllergen(Patient patient,Allergen allergen)
+        {
+            fileHandler = new PatientFileHandler();
+            patient.Allergens.Remove(allergen);
+            fileHandler.updatePatient(patient);
+        }
       public ObservableCollection<Patient> GetAll()
       {
-            //patients = fileHandler.Load();
+            patients = fileHandler.read();
             return patients;
       }
       

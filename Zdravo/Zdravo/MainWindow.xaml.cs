@@ -40,7 +40,7 @@ namespace Zdravo
                     if (parameters[2].Equals("S")){
                         //otvara se sekretar page
                        
-                       SekretarHome sh = new SekretarHome();
+                       SecretaryHome sh = new SecretaryHome();
                         sh.Show();
                         this.Close();
                     }

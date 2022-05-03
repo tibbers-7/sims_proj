@@ -135,7 +135,7 @@ namespace Controller
         {
             return new ObservableCollection<string>(service.GetAllDrugNames());
         }
-=
+
 
       public List<Appointment> GetAll()
         {

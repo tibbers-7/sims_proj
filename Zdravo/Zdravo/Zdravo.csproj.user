@@ -13,6 +13,15 @@
     <Compile Update="DoctorWindows\PatientChart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="managerView\BasicRenovation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="managerView\Equipment.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="managerView\EquipmentRelocation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="PatientView\AddPatient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -25,7 +34,28 @@
     <Compile Update="ManagerHome.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="PatientView\AllergenDescription.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PatientView\Allergens.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PatientView\AppointmentManagement.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PatientView\DatePriority.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PatientView\DoctorPriority.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PatientView\PriorityChoose.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="PatientView\UpdatePatient.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SecretaryHome.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="SekretarHome.xaml.cs">
@@ -37,6 +67,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DoctorWindows\PatientChart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="managerView\BasicRenovation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="managerView\Equipment.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="managerView\EquipmentRelocation.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="PatientView\AddPatient.xaml">
@@ -60,7 +99,28 @@
     <Page Update="ManagerHome.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="PatientView\AllergenDescription.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PatientView\Allergens.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PatientView\AppointmentManagement.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PatientView\DatePriority.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PatientView\DoctorPriority.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PatientView\PriorityChoose.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="PatientView\UpdatePatient.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SecretaryHome.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SekretarHome.xaml">

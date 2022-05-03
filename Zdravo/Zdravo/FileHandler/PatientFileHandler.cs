@@ -13,36 +13,48 @@ using Repository;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Zdravo;
-
+using Zdravo.Model;
 namespace FileHandler
 {
    public class PatientFileHandler
    {
-      public List<Patient> Load()
-      {
+        public List<Patient> Load()
+        {
             // TODO: implement
             string[] lines = System.IO.File.ReadAllLines(filepath);
             List<Patient> pacijenti = new List<Patient>();
-            foreach(var s in lines)
+            foreach (var s in lines)
             {
                 if (s.Equals("")) break;
-                string[] ss=s.Split(',');
+                string[] ss = s.Split(',');
                 //(string fn, string ln, int i, string un, string pas, string pn, DateTime date, Gender g, string ad, bool gu,int cardNumber)
+                //ime prez id
                 int id = Int32.Parse(ss[2]);
                 DateTime datum;
                 datum = Convert.ToDateTime(ss[6]);
                 Gender pol;
                 if (ss[7].Equals("M")) pol = Gender.male;
                 else pol = Gender.female;
-                bool guest=false;
+                bool guest = false;
                 if (ss[9].Equals("true")) guest = true;
-                Patient p = new Patient(ss[0],ss[1],id,ss[3],ss[4],ss[5],datum,pol,ss[8],guest,ss[10]);
+                List<int> allergenIds = new List<int>();
+                String[] ids = ss[11].Split('.');
+                foreach (string stringic in ids)
+                {
+                    if (!stringic.Equals(""))
+                    {
+                        
+                        allergenIds.Add(Int32.Parse(stringic));
+                    }
+                }
+                Patient p = new Patient(ss[0], ss[1], id, ss[3], ss[4], ss[5], datum, pol, ss[8], guest, ss[10], allergenIds);
                 pacijenti.Add(p);
             }
             Console.WriteLine("ISPIIIIIIIIS");
             return pacijenti;
-      }
-      
+        }
+
+
         public ObservableCollection<Patient> read()
         {
             
@@ -60,14 +72,29 @@ namespace FileHandler
                 else pol = Gender.female;
                 bool guest = false;
                 if (ss[9].Equals("true")) guest = true;
-                Patient p = new Patient(ss[0], ss[1], id, ss[3], ss[4], ss[5], datum, pol, ss[8], guest, ss[10]);
+                List<int> allergenIds = new List<int>();
+                if (ss.Length == 12)
+                {
+                    String[] ids = ss[11].Split('.');
+                    int jedan;
+                    foreach (string idJedan in ids)
+                    {
+                        if (!idJedan.Equals(""))
+                        {
+                            jedan = Int32.Parse(idJedan);
+                            allergenIds.Add(jedan);
+                        }
+                    }
+                }
+                
+                Patient p = new Patient(ss[0], ss[1], id, ss[3], ss[4], ss[5], datum, pol, ss[8], guest, ss[10], allergenIds);
                 pacijenti.Add(p);
             }
             Console.WriteLine("ISPIIIIIIIIS");
             return pacijenti;
 
         }
-      public void deleteById(int id)
+        public void deleteById(int id)
         {
             
             string[] lines = System.IO.File.ReadAllLines(filepath);
@@ -110,7 +137,17 @@ namespace FileHandler
             string guest = "false";
             if (p.GuestNalog == true) guest = "true";
             if (p.pol == Gender.female) pol = "F";
-            string novaLinija = p.Ime + "," + p.Prezime + "," + p.Id.ToString() + "," + p.KorisnickoIme + "," + p.Lozinka + "," + p.BrojTelefona + "," + p.DatumRodjenja.ToString() + "," + pol + "," + p.Adresa + "," + guest + "," + p.Mail + ",";
+            String allergenIds="";
+            for(int i = 0; i < p.Allergens.Count; i++)
+            {
+                if (i != p.Allergens.Count - 1)
+                {
+                    allergenIds += p.Allergens[i].Id.ToString() + '.';
+
+                }
+                else allergenIds += p.Allergens[i].Id.ToString();
+            }
+            string novaLinija = p.Ime + "," + p.Prezime + "," + p.Id.ToString() + "," + p.KorisnickoIme + "," + p.Lozinka + "," + p.BrojTelefona + "," + p.DatumRodjenja.ToString() + "," + pol + "," + p.Adresa + "," + guest + "," + p.Mail + "," + allergenIds;
             for (int i = 0; i < lines.Length; i++)
             {
                

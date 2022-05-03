@@ -74,9 +74,9 @@ namespace Service
             Appointment appointment = appointmentRepo.GetByID(appointmentId);
             Patient patient = patientRepo.GetById(appointment.Patient);
             if (patient.Allergens == null) return true;
-            foreach(Drug drug in patient.Allergens)
+            foreach(Allergen allergen in patient.Allergens)
             {
-                if (drug.Name.Equals(selectedDrug)) return false;
+                if (allergen.Name.Equals(selectedDrug)) return false;
             }
             return true;
         }

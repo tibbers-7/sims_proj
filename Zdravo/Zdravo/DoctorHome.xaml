@@ -55,8 +55,8 @@
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Width="2" Binding="{Binding Id}"/>
-                            <DataGridTextColumn Header="JMBG" Binding="{Binding Patient}"/>
-                            <DataGridTextColumn Header="Prostorija" Binding="{Binding Room}"  />
+                                <DataGridTextColumn Header="JMBG" Binding="{Binding Patient}"/>
+                                <DataGridTextColumn Header="Prostorija" Binding="{Binding Room}"  />
                             <DataGridTextColumn Header="Datum" Width="1*" Binding="{Binding Date}" />
                             <DataGridTextColumn Header="Vreme" Binding="{Binding Time}"/>
                             <DataGridTextColumn Header="Trajanje" Binding="{Binding Duration}" />

@@ -13,28 +13,31 @@ namespace Repository
 
         public RoomRepository()
         {
+            fileHandler = new FileHandler.RoomFileHandler();
             rooms = new ObservableCollection<Room>();
-            var room1 = new Room() { id = 1, floor = 1, type = RoomType.operatingRoom };
-            //var eq1 = new StaticEquipment {id = 1, name = "aaa", amount = 1, room = room1};
-            //var eq2 = new StaticEquipment { id = 2, name = "bbb", amount = 1, room = room1 };
-            //room1.AddStaticEquipment(eq1);
-           // room1.AddStaticEquipment(eq2);
+            rooms = fileHandler.Read();
+            /*var room1 = new Room() { id = 1, floor = 1, type = RoomType.operatingRoom };
+            var eq1 = new StaticEquipment {id = 1, name = "sto", amount = 1, roomId = 1};
+            var eq2 = new StaticEquipment { id = 2, name = "stolica", amount = 1, roomId = 1 };
+            room1.AddEquipment(eq1);
+            room1.AddEquipment(eq2);
 
             rooms.Add(room1);
 
             var room2 = new Room() { id = 2, floor = 1, type = RoomType.operatingRoom };
-            //var eq3 = new StaticEquipment { id = 3, name = "ccc", amount = 1, room = room2 };
-            //var eq4 = new StaticEquipment { id = 2, name = "ddd", amount = 1, room = room2 };
-            // room2.AddStaticEquipment(eq3);
-            //room2.AddStaticEquipment(eq4);
+            var eq3 = new StaticEquipment { id = 3, name = "hanzaplast", amount = 1, roomId = 2 };
+            var eq4 = new StaticEquipment { id = 2, name = "bensedin", amount = 1, roomId = 2 };
+            room2.AddEquipment(eq3);
+            room2.AddEquipment(eq4);
 
-            rooms.Add(room2);
+            rooms.Add(room2);*/
 
         }
       
       public void Create(Room newRoom)
       {
             rooms.Add(newRoom);
+            fileHandler.Write(rooms);
       }
       
       public ObservableCollection<Room> GetAll()
@@ -70,7 +73,7 @@ namespace Repository
             if (selected >= 0) {
                 rooms.RemoveAt(selected);
             }
-            
+            fileHandler.Write(rooms);
         }
       
       public Model.Room GetById(int id)
@@ -92,9 +95,10 @@ namespace Repository
                 if (room.id == id)
                 {
                     room.type = type;
-                    return;
+                    //return;
                 }
             }
+            fileHandler.Write(rooms);
         }
    
    }

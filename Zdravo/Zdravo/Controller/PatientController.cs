@@ -41,7 +41,7 @@ namespace Controller
             if (checkBoxGuest.IsChecked == true) guest = true;
             else guest = false;
             string email = tbMail.Text;
-            Patient p = new Patient(ime, prezime, tbId, username, sifra, telefon, datumRodjenja, pol, adresa, guest, email);
+            Patient p = new Patient(ime, prezime, tbId, username, sifra, telefon, datumRodjenja, pol, adresa, guest, email,null);
             return p;
       }
       
@@ -49,7 +49,7 @@ namespace Controller
       {
             // TODO: implement
             p = new PatientRepository();
-            ObservableCollection<Patient> patients = p.GetAll();
+            ObservableCollection<Patient> patients = new ObservableCollection<Patient>(p.GetAll());
             
             if (izabran != null)
             {

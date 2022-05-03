@@ -20,7 +20,10 @@ namespace Service
 {
     
    public class PatientService
+
    {
+
+        private PatientRepository p;
         public PatientService()
         {
             p = new PatientRepository();
@@ -51,11 +54,14 @@ namespace Service
             return sifra.ToString();
         }
 
-        private PatientRepository p=new PatientRepository();
-
+        public void removeAllergen(Patient patient,Allergen allergen)
+        {
+            p = new PatientRepository();
+            p.removeAllergen(patient,allergen);
+        }
         internal ObservableCollection<Prescription> GetPrescriptions(int patientId)
         {
-            Patient patient=p.GetById(patientId);
+            Patient patient = p.GetById(patientId);
             return new ObservableCollection<Prescription>(patient.Prescriptions);
         }
 
@@ -64,5 +70,9 @@ namespace Service
             Patient patient = p.GetById(patientId);
             return new ObservableCollection<Report>(patient.Reports);
         }
-    }
-}
+        
+   
+   }
+
+        
+ }
