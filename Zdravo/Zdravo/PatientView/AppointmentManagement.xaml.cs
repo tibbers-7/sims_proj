@@ -83,5 +83,11 @@ namespace Zdravo.PatientView
             s.Show();
             this.Close();
         }
+
+        private void newAppointmentClick(object sender, RoutedEventArgs e)
+        {
+            PriorityChoose s=new PriorityChoose();
+            s.Show();
+        }
     }
 }

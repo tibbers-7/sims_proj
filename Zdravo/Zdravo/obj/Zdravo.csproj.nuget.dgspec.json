@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Branka Kljajic\\konacno_sims\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj": {}
+    "D:\\Preuzimanja\\repo\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Branka Kljajic\\konacno_sims\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj": {
+    "D:\\Preuzimanja\\repo\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Branka Kljajic\\konacno_sims\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
+        "projectUniqueName": "D:\\Preuzimanja\\repo\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
         "projectName": "Zdravo",
-        "projectPath": "C:\\Users\\Branka Kljajic\\konacno_sims\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
-        "packagesPath": "C:\\Users\\Branka Kljajic\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Branka Kljajic\\konacno_sims\\sims_proj\\Zdravo\\Zdravo\\obj\\",
+        "projectPath": "D:\\Preuzimanja\\repo\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
+        "packagesPath": "C:\\Users\\Darko\\.nuget\\packages\\",
+        "outputPath": "D:\\Preuzimanja\\repo\\sims_proj\\Zdravo\\Zdravo\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Branka Kljajic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Darko\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

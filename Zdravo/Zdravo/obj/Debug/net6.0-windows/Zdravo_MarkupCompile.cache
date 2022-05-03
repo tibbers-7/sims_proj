@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Branka Kljajic\konacno_sims\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\
 Zdravo
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\Branka Kljajic\konacno_sims\sims_proj\Zdravo\Zdravo\App.xaml
-18-1290500931
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\App.xaml
+21161347767
 
-81462719355
+84-1701509907
 194-1951243044
-DoctorHome.xaml;DoctorWindows\AppointmentMenu.xaml;DoctorWindows\NewAppointment.xaml;DoctorWindows\PatientChart.xaml;DoctorWindows\PrescriptionWindow.xaml;DoctorWindows\Report.xaml;MainWindow.xaml;ManagerHome.xaml;managerView\BasicRenovation.xaml;managerView\Equipment.xaml;managerView\EquipmentRelocation.xaml;PatientView\AddPatient.xaml;PatientView\AllergenDescription.xaml;PatientView\Allergens.xaml;PatientView\AppointmentManagement.xaml;PatientView\UpdatePatient.xaml;SecretaryHome.xaml;SekretarHome.xaml;
+DoctorHome.xaml;DoctorWindows\AppointmentMenu.xaml;DoctorWindows\NewAppointment.xaml;DoctorWindows\PatientChart.xaml;DoctorWindows\PrescriptionWindow.xaml;DoctorWindows\Report.xaml;MainWindow.xaml;ManagerHome.xaml;managerView\BasicRenovation.xaml;managerView\Equipment.xaml;managerView\EquipmentRelocation.xaml;PatientView\AddPatient.xaml;PatientView\AllergenDescription.xaml;PatientView\Allergens.xaml;PatientView\AppointmentManagement.xaml;PatientView\DatePriority.xaml;PatientView\DoctorPriority.xaml;PatientView\PriorityChoose.xaml;PatientView\UpdatePatient.xaml;SecretaryHome.xaml;SekretarHome.xaml;
 
 False
 

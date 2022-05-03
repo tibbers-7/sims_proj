@@ -153,3 +153,17 @@ C:\Users\Branka Kljajic\konacno_sims\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-wi
 C:\Users\Branka Kljajic\konacno_sims\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\managerView\BasicRenovation.baml
 C:\Users\Branka Kljajic\konacno_sims\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\managerView\EquipmentRelocation.g.cs
 C:\Users\Branka Kljajic\konacno_sims\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\managerView\EquipmentRelocation.baml
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\managerView\BasicRenovation.g.cs
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\managerView\EquipmentRelocation.g.cs
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\managerView\BasicRenovation.baml
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\managerView\EquipmentRelocation.baml
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\NewAppointment.g.cs
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\NewAppointment.baml
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\SecretaryNewAppointment.g.cs
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\SecretaryNewAppointment.baml
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\DatePriority.g.cs
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\DoctorPriority.g.cs
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\PriorityChoose.g.cs
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\DatePriority.baml
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\DoctorPriority.baml
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\PriorityChoose.baml
