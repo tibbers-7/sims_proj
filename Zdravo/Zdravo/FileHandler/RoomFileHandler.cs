@@ -39,16 +39,24 @@ namespace FileHandler
                         type1 = RoomType.operatingRoom;
                         break;
                 }
-                ObservableCollection<int> equipmentIds = new ObservableCollection<int>();
-                int equipmentId = 0;
-                for (int i = 3; i < ss.Length; i++)
+                if (ss.Length > 3)
                 {
-                    equipmentId = Int32.Parse(ss[i]);
-                    equipmentIds.Add(equipmentId);
+                    ObservableCollection<int> equipmentIds = new ObservableCollection<int>();
+                    int equipmentId = 0;
+                    for (int i = 3; i < ss.Length; i++)
+                    {
+                        equipmentId = Int32.Parse(ss[i]);
+                        equipmentIds.Add(equipmentId);
+                    }
+                    Room room = new Room(id, floor, type1, equipmentIds);
+                    rooms.Add(room);
                 }
-                Room room = new Room(id, floor, type1, equipmentIds);
-                //Room room = new Room(id, floor, type1);
-                rooms.Add(room);
+                else
+                {
+                    ObservableCollection<int> equipmentIds = new ObservableCollection<int>();
+                    Room room = new Room(id, floor, type1, equipmentIds);
+                    rooms.Add(room);
+                }
             }
             return rooms;
         }

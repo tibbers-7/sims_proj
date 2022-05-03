@@ -198,5 +198,11 @@ namespace Zdravo
             EquipmentRelocation er = new EquipmentRelocation();
             er.Show();
         }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            AddEquipment ae = new AddEquipment();
+            ae.Show();
+        }
     }
 }

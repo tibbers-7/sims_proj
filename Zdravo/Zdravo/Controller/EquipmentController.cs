@@ -27,5 +27,11 @@ namespace Zdravo.Controller
             int _errorCode = equipmentService.AddRelocation(relocation);
             return _errorCode;
         }
+
+        public void Create(string _name, int _amount, int _roomId)
+        {
+            StaticEquipment newEq = new StaticEquipment(_name, _amount, _roomId);
+            equipmentService.Create(newEq);
+        }
     }
 }

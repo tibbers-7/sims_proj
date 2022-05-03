@@ -1,4 +1,5 @@
 ﻿using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,10 +15,12 @@ namespace Zdravo.Service
     {
         private EquipmentRepository equipmentRepository;
         private RelocationRepository relocationRepository;
+        private RoomRepository roomRepository;
 
         public EquipmentService() { 
             this.equipmentRepository = new EquipmentRepository();
             this.relocationRepository = new RelocationRepository();
+            this.roomRepository = new RoomRepository();
         }
         public ObservableCollection<StaticEquipment> GetAll()
         {
@@ -36,6 +39,17 @@ namespace Zdravo.Service
                 relocationRepository.Create(_relocation);
             }
             return _errorCode;
+        }
+
+        public void Create(StaticEquipment newEq)
+        {
+            Room room = roomRepository.GetById(newEq.roomId);
+            ObservableCollection<int> ids = room.equipmentIds;
+            int _id = equipmentRepository.GenerateId();
+            newEq.id = _id;
+            ids.Add(_id);
+            roomRepository.UpdateEquipment(room.id, ids);
+            equipmentRepository.Create(newEq);
         }
     }
 }

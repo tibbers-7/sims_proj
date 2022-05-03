@@ -17,7 +17,14 @@ namespace Model
             this.roomId = roomId;
         }
 
-      public Room room;
+        public StaticEquipment(string name, int amount, int roomId)
+        {
+            this.name = name;
+            this.amount = amount;
+            this.roomId = roomId;
+        }
+
+        public Room room;
       
       /// <summary>
       /// Property for Room
