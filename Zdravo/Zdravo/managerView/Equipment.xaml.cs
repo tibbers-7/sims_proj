@@ -1,4 +1,5 @@
 ﻿using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -26,6 +27,7 @@ namespace Zdravo.managerView
         public ObservableCollection<StaticEquipment> equipment { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
         private EquipmentController equipmentController;
+        private RoomRepository roomRepo;
 
         protected virtual void OnPropertyChanged(string name)
         {
@@ -37,11 +39,14 @@ namespace Zdravo.managerView
         public Equipment(Room room)
         {
             InitializeComponent();
+            int roomId = room.id;
+            roomRepo = new RoomRepository();
+            Room roomm = roomRepo.GetById(roomId);
             this.DataContext = this;
             equipment = new ObservableCollection<StaticEquipment>();
             equipmentController = new EquipmentController();
             ObservableCollection<StaticEquipment> allEquipment = equipmentController.GetAll();
-            foreach (int eqId in room.equipmentIds)
+            foreach (int eqId in roomm.equipmentIds)
             {
                 foreach (StaticEquipment eq in allEquipment)
                 {
