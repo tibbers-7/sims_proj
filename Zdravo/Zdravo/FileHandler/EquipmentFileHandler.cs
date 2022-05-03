@@ -28,8 +28,19 @@ namespace Zdravo.FileHandler
             return equipment;
         }
 
-        public void Write(ObservableCollection<StaticEquipment> equipment) { 
-        
+        public void Write(ObservableCollection<StaticEquipment> equipment) {
+            string[] newLines = new string[equipment.Count];
+            int i = 0;
+            foreach (StaticEquipment eq in equipment)
+            {
+                string _id = eq.id.ToString();
+                string _amount = eq.amount.ToString();
+                string _roomId = eq.roomId.ToString(); ;
+                newLines[i] = _id + "," + eq.name + "," + _amount + "," + _roomId;
+                i++;
+            }
+            System.IO.File.WriteAllText(filePath, "");
+            System.IO.File.WriteAllLines(filePath, newLines);
         }
     }
 }

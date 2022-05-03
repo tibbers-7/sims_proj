@@ -53,7 +53,7 @@ namespace Zdravo.DoctorWindows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Zdravo;component/doctorwindows/prescriptionwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Zdravo;V1.0.0.0;component/doctorwindows/prescriptionwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\DoctorWindows\PrescriptionWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -3,6 +3,8 @@ using Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Zdravo;
+using Zdravo.Model;
+using Zdravo.Repository;
 
 namespace Repository
 {
@@ -100,6 +102,80 @@ namespace Repository
             }
             fileHandler.Write(rooms);
         }
-   
-   }
+
+        public void UpdateEquipment(int id, ObservableCollection<int> equipmentIds)
+        {
+            foreach (Room room in rooms)
+            {
+                if (room.id == id)
+                {
+                    room.equipmentIds = equipmentIds;
+                    //return;
+                }
+            }
+            fileHandler.Write(rooms);
+        }
+
+        public void RelocateEquipment(Relocation relocation)
+        {
+            EquipmentRepository eqRepo = new EquipmentRepository();
+            StaticEquipment eq = eqRepo.GetById(relocation.EquipmentId);
+            Room from = GetById(eq.roomId);
+            Room destination = GetById(relocation.RoomId);
+            if (eq.amount > relocation.Amount)
+            {
+                int newAmount = eq.amount - relocation.Amount;
+                //eq.amount = newAmount;
+                //eq.amount = eq.amount - relocation.Amount;
+                eqRepo.UpdateAmount(eq.id, newAmount);
+                ObservableCollection<int> ids = destination.equipmentIds;
+                bool found = false;
+                foreach (int id in ids)
+                {
+                    if (eq.name.Equals(eqRepo.GetById(id).name))
+                    {
+                        int newAm = eqRepo.GetById(id).amount + relocation.Amount;
+                        //eqRepo.GetById(id).amount = eqRepo.GetById(id).amount + relocation.Amount;
+                        eqRepo.UpdateAmount(id, newAm);
+                        found = true;
+                    }
+                }
+                if (!found)
+                {
+                    int newId = eqRepo.GenerateId();
+                    StaticEquipment newEq = new StaticEquipment(newId, eq.name, relocation.Amount, relocation.RoomId);
+                    eqRepo.Create(newEq);
+                    ids.Add(newId);
+                    UpdateEquipment(destination.id, ids);
+                }
+            }
+            else if (eq.amount == relocation.Amount)
+            {
+                ObservableCollection<int> idss = from.equipmentIds;
+                idss.Remove(eq.id);
+                UpdateEquipment(from.id, idss);
+
+                ObservableCollection<int> ids = destination.equipmentIds;
+                bool found = false;
+                foreach (int id in ids)
+                {
+                    if (eq.name.Equals(eqRepo.GetById(id).name))
+                    {
+                        int newAm = eqRepo.GetById(id).amount + relocation.Amount;
+                        eqRepo.UpdateAmount(id, newAm);
+                        eqRepo.DeleteById(relocation.EquipmentId);
+                        found = true;
+                    }
+                }
+                if (!found)
+                {
+                    //eq.roomId = destination.id;
+                    eqRepo.UpdateRoomId(eq.id, destination.id);
+                    ids.Add(eq.id);
+                    UpdateEquipment(destination.id, ids);
+                }
+            }
+        }
+
+    }
 }

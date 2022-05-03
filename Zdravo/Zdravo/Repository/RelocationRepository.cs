@@ -22,5 +22,16 @@ namespace Zdravo.Repository
             relocations.Add(_relocation);
             relFileHandler.Write(relocations);
         }
+
+        public ObservableCollection<Relocation> GetAll()
+        {
+            return relocations;
+        }
+
+        public void Delete(Relocation _relocation)
+        {
+            relocations.Remove(_relocation);
+            relFileHandler.Write(relocations);
+        }
     }
 }
