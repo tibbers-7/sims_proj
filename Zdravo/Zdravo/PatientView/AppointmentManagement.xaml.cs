@@ -22,7 +22,7 @@ namespace Zdravo.PatientView
     /// </summary>
     public partial class AppointmentManagement : Window
     {
-        private AppointmentRecordViewModel viewModel;
+        public AppointmentRecordViewModel viewModel;
         public AppointmentManagement()
         {
             InitializeComponent();
@@ -86,7 +86,7 @@ namespace Zdravo.PatientView
 
         private void newAppointmentClick(object sender, RoutedEventArgs e)
         {
-            PriorityChoose s=new PriorityChoose();
+            PriorityChoose s=new PriorityChoose(this);
             s.Show();
         }
     }

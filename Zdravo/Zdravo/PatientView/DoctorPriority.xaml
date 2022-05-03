@@ -5,19 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo.PatientView"
         mc:Ignorable="d"
-        Title="DoctorPriority" Height="406" Width="407">
+        Title="DoctorPriority" Height="511" Width="407">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="400*"/>
         </Grid.ColumnDefinitions>
         <TextBlock HorizontalAlignment="Left" Margin="22,38,0,0" TextWrapping="Wrap" Text="JMBG:" FontSize="17" VerticalAlignment="Top" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" Margin="116,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="198" Height="23" Grid.Column="1"/>
+        <TextBox Name="jmbgTb" HorizontalAlignment="Left" Margin="116,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="198" Height="23" Grid.Column="1"/>
         <TextBlock HorizontalAlignment="Left" Margin="22,97,0,0" TextWrapping="Wrap" Text="Doctor:" FontSize="17" VerticalAlignment="Top" Grid.Column="1"/>
-        <ComboBox HorizontalAlignment="Left" Margin="116,97,0,0" VerticalAlignment="Top" Width="198" Grid.Column="1" >
+        <ComboBox x:Name="comboBoxDoctors" HorizontalAlignment="Left" Margin="116,97,0,0" VerticalAlignment="Top" Width="198" Grid.Column="1" >
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="116,151,0,0" TextWrapping="Wrap" Text="Available periods:" TextDecorations="Underline" FontSize="17" VerticalAlignment="Top" Grid.Column="1"/>
-        <Rectangle HorizontalAlignment="Left" Height="164" Margin="22,195,0,0" Stroke="Black" VerticalAlignment="Top" Width="341" Grid.Column="1"/>
+        <Rectangle HorizontalAlignment="Left" Height="272" Margin="22,195,0,0" Stroke="Black" VerticalAlignment="Top" Width="341" Grid.Column="1"/>
+        <Button Grid.Column="1" Content="OK" HorizontalAlignment="Left" Margin="161,425,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.079,0.586" Height="28" Width="69" Click="Button_Click"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" FontSize="15" Margin="82,231,0,0" TextWrapping="Wrap" Text="Pick date:" VerticalAlignment="Top"/>
+        <DatePicker x:Name="datePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="164,229,0,0" VerticalAlignment="Top" SelectedDateChanged="datePicker_SelectedDateChanged"/>
+        <ComboBox x:Name="busySlots" Grid.Column="1" HorizontalAlignment="Left" Margin="161,281,0,0" VerticalAlignment="Top" Width="153"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" FontSize="15" Margin="82,281,0,0" TextWrapping="Wrap" Text="Busy slots:" VerticalAlignment="Top"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" FontSize="15" Margin="82,321,0,0" TextWrapping="Wrap" Text="Time:" VerticalAlignment="Top"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" FontSize="15" Margin="82,367,0,0" TextWrapping="Wrap" Text="Duration:" VerticalAlignment="Top"/>
+        <TextBox Name="timeTb" Grid.Column="1" HorizontalAlignment="Left" Margin="161,323,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="durationTb" Grid.Column="1" HorizontalAlignment="Left" Margin="161,367,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Name="testLabela" Grid.Column="1" Content="Label" HorizontalAlignment="Left" Margin="144,125,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
