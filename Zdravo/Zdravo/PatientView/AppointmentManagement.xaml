@@ -12,7 +12,7 @@
             <RowDefinition Height="43*"/>
         </Grid.RowDefinitions>
         <DataGrid Name="table" ColumnWidth="*" IsReadOnly ="True"  SelectionMode="Single"
-                              ItemsSource="{Binding Records, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Margin="38,76,37,68" Grid.RowSpan="2">
+                              ItemsSource="{Binding Records, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Margin="38,76,37,68" Grid.RowSpan="2" MouseDoubleClick="table_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="0.3*" Header="ID" Binding="{Binding Id}"/>
                 <DataGridTextColumn  Header="Patient" Binding="{Binding PatientInfo}"/>

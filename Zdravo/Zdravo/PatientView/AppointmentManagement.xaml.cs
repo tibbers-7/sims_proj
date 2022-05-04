@@ -15,6 +15,8 @@ using Zdravo.ViewModel;
 using Zdravo.Model;
 using System.Collections.ObjectModel;
 using Controller;
+using Repository;
+using Model;
 namespace Zdravo.PatientView
 {
     /// <summary>
@@ -74,6 +76,12 @@ namespace Zdravo.PatientView
 
         private void EditAppointment(object sender, RoutedEventArgs e)
         {
+            AppointmentController ac = new AppointmentController();
+            AppointmentRecord selected = (AppointmentRecord)table.SelectedValue;
+            AppointmentRepository rep = new AppointmentRepository();
+            Appointment aps = rep.GetByID(selected.Id);
+            EditAppointmentDate da = new EditAppointmentDate(this,aps);
+            da.Show();
 
         }
 
@@ -86,8 +94,13 @@ namespace Zdravo.PatientView
 
         private void newAppointmentClick(object sender, RoutedEventArgs e)
         {
-            PriorityChoose s=new PriorityChoose(this);
-            s.Show();
+            DoctorPriority d = new DoctorPriority(this);
+            d.Show();
+        }
+
+        private void table_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

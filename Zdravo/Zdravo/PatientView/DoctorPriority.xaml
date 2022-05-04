@@ -27,7 +27,6 @@
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" FontSize="15" Margin="82,367,0,0" TextWrapping="Wrap" Text="Duration:" VerticalAlignment="Top"/>
         <TextBox Name="timeTb" Grid.Column="1" HorizontalAlignment="Left" Margin="161,323,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="durationTb" Grid.Column="1" HorizontalAlignment="Left" Margin="161,367,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label Name="testLabela" Grid.Column="1" Content="Label" HorizontalAlignment="Left" Margin="144,125,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
