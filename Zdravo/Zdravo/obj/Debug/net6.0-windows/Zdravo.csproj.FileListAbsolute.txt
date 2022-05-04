@@ -153,7 +153,6 @@ D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\AppointmentManagement.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\DatePriority.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\DoctorPriority.g.cs
-D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\PriorityChoose.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\UpdatePatient.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryHome.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SekretarHome.g.cs
@@ -180,7 +179,6 @@ D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\AppointmentManagement.baml
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\DatePriority.baml
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\DoctorPriority.baml
-D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\PriorityChoose.baml
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\UpdatePatient.baml
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryHome.baml
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SekretarHome.baml
@@ -194,3 +192,5 @@ D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\refint\Zdra
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo.pdb
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo.genruntimeconfig.cache
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\ref\Zdravo.dll
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\EditAppointmentDate.g.cs
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\EditAppointmentDate.baml

@@ -29,7 +29,7 @@ namespace Zdravo
         {
             InitializeComponent();
             PatientService service = new PatientService();
-            tbId.Text = service.checkId();
+          //  tbId.Text = service.checkId();
             this.sekr = s;
         }
 

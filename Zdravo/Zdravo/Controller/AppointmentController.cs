@@ -107,6 +107,25 @@ namespace Controller
             service.UpdateAppointment(appt);
             return errorCode;
         }
+        public int UpdateAppointment(int id, int patientId,int doctorId, int roomId, int hours, int minutes, int duration, int day, int month, int year, bool emergency)
+        {
+            int errorCode = 0;
+            DateOnly date = new DateOnly();
+            TimeOnly _time = new TimeOnly(hours, minutes);
+            try
+            {
+                date = new DateOnly(year, month, day);
+            }
+            catch (Exception e)
+            {
+                errorCode = 3;
+            }
+
+            // add proper doctor id
+            Appointment appt = new Appointment() { Id = id, Date = date, Time = _time, Doctor = doctorId, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency };
+            service.UpdateAppointment(appt);
+            return errorCode;
+        }
 
         //link report to patient
         internal void CreateReport(int apptId,DateOnly date, string diagnosis, string report)
