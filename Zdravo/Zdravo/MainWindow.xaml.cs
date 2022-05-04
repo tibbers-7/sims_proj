@@ -28,17 +28,19 @@ namespace Zdravo
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            bool pronadjen=false;
             string[] lines = System.IO.File.ReadAllLines("data/accounts.txt");
             foreach(string s in lines)
             {
                 string[] parameters = s.Split(',');
-                if (tbUsername.Text.Equals(parameters[0]) && tbPassword.Text.Equals(parameters[1]))
+                String lozinka = tbPassword.Password.ToString();
+                if (tbUsername.Text.Equals(parameters[0]) && lozinka.Equals(parameters[1]))
                 {
+                    pronadjen = true;
                     if (parameters[2].Equals("S")){
                         //otvara se sekretar page
                        
-                       SekretarHome sh = new SekretarHome();
+                       SecretaryHome sh = new SecretaryHome();
                         sh.Show();
                         this.Close();
                     }
@@ -49,12 +51,17 @@ namespace Zdravo
                         this.Close();
                     }
                     if (parameters[2].Equals("L")) {
-                        DoctorHome dh=new DoctorHome();
+                        DoctorHome dh=new DoctorHome(int.Parse(parameters[3]));
                         dh.Show();
                         this.Close();
                         //otvara se lekar page
                     }
                 }
+                
+            }
+            if (!pronadjen)
+            {
+                errorLabel.Content = "Pogresno korisnicko ime ili lozinka!";
             }
         }
     }

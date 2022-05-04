@@ -14,7 +14,7 @@ using Model;
 using Service;
 using Controller;
 using Zdravo.ViewModel;
-
+using Zdravo.PatientView;
 namespace Zdravo
 {
     /// <summary>
@@ -38,7 +38,7 @@ namespace Zdravo
             Patient izabran = (Patient)table.SelectedValue;
             PatientService service = new PatientService();
             service.checkId();
-            AddPatient addp = new AddPatient();
+            AddPatient addp = new AddPatient(this);
             addp.Show();
 
         }
@@ -58,7 +58,7 @@ namespace Zdravo
             Patient izabran = (Patient)table.SelectedValue;
             if (izabran != null)
             {
-                PatientView.UpdatePatient update = new PatientView.UpdatePatient(izabran.Ime, izabran.Prezime, izabran.Id, izabran.KorisnickoIme, izabran.Lozinka, izabran.BrojTelefona, izabran.DatumRodjenja, izabran.pol, izabran.GuestNalog, izabran.Adresa, izabran.Mail);
+                PatientView.UpdatePatient update = new PatientView.UpdatePatient(izabran.Ime, izabran.Prezime, izabran.Id, izabran.KorisnickoIme, izabran.Lozinka, izabran.BrojTelefona, izabran.DatumRodjenja, izabran.pol, izabran.GuestNalog, izabran.Adresa, izabran.Mail,this);
                 update.Show();
             }
         }
@@ -74,6 +74,20 @@ namespace Zdravo
             viewModel.Refresh();
             this.DataContext = null;
             this.DataContext = viewModel;
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            SecretaryHome s = new SecretaryHome();
+            s.Show();
+            this.Close();
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            Patient selectedPatient = (Patient)table.SelectedValue;
+            Allergens a = new Allergens(selectedPatient);
+            a.Show();
         }
     }
 }

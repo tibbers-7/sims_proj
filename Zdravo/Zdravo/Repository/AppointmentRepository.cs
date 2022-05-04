@@ -7,32 +7,76 @@ using FileHandler;
 using Model;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Zdravo.Repository;
+using Zdravo.Model;
+using Zdravo.Repository;
+using Repo;
+using Repository;
 
 namespace Repository
 {
    public class AppointmentRepository
    {
-      private static int idCounter=0;
       public AppointmentFileHandler fileHandler=new AppointmentFileHandler();
-        private ObservableCollection<Appointment> appointments;
+        private PatientRepository patientRepository;
+        private List<Appointment> appointments;
+        private List<Appointment> doctorAppts;
         private int idCount;
 
         public AppointmentRepository()
         {
             appointments = fileHandler.Read();
             idCount= appointments.Count;
+
         }
 
-        public ObservableCollection<Appointment> GetAll()
+        public List<Appointment> GetAll()
       {
             appointments = fileHandler.Read();
             return appointments;
          
       }
-      
-      public Appointment GetByID(int idAppointment)
+        public ObservableCollection<AppointmentRecord> GetAllRecords()
+        {
+            PatientRepository prepo = new PatientRepository();
+            DoctorRepository drepo = new DoctorRepository();
+            appointments = fileHandler.Read();
+            ObservableCollection < AppointmentRecord > records = new ObservableCollection<AppointmentRecord>();
+            foreach(Appointment a in appointments)
+            {
+                 Patient p = prepo.GetById(a.Patient);
+               // Patient p = prepo.GetById(0);
+                Doctor d = drepo.getById(a.Doctor);
+                if (p!=null && d != null)
+                {
+                    AppointmentRecord record = new AppointmentRecord(a.Id, p.Ime, p.Prezime, d.Name, d.LastName, d.Specialization, a.Date, a.Time,p.Id.ToString());
+                    records.Add(record);
+                }
+                
+            }
+            return records;
+
+        }
+
+        internal List<Appointment> GetAppointmentsForDoctor(int doctorId)
+        {
+            doctorAppts = new List<Appointment>();
+            foreach(Appointment appt in appointments)
+            {
+                if (appt.Doctor == doctorId) doctorAppts.Add(appt);                
+               
+            }
+            return doctorAppts;
+        }
+
+        // public ObservableCollection<AppointmentRecord> GetByName()
+        // {
+        //
+        // }
+        public Appointment GetByID(int idAppointment)
       {
             appointments=fileHandler.Read();
             foreach (Appointment appointment in appointments)
@@ -51,6 +95,10 @@ namespace Repository
 
             Appointment appt= GetByID(idAppointment);
             if (appt == null) return false;
+
+            patientRepository = new PatientRepository();
+            if (patientRepository.GetById(appt.Patient) == null) return false;
+            patientRepository.GetById(appt.Patient).RemoveAppt(appt);
                 
                 fileHandler.Write(appt, 2);
                 appointments = fileHandler.Read();
@@ -70,5 +118,7 @@ namespace Repository
             fileHandler.Write(appt,1);
             appointments = fileHandler.Read();
         }
+
+        
     }
 }

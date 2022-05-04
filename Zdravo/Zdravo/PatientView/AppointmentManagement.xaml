@@ -1,0 +1,65 @@
+﻿<Window x:Class="Zdravo.PatientView.AppointmentManagement"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zdravo.PatientView"
+        mc:Ignorable="d"
+        Title="AppointmentManagement" Height="503" Width="622" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="43*"/>
+        </Grid.RowDefinitions>
+        <DataGrid Name="table" ColumnWidth="*" IsReadOnly ="True"  SelectionMode="Single"
+                              ItemsSource="{Binding Records, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Margin="38,76,37,68" Grid.RowSpan="2" MouseDoubleClick="table_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="0.3*" Header="ID" Binding="{Binding Id}"/>
+                <DataGridTextColumn  Header="Patient" Binding="{Binding PatientInfo}"/>
+                <DataGridTextColumn  Header="JMBG" Binding="{Binding Jmbg}"/>
+                <DataGridTextColumn  Header="Doctor" Binding="{Binding DoctorInfo}"/>
+                <DataGridTextColumn  Header="Specialization" Binding="{Binding DoctorSpecialization}"/>
+                <DataGridTextColumn  Header="Date" Binding="{Binding Date}"/>
+                <DataGridTextColumn  Header="Time" Binding="{Binding Time}"/>
+                <DataGridTemplateColumn Width="0.3*">
+                    <DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate>
+                            <Button Click="CancelAppointment">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/images/close.png"/>
+                                </Button.Background>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Width="0.3*">
+                    <DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate>
+                            <Button Click="EditAppointment">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/images/edit.png"/>
+                                </Button.Background>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox Name="searchTb" HorizontalAlignment="Left" Margin="106,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" Height="27"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="254,27,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.601,0.083" Width="27" Height="27" Click="Button_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/images/search.png"/>
+            </Button.Background>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="38,30,0,0" TextWrapping="Wrap" Text="JMBG:" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" RenderTransformOrigin="0.41,1.134"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="467,275,0,0" VerticalAlignment="Top" Height="27" Width="103" Click="Button_Click_1" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="373,31,0,0" TextWrapping="Wrap" Text="Add new appointment:" FontSize="14" VerticalAlignment="Top"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="538,28,0,0" VerticalAlignment="Top" Height="26" Width="32" Click="newAppointmentClick">
+            <Button.Background>
+                <ImageBrush ImageSource="/images/addNew.png"/>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>

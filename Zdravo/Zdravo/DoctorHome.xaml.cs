@@ -27,10 +27,10 @@ namespace Zdravo
     {
 
         private DoctorHomeViewModel viewModel;
-        public DoctorHome()
+        public DoctorHome(int doctorId)
         {
             InitializeComponent();
-            viewModel = new DoctorHomeViewModel(AppointmentTable);
+            viewModel = new DoctorHomeViewModel(AppointmentTable,doctorId);
             DataContext = viewModel;
             
         }
@@ -48,6 +48,12 @@ namespace Zdravo
             viewModel.MenuShow(int.Parse((AppointmentTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text));
         }
 
-        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow m = new MainWindow();
+            m.Show();
+            this.Close();
+            
+        }
     }
 }

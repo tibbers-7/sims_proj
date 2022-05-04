@@ -32,7 +32,7 @@ namespace Zdravo
 
         
         //when adding a new user id is 0
-        public NewAppointment(DoctorHomeViewModel callerWindow, int id)
+        public NewAppointment(DoctorHomeViewModel callerWindow, int id,int doctorId)
         {
             
             InitializeComponent();
@@ -42,7 +42,7 @@ namespace Zdravo
             }
             this.callerWindow = callerWindow;
             this.id = id;
-            viewModel = new NewAppointmentViewModel(id);
+            viewModel = new NewAppointmentViewModel(id,doctorId);
             DataContext = viewModel;  
 
             
@@ -59,6 +59,10 @@ namespace Zdravo
                     callerWindow.RefreshAppointments();
                     this.Close();
                     break;
+                case 1:
+                    MessageBox.Show("Pacijent sa tim JMBG ne postoji.", "Greška");
+                    break;
+
                 case 3:
                     MessageBox.Show("Uneseni datum nije validan.", "Greška");
                     break;

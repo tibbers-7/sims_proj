@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using Zdravo;
@@ -12,13 +13,31 @@ namespace Model
       public int floor { get; set; }
       public RoomType type { get; set; }
 
+       public ObservableCollection<StaticEquipment> equipment { get; set; }
+
       public System.Collections.Generic.List<StaticEquipment> staticEquipment;
-      
-      /// <summary>
-      /// Property for collection of StaticEquipment
-      /// </summary>
-      /// <pdGenerated>Default opposite class collection property</pdGenerated>
-      public System.Collections.Generic.List<StaticEquipment> StaticEquipment
+        public ObservableCollection<int> equipmentIds { get; set; }
+
+        public Room(int id, int floor, RoomType type, ObservableCollection<int> equipmentIds)
+        {
+            this.id = id;
+            this.floor = floor;
+            this.type = type;
+            this.equipmentIds = equipmentIds;
+        }
+
+        public Room(int id, int floor, RoomType type)
+        {
+            this.id = id;
+            this.floor = floor;
+            this.type = type;
+        }
+
+        /// <summary>
+        /// Property for collection of StaticEquipment
+        /// </summary>
+        /// <pdGenerated>Default opposite class collection property</pdGenerated>
+        public System.Collections.Generic.List<StaticEquipment> StaticEquipment
       {
          get
          {
@@ -87,6 +106,18 @@ namespace Model
             tmpStaticEquipment.Clear();
          }
       }
+
+        public void AddEquipment(StaticEquipment eq) {
+            if (equipment == null)
+            {
+                equipment = new ObservableCollection<StaticEquipment>();
+                equipment.Add(eq);
+            }
+            else {
+                equipment.Add(eq);
+            }
+            
+        }
 
         public void fromCSV(string[] values)
         {

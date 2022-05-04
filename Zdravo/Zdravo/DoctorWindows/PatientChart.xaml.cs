@@ -20,36 +20,62 @@ namespace Zdravo.DoctorWindows
     /// </summary>
     public partial class PatientChart : Window
     {
+        private int apptId;
         private PatientChartViewModel viewModel;
         public PatientChart(int id)
         {
+            apptId = id;
             viewModel = new PatientChartViewModel(id);
             this.DataContext = viewModel;
             InitializeComponent();
             if (viewModel.Gender == 'm')
             {
                 male.IsChecked = true;
-            } else female.IsChecked = true;
+                female.IsEnabled = false;
+            }
+            else
+            {
+                female.IsChecked = true;
+                male.IsEnabled = false;
+            }
             switch (viewModel.MarriageStatus)
             {
                 case 'm':
                     married.IsChecked = true;
+                    widow.IsEnabled = false;
+                    divorced.IsEnabled = false;
+                    single.IsEnabled = false;
                     break;
                 case 'w':
                     widow.IsChecked = true;
+                    married.IsChecked = true;
+                    divorced.IsEnabled = false;
+                    single.IsEnabled = false;
                     break;
                 case 'd':
                     divorced.IsChecked = true;
+                    married.IsChecked = true;
+                    widow.IsEnabled = false;
+                    single.IsEnabled = false;
                     break;
                 default:
                     single.IsChecked = true;
+                    married.IsChecked = true;
+                    widow.IsEnabled = false;
+                    divorced.IsEnabled = false;
                     break;
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void HistoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            PatientApptHistory historyWindow = new PatientApptHistory(apptId);
+            historyWindow.Show();
         }
     }
 }

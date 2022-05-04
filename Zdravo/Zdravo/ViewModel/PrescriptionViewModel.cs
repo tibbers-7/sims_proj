@@ -1,4 +1,5 @@
 ﻿using Controller;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,7 +21,7 @@ namespace Zdravo.ViewModel
         public PrescriptionViewModel(int appointmentId)
         {
             this.appointmentId = appointmentId;
-            drugs = apptController.GetAllDrugs();
+            drugs = apptController.GetAllDrugNames();
         }
 
         public bool CheckAllergies()
@@ -28,6 +29,10 @@ namespace Zdravo.ViewModel
             return apptController.CheckAllergies(appointmentId,SelectedDrug);
         }
 
-        
+        internal void AddPrescription()
+        {
+            Appointment appt=apptController.GetAppointment(appointmentId);
+            apptController.AddPrescription(appt.Patient,SelectedDrug,DateTime.Now);
+        }
     }
 }

@@ -4,7 +4,9 @@
 // Purpose: Definition of Class Appointment
 
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Zdravo.Model;
 
 namespace Model
 {
@@ -32,10 +34,15 @@ namespace Model
 
         private bool hasPassed;
         public bool HasPassed { get { return hasPassed; } set { hasPassed = value; } }
+        private List<Report> reports;
+        public List<Report> Reports { get { return reports; } set { reports = value; } }
 
-        public void fromCSV(GroupCollection csvValues)
+        public Appointment()
         {
-            Console.WriteLine(csvValues[0]);
+            reports = new List<Report>();
+        }
+        public void FromCSV(GroupCollection csvValues)
+        {
             id= int.Parse(csvValues[1].Value);
             patient = int.Parse(csvValues[2].Value);
             room = int.Parse(csvValues[3].Value);
@@ -50,7 +57,7 @@ namespace Model
 
         }
 
-        internal string toCSV()
+        internal string ToCSV()
         {
             //1,3253,38G,2022/01/01,13:00,30,32
             Regex regexObj = new Regex("\\d+:\\d{2}");
@@ -60,6 +67,11 @@ namespace Model
             if (emergency) _emergency = 'Y'; else _emergency = 'N';
             string res = id.ToString()+","+patient.ToString() + "," + room + "," + date.ToString() + "," + _time + "," + duration.ToString() + "," + doctor.ToString()+","+_emergency;
             return res;
+        }
+
+        public void AddReport(Report r)
+        {
+            reports.Add(r);
         }
     }        
 

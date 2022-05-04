@@ -24,11 +24,13 @@ namespace Zdravo
     public partial class AddPatient : Window
     {
         private PatientsViewModel viewModel = new PatientsViewModel();
-        public AddPatient()
+        private SekretarHome sekr = new SekretarHome();
+        public AddPatient(SekretarHome s)
         {
             InitializeComponent();
             PatientService service = new PatientService();
-            tbId.Text = service.checkId();
+          //  tbId.Text = service.checkId();
+            this.sekr = s;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -41,8 +43,11 @@ namespace Zdravo
             PatientRepository repo = new PatientRepository();
             PatientController controller = new PatientController();
             repo.addPatient(controller.CreatePatient(tbIme, tbPrezime, Int16.Parse(tbId.Text), tbUsername, tbSifra, tbTelefon, tbDatum, cbPol, tbAdresa, checkBoxGuest, tbMail));
-            this.Close();
             viewModel.Refresh();
+            sekr.DataContext = null;
+            sekr.DataContext = viewModel;
+            this.Close();
+
         }
     }
 }

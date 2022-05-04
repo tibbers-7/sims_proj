@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Zdravo.Model;
 namespace Zdravo.ViewModel
 {
     internal class PatientChartViewModel
@@ -46,14 +46,14 @@ namespace Zdravo.ViewModel
                 idPatient = p.Id;
                 firstName = p.Ime;
                 lastName = p.Prezime;
-                allergens = new ObservableCollection<string>() { "AMMOXICILIN", "BETAKLAV"};
+                allergens = p.GetAllergens();
                 birthDate = p.DatumRodjenja.ToString("mm.dd.yyyy.");
                 address = p.Adresa;
                 if (p.pol == Zdravo.Gender.male)
                 {
-                    gender = 'M';
+                    gender = 'm';
                 }
-                else gender = 'F';
+                else gender = 'f';
                 switch (p.Status)
                 {
                     case Zdravo.MarriageStatus.married:

@@ -37,14 +37,15 @@ namespace Zdravo
         private int duration;
         public int Duration { get { return duration; } set { duration = value; } }
 
-        private RoomService rs=new RoomService();
+        private RoomController roomController=new RoomController();
+        private int doctorId;
         private ObservableCollection<int> rooms;
         public ObservableCollection<int> Rooms
         {
             get {
-                rooms = rs.getAllIds(); 
+                rooms = roomController.getAllIds(); 
                 return rooms; }
-            set { rooms = rs.getAllIds(); }
+            set { rooms = roomController.getAllIds(); }
         }
         private bool emergency;
         public bool Emergency { get { return emergency; } set { emergency = value; } }
@@ -54,9 +55,10 @@ namespace Zdravo
 
         private AppointmentController ac= new AppointmentController();
 
-        public NewAppointmentViewModel(int id)
+        public NewAppointmentViewModel(int id,int doctorId)
         {
             this.id = id;
+            this.doctorId = doctorId;
             // overriding the default empty window with specific appointment details
             if (id != 0)
             {
@@ -84,7 +86,7 @@ namespace Zdravo
         { 
                 if (id == 0)
                 {
-                    return ac.CreateAppointment(patientId, roomId, hour, minutes, duration,day,month,year,emergency);
+                    return ac.CreateAppointment(patientId,doctorId, roomId, hour, minutes, duration,day,month,year,emergency);
                 }
                 else return ac.UpdateAppointment(id, patientId, roomId, hour, minutes, duration,day,month,year,emergency);
 
