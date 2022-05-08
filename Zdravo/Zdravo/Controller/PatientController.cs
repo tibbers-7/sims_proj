@@ -44,8 +44,18 @@ namespace Controller
             Patient p = new Patient(ime, prezime, tbId, username, sifra, telefon, datumRodjenja, pol, adresa, guest, email,null);
             return p;
       }
-      
-      public bool DeletePatient(Patient izabran)
+
+        internal ObservableCollection<Patient> GetAll()
+        {
+            return service.GetAll();
+        }
+
+        internal Patient GetById(int patientId)
+        {
+            return service.GetById(patientId);
+        }
+
+        public bool DeletePatient(Patient izabran)
       {
             // TODO: implement
             p = new PatientRepository();

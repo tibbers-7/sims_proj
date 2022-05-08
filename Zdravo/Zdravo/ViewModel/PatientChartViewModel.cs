@@ -4,16 +4,18 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Zdravo.DoctorWindows;
 using Zdravo.Model;
 namespace Zdravo.ViewModel
 {
-    internal class PatientChartViewModel
+    public class PatientChartViewModel
     {
         private int appId;
-        private PatientRepository pRepo = new PatientRepository();
+        private PatientController patientController = new PatientController();
         private AppointmentController appointmentController = new AppointmentController();
         private int idPatient;
         public int IdPatient { get { return idPatient; } set { idPatient = value; } }
@@ -34,19 +36,59 @@ namespace Zdravo.ViewModel
         
         private ObservableCollection<string> allergens;
         public ObservableCollection<string> Allergens { get { return allergens; } set { allergens = value; } }
-
-
-        public PatientChartViewModel(int id)
+        private ObservableCollection<Report> reports;
+        private ObservableCollection<Prescription> prescriptions;
+        public ObservableCollection<Report> Reports
         {
-            appId = id;
-            Appointment appt=appointmentController.GetAppointment(id);
-            Patient p=pRepo.GetById(appt.Patient);
-            if (p != null)
+            get { return reports; }
+            set
             {
+                if (reports == value) return;
+                reports = patientController.GetReports(idPatient);
+                NotifyPropertyChanged("Reports");
+            }
+        }
+        public ObservableCollection<Prescription> Prescriptions
+        {
+            get { return prescriptions; }
+            set
+            {
+                if (prescriptions == value) return;
+                prescriptions = patientController.GetPrescriptions(idPatient);
+                NotifyPropertyChanged("Prescriptions");
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
+
+
+        public PatientChartViewModel(int apptId,int patientId)
+        {
+            Patient p;
+            if (apptId != 0)
+            {
+                Appointment appt = appointmentController.GetAppointment(apptId);
+                p = patientController.GetById(appt.Patient);
+                if (p == null) return;
+            }
+            else 
+            {
+                p=patientController.GetById(patientId);
+                if (p == null) return;
+            }
+
                 idPatient = p.Id;
                 firstName = p.Ime;
                 lastName = p.Prezime;
                 allergens = p.GetAllergens();
+                reports = patientController.GetReports(idPatient);
+                prescriptions = patientController.GetPrescriptions(idPatient);
                 birthDate = p.DatumRodjenja.ToString("mm.dd.yyyy.");
                 address = p.Adresa;
                 if (p.pol == Zdravo.Gender.male)
@@ -71,6 +113,28 @@ namespace Zdravo.ViewModel
                 }
                 
             }
+        
+
+        internal void ShowReport(int reportId)
+        {
+            foreach (Report r in reports)
+            {
+                if (r.Id == reportId)
+                {
+                    ReportWindow reportWindow = new ReportWindow(0, reportId, 1, this);
+                    reportWindow.Show();
+
+                    if (!reportWindow.IsActive) RefreshReports();
+                }
+            }
+
+        }
+
+        public void RefreshReports()
+        {
+            reports = patientController.GetReports(IdPatient);
+            prescriptions = patientController.GetPrescriptions(IdPatient);
+            //table.ItemsSource = Reports;
         }
     }
 

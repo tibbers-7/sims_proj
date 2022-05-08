@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Zdravo.ViewModel;
+using System.Windows.Threading;
 
 namespace Zdravo
 {
@@ -40,7 +41,16 @@ namespace Zdravo
             viewModel.NewAppointment();
         }
 
-        
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            DispatcherTimer timer = new DispatcherTimer(TimeSpan.FromSeconds(1), DispatcherPriority.Normal, (object s, EventArgs ev) =>
+            {
+                this.myDateTime.Text = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+            }, this.Dispatcher);
+            timer.Start();
+        }
+
+
 
         private void Row_DoubleClick(object sender, RoutedEventArgs e)
         {
@@ -50,9 +60,11 @@ namespace Zdravo
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //Environment.Exit(0);
             MainWindow m = new MainWindow();
             m.Show();
-            this.Close();
+            
+           this.Close();
             
         }
     }

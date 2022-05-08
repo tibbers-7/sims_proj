@@ -18,15 +18,14 @@ namespace Controller
    public class AppointmentController
    {
         private AppointmentService service;
-       private PatientRepository patientRepository;
+       private PatientController patientController;
         private RoomController roomController;
 
       public AppointmentController()
         {
             service = new AppointmentService();
             roomController = new RoomController();
-            //CHANGE
-            patientRepository = new PatientRepository();
+            patientController = new PatientController();
             
         }
 
@@ -36,17 +35,12 @@ namespace Controller
         }
 
         
-        // With changeable doctor
         public int CreateAppointment(int patientId, int doctor, int roomId, int hours, int minutes, int duration, int day, int month, int year, bool emergency)
         {
-            int errorCode = 0;
+            Patient p = patientController.GetById(patientId);
+            if (p == null) return 1;
+            
             DateOnly date = new DateOnly();
-
-            Patient p = patientRepository.GetById(patientId);
-            Room r = roomController.GetById(roomId);
-
-            if (p == null) errorCode = 1;
-            if(r == null) errorCode = 2;
             try
             {
                 date = new DateOnly(year, month, day);
@@ -54,30 +48,26 @@ namespace Controller
             catch (Exception e)
             {
                 // Invalid date error
-                errorCode = 3;
+                return 2;
             }
 
 
             TimeOnly _time = new TimeOnly(hours, minutes);
             DateTime datetime = date.ToDateTime(_time);
             int cmp = DateTime.Compare(datetime, DateTime.Now);
-            if (cmp < 0) errorCode = 4;   // Cannot make appointment in the past
+            if (cmp < 0) return 3;   // Cannot make appointment in the past
 
+            Appointment appt = new Appointment() { Date = date, Time = _time, Doctor = doctor, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency };
+            service.CreateAppointment(appt);
+            
 
-            if (errorCode == 0)
-            {
-                Appointment appt = new Appointment() { Date = date, Time = _time, Doctor = doctor, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency };
-                service.CreateAppointment(appt);
-            }
-
-            return errorCode;
+            return 0;
 
 
         }
 
         internal void AddPrescription(int patient, string selectedDrug, DateTime now)
         {
-            Patient p=patientRepository.GetById(patient);
             Prescription presc = new Prescription() { Date = DateOnly.FromDateTime(now), PatientId = patient };
             service.AddPrescription(presc,selectedDrug);
         }
@@ -88,9 +78,11 @@ namespace Controller
         }
 
         //should update in the patient's list too
-        public int UpdateAppointment(int id, int patientId, int roomId, int hours, int minutes, int duration, int day, int month, int year, bool emergency)
+        public int UpdateAppointment(int id, int patientId,int doctorId, int roomId, int hours, int minutes, int duration, int day, int month, int year, bool emergency)
         {
-            int errorCode = 0;
+            Patient p = patientController.GetById(patientId);
+            if (p == null) return 1;
+
             DateOnly date = new DateOnly();
             TimeOnly _time = new TimeOnly(hours, minutes);
             try
@@ -99,13 +91,16 @@ namespace Controller
             }
             catch (Exception e)
             {
-                errorCode = 3;
+                return 2;
             }
+            DateTime datetime = date.ToDateTime(_time);
+            int cmp = DateTime.Compare(datetime, DateTime.Now);
+            if (cmp < 0) return 3;   // Cannot make appointment in the past
 
-            // add proper doctor id
-            Appointment appt = new Appointment() { Id = id, Date = date, Time = _time, Doctor = 32, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency };
+            
+            Appointment appt = new Appointment() { Id = id, Date = date, Time = _time, Doctor = doctorId, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency };
             service.UpdateAppointment(appt);
-            return errorCode;
+            return 0;
         }
 
         //link report to patient
@@ -115,7 +110,7 @@ namespace Controller
             Report rpt = new Report() { Date = date, PatientId = appt.Patient, ReportString = report, Diagnosis = diagnosis };
 
             // Change to controller later
-            Patient p = patientRepository.GetById(appt.Patient);
+            Patient p = patientController.GetById(appt.Patient);
             p.AddReport(rpt);
             service.AddReport(rpt);
         }

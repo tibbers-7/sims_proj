@@ -55,13 +55,13 @@ namespace Zdravo.ViewModel
         {
             foreach(Report r in reports)
             {
-                if(r.Id == reportId)
+                /*if(r.Id == reportId)
                 {
                     ReportWindow reportWindow = new ReportWindow(0,reportId,1,this);
                     reportWindow.Show();
 
                     if (!reportWindow.IsActive) RefreshReports();
-                }
+                }*/
             }
             
         }

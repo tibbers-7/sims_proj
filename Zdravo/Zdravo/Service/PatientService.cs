@@ -65,6 +65,16 @@ namespace Service
             return new ObservableCollection<Prescription>(patient.Prescriptions);
         }
 
+        internal ObservableCollection<Patient> GetAll()
+        {
+            return p.GetAll();
+        }
+
+        internal Patient GetById(int patientId)
+        {
+            return p.GetById(patientId);
+        }
+
         internal ObservableCollection<Report> GetReports(int patientId)
         {
             Patient patient = p.GetById(patientId);

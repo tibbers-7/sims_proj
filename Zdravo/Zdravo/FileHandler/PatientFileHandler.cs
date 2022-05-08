@@ -38,13 +38,16 @@ namespace FileHandler
                 bool guest = false;
                 if (ss[9].Equals("true")) guest = true;
                 List<int> allergenIds = new List<int>();
-                String[] ids = ss[11].Split('.');
-                foreach (string stringic in ids)
+                if (ss.Length == 12)
                 {
-                    if (!stringic.Equals(""))
+                    String[] ids = ss[11].Split('.');
+                    foreach (string stringic in ids)
                     {
-                        
-                        allergenIds.Add(Int32.Parse(stringic));
+                        if (!stringic.Equals(""))
+                        {
+
+                            allergenIds.Add(Int32.Parse(stringic));
+                        }
                     }
                 }
                 Patient p = new Patient(ss[0], ss[1], id, ss[3], ss[4], ss[5], datum, pol, ss[8], guest, ss[10], allergenIds);

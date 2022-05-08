@@ -4,9 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo"
-        mc:Ignorable="d"
-        Title="DoctorHome" Height="450" Width="800" FontSize="15" FontFamily="Nirmala UI Semilight">
+        mc:Ignorable="d"  Loaded="Window_Loaded"
+        Title="DoctorHome" Height="564" Width="1042" FontSize="15" FontFamily="Nirmala UI Semilight" >
+    <Window.Resources>
+        <ControlTemplate x:Key="validationTemplate">
+            <Grid Height="Auto" Width="Auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
+                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+            </Grid>
+        </ControlTemplate>
+
+    </Window.Resources>
     <Grid>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="85*"/>
             <ColumnDefinition Width="624*"/>
@@ -14,20 +32,31 @@
         </Grid.ColumnDefinitions>
         <TabControl Grid.ColumnSpan="3">
             <TabItem Header="Pregledi">
-                <Grid Background="#FFACC3EE" Height="387" Margin="0,0,-2,0">
+
+                <Grid Background="#FFACC3EE" Height="514" Margin="0,0,-4,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="31*"/>
                         <ColumnDefinition Width="270*"/>
                         <ColumnDefinition Width="493*"/>
                     </Grid.ColumnDefinitions>
-                    <GroupBox Header="Opcije" Margin="10,10,10,231" Grid.ColumnSpan="2" Background="#FF6197C6 ">
+                    <GroupBox Header="Opcije" Margin="10,10,15,310" Grid.ColumnSpan="2" Background="#FF6197C6 ">
                         <Grid Margin="0,0,127,0">
-                            <Button Content="" Margin="38,13,34,40" Click="NewAppointment_Click" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                            <Label Content="Nov pregled" Margin="240,109,-118,-63" RenderTransformOrigin="1.211,0.422">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="-210.821"/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
+                            <Button  Margin="22,13,107,63" Click="NewAppointment_Click" BorderBrush="{x:Null}" Foreground="{x:Null}">
                                 <Button.Background>
                                     <ImageBrush ImageSource="/images/addNew.png"/>
                                 </Button.Background>
                             </Button>
-                            <Button Content="" Margin="153,13,-86,40" BorderBrush="{x:Null}">
+                            <Button  Margin="139,13,-13,63" BorderBrush="{x:Null}">
                                 <Button.Background>
                                     <ImageBrush ImageSource="/images/list.png"/>
                                 </Button.Background>
@@ -36,13 +65,84 @@
                         </Grid>
 
                     </GroupBox>
-                    <GroupBox Header="Odabir vremena" Margin="10,176,10,10" Grid.ColumnSpan="2" Background="#FF6197C6"/>
+                    <GroupBox Header="Odabir vremena" Margin="5,209,15,51" Grid.ColumnSpan="2" Background="#FF6197C6">
+                        <Grid>
+                            <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
+            
+        
+            x:Name="hour_tb"  Margin="105,135,203,57">
+                                <Binding Path="Hour" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
+                                        <local:NumericValidation ValidationStep="RawProposedValue"/>
+                                        <local:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="0" Max="24"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox>
+                            <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"
+            x:Name="minutes_tb"  Margin="196,136,114,37">
+                                <Binding Path="Minutes" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <local:NumericValidation ValidationStep="RawProposedValue"/>
+                                        <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
+                                        <local:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="0" Max="60"/>
+
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox>
+                            <Label Content="^" HorizontalAlignment="Left" Margin="122,104,0,0" VerticalAlignment="Top"/>
+                            <Label Content="^" HorizontalAlignment="Left" Margin="123,183,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="180.355"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
+                            <Label Content="^" HorizontalAlignment="Left" Margin="212,104,0,0" VerticalAlignment="Top"/>
+                            <Label Content="^" HorizontalAlignment="Left" Margin="212,186,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="180.355"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
+                            <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
+            
+        
+            x:Name="hour_tb_Copy"  Margin="105,135,203,37">
+                                <Binding Path="Hour" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <local:NumericValidation ValidationStep="RawProposedValue"/>
+                                        <local:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="0" Max="24"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox>
+                            <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"
+            x:Name="minutes_tb_Copy"  Margin="196,136,114,38">
+                                <Binding Path="Minutes" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
+                                        <local:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="0" Max="60"/>
+
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox>
+                            <Label Content=":" FontSize="10pt" HorizontalAlignment="Left" Margin="168,150,0,38" RenderTransformOrigin="25.685,0.599" Height="39"/>
+
+                        </Grid>
+                    </GroupBox>
 
                     <DataGrid ColumnWidth="*" x:Name="AppointmentTable"
                               IsReadOnly ="True"  SelectionMode="Single"
                               ItemsSource="{Binding Appointments, UpdateSourceTrigger=PropertyChanged}"
                               AutoGenerateColumns="False"
-                              Margin="0,10,0,46" Grid.Column="2" HorizontalAlignment="Left" Width="484" Background="#FFDADADA" >
+                              Margin="0,10,0,51" Grid.Column="2" HorizontalAlignment="Left" Width="617" Background="#FFDADADA" >
                         <DataGrid.CellStyle>
                             <Style TargetType="{x:Type DataGridCell}">
                                 <Style.Triggers>
@@ -55,8 +155,8 @@
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Width="2" Binding="{Binding Id}"/>
-                                <DataGridTextColumn Header="JMBG" Binding="{Binding Patient}"/>
-                                <DataGridTextColumn Header="Prostorija" Binding="{Binding Room}"  />
+                            <DataGridTextColumn Header="JMBG" Binding="{Binding Patient}"/>
+                            <DataGridTextColumn Header="Prostorija" Binding="{Binding Room}"  />
                             <DataGridTextColumn Header="Datum" Width="1*" Binding="{Binding Date}" />
                             <DataGridTextColumn Header="Vreme" Binding="{Binding Time}"/>
                             <DataGridTextColumn Header="Trajanje" Binding="{Binding Duration}" />
@@ -79,8 +179,45 @@
                             </Style>
                         </DataGrid.Resources>
                     </DataGrid>
-                    <Button Grid.Column="2" Content="Log out" HorizontalAlignment="Left" Margin="361,355,0,0" VerticalAlignment="Top" Height="22" Width="106" Click="Button_Click"/>
-
+                    <Button Grid.Column="2" Content="Log out" HorizontalAlignment="Left" Margin="441,468,0,0" VerticalAlignment="Top" Height="36" Width="176" Click="Button_Click"/>
+                    <Label Content="Nov Pregled" Margin="42,161,547,213" Grid.ColumnSpan="2"/>
+                    <Label Grid.Column="1" Content="Zahtevi pregleda" HorizontalAlignment="Left" Margin="110,140,0,0" VerticalAlignment="Top"/>
+                    <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"
+            x:Name="day_tb"  Margin="15,272,284,204" Grid.Column="1">
+                        <Binding Path="Day" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <local:NumericValidation ValidationStep="RawProposedValue"/>
+                                <local:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="1" Max="31"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox>
+                    <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"
+            
+        
+            x:Name="month_tb"  Margin="90,273,203,204" Grid.Column="1">
+                        <Binding Path="Month" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <local:NumericValidation ValidationStep="RawProposedValue"/>
+                                <local:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="1" Max="12"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox>
+                    <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"
+            
+        
+            x:Name="year_tb"  Margin="169,273,84,204" Grid.Column="1">
+                        <Binding Path="Year" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <local:NumericValidation ValidationStep="RawProposedValue"/>
+                                <local:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="2022" Max="2050"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox>
+                    <Label Content="/" FontSize="10pt" HorizontalAlignment="Left" Margin="75,273,0,202" Height="39" RenderTransformOrigin="1.294,-0.653" Grid.Column="1"/>
+                    <Label Content="/" FontSize="10pt" HorizontalAlignment="Left" Margin="152,273,0,202" RenderTransformOrigin="25.685,0.599" Height="39" Grid.Column="1"/>
+                    <Label Content="Dan" HorizontalAlignment="Left" Margin="18,246,0,0" VerticalAlignment="Top" Grid.Column="1" Height="32" Width="44"/>
+                    <Label Content="Mesec" HorizontalAlignment="Left" Margin="89,247,0,0" VerticalAlignment="Top" Grid.Column="1" Height="32" Width="63"/>
+                    <Label Content="Godina" HorizontalAlignment="Left" Margin="187,247,0,0" VerticalAlignment="Top" Grid.Column="1" Height="32" Width="69"/>
 
                 </Grid>
 
@@ -98,8 +235,10 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
-        <Label Content="Nov Pregled" Margin="38,146,481,172" Grid.ColumnSpan="2"/>
-        <Label Content="Zahtevi" Grid.Column="1" Margin="100,146,345,-146"/>
+
+        <StatusBar Grid.ColumnSpan="2" Margin="0,508,534,0">
+            <TextBlock x:FieldModifier="private" x:Name="myDateTime"/>
+        </StatusBar>
 
     </Grid>
 </Window>

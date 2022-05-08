@@ -12,10 +12,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using Zdravo.DoctorView;
 
 namespace Zdravo
 {
-    internal class NewAppointmentViewModel
+    public class NewAppointmentViewModel
     {
 
         private int patientId;
@@ -55,7 +56,8 @@ namespace Zdravo
 
         private AppointmentController ac= new AppointmentController();
 
-        public NewAppointmentViewModel(int id,int doctorId)
+        public NewAppointmentViewModel(
+            int id,int doctorId)
         {
             this.id = id;
             this.doctorId = doctorId;
@@ -82,15 +84,27 @@ namespace Zdravo
                 
             }
         }
+
+        internal void Choose()
+        {
+            ChoosePatient patientWindow = new ChoosePatient(this);
+            patientWindow.Show();
+        }
+
         public int CreateAppointment()
         { 
                 if (id == 0)
                 {
                     return ac.CreateAppointment(patientId,doctorId, roomId, hour, minutes, duration,day,month,year,emergency);
                 }
-                else return ac.UpdateAppointment(id, patientId, roomId, hour, minutes, duration,day,month,year,emergency);
+                else return ac.UpdateAppointment(id, patientId,doctorId, roomId, hour, minutes, duration,day,month,year,emergency);
 
          }
+
+        public void UpdatePatient(int patientId)
+        {
+            this.patientId=patientId;
+        }
             
     }
       

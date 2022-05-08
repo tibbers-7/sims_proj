@@ -47,7 +47,7 @@ namespace Repository
         }
       public ObservableCollection<Patient> GetAll()
       {
-            patients = fileHandler.read();
+            patients = new ObservableCollection<Patient> (fileHandler.Load());
             return patients;
       }
       

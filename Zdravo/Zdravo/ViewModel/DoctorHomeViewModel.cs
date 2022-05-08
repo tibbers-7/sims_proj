@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Zdravo.ViewModel
@@ -48,7 +49,7 @@ namespace Zdravo.ViewModel
         {
             AppointmentMenu menu = new AppointmentMenu(rowId, this,doctorId);
             menu.Show();
-            if (!menu.IsActive) RefreshAppointments();
+            
         }
         public void RefreshAppointments()
         {
@@ -60,7 +61,7 @@ namespace Zdravo.ViewModel
         public void NewAppointment()
         {
              NewAppointment newAppointment = new NewAppointment(this,0,doctorId);
-             newAppointment.Show();
+            newAppointment.Show();
         }
 
         protected void NotifyPropertyChanged(string propertyName)

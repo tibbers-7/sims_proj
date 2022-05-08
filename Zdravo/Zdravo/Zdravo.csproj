@@ -12,12 +12,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="DoctorWindows\accept.png" />
-    <None Remove="DoctorWindows\cancel.png" />
-    <None Remove="DoctorWindows\delete.png" />
-    <None Remove="DoctorWindows\drug.png" />
-    <None Remove="DoctorWindows\edit.png" />
-    <None Remove="DoctorWindows\report.png" />
+    <None Remove="DoctorView\accept.png" />
+    <None Remove="DoctorView\cancel.png" />
+    <None Remove="DoctorView\delete.png" />
+    <None Remove="DoctorView\drug.png" />
+    <None Remove="DoctorView\edit.png" />
+    <None Remove="DoctorView\report.png" />
     <None Remove="images\accept.png" />
     <None Remove="images\addNew.png" />
     <None Remove="images\calendar.png" />
