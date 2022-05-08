@@ -1,6 +1,13 @@
-﻿
+﻿C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 
 FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\DoctorHome.xaml;;
+FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\DoctorView\AppointmentMenu.xaml;;
+FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\DoctorView\ChoosePatient.xaml;;
+FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\DoctorView\NewAppointment.xaml;;
+FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\DoctorView\PatientApptHistory.xaml;;
+FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\DoctorView\PatientChart.xaml;;
+FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\DoctorView\PrescriptionWindow.xaml;;
+FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\DoctorView\ReportWindow.xaml;;
 FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\MainWindow.xaml;;
 FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\ManagerHome.xaml;;
 FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\managerView\AddEquipment.xaml;;
@@ -13,15 +20,8 @@ FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\PatientView\Allergens.xaml;;
 FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\PatientView\AppointmentManagement.xaml;;
 FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\PatientView\DatePriority.xaml;;
 FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\PatientView\DoctorPriority.xaml;;
-FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\PatientView\PriorityChoose.xaml;;
+FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\PatientView\EditAppointmentDate.xaml;;
 FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\PatientView\UpdatePatient.xaml;;
 FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\SecretaryHome.xaml;;
 FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\SekretarHome.xaml;;
-FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\DoctorView\AppointmentMenu.xaml;;
-FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\DoctorView\NewAppointment.xaml;;
-FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\DoctorView\PatientApptHistory.xaml;;
-FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\DoctorView\PatientChart.xaml;;
-FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\DoctorView\PrescriptionWindow.xaml;;
-FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\DoctorView\ReportWindow.xaml;;
-FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\DoctorView\ChoosePatient.xaml;;
 
