@@ -3,12 +3,9 @@
 // Created: Monday, March 28, 2022 2:51:36 PM
 // Purpose: Definition of Class Doctor
 
-using System;
-using Zdravo;
-
 namespace Model
 {
-   public class Doctor 
+    public class Doctor 
    {
         private int id;
         public int Id => id;
@@ -26,7 +23,7 @@ namespace Model
         {
             this.id = id;
             this.name = name;
-                this.lastName = ln;
+            this.lastName = ln;
             this.specialization = spec;
         }
     }

@@ -10,9 +10,6 @@
     <Compile Update="DoctorView\ChoosePatient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="DoctorView\PatientApptHistory.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="DoctorView\PatientChart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -49,9 +46,6 @@
     <Compile Update="PatientView\AppointmentManagement.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="PatientView\DatePriority.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="PatientView\DoctorPriority.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -70,9 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="DoctorView\ChoosePatient.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="DoctorView\PatientApptHistory.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DoctorView\PatientChart.xaml">
@@ -118,9 +109,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="PatientView\AppointmentManagement.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="PatientView\DatePriority.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="PatientView\DoctorPriority.xaml">

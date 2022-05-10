@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Zdravo.Model;
+using Model;
 
-namespace Zdravo.FileHandler
+namespace FileHandler
 {
     internal class DrugFileHandler
     {
@@ -15,22 +12,18 @@ namespace Zdravo.FileHandler
 
         public List<Drug> Read()
         {
-
-
-            List<Drug> drugList = new List<Drug>();
+            List<Drug> list = new List<Drug>();
 
             foreach (string line in File.ReadLines(filePath))
             {
-                //|1|43243|F22|8/10/2021|Polomljena noga
-
                 Regex regexObj = new Regex("#(\\d+)#(\\w+)#([\\w\\s;]*)");
                 Match matchResult = regexObj.Match(line);
                 if (matchResult.Success)
                 {
                     if (line.Equals("")) break;
                     Drug drug = new Drug();
-                    drug.fromCSV(matchResult.Groups);
-                    drugList.Add(drug);
+                    drug.FromCSV(matchResult.Groups);
+                    list.Add(drug);
                 }
                 else
                 {
@@ -39,13 +32,13 @@ namespace Zdravo.FileHandler
                 }
 
             }
-            return drugList;
+            return list;
         }
 
         public void Write(Drug drug, int j)
         {
             string[] lines = System.IO.File.ReadAllLines(filePath);
-            List<Drug> reportList = Read();
+            List<Drug> list = Read();
             string[] newLines = new string[lines.Length];
 
             switch (j)
@@ -58,7 +51,7 @@ namespace Zdravo.FileHandler
                         {
                             newLines[i] = lines[i];
                         }
-                        newLines[lines.Length] = drug.toCSV();
+                        newLines[lines.Length] = drug.ToCSV();
 
                         break;
                     }
@@ -66,11 +59,10 @@ namespace Zdravo.FileHandler
                 case 1:
                     {
                         int i = 0;
-                        //newLines = new string[reportList.Count];
-                        foreach (Drug newDrug in reportList)
+                        foreach (Drug newDrug in list)
                         {
-                            if (newDrug.Id == drug.Id) newLines[i] = drug.toCSV();
-                            else newLines[i] = newDrug.toCSV();
+                            if (newDrug.Id == drug.Id) newLines[i] = drug.ToCSV();
+                            else newLines[i] = newDrug.ToCSV();
                             i++;
                         }
                         break;
@@ -81,11 +73,11 @@ namespace Zdravo.FileHandler
                     {
                         newLines = new string[lines.Length - 1];
                         int i = 0;
-                        foreach (Drug newDrug in reportList)
+                        foreach (Drug newDrug in list)
                         {
                             if (newDrug.Id != drug.Id)
                             {
-                                newLines[i] = newDrug.toCSV();
+                                newLines[i] = newDrug.ToCSV();
                                 i++;
                             }
                         }

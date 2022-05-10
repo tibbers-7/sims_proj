@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Repo;
 using System.Collections.ObjectModel;
 using Model;
 using Zdravo.Model;
@@ -24,23 +23,26 @@ namespace Zdravo.PatientView
     /// </summary>
     public partial class DoctorPriority : Window
     {
-        private AppointmentManagement ap;
-        public DoctorPriority(AppointmentManagement am)
+        private AppointmentController appointmentController;
+        private AppointmentManagement appointmentManagementWindow;
+        private  DoctorRepository doctorRepository = new DoctorRepository();
+        private AppointmentRepository appointmentRepository = new AppointmentRepository();
+        public DoctorPriority(AppointmentManagement parentWindow)
         {
+            var app = Application.Current as App;
+            appointmentController = app.appointmentController;
             InitializeComponent();
-            this.ap = am;
-            DoctorRepository d = new DoctorRepository();
-            AppointmentRepository a=new AppointmentRepository();
-            foreach(Doctor doctor in d.getAll())
+            this.appointmentManagementWindow = parentWindow;
+            foreach(Doctor doctor in doctorRepository.getAll())
             {
                 comboBoxDoctors.Items.Add(doctor.Id+"-"+doctor.Name + " " + doctor.LastName+","+doctor.Specialization);
             }
             comboBoxDoctors.SelectedIndex = 0;
-            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(a.GetAll());
+            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(appointmentRepository.GetAll());
             datePicker.SelectedDate = DateTime.Now;
-            String date=datePicker.SelectedDate.ToString();
-            String datee = date.Split(" ")[0];
-            DateOnly dateonly = DateOnly.Parse(datee);
+            String selectedDate=datePicker.SelectedDate.ToString();
+            String dateStringForParsing = selectedDate.Split(" ")[0];
+            DateOnly dateonly = DateOnly.Parse(dateStringForParsing);
             foreach(Appointment appointment in appointments)
             {
                 int doctorId = Int32.Parse(comboBoxDoctors.SelectedItem.ToString().Split("-")[0]);
@@ -59,35 +61,28 @@ namespace Zdravo.PatientView
             int doctorId = Int32.Parse(comboBoxDoctors.SelectedItem.ToString().Split("-")[0]);
             String jmbg = jmbgTb.Text;
             int patientId = Int32.Parse(jmbg);
-            String date = datePicker.SelectedDate.ToString();
-            String datee = date.Split(" ")[0];
-            AppointmentController appointmentController = new AppointmentController();
-            //  (int patientId, int roomId, int hours, int minutes, int duration, int day, int month, int year, bool emergency)
-            appointmentController.CreateAppointment(patientId, doctorId,1, Int32.Parse(timeTb.Text.Split(":")[0]),Int32.Parse(timeTb.Text.Split(":")[1]), Int32.Parse(durationTb.Text),Int32.Parse( datee.Split("/")[1]), Int32.Parse(datee.Split("/")[0]),Int32.Parse(datee.Split("/")[2]), false);
-            this.ap.viewModel.Refresh();
-            this.ap.DataContext = null;
-            this.ap.DataContext = this.ap.viewModel;
+            String selectedDate = datePicker.SelectedDate.ToString();
+            String dateStringForParsing = selectedDate.Split(" ")[0];
+            appointmentController.CreateAppointment(patientId, doctorId,1, Int32.Parse(timeTb.Text.Split(":")[0]),Int32.Parse(timeTb.Text.Split(":")[1]), Int32.Parse(durationTb.Text),Int32.Parse(dateStringForParsing.Split("/")[1]), Int32.Parse(dateStringForParsing.Split("/")[0]),Int32.Parse(dateStringForParsing.Split("/")[2]), false);
+            this.appointmentManagementWindow.viewModel.Refresh();
+            this.appointmentManagementWindow.DataContext = null;
+            this.appointmentManagementWindow.DataContext = this.appointmentManagementWindow.viewModel;
             this.Close();
         }
 
         private void datePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             busySlots.Items.Clear();
-            AppointmentRepository a = new AppointmentRepository();
-            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(a.GetAll());
-            String date = datePicker.SelectedDate.ToString();
-            String datee = date.Split(" ")[0];
-            DateOnly dateonly = DateOnly.Parse(datee);
+            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(appointmentRepository.GetAll());
+            String selectedDate = datePicker.SelectedDate.ToString();
+            String dateForParsing = selectedDate.Split(" ")[0];
+            DateOnly dateonly = DateOnly.Parse(dateForParsing);
             int doctorId = Int32.Parse(comboBoxDoctors.SelectedItem.ToString().Split("-")[0]);
             foreach (Appointment appointment in appointments)
             {
-                
-                if (doctorId == appointment.Doctor)
+                if (doctorId == appointment.Doctor && dateonly==appointment.Date)
                 {
-                    if (dateonly == appointment.Date)
-                    {
                         busySlots.Items.Add(appointment.Time.ToString()+"("+appointment.Duration.ToString()+" mins)");
-                    }
                 }
             }
             busySlots.SelectedIndex = 0;

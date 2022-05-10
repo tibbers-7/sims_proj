@@ -4,7 +4,6 @@
 // Purpose: Definition of Class AppointmentService
 
 using Model;
-using Repo;
 using Repository;
 using System;
 using System.Collections.Generic;

@@ -67,5 +67,15 @@ namespace Zdravo
            this.Close();
             
         }
+
+        private void Referral_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void VacationButton_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

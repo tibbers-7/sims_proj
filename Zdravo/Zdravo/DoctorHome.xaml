@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo"
         mc:Ignorable="d"  Loaded="Window_Loaded"
-        Title="DoctorHome" Height="564" Width="1042" FontSize="15" FontFamily="Nirmala UI Semilight" >
+        Title="DoctorHome" Height="564" Width="1042" FontSize="17" FontFamily="Microsoft YaHei UI" >
     <Window.Resources>
         <ControlTemplate x:Key="validationTemplate">
             <Grid Height="Auto" Width="Auto">
@@ -31,17 +31,17 @@
             <ColumnDefinition Width="91*"/>
         </Grid.ColumnDefinitions>
         <TabControl Grid.ColumnSpan="3">
-            <TabItem Header="Pregledi">
+            <TabItem Header="Pregledi" FontFamily="Yu Gothic">
 
-                <Grid Background="#FFACC3EE" Height="514" Margin="0,0,-4,0">
+                <Grid Background="#FF373F47" Height="514" Margin="0,0,-4,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="31*"/>
                         <ColumnDefinition Width="270*"/>
                         <ColumnDefinition Width="493*"/>
                     </Grid.ColumnDefinitions>
-                    <GroupBox Header="Opcije" Margin="10,10,15,310" Grid.ColumnSpan="2" Background="#FF6197C6 ">
+                    <GroupBox Header="Opcije" Margin="10,10,15,310" Grid.ColumnSpan="2" Background="#FFAAABBC">
                         <Grid Margin="0,0,127,0">
-                            <Label Content="Nov pregled" Margin="240,109,-118,-63" RenderTransformOrigin="1.211,0.422">
+                            <Label Content="Nov pregled" Margin="221,99,-103,10" RenderTransformOrigin="1.211,0.422">
                                 <Label.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform ScaleX="1"/>
@@ -51,21 +51,36 @@
                                     </TransformGroup>
                                 </Label.RenderTransform>
                             </Label>
-                            <Button  Margin="22,13,107,63" Click="NewAppointment_Click" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                            <Button  Margin="22,13,115,63" Click="NewAppointment_Click" BorderBrush="{x:Null}" Foreground="{x:Null}">
                                 <Button.Background>
                                     <ImageBrush ImageSource="/images/addNew.png"/>
                                 </Button.Background>
                             </Button>
-                            <Button  Margin="139,13,-13,63" BorderBrush="{x:Null}">
+                            <Button  Margin="242,13,-116,63" BorderBrush="{x:Null}">
                                 <Button.Background>
                                     <ImageBrush ImageSource="/images/list.png"/>
                                 </Button.Background>
                             </Button>
+                            <Button  Margin="137,13,0,63" Click="Referral_Click" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/referral.png"/>
+                                </Button.Background>
+                            </Button>
+                            <Label Content="Uput" Margin="369,99,-243,10" RenderTransformOrigin="1.211,0.422">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="-210.821"/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
 
                         </Grid>
 
                     </GroupBox>
-                    <GroupBox Header="Odabir vremena" Margin="5,209,15,51" Grid.ColumnSpan="2" Background="#FF6197C6">
+                    <GroupBox Header="Odabir vremena" Margin="5,209,15,67" Grid.ColumnSpan="2" Background="#FF6C91C2" Foreground="White">
                         <Grid>
                             <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
             
@@ -102,7 +117,7 @@
                                 </Label.RenderTransform>
                             </Label>
                             <Label Content="^" HorizontalAlignment="Left" Margin="212,104,0,0" VerticalAlignment="Top"/>
-                            <Label Content="^" HorizontalAlignment="Left" Margin="212,186,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                            <Label Content="^" HorizontalAlignment="Left" Margin="207,168,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="35" Width="29">
                                 <Label.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -142,7 +157,7 @@
                               IsReadOnly ="True"  SelectionMode="Single"
                               ItemsSource="{Binding Appointments, UpdateSourceTrigger=PropertyChanged}"
                               AutoGenerateColumns="False"
-                              Margin="0,10,0,51" Grid.Column="2" HorizontalAlignment="Left" Width="617" Background="#FFDADADA" >
+                              Margin="353,27,0,67" Grid.Column="1" HorizontalAlignment="Left" Width="617" Background="#FFDCE1DE" Grid.ColumnSpan="2" >
                         <DataGrid.CellStyle>
                             <Style TargetType="{x:Type DataGridCell}">
                                 <Style.Triggers>
@@ -154,7 +169,7 @@
                         </DataGrid.CellStyle>
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Width="2" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="ID" Width="2" Binding="{Binding Id}" MaxWidth="0"/>
                             <DataGridTextColumn Header="JMBG" Binding="{Binding Patient}"/>
                             <DataGridTextColumn Header="Prostorija" Binding="{Binding Room}"  />
                             <DataGridTextColumn Header="Datum" Width="1*" Binding="{Binding Date}" />
@@ -179,9 +194,9 @@
                             </Style>
                         </DataGrid.Resources>
                     </DataGrid>
-                    <Button Grid.Column="2" Content="Log out" HorizontalAlignment="Left" Margin="441,468,0,0" VerticalAlignment="Top" Height="36" Width="176" Click="Button_Click"/>
+                    <Button Grid.Column="2" Content="Log out" HorizontalAlignment="Left" Margin="441,452,0,0" VerticalAlignment="Top" Height="36" Width="176" Click="Button_Click"/>
                     <Label Content="Nov Pregled" Margin="42,161,547,213" Grid.ColumnSpan="2"/>
-                    <Label Grid.Column="1" Content="Zahtevi pregleda" HorizontalAlignment="Left" Margin="110,140,0,0" VerticalAlignment="Top"/>
+                    <Label Grid.Column="1" Content="Zahtevi" HorizontalAlignment="Left" Margin="239,137,0,0" VerticalAlignment="Top"/>
                     <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"
             x:Name="day_tb"  Margin="15,272,284,204" Grid.Column="1">
                         <Binding Path="Day" UpdateSourceTrigger="PropertyChanged">
@@ -232,13 +247,43 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
             <TabItem Header="Slobodni dani">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Rectangle Stroke="Black" Fill="#FF8B8982"/>
+                    <GroupBox Header="Odaberite tip" Margin="103,42,103,337" Background="#FF373F47" Foreground="White" FontWeight="Normal">
+                        <Grid>
+                            <RadioButton Content="Godišnji odmor" HorizontalAlignment="Left" Margin="117,0,0,-12" Height="80" VerticalAlignment="Bottom" FontSize="30" Foreground="White"/>
+                            <RadioButton Content="Bolovanje" HorizontalAlignment="Left" Margin="517,21,0,-20" FontSize="30" Foreground="White"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox Header="Odaberite vremenski period" Margin="51,176,51,130" Background="#FF6C91C2" Foreground="White">
+                        <Grid>
+                            <TextBox HorizontalAlignment="Left" Margin="122,27,0,71" TextWrapping="Wrap" Text="" Width="272"/>
+                            <TextBox HorizontalAlignment="Left" Margin="545,27,0,71" TextWrapping="Wrap" Text="" Width="272"/>
+                            <CheckBox Content="HITNO" Margin="407,111,295,-111" Foreground="White" FontSize="30"/>
+                        </Grid>
+                    </GroupBox>
+                    <Grid>
+
+                    </Grid>
+
+                    <Button x:Name="Schedule" Content="" Margin="466,409,466,10" Click="VacationButton_Click" BorderBrush="{x:Null}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/images/accept.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Label Content="-" Margin="504,206,466,204" Foreground="White" FontSize="60"/>
+                </Grid>
             </TabItem>
         </TabControl>
 
         <StatusBar Grid.ColumnSpan="2" Margin="0,508,534,0">
             <TextBlock x:FieldModifier="private" x:Name="myDateTime"/>
         </StatusBar>
+
+
+
+
 
     </Grid>
 </Window>

@@ -6,13 +6,12 @@
 using Model;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Text.RegularExpressions;
 
 namespace FileHandler
 {
-   public class AppointmentFileHandler
+    public class AppointmentFileHandler
    {
       private static readonly string filePath= "data/appointments.csv";
 
@@ -20,33 +19,25 @@ namespace FileHandler
       {
 
 
-            List<Appointment> apList = new List<Appointment>();
+            List<Appointment> list = new List<Appointment>();
 
             foreach (string line in File.ReadLines(filePath))
             {
-                    
-
                     Regex regexObj = new Regex("(\\d+),(\\d+),(\\w+),(\\d+/\\d+/\\d+),(\\d+:\\d{2}),(\\d+),(\\d+),(Y|N)");
                     Match matchResult = regexObj.Match(line);
                     if (matchResult.Success)
                     {
                         Appointment ap = new Appointment();
                         ap.FromCSV(matchResult.Groups);
-                        apList.Add(ap);
+                        list.Add(ap);
                     }
                     else
                     {
                         if (line.Equals("")) break;
                         throw new ArgumentException("Regex issue");
                     }
-                
             }
-
-            
-
-            return apList;
-
-
+            return list;
         }
       
        // j:
@@ -56,7 +47,7 @@ namespace FileHandler
       public void Write(Appointment apt, int j)
       {
             string[] lines = System.IO.File.ReadAllLines(filePath);
-            List<Appointment> apList = Read();
+            List<Appointment> list = Read();
             string[] newLines=new string[lines.Length];
 
             switch (j)
@@ -77,7 +68,7 @@ namespace FileHandler
                 case 1:
                     { 
                         int i = 0;
-                        foreach (Appointment newApt in apList)
+                        foreach (Appointment newApt in list)
                         {
                             if (newApt.Id == apt.Id) newLines[i] = apt.ToCSV(); 
                             else newLines[i] = newApt.ToCSV();
@@ -91,7 +82,7 @@ namespace FileHandler
                     {
                         newLines = new string[lines.Length - 1];
                         int i = 0;
-                        foreach (Appointment newApt in apList)
+                        foreach (Appointment newApt in list)
                         {
                             if (newApt.Id != apt.Id)
                             {

@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Zdravo.Model;
+using Model;
 
-namespace Zdravo.FileHandler
+namespace FileHandler
 {
     internal class PrescriptionFileHandler
     {
         private static readonly string filePath = "data/prescriptions.csv";
-        List<Prescription> prescriptionList = new List<Prescription>();
+        List<Prescription> list = new List<Prescription>();
         public List<Prescription> Read()
         {
             foreach (string line in File.ReadLines(filePath))
@@ -26,7 +23,7 @@ namespace Zdravo.FileHandler
                 {
                     Prescription prescription = new Prescription();
                     prescription.FromCSV(matchResult.Groups);
-                    prescriptionList.Add(prescription);
+                    list.Add(prescription);
                 }
                 else
                 {
@@ -34,13 +31,13 @@ namespace Zdravo.FileHandler
                 }
 
             }
-            return prescriptionList;
+            return list;
         }
 
         public void Write(Prescription prescription, int j)
         {
             string[] lines = System.IO.File.ReadAllLines(filePath);
-            List<Prescription> apList = Read();
+            List<Prescription> list = Read();
             string[] newLines = new string[lines.Length];
 
             switch (j)
@@ -63,9 +60,8 @@ namespace Zdravo.FileHandler
                     {
                         newLines = new string[lines.Length - 1];
                         int i = 0;
-                        foreach (Prescription newPrescription in apList)
+                        foreach (Prescription newPrescription in list)
                         {
-                       //     if (newPrescription.Id != prescription.Id)
                             {
                                 newLines[i] = newPrescription.ToCSV();
                                 i++;

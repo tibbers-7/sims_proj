@@ -33,4 +33,10 @@ namespace Zdravo
         widow,
         divorced
     }
+    public enum AccountType
+    {
+        sekretar,
+        lekar,
+        upravnik
+    }
 }

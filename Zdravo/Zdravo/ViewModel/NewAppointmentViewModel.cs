@@ -13,8 +13,10 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Zdravo.DoctorView;
+using Zdravo.DoctorWindows;
+using System.Windows;
 
-namespace Zdravo
+namespace Zdravo.ViewModel
 {
     public class NewAppointmentViewModel
     {
@@ -54,17 +56,20 @@ namespace Zdravo
         private Appointment appt;
         private int id;
 
-        private AppointmentController ac= new AppointmentController();
+        private AppointmentController apptController;
 
-        public NewAppointmentViewModel(
-            int id,int doctorId)
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public NewAppointmentViewModel(int id,int doctorId)
         {
+            var app = Application.Current as App;
+            apptController = app.appointmentController;
             this.id = id;
             this.doctorId = doctorId;
             // overriding the default empty window with specific appointment details
             if (id != 0)
             {
-                appt = ac.GetAppointment(id);
+                appt = apptController.GetAppointment(id);
                 patientId = appt.Patient;
                 roomId = appt.Room;  
                 duration = appt.Duration;
@@ -85,7 +90,14 @@ namespace Zdravo
             }
         }
 
-        internal void Choose()
+        internal void ShowChart(int id)
+        {
+            Appointment appt= apptController.GetAppointment(id);
+            PatientChart chartWindow = new PatientChart(0, appt.Patient);
+            chartWindow.Show();
+        }
+
+        internal void ChoosePatient()
         {
             ChoosePatient patientWindow = new ChoosePatient(this);
             patientWindow.Show();
@@ -95,9 +107,9 @@ namespace Zdravo
         { 
                 if (id == 0)
                 {
-                    return ac.CreateAppointment(patientId,doctorId, roomId, hour, minutes, duration,day,month,year,emergency);
+                    return apptController.CreateAppointment(patientId,doctorId, roomId, hour, minutes, duration,day,month,year,emergency);
                 }
-                else return ac.UpdateAppointment(id, patientId,doctorId, roomId, hour, minutes, duration,day,month,year,emergency);
+                else return apptController.UpdateAppointment(id, patientId,doctorId, roomId, hour, minutes, duration,day,month,year,emergency);
 
          }
 

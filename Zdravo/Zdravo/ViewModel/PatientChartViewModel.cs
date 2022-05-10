@@ -16,7 +16,7 @@ namespace Zdravo.ViewModel
     {
         private int appId;
         private PatientController patientController = new PatientController();
-        private AppointmentController appointmentController = new AppointmentController();
+        private AppointmentController appointmentController;
         private int idPatient;
         public int IdPatient { get { return idPatient; } set { idPatient = value; } }
         private string lastName;

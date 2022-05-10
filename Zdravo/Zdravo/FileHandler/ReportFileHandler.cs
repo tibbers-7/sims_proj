@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Zdravo.Model;
+using Model;
 
-namespace Zdravo.FileHandler
+namespace FileHandler
 {
     internal class ReportFileHandler
     {
@@ -18,7 +14,7 @@ namespace Zdravo.FileHandler
         {
 
 
-            List<Report> reportList = new List<Report>();
+            List<Report> list = new List<Report>();
 
             foreach (string line in File.ReadLines(filePath))
             {
@@ -31,7 +27,7 @@ namespace Zdravo.FileHandler
                     if (line.Equals("")) break;
                     Report report = new Report();
                     report.FromCSV(matchResult.Groups);
-                    reportList.Add(report);
+                    list.Add(report);
                 }
                 else
                 {
@@ -40,13 +36,13 @@ namespace Zdravo.FileHandler
                 }
 
             }
-            return reportList;
+            return list;
         }
 
         public void Write(Report report, int j)
         {
             string[] lines = System.IO.File.ReadAllLines(filePath);
-            List<Report> reportList = Read();
+            List<Report> list = Read();
             string[] newLines = new string[lines.Length];
 
             switch (j)
@@ -68,7 +64,7 @@ namespace Zdravo.FileHandler
                     {
                         int i = 0;
                         //newLines = new string[reportList.Count];
-                        foreach (Report newReport in reportList)
+                        foreach (Report newReport in list)
                         {
                             if (newReport.Id == report.Id) newLines[i] = report.ToCSV();
                             else newLines[i] = newReport.ToCSV();
@@ -82,7 +78,7 @@ namespace Zdravo.FileHandler
                     {
                         newLines = new string[lines.Length - 1];
                         int i = 0;
-                        foreach (Report newReport in reportList)
+                        foreach (Report newReport in list)
                         {
                             if (newReport.Id != report.Id)
                             {

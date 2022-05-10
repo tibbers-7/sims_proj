@@ -6,11 +6,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Zdravo.Model;
 
 namespace Model
 {
-   public class Appointment
+    public class Appointment
    {
         private int id;
         public int Id { get { return id; } set { id = value; } }
@@ -20,8 +19,6 @@ namespace Model
         public DateOnly Date { get { return date; } set { date = value; } }
         private int duration;
         public int Duration { get { return duration; } set { duration = value; } }
-
-        //TODO: Change to appropriate classes after their implementation
         private int doctor;
         public int Doctor { get { return doctor; } set { doctor = value; } }
         private int patient;

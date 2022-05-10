@@ -23,8 +23,8 @@
 
         </DataTemplate>
     </Window.Resources>
-    <Grid Background="#FF6197C6">
-        <ListBox SelectedItem="{Binding SelectedDrug}" ItemsSource="{Binding Drugs}" Margin="42,31,42,98"/>
+    <Grid Background="#FFAAABBC">
+        <ListBox SelectedItem="{Binding SelectedDrug}" ItemsSource="{Binding Drugs}" Margin="42,31,42,98" Background="#FF6C91C2"/>
         <Button Content="" Margin="87,329,191,28" Click="AcceptButton_Click" BorderBrush="{x:Null}" >
             <Button.Background>
                 <ImageBrush ImageSource="/images/accept.png"/>

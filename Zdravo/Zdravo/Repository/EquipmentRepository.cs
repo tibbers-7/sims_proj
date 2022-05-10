@@ -5,9 +5,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Zdravo.FileHandler;
+using FileHandler;
 
-namespace Zdravo.Repository
+namespace Repository
 {
     public class EquipmentRepository
     {

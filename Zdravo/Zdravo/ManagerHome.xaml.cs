@@ -14,8 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
 using Zdravo.managerView;
-using Zdravo.Service;
 using System.Threading;
+using Service;
+using BasicRenovation = Zdravo.managerView.BasicRenovation;
 
 namespace Zdravo
 {

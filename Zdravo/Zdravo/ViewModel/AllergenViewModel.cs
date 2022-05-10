@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FileHandler;
 using System.Collections.ObjectModel;
 using Zdravo.Model;
-using Zdravo.Service;
+using Service;
 using Model;
 using System.ComponentModel;
 using Zdravo.Repository;

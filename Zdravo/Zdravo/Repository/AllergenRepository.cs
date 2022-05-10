@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Zdravo.FileHandler;
-using Zdravo.Model;
+﻿using FileHandler;
+using Model;
 using System.Collections.ObjectModel;
 
-namespace Zdravo.Repository
+namespace Repository
 {
     public class AllergenRepository
     {

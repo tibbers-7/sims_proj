@@ -4,14 +4,15 @@
 // Purpose: Definition of Class AppointmentController
 
 using Model;
-using Repo;
 using Repository;
 using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Zdravo;
 using Zdravo.Model;
 using Zdravo.Repository;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Controller
 {
@@ -21,8 +22,9 @@ namespace Controller
        private PatientController patientController;
         private RoomController roomController;
 
-      public AppointmentController()
+      public AppointmentController(AppointmentService _service)
         {
+            service = _service;
             service = new AppointmentService();
             roomController = new RoomController();
             patientController = new PatientController();

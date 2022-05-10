@@ -38,9 +38,10 @@ namespace Zdravo.ViewModel
 
         public DoctorHomeViewModel(DataGrid table,int doctorId)
         {
+            var app = Application.Current as App;
+            apController = app.appointmentController;
             this.table = table;
             this.doctorId=doctorId;
-            apController = new AppointmentController();
             appointments = new ObservableCollection<Appointment>(apController.GetAppointmentsForDoctor(doctorId));
             
         }

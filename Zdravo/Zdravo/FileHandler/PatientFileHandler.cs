@@ -6,17 +6,12 @@
 
 using System;
 using Model;
-using Controller;
-using Service;
-using FileHandler;
-using Repository;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Zdravo;
-using Zdravo.Model;
 namespace FileHandler
 {
-   public class PatientFileHandler
+    public class PatientFileHandler
    {
         public List<Patient> Load()
         {
@@ -50,6 +45,7 @@ namespace FileHandler
                         }
                     }
                 }
+                // darko,filipovic,2
                 Patient p = new Patient(ss[0], ss[1], id, ss[3], ss[4], ss[5], datum, pol, ss[8], guest, ss[10], allergenIds);
                 pacijenti.Add(p);
             }

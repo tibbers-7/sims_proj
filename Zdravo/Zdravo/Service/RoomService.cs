@@ -3,8 +3,8 @@ using Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Zdravo;
-using Zdravo.Repository;
-using Zdravo.Model;
+using Repository;
+using Model;
 
 namespace Service
 {

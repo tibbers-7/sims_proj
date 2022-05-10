@@ -6,7 +6,6 @@
 
 using System;
 using Zdravo;
-using ZdravoCorporation.Model;
 
 namespace Model
 {

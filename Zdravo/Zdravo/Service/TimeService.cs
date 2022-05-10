@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Zdravo.Model;
+using Model;
 using Zdravo.Repository;
 using Zdravo.ViewModel;
 
-namespace Zdravo.Service
+namespace Service
 {
     public class TimeService
     {

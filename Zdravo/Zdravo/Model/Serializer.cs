@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 
 
-namespace ZdravoCorporation.Model
+namespace Model
 {
     class Serializer<T> where T : Serializable, new()
     {

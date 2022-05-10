@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Zdravo"
         
         mc:Ignorable="d"
-        Title="NewAppointment" Height="506" Width="478" FontSize="15">
+        Title="NewAppointment" Height="489" Width="471" FontSize="15">
 
     <Window.Resources>
         <ControlTemplate x:Key="validationTemplate">
@@ -27,15 +27,17 @@
     </Window.Resources>
 
 
-    <Grid Margin="0,0,0,-6" Background="#FFACC3EE" >
+    <Grid Margin="0,0,0,-6">
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="111*"/>
             <ColumnDefinition Width="364*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="Pacijent" Margin="6,7,10,394" Grid.ColumnSpan="2" Background="#FF6197C6"/>
-        <Label Content="JMBG:" HorizontalAlignment="Left" Margin="42,36,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Rectangle Margin="0,0,0,112" Fill="#FF6C91C2" Grid.ColumnSpan="2" />
+        <GroupBox Header="Pacijent" Margin="6,7,10,378" Grid.ColumnSpan="2" Background="#FF8B8982"/>
+        <Label Content="JMBG:" HorizontalAlignment="Left" Margin="42,32,0,0" VerticalAlignment="Top"/>
         <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"  
-                  x:Name="patientId_tb" HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Background="#FFE7D2D2" Grid.Column="1" Height="25" >
+                  x:Name="patientId_tb" HorizontalAlignment="Left" Margin="10,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Background="#FFE7D2D2" Grid.Column="1" Height="25" >
             <Binding Path="PatientId" UpdateSourceTrigger="PropertyChanged"  Mode="TwoWay">
                 <Binding.ValidationRules>
                     <local:NumericValidation ValidationStep="RawProposedValue"/>
@@ -45,7 +47,7 @@
         </TextBox>
         <Label Content="Sala:" HorizontalAlignment="Left" Margin="47,235,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.293,0.522"/>
         <CheckBox IsChecked="{Binding Emergency}" x:Name="emergency_cb" Content="Hitno" HorizontalAlignment="Left" Margin="99,283,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Button x:Name="patientButton" Content="Pregled Pacijenta" HorizontalAlignment="Left" Margin="225,36,0,0" VerticalAlignment="Top" Height="29" Width="104" Click="Patient_Click" Grid.Column="1" FontSize="12" Background="MidnightBlue" Foreground="White"/>
+        <Button x:Name="patientButton" Content="Pregled Pacijenta" HorizontalAlignment="Left" Margin="225,36,0,0" VerticalAlignment="Top" Height="29" Width="104" Click="Patient_Click" Grid.Column="1" FontSize="12" Background="#FF373F47" Foreground="White"/>
 
         <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
             
@@ -70,8 +72,8 @@
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
-        <Label Content="^" HorizontalAlignment="Left" Margin="199,114,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label Content="^" HorizontalAlignment="Left" Margin="200,193,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+        <Label Content="^" HorizontalAlignment="Left" Margin="199,114,0,0" VerticalAlignment="Top" Grid.Column="1" Visibility="Hidden"/>
+        <Label Content="^" HorizontalAlignment="Left" Margin="200,193,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Visibility="Hidden">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -81,8 +83,8 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label Content="^" HorizontalAlignment="Left" Margin="289,114,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label Content="^" HorizontalAlignment="Left" Margin="290,193,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+        <Label Content="^" HorizontalAlignment="Left" Margin="289,114,0,0" VerticalAlignment="Top" Grid.Column="1" Visibility="Hidden"/>
+        <Label Content="^" HorizontalAlignment="Left" Margin="290,193,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Visibility="Hidden">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -92,12 +94,12 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Button x:Name="Schedule" Content="" Margin="52,316,252,105" Click="ScheduleButton_Click" Grid.Column="1" BorderBrush="{x:Null}">
+        <Button x:Name="Schedule" Content="" Margin="58,392,246,29" Click="ScheduleButton_Click" Grid.Column="1" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/images/accept.png"/>
             </Button.Background>
         </Button>
-        <Button Content="" Margin="143,315,160,105" Click="CancelButton_Click" Grid.Column="1" BorderBrush="{x:Null}">
+        <Button Content="" Margin="149,391,154,29" Click="CancelButton_Click" Grid.Column="1" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/images/cancel.png"/>
             </Button.Background>
@@ -113,14 +115,14 @@
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
-        <GroupBox Header="Datum" Margin="20,102,221,260" Grid.ColumnSpan="2" Background="#FF6197C6">
+        <GroupBox Header="Datum" Margin="20,102,221,260" Grid.ColumnSpan="2" Background="#FF8B8982">
 
         </GroupBox>
-        <GroupBox Header="Vreme" Margin="149,101,14,260" Grid.Column="1" Background="#FF6197C6"/>
+        <GroupBox Header="Vreme" Margin="149,101,14,260" Grid.Column="1" Background="#FF8B8982"/>
         <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
             
         
-            x:Name="hour_tb_Copy"  Margin="182,145,131,296" Grid.Column="1">
+            x:Name="hour_tb_Copy"  Margin="182,145,131,290" Grid.Column="1">
             <Binding Path="Hour" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
@@ -130,7 +132,7 @@
             </Binding>
         </TextBox>
         <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"
-            x:Name="minutes_tb_Copy"  Margin="273,146,42,296" Grid.Column="1">
+            x:Name="minutes_tb_Copy"  Margin="273,146,42,290" Grid.Column="1">
             <Binding Path="Minutes" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <local:NumericValidation ValidationStep="RawProposedValue"/>
@@ -143,7 +145,7 @@
         <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
             
         
-            x:Name="day_tb"  Margin="34,153,35,286">
+            x:Name="day_tb"  Margin="34,154,35,279">
             <Binding Path="Day" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
@@ -155,7 +157,7 @@
         <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
             
         
-            x:Name="month_tb"  Margin="97,154,335,286" Grid.ColumnSpan="2">
+            x:Name="month_tb"  Margin="101,155,328,279" Grid.ColumnSpan="2">
             <Binding Path="Month" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
@@ -167,7 +169,7 @@
         <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
             
         
-            x:Name="year_tb"  Margin="49,154,237,286" Grid.Column="1">
+            x:Name="year_tb"  Margin="49,155,237,279" Grid.Column="1">
             <Binding Path="Year" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
@@ -177,7 +179,7 @@
             </Binding>
         </TextBox>
         <Label Content="/" FontSize="10pt" HorizontalAlignment="Left" Margin="77,156,0,274" Height="39" RenderTransformOrigin="1.294,-0.653"/>
-        <Label Content="/" FontSize="10pt" HorizontalAlignment="Left" Margin="29,156,0,274" RenderTransformOrigin="25.685,0.599" Height="39" Grid.Column="1"/>
+        <Label Content="/" FontSize="10pt" HorizontalAlignment="Left" Margin="35,161,0,279" RenderTransformOrigin="25.685,0.599" Height="39" Grid.Column="1"/>
         <Label Content="Dan" HorizontalAlignment="Center" Margin="0,129,0,0" VerticalAlignment="Top"/>
         <Label Content="Mesec" HorizontalAlignment="Left" Margin="96,130,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <Label Content="Godina" HorizontalAlignment="Left" Margin="64,130,0,0" VerticalAlignment="Top" Grid.Column="1"/>

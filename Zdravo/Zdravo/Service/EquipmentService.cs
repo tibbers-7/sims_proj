@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Zdravo.Model;
 using Zdravo.Repository;
 
-namespace Zdravo.Service
+namespace Service
 {
     public class EquipmentService
     {

@@ -7,13 +7,13 @@
          xmlns:viewmodel="clr-namespace:Zdravo.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ChoosePatientViewModel}"
         mc:Ignorable="d"
         Title="ChoosePatient" Height="391" Width="306">
-    <Grid>
+    <Grid Background="#FFAAABBC">
         <Button Content="" Margin="153,301,87,10" Click="CancelButton_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/images/cancel.png"/>
             </Button.Background>
         </Button>
-        <DataGrid x:Name="patientTable" ItemsSource="{Binding Patients, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" IsReadOnly ="True" SelectionMode="Single" ColumnWidth="*" Background="#FFACC3EE" Margin="34,10,34,79">
+        <DataGrid x:Name="patientTable" ItemsSource="{Binding Patients, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" IsReadOnly ="True" SelectionMode="Single" ColumnWidth="*" Background="#FF6C91C2" Margin="34,10,34,79">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridRow}">
                     <EventSetter Event="Control.MouseDoubleClick" Handler="Row_DoubleClick"/>

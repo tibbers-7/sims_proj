@@ -35,6 +35,7 @@
     <None Remove="images\report.png" />
     <None Remove="images\search.png" />
     <None Remove="images\user.png" />
+    <None Remove="referral.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -75,6 +76,7 @@
     <Resource Include="images\user.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="referral.png" />
   </ItemGroup>
 
 </Project>

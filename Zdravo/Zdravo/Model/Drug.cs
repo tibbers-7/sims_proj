@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
-namespace Zdravo.Model
+namespace Model
 {
     public class Drug
     {
@@ -16,7 +11,7 @@ namespace Zdravo.Model
         private string[] ingredients;
         public string[] Ingredients { get { return ingredients; } set { ingredients = value; } }
 
-        internal void fromCSV(GroupCollection csvValues)
+        internal void FromCSV(GroupCollection csvValues)
         {
             id = int.Parse(csvValues[1].Value);
             name = csvValues[2].Value;
@@ -24,7 +19,7 @@ namespace Zdravo.Model
             ingredients=ingredientsString.Split(';');
         }
 
-        internal string toCSV()
+        internal string ToCSV()
         {
             string res = "#" + id.ToString() + "#" + name+ "#";
             foreach (string ingredient in ingredients)

@@ -1,6 +1,5 @@
 ﻿using Controller;
 using Model;
-using Repo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -29,30 +28,23 @@ namespace Zdravo
     public partial class NewAppointment: Window { 
         private NewAppointmentViewModel viewModel;
         private DoctorHomeViewModel callerWindow;
-        private int id;
+        private int apptId;
 
-        
-        // Adding a new appt - id=0
-        // Updating appt - id!=0 
-        public NewAppointment(DoctorHomeViewModel callerWindow, int id,int doctorId)
+        public NewAppointment(DoctorHomeViewModel callerWindow, int apptId,int doctorId)
         {
             
             InitializeComponent();
-            if (id == 0)
-            {
+            if (apptId == 0)
+            {   // Ako je novi pregled
                 patientButton.Content = "Izaberi pacijenta";
 
             }
             this.callerWindow = callerWindow;
-            this.id = id;
-            viewModel = new NewAppointmentViewModel(id,doctorId);
-            DataContext = viewModel;  
-
-            
+            this.apptId = apptId;
+            viewModel = new NewAppointmentViewModel(apptId, doctorId);
+            DataContext = viewModel;   
         }
         
-
-        //Schedule btn
         private void ScheduleButton_Click(object sender, RoutedEventArgs e)
         {
             int errorCode=viewModel.CreateAppointment();
@@ -83,15 +75,15 @@ namespace Zdravo
 
         private void Patient_Click(object sender, RoutedEventArgs e)
         {
-            if (id == 0)
+            if (apptId == 0)
             {
-                viewModel.Choose();
+                viewModel.ChoosePatient();
                 
             }
             else
             {
-                PatientChart chartWindow = new PatientChart(0,id);
-                chartWindow.Show();
+                viewModel.ShowChart(apptId);
+                
             }
         }
     }

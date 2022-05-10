@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
-namespace Zdravo.Model
+namespace Model
 {
     public class Prescription
     {
-        //TODO: change to class instead of ids
         private int id;
         public int Id { get { return id; } set { id = value; } }
         private int patientId;

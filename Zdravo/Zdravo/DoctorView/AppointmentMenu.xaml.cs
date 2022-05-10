@@ -36,7 +36,8 @@ namespace Zdravo
             this.id = id;
             this.callerWindow = callerWindow;
             this.doctorId = doctorId;
-            apptController = new AppointmentController();
+            var app = Application.Current as App;
+            apptController = app.appointmentController;
             InitializeComponent();
             if (!apptController.IsReportAvailable(id))
             {

@@ -5,10 +5,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Zdravo.Model;
-using Zdravo.Service;
+using Model;
+using Service;
 
-namespace Zdravo.Controller
+namespace Controller
 {
     public class EquipmentController
     {

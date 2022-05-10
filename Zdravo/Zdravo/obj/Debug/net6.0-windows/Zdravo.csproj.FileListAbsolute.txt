@@ -1,14 +1,8 @@
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.exe
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.deps.json
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.runtimeconfig.json
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.dll
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.pdb
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo.csproj.AssemblyReference.cache
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorHome.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\AppointmentMenu.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\ChoosePatient.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\NewAppointment.g.cs
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\PatientApptHistory.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\PatientChart.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\PrescriptionWindow.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\ReportWindow.g.cs
@@ -22,7 +16,6 @@ C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Patient
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\AllergenDescription.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\Allergens.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\AppointmentManagement.g.cs
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\DatePriority.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\DoctorPriority.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\EditAppointmentDate.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\UpdatePatient.g.cs
@@ -32,11 +25,15 @@ C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\App.g.c
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo_MarkupCompile.cache
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo_MarkupCompile.lref
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.exe
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.deps.json
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.runtimeconfig.json
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.dll
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.pdb
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorHome.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\AppointmentMenu.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\ChoosePatient.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\NewAppointment.baml
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\PatientApptHistory.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\PatientChart.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\PrescriptionWindow.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\ReportWindow.baml
@@ -50,7 +47,6 @@ C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Patient
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\AllergenDescription.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\Allergens.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\AppointmentManagement.baml
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\DatePriority.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\DoctorPriority.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\EditAppointmentDate.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\PatientView\UpdatePatient.baml

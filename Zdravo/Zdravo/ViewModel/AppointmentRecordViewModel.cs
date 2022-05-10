@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
-using Zdravo.Model;
+﻿using System.Collections.ObjectModel;
+using Model;
 using System.ComponentModel;
 using Repository;
 namespace Zdravo.ViewModel

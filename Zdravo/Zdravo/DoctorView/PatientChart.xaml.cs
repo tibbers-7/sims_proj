@@ -72,11 +72,6 @@ namespace Zdravo.DoctorWindows
             this.Close();
         }
 
-        private void HistoryButton_Click(object sender, RoutedEventArgs e)
-        {
-            PatientApptHistory historyWindow = new PatientApptHistory(apptId);
-            historyWindow.Show();
-        }
 
         private void Row_DoubleClick(object sender, RoutedEventArgs e)
         {

@@ -23,9 +23,9 @@ namespace Zdravo.PatientView
     /// </summary>
     public partial class UpdatePatient : Window
     {
-        private SekretarHome sekr = new SekretarHome();
+        private SekretarHome parentWindow = new SekretarHome();
         private PatientsViewModel viewModel=new PatientsViewModel();
-        public UpdatePatient(string i, string p, int idd, string u, string sif, string tel, DateTime dat, Gender po, bool gu, string adr, string ema,SekretarHome s )
+        public UpdatePatient(string i, string p, int idd, string u, string sif, string tel, DateTime dat, Gender po, bool gu, string adr, string ema,SekretarHome parentWindowParameter )
         {
             InitializeComponent();
             tbIme.Text = i;
@@ -40,7 +40,7 @@ namespace Zdravo.PatientView
             checkBoxGuest.IsChecked = gu;
             tbAdresa.Text = adr;
             tbMail.Text = ema;
-            this.sekr = s;
+            this.parentWindow = parentWindowParameter;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -56,8 +56,8 @@ namespace Zdravo.PatientView
             repo.updatePatient(p);
             SekretarHome s = new SekretarHome();
             viewModel.Refresh();
-            sekr.DataContext = null;
-            sekr.DataContext = viewModel;
+            parentWindow.DataContext = null;
+            parentWindow.DataContext = viewModel;
             this.Close();
         }
     }

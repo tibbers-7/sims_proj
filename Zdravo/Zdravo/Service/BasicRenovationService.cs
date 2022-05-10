@@ -5,10 +5,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Zdravo.Model;
-using Zdravo.Repository;
+using Model;
+using Repository;
 
-namespace Zdravo.Service
+namespace Service
 {
     public class BasicRenovationService
     {

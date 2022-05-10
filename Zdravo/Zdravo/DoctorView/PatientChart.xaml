@@ -57,7 +57,7 @@
             <RadioButton x:Name="male" Content="Muško" Height="19" Width="78"/>
             <RadioButton x:Name="female" Content="Žensko" Height="31" Width="78"/>
         </StackPanel>
-        <ListBox ItemsSource="{Binding Allergens}" Margin="34,453,392,61" FontSize="16" Background="#FF74A6F8" Grid.ColumnSpan="2"/>
+        <ListBox ItemsSource="{Binding Allergens}" Margin="34,453,392,61" FontSize="16" Background="#FFACC3EE" Grid.ColumnSpan="2"/>
         <Label Content="Alergeni" Margin="70,403,0,183" FontSize="20"/>
         <Button Content="" Margin="86,622,264,10" Foreground="Black" Grid.Column="1" BorderBrush="{x:Null}" Click="OkButton_Click">
             <Button.Background>

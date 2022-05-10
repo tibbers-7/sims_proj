@@ -1,11 +1,8 @@
 ﻿using Controller;
 using Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 
 namespace Zdravo.ViewModel
 {
@@ -16,23 +13,25 @@ namespace Zdravo.ViewModel
         private bool isAllergic;
         public string SelectedDrug { get; set; }
         public ObservableCollection<string> Drugs { get { return drugs; } set { drugs = value; } }
-        private AppointmentController apptController =new AppointmentController();
-
+        private AppointmentController appointmentController;
+        
         public PrescriptionViewModel(int appointmentId)
         {
+            var app = Application.Current as App;
+            appointmentController = app.appointmentController;
             this.appointmentId = appointmentId;
-            drugs = apptController.GetAllDrugNames();
+            drugs = appointmentController.GetAllDrugNames();
         }
 
         public bool CheckAllergies()
         {
-            return apptController.CheckAllergies(appointmentId,SelectedDrug);
+            return appointmentController.CheckAllergies(appointmentId,SelectedDrug);
         }
 
         internal void AddPrescription()
         {
-            Appointment appt=apptController.GetAppointment(appointmentId);
-            apptController.AddPrescription(appt.Patient,SelectedDrug,DateTime.Now);
+            Appointment appt= appointmentController.GetAppointment(appointmentId);
+            appointmentController.AddPrescription(appt.Patient,SelectedDrug,DateTime.Now);
         }
     }
 }

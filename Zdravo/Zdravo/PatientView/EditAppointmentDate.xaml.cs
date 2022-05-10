@@ -20,25 +20,26 @@ namespace Zdravo.PatientView
     /// </summary>
     public partial class EditAppointmentDate : Window
     {
-        private AppointmentManagement am;
+        private AppointmentManagement appointmentManagementWindow;
         private Appointment appointment;
-        public EditAppointmentDate(AppointmentManagement m,Appointment appointment)
+        private AppointmentController appointmentController;
+        public EditAppointmentDate(AppointmentManagement parentWindow,Appointment appointment)
         {
             InitializeComponent();
-            this.am = m;
+            this.appointmentManagementWindow = parentWindow;
             this.appointment = appointment;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ConfirmButtonClick(object sender, RoutedEventArgs e)
         {
-            AppointmentController appointmentController = new AppointmentController();
-            String date = datePicker.SelectedDate.ToString();
-            String datee = date.Split(" ")[0];
-            //  (int patientId, int roomId, int hours, int minutes, int duration, int day, int month, int year, bool emergency)
-            appointmentController.UpdateAppointment(appointment.Id,appointment.Patient,appointment.Doctor, 1, Int32.Parse(timeTb.Text.Split(":")[0]), Int32.Parse(timeTb.Text.Split(":")[1]),appointment.Duration, Int32.Parse(datee.Split("/")[1]), Int32.Parse(datee.Split("/")[0]), Int32.Parse(datee.Split("/")[2]), false);
-            this.am.viewModel.Refresh();
-            this.am.DataContext = null;
-            this.am.DataContext = this.am.viewModel;
+            var app = Application.Current as App;
+            appointmentController = app.appointmentController;
+            String datePickerString = datePicker.SelectedDate.ToString();
+            String dateStringForParsing = datePickerString.Split(" ")[0];
+            appointmentController.UpdateAppointment(appointment.Id, appointment.Patient, appointment.Doctor, 1, Int32.Parse(timeTb.Text.Split(":")[0]), Int32.Parse(timeTb.Text.Split(":")[1]), appointment.Duration, Int32.Parse(dateStringForParsing.Split("/")[1]), Int32.Parse(dateStringForParsing.Split("/")[0]), Int32.Parse(dateStringForParsing.Split("/")[2]), false);
+            this.appointmentManagementWindow.viewModel.Refresh();
+            this.appointmentManagementWindow.DataContext = null;
+            this.appointmentManagementWindow.DataContext = this.appointmentManagementWindow.viewModel;
             this.Close();
         }
     }

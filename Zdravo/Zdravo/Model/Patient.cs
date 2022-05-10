@@ -7,10 +7,8 @@
 using System;
 using System.Collections.Generic;
 using Zdravo;
-using Zdravo.Model;
-using ZdravoCorporation.Model;
 using System.Collections.ObjectModel;
-using Zdravo.Repository;
+using Repository;
 namespace Model
 {
    public class Patient : User

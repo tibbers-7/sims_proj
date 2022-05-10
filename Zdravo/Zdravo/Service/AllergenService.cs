@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Zdravo.Model;
-using Zdravo.Controller;
+using Controller;
 using System.Collections.ObjectModel;
 
-namespace Zdravo.Service
+namespace Service
 {
     public class AllergenService
     {

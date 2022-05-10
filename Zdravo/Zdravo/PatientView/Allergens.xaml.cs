@@ -25,69 +25,72 @@ namespace Zdravo.PatientView
     /// </summary>
     public partial class Allergens : Window
     {
-        private AllergenViewModel viewModel;
+        private AllergenViewModel allergenViewModel;
         private Patient patient;
+        private AllergenRepository allergenRepository = new AllergenRepository();
+        private PatientRepository patientRepository = new PatientRepository();
+        private PatientService patientService = new PatientService();
         public Allergens(Patient patient)
         {
             InitializeComponent();
             this.patient = patient;
-            viewModel = new AllergenViewModel(patient);
+            allergenViewModel = new AllergenViewModel(patient);
             tbName.Text = patient.Ime;
             tbLastName.Text = patient.Prezime;
             tbId.Text = patient.Id.ToString();
-            AllergenRepository repo = new AllergenRepository();
-            ObservableCollection<Allergen> Allergeni = repo.getAllAllergens();
-            foreach (Allergen a in Allergeni)
+            ObservableCollection<Allergen> allergens = allergenRepository.getAllAllergens();
+            foreach (Allergen allergen in allergens)
             {
-                comboBox.Items.Add(a.Name);
+                comboBox.Items.Add(allergen.Name);
             }
             comboBox.SelectedIndex = 0;
-            DataContext = viewModel;
+            DataContext = allergenViewModel;
         }
         private void DescriptionClick(object sender, RoutedEventArgs e)
         {
-            AllergenDescription desc = new AllergenDescription((Allergen)table.SelectedValue);
-            desc.Show();
+            AllergenDescription allergenDescriptionWindow = new AllergenDescription((Allergen)table.SelectedValue);
+            allergenDescriptionWindow.Show();
         }
         private void RemoveClick(object sender, RoutedEventArgs e)
         {
-            PatientService service = new PatientService();
             Allergen allergen =(Allergen) table.SelectedValue;
-            service.removeAllergen(patient, allergen);
-            viewModel=new AllergenViewModel(this.patient);
+            patientService.removeAllergen(patient, allergen);
+            allergenViewModel = new AllergenViewModel(this.patient);
             DataContext = null;
-            DataContext = viewModel;
+            DataContext = allergenViewModel;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string name = (String)comboBox.SelectedValue;
-            bool ima = false;
-            foreach (Allergen a in patient.Allergens)
+            bool allergenAllreadyExists = false;
+            foreach (Allergen allergen in patient.Allergens)
             {
-                if (a.Name.ToLower().Equals(name.ToLower()))
+                if (allergen.Name.ToLower().Equals(name.ToLower()))
                 {
-                    ima = true;
-
+                    allergenAllreadyExists = true;
                 }
             }
-            if (ima) errorLabel.Content = "ERROR! It is already in a list";
-            if (!ima)
+            if (allergenAllreadyExists) errorLabel.Content = "ERROR! It is already in a list";
+            if (!allergenAllreadyExists)
             {
-                AllergenRepository repo = new AllergenRepository();
-                ObservableCollection<Allergen> Allergeni = repo.getAllAllergens();
-                Allergen novi = null;
-                foreach (Allergen a in Allergeni)
-                {
-                    if (a.Name.ToLower().Equals(name.ToLower())) { novi = a; }
-                }
-                this.patient.Allergens.Add(novi);
-                PatientRepository repos = new PatientRepository();
-                repos.updatePatient(this.patient);
-                viewModel = new AllergenViewModel(this.patient);
-                this.DataContext = null;
-                this.DataContext = viewModel;
+                addAllergenToPatient();
             }
+        }
+        private void addAllergenToPatient()
+        {
+            string name = (String)comboBox.SelectedValue;
+            ObservableCollection<Allergen> Allergeni = allergenRepository.getAllAllergens();
+            Allergen newAllergen = null;
+            foreach (Allergen allergen in Allergeni)
+            {
+                if (allergen.Name.ToLower().Equals(name.ToLower())) { newAllergen = allergen; }
+            }
+            this.patient.Allergens.Add(newAllergen);
+            patientRepository.updatePatient(this.patient);
+            allergenViewModel = new AllergenViewModel(this.patient);
+            this.DataContext = null;
+            this.DataContext = allergenViewModel;
         }
     }
 }

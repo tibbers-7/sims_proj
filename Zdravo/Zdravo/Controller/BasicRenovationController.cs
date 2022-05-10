@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Zdravo.Model;
-using Zdravo.Service;
+using Service;
+using Model;
 
-namespace Zdravo.Controller
+namespace Controller
 {
     public class BasicRenovationController
     {

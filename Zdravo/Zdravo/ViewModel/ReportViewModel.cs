@@ -5,7 +5,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Zdravo.Model;
+using Model;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace Zdravo.ViewModel
 {
@@ -27,9 +29,11 @@ namespace Zdravo.ViewModel
         public string Diagnosis { get { return diagnosis; } set { diagnosis = value; } }
         private string reportString;
         public string ReportString { get { return reportString; } set { reportString = value; } }
-        private AppointmentController appointmentController = new AppointmentController();
+        private AppointmentController appointmentController;
         public ReportViewModel(int apptId,int reportId)
         {
+            var app = Application.Current as App;
+            appointmentController = app.appointmentController;
             this.apptId = apptId;
             this.reportId = reportId;
             if(reportId != 0)

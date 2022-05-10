@@ -7,7 +7,9 @@ using Zdravo.Repository;
 using Zdravo.Model;
 using Model;
 using System.Collections.ObjectModel;
-namespace Zdravo.Controller
+using Repository;
+
+namespace Controller
 {
     public class AllergenController
     {

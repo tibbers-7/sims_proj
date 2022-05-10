@@ -1,21 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Zdravo.Model;
+using Model;
 using System.Collections.ObjectModel;
 
-namespace Zdravo.FileHandler
+namespace FileHandler
 {
     public class AllergenFileHandler
     {
         private string filepath = "data/Allergens.txt";
         
-        public AllergenFileHandler()
-        {
-        
-        }
 
         public ObservableCollection<Allergen> Load()
         {
