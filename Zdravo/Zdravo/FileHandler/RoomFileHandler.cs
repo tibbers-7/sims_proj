@@ -104,13 +104,21 @@ namespace FileHandler
                         rt = "operatingRoom";
                         break;
                 }
-                foreach (int equipmentId in room.equipmentIds) { 
-                    string eid = equipmentId.ToString();
-                    equipmentIdss = equipmentIdss + eid + ",";
+                if (room.equipmentIds.Count != 0)
+                {
+                    foreach (int equipmentId in room.equipmentIds)
+                    {
+                        string eid = equipmentId.ToString();
+                        equipmentIdss = equipmentIdss + eid + ",";
+                    }
+                    equipmentIdss = equipmentIdss.Substring(0, equipmentIdss.Length - 1);
+                    newLines[i] = id + "," + floor + "," + rt + "," + equipmentIdss;
                 }
-                equipmentIdss = equipmentIdss.Substring(0, equipmentIdss.Length - 1);
-                newLines[i] = id + "," + floor + "," + rt + "," + equipmentIdss;
+                else {
+                    newLines[i] = id + "," + floor + "," + rt;
+                }
                 i++;
+
             }
             System.IO.File.WriteAllText(filePath, "");
             System.IO.File.WriteAllLines(filePath, newLines);
