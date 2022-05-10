@@ -58,9 +58,8 @@ namespace Zdravo
             viewModel.MenuShow(int.Parse((AppointmentTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text));
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-            //Environment.Exit(0);
             MainWindow m = new MainWindow();
             m.Show();
             
@@ -75,7 +74,17 @@ namespace Zdravo
 
         private void VacationButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            viewModel.ScheduleVacation();
+        }
+
+        private void ShowButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.SearchTable();
+        }
+
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.ResetTable();
         }
     }
 }

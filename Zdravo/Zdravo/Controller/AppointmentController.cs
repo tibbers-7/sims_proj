@@ -9,6 +9,7 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 using Zdravo;
 using Zdravo.Model;
 using Zdravo.Repository;
@@ -37,29 +38,18 @@ namespace Controller
         }
 
         
-        public int CreateAppointment(int patientId, int doctor, int roomId, int hours, int minutes, int duration, int day, int month, int year, bool emergency)
+        public int CreateAppointment(int patientId, int doctor, int roomId, int hours, int minutes, int duration, string date, bool emergency)
         {
             Patient p = patientController.GetById(patientId);
             if (p == null) return 1;
-            
-            DateOnly date = new DateOnly();
-            try
-            {
-                date = new DateOnly(year, month, day);
-            }
-            catch (Exception e)
-            {
-                // Invalid date error
-                return 2;
-            }
-
 
             TimeOnly _time = new TimeOnly(hours, minutes);
-            DateTime datetime = date.ToDateTime(_time);
+            DateOnly _date=ParseDate(date);
+            DateTime datetime = _date.ToDateTime(_time);
             int cmp = DateTime.Compare(datetime, DateTime.Now);
-            if (cmp < 0) return 3;   // Cannot make appointment in the past
+            if (cmp < 0) return 2;   // Cannot make appointment in the past
 
-            Appointment appt = new Appointment() { Date = date, Time = _time, Doctor = doctor, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency };
+            Appointment appt = new Appointment() { Date = _date, Time = _time, Doctor = doctor, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency };
             service.CreateAppointment(appt);
             
 
@@ -79,28 +69,25 @@ namespace Controller
             return service.DeleteAppointment(id);
         }
 
+        internal ObservableCollection<Appointment> SearchTable(string date, int hours, int minutes)
+        {
+            DateOnly _date = ParseDate(date);
+            return service.SearchTable(_date, hours, minutes);
+        }
+
         //should update in the patient's list too
-        public int UpdateAppointment(int id, int patientId,int doctorId, int roomId, int hours, int minutes, int duration, int day, int month, int year, bool emergency)
+        public int UpdateAppointment(int id, int patientId,int doctorId, int roomId, int hours, int minutes, int duration,string date, bool emergency)
         {
             Patient p = patientController.GetById(patientId);
             if (p == null) return 1;
-
-            DateOnly date = new DateOnly();
             TimeOnly _time = new TimeOnly(hours, minutes);
-            try
-            {
-                date = new DateOnly(year, month, day);
-            }
-            catch (Exception e)
-            {
-                return 2;
-            }
-            DateTime datetime = date.ToDateTime(_time);
+            DateOnly _date = ParseDate(date);
+            DateTime datetime = _date.ToDateTime(_time);
             int cmp = DateTime.Compare(datetime, DateTime.Now);
             if (cmp < 0) return 3;   // Cannot make appointment in the past
 
             
-            Appointment appt = new Appointment() { Id = id, Date = date, Time = _time, Doctor = doctorId, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency };
+            Appointment appt = new Appointment() { Id = id, Date = _date, Time = _time, Doctor = doctorId, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency };
             service.UpdateAppointment(appt);
             return 0;
         }
@@ -157,6 +144,19 @@ namespace Controller
             return service.GetReportById(id);
         }
 
+        public DateOnly ParseDate(string s)
+        {
+            DateOnly date=new DateOnly();
+            Regex regexObj = new Regex("(\\d+)/(\\d+)/(\\d+)");
+            Match matchResult = regexObj.Match(s);
+            if (matchResult.Success)
+            {
+                date = new DateOnly(int.Parse(matchResult.Groups[3].Value), int.Parse(matchResult.Groups[2].Value), int.Parse(matchResult.Groups[1].Value));
+                return date;
+            }
+            else return date;
+            
+        }
         
         
     }

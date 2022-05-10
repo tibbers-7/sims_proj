@@ -116,6 +116,15 @@
             </Binding>
         </TextBox>
         <GroupBox Header="Datum" Margin="20,102,221,260" Grid.ColumnSpan="2" Background="#FF8B8982">
+            <TextBox x:Name="date_tb" Margin="34,0,34,0" Validation.ErrorTemplate="{StaticResource validationTemplate}" Height="45">
+                <Binding Path="Date" UpdateSourceTrigger="LostFocus">
+                    <Binding.ValidationRules>
+                        <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
+                        <local:DateValidation ValidationStep="RawProposedValue"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+
 
         </GroupBox>
         <GroupBox Header="Vreme" Margin="149,101,14,260" Grid.Column="1" Background="#FF8B8982"/>
@@ -123,7 +132,7 @@
             
         
             x:Name="hour_tb_Copy"  Margin="182,145,131,290" Grid.Column="1">
-            <Binding Path="Hour" UpdateSourceTrigger="PropertyChanged">
+            <Binding Path="Hour" UpdateSourceTrigger="LostFocus">
                 <Binding.ValidationRules>
                     <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
                     <local:NumericValidation ValidationStep="RawProposedValue"/>
@@ -133,7 +142,7 @@
         </TextBox>
         <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"
             x:Name="minutes_tb_Copy"  Margin="273,146,42,290" Grid.Column="1">
-            <Binding Path="Minutes" UpdateSourceTrigger="PropertyChanged">
+            <Binding Path="Minutes" UpdateSourceTrigger="LostFocus">
                 <Binding.ValidationRules>
                     <local:NumericValidation ValidationStep="RawProposedValue"/>
                     <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
@@ -142,48 +151,8 @@
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
-        <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
-            
-        
-            x:Name="day_tb"  Margin="34,154,35,279">
-            <Binding Path="Day" UpdateSourceTrigger="PropertyChanged">
-                <Binding.ValidationRules>
-                    <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
-                    <local:NumericValidation ValidationStep="RawProposedValue"/>
-                    <local:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="1" Max="31"/>
-                </Binding.ValidationRules>
-            </Binding>
-        </TextBox>
-        <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
-            
-        
-            x:Name="month_tb"  Margin="101,155,328,279" Grid.ColumnSpan="2">
-            <Binding Path="Month" UpdateSourceTrigger="PropertyChanged">
-                <Binding.ValidationRules>
-                    <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
-                    <local:NumericValidation ValidationStep="RawProposedValue"/>
-                    <local:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="1" Max="12"/>
-                </Binding.ValidationRules>
-            </Binding>
-        </TextBox>
-        <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
-            
-        
-            x:Name="year_tb"  Margin="49,155,237,279" Grid.Column="1">
-            <Binding Path="Year" UpdateSourceTrigger="PropertyChanged">
-                <Binding.ValidationRules>
-                    <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
-                    <local:NumericValidation ValidationStep="RawProposedValue"/>
-                    <local:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="2022" Max="2050"/>
-                </Binding.ValidationRules>
-            </Binding>
-        </TextBox>
-        <Label Content="/" FontSize="10pt" HorizontalAlignment="Left" Margin="77,156,0,274" Height="39" RenderTransformOrigin="1.294,-0.653"/>
-        <Label Content="/" FontSize="10pt" HorizontalAlignment="Left" Margin="35,161,0,279" RenderTransformOrigin="25.685,0.599" Height="39" Grid.Column="1"/>
-        <Label Content="Dan" HorizontalAlignment="Center" Margin="0,129,0,0" VerticalAlignment="Top"/>
-        <Label Content="Mesec" HorizontalAlignment="Left" Margin="96,130,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <Label Content="Godina" HorizontalAlignment="Left" Margin="64,130,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <Label Content=":" FontSize="10pt" HorizontalAlignment="Left" Margin="245,146,0,284" RenderTransformOrigin="25.685,0.599" Height="39" Grid.Column="1"/>
+
 
     </Grid>
 

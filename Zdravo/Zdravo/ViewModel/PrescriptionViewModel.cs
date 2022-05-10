@@ -10,7 +10,6 @@ namespace Zdravo.ViewModel
     {
         private int appointmentId;
         private ObservableCollection<string> drugs;
-        private bool isAllergic;
         public string SelectedDrug { get; set; }
         public ObservableCollection<string> Drugs { get { return drugs; } set { drugs = value; } }
         private AppointmentController appointmentController;

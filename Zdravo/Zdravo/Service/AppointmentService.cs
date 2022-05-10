@@ -85,6 +85,11 @@ namespace Service
             return true;
         }
 
+        internal ObservableCollection<Appointment> SearchTable(DateOnly date, int hours, int minutes)
+        {
+            return appointmentRepo.SearchTable(date, hours, minutes);
+        }
+
         public void CreateAppointment(Appointment appt)
         {
             appointmentRepo.CreateAppointment(appt);

@@ -1,18 +1,5 @@
 ﻿using Controller;
-using Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Zdravo.DoctorWindows;
 using Zdravo.ViewModel;
 
@@ -39,12 +26,7 @@ namespace Zdravo
             var app = Application.Current as App;
             apptController = app.appointmentController;
             InitializeComponent();
-            if (!apptController.IsReportAvailable(id))
-            {
-                PrescriptionBtn.IsEnabled = false;
-                ReportBtn.IsEnabled = false;
-            }
-            
+            ChangeMenuItems();
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -83,6 +65,22 @@ namespace Zdravo
                 PrescriptionWindow prescriptionWindow = new PrescriptionWindow(id);
                 prescriptionWindow.Show();
             
+        }
+
+        private void ChangeMenuItems()
+        {
+            if (!apptController.IsReportAvailable(id))
+            {
+                PrescriptionBtn.IsEnabled = false;
+                ReportBtn.IsEnabled = false;
+                prescLabel.IsEnabled = false;
+                reportLabel.IsEnabled = false;
+            }
+            else
+            {
+                UpdateBtn.IsEnabled = false;
+                updateLabel.IsEnabled=false;
+            }
         }
     }
 }

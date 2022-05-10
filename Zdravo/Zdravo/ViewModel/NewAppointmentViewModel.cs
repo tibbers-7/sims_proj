@@ -39,6 +39,8 @@ namespace Zdravo.ViewModel
         public int Year { get { return year; } set { year = value; } }
         private int duration;
         public int Duration { get { return duration; } set { duration = value; } }
+        private string date;
+        public string Date { get { return date; } set { date = value; } }
 
         private RoomController roomController=new RoomController();
         private int doctorId;
@@ -79,6 +81,8 @@ namespace Zdravo.ViewModel
                 month=int.Parse(matchResult.Groups[1].Value);
                 day=int.Parse(matchResult.Groups[2].Value);
                 year=int.Parse(matchResult.Groups[3].Value);
+                date = appt.Date.ToString("dd/MM/yyyy");
+
 
                 regexObj = new Regex("(\\d+):(\\d{2})");
                 matchResult = regexObj.Match(appt.Time.ToString());
@@ -107,9 +111,9 @@ namespace Zdravo.ViewModel
         { 
                 if (id == 0)
                 {
-                    return apptController.CreateAppointment(patientId,doctorId, roomId, hour, minutes, duration,day,month,year,emergency);
+                    return apptController.CreateAppointment(patientId,doctorId, roomId, hour, minutes, duration,date,emergency);
                 }
-                else return apptController.UpdateAppointment(id, patientId,doctorId, roomId, hour, minutes, duration,day,month,year,emergency);
+                else return apptController.UpdateAppointment(id, patientId,doctorId, roomId, hour, minutes, duration,date,emergency);
 
          }
 

@@ -1,12 +1,8 @@
 ﻿using Controller;
 using Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -18,6 +14,12 @@ namespace Zdravo.ViewModel
         private ObservableCollection<Appointment> appointments;
         private DataGrid table;
         private int doctorId;
+        private string date;
+        public string Date { get { return date; } set { date = value; } }
+        private int hours;
+        public int Hours { get { return hours; } set { hours = value; } }
+        private int minutes;
+        public int Minutes { get { return minutes; } set { minutes = value; } }
 
         public ObservableCollection<Appointment> Appointments
         {
@@ -34,7 +36,7 @@ namespace Zdravo.ViewModel
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        
 
         public DoctorHomeViewModel(DataGrid table,int doctorId)
         {
@@ -65,6 +67,25 @@ namespace Zdravo.ViewModel
             newAppointment.Show();
         }
 
+        
+
+        internal void SearchTable()
+        {
+            appointments=apController.SearchTable(Date,Hours,Minutes);
+            NotifyPropertyChanged("Appointments");
+        }
+
+        internal void ResetTable()
+        {
+            Appointments = new ObservableCollection<Appointment>(apController.GetAppointmentsForDoctor(doctorId));
+        }
+
+        internal void ScheduleVacation()
+        {
+            throw new NotImplementedException();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)

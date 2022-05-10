@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
@@ -33,6 +34,38 @@ namespace Zdravo
                     return new ValidationResult(true, null);
                 }
                 return new ValidationResult(false, "Polje mora sadrži samo cifre.");
+            }
+            catch
+            {
+                return new ValidationResult(false, "Unknown error occured.");
+            }
+        }
+    }
+    public class DateValidation : ValidationRule
+    {
+
+        public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+        {
+            try
+            {
+                var s = value as string;
+                Regex regexObj = new Regex("(\\d+)/(\\d+)/(\\d+)");
+                Match matchResult = regexObj.Match(s);
+                if (matchResult.Success)
+                {
+                    int day = int.Parse(matchResult.Groups[1].Value);
+                    int month = int.Parse(matchResult.Groups[2].Value);
+                    int year = int.Parse(matchResult.Groups[3].Value);
+                    try
+                    {
+                        DateOnly date = new DateOnly(year, month, day);
+                        return new ValidationResult(true, null);
+                    }
+                    catch (Exception e)
+                    {
+                        return new ValidationResult(false, "Datum ne postoji");
+                    }
+                } else return new ValidationResult(false, "Format: 1/12/2000");
             }
             catch
             {

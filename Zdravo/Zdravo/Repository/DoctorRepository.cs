@@ -6,7 +6,7 @@
 using Model;
 using System;
 using System.Collections.ObjectModel;
-using Zdravo.FileHandler;
+using FileHandler;
 namespace Repository
 {
    public class DoctorRepository
