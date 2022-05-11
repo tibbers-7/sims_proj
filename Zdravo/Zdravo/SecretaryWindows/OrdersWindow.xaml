@@ -10,7 +10,21 @@
     <Grid>
         <TextBlock HorizontalAlignment="Left" FontSize="25" TextDecorations="Underline" Margin="37,10,0,0" TextWrapping="Wrap" Text="Recent orders" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" FontSize="25" TextDecorations="Underline" Margin="37,353,0,0" TextWrapping="Wrap" Text="New order:" VerticalAlignment="Top"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="37,65,40,427"/>
+        <DataGrid Name="table" ColumnWidth="*" IsReadOnly ="True"  SelectionMode="Single"
+                              ItemsSource="{Binding Orders, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Margin="37,65,40,427">
+            <DataGrid.Columns>
+                <DataGridTextColumn  Header="Name" Width="0.8*" Binding="{Binding Name}"/>
+                <DataGridTextColumn Width="0.5*" Header="Quantity" Binding="{Binding Quantity}" />
+                <DataGridTextColumn  Header="Datetime" Binding="{Binding OrderDateTime}"/>
+                <DataGridTemplateColumn Width="0.3*">
+                    <DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate>
+                            <Button>Note</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
         <Rectangle HorizontalAlignment="Center" Height="265" Margin="0,399,0,0" Stroke="Black" VerticalAlignment="Top" Width="354"/>
         <Button Content="Submit" HorizontalAlignment="Left" Margin="66,684,0,0" VerticalAlignment="Top" Height="30" Width="82" Click="SubmitOrderClick"/>
         <Button Content="Back" HorizontalAlignment="Left" Margin="270,684,0,0" VerticalAlignment="Top" Height="30" Width="81" Click="BackClick"/>
@@ -20,7 +34,7 @@
         <TextBox HorizontalAlignment="Left" Margin="153,474,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155"/>
         <TextBox HorizontalAlignment="Left" Margin="154,519,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156"/>
         <TextBox HorizontalAlignment="Center" Margin="0,585,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="296" Height="62"/>
-        <TextBlock HorizontalAlignment="Left" FontStyle="Italic" FontSize="15" Margin="72,560,0,0" TextWrapping="Wrap" Text="Note" VerticalAlignment="Top" Height="15" Width="81"/>
+        <TextBlock HorizontalAlignment="Left" FontStyle="Italic" FontSize="15" Margin="72,560,0,0" TextWrapping="Wrap" Text="Note" VerticalAlignment="Top" Height="20" Width="81"/>
 
     </Grid>
 </Window>
