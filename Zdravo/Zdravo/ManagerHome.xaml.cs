@@ -87,10 +87,10 @@ namespace Zdravo
             rooms = new ObservableCollection<Room>();
             roomController = new RoomController();
             rooms = roomController.GetAll();
-            TimeService ts = new TimeService();
+        /*    TimeService ts = new TimeService();
             Thread th = new Thread(new ThreadStart(ts.ThreadFunction));
             th.IsBackground = true;
-            th.Start();
+            th.Start(); */
         }
         protected virtual void OnPropertyChanged(string name)
         {

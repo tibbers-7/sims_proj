@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Model;
 using Zdravo.Repository;
 using Zdravo.ViewModel;
+using System.Windows;
 
 namespace Service
 {
@@ -16,7 +17,7 @@ namespace Service
         private RoomRepository roomRepo = new RoomRepository();
         private EquipmentRepository eqRepo = new EquipmentRepository();
         private EquipmentRelocationViewModel viewModel = new EquipmentRelocationViewModel();
-
+        private OrderRepository orderRepo= new OrderRepository();
         public async void ThreadFunction()
         {
             while (true)
@@ -33,7 +34,19 @@ namespace Service
                             relocationRepo.Delete(relocation);
                         }
                     }
-
+                    foreach(Order order in orderRepo.getAllOrders())
+                    {
+                        if ((DateTime.Now-order.OrderDateTime).TotalHours>=72)
+                        {
+                            //prebacivanje u magacin
+                            StaticEquipment equipment = new StaticEquipment(order.Name, order.Quantity, 7);
+                            eqRepo.Create(equipment);
+                            Room r = roomRepo.GetById(7);
+                            r.equipmentIds.Add(equipment.id);
+                            roomRepo.UpdateEquipment(7, r.equipmentIds);
+                            orderRepo.deleteOrder(order);
+                        }
+                    }
                 }
                 catch (Exception e)
                 {

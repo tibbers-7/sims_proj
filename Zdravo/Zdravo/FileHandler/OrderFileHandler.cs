@@ -46,5 +46,15 @@ namespace FileHandler
             System.IO.File.WriteAllText(filepath, "");
             System.IO.File.WriteAllLines(filepath, newLines);
         }
+        public void write(ObservableCollection<Order> orders)
+        {
+            string[] newLines = new string[orders.Count];
+            for(int i = 0; i < orders.Count; i++)
+            {
+                newLines[i] = orders[i].Name + "|" + orders[i].Quantity.ToString() + "|" + orders[i].OrderDateTime.ToString() +"|"+ orders[i].Note;
+            }
+            System.IO.File.WriteAllText(filepath, "");
+            System.IO.File.WriteAllLines(filepath, newLines);
+        }
     }
 }
