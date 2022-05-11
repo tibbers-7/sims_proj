@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ViewModel;
 
 namespace Zdravo.SecretaryWindows
 {
@@ -22,6 +23,8 @@ namespace Zdravo.SecretaryWindows
         public OrdersWindow()
         {
             InitializeComponent();
+            OrderViewModel viewModel=new OrderViewModel();
+            this.DataContext = viewModel;
         }
 
         private void SubmitOrderClick(object sender, RoutedEventArgs e)
@@ -31,7 +34,9 @@ namespace Zdravo.SecretaryWindows
 
         private void BackClick(object sender, RoutedEventArgs e)
         {
-
+            SecretaryHome secretaryHomeWindow=new SecretaryHome();
+            secretaryHomeWindow.Show();
+            this.Close();
         }
     }
 }
