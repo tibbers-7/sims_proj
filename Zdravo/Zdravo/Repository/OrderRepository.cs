@@ -40,5 +40,19 @@ namespace Repository
             }
             return activeOrders;
         }
+        public void deleteOrder(Order o)
+        {
+            ObservableCollection<Order> loadedOrders = new ObservableCollection<Order>();
+            loadedOrders = filehandler.Load();
+            ObservableCollection<Order> newOrders = new ObservableCollection<Order>();
+            foreach (Order order in loadedOrders)
+            {
+                if (order.OrderDateTime!=o.OrderDateTime)
+                {
+                    newOrders.Add(order);
+                }
+            }
+            filehandler.write(newOrders);
+        }
     }
 }

@@ -78,5 +78,6 @@ namespace Zdravo.SecretaryWindows
             this.DataContext = null;
             this.DataContext = viewModel;
         }
+
     }
 }
