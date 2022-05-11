@@ -11,6 +11,7 @@ namespace Zdravo.ViewModel
     public class DoctorHomeViewModel : INotifyPropertyChanged
     {
         AppointmentController apController;
+        VacationController vacationController;
         private ObservableCollection<Appointment> appointments;
         private DataGrid table;
         private int doctorId;
@@ -20,6 +21,16 @@ namespace Zdravo.ViewModel
         public int Hours { get { return hours; } set { hours = value; } }
         private int minutes;
         public int Minutes { get { return minutes; } set { minutes = value; } }
+
+        private string startDate;
+        public string StartDate { get { return startDate; } set { startDate = value; } }
+
+        private string endDate;
+        public string EndDate { get { return endDate; } set { endDate = value; } }
+
+        private string reason;
+        public string Reason { get { return reason; } set { reason = value; } }
+
 
         public ObservableCollection<Appointment> Appointments
         {
@@ -42,6 +53,7 @@ namespace Zdravo.ViewModel
         {
             var app = Application.Current as App;
             apController = app.appointmentController;
+            vacationController=app.vacationController;
             this.table = table;
             this.doctorId=doctorId;
             appointments = new ObservableCollection<Appointment>(apController.GetAppointmentsForDoctor(doctorId));
@@ -80,9 +92,9 @@ namespace Zdravo.ViewModel
             Appointments = new ObservableCollection<Appointment>(apController.GetAppointmentsForDoctor(doctorId));
         }
 
-        internal void ScheduleVacation()
+        internal int ScheduleVacation()
         {
-            throw new NotImplementedException();
+            return vacationController.ScheduleVacation(doctorId,startDate,endDate,reason);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

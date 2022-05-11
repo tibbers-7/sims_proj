@@ -11,8 +11,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using Zdravo;
-using Zdravo.Model;
-using Zdravo.Repository;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Controller
@@ -21,14 +19,11 @@ namespace Controller
    {
         private AppointmentService service;
        private PatientController patientController;
-        private RoomController roomController;
 
-      public AppointmentController(AppointmentService _service)
+      public AppointmentController(AppointmentService _service,PatientController patientController)
         {
             service = _service;
-            service = new AppointmentService();
-            roomController = new RoomController();
-            patientController = new PatientController();
+            this.patientController = patientController;
             
         }
 
@@ -92,6 +87,7 @@ namespace Controller
             return 0;
         }
 
+
         //link report to patient
         internal void CreateReport(int apptId,DateOnly date, string diagnosis, string report)
         {
@@ -144,7 +140,7 @@ namespace Controller
             return service.GetReportById(id);
         }
 
-        public DateOnly ParseDate(string s)
+        public static DateOnly ParseDate(string s)
         {
             DateOnly date=new DateOnly();
             Regex regexObj = new Regex("(\\d+)/(\\d+)/(\\d+)");

@@ -4,7 +4,7 @@ using Model;
 
 namespace Repository
 {
-    internal class DrugRepository
+    public class DrugRepository
     {
         private List<Drug> drugs;
         public List<Drug> Drugs { get { return drugs; } set { drugs = value; } }

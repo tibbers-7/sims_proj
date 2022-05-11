@@ -74,7 +74,25 @@ namespace Zdravo
 
         private void VacationButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.ScheduleVacation();
+            if (vacationRadio.IsChecked == false && sickLeaveRadio.IsChecked == false) MessageBox.Show("Niste uneli sve potrebne podatke.", "Greška");
+            else if (startDate_tb.Text.Equals("") | endDate_tb.Text.Equals("") | reason_tb.Text.Equals("")) MessageBox.Show("Niste uneli sve potrebne podatke.", "Greška");
+            else
+            {
+                int res = viewModel.ScheduleVacation();
+                switch (res)
+                {
+                    case 0: 
+                        MessageBox.Show("Zahtev za slobodne dane je uspešno poslat", "Obaveštenje");
+                        break;
+                    case 1:
+                        MessageBox.Show("Krajnji datum je pre početnog!", "Greška");
+                        break;
+                    case 2:
+                        MessageBox.Show("Zakazivanje slobodnih dana u tom periodu nije moguće zbog preklapanja.", "Greška");
+                        break;
+                }
+            }
+
         }
 
         private void ShowButton_Click(object sender, RoutedEventArgs e)

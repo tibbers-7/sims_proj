@@ -6,18 +6,14 @@
 using FileHandler;
 using Model;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Zdravo.Repository;
-using Zdravo.Model;
-using Repository;
 using Controller;
 
 namespace Repository
 {
-   public class AppointmentRepository
+    public class AppointmentRepository
    {
       public AppointmentFileHandler fileHandler=new AppointmentFileHandler();
         private PatientController patientController;
@@ -28,8 +24,6 @@ namespace Repository
         public AppointmentRepository()
         {
             appointments = fileHandler.Read();
-            idCount= appointments.Last().Id+1;
-
         }
 
         public List<Appointment> GetAll()
@@ -46,8 +40,7 @@ namespace Repository
             ObservableCollection < AppointmentRecord > records = new ObservableCollection<AppointmentRecord>();
             foreach(Appointment a in appointments)
             {
-                 Patient p = prepo.GetById(a.Patient);
-               // Patient p = prepo.GetById(0);
+                Patient p = prepo.GetById(a.Patient);
                 Doctor d = drepo.getById(a.Doctor);
                 if (p!=null && d != null)
                 {
@@ -120,8 +113,7 @@ namespace Repository
 
         public void CreateAppointment(Appointment appointment)
       {
-            idCount = appointments.Last().Id+1;
-            appointment.Id = idCount;
+            appointment.Id = appointments.Last().Id + 1;
             fileHandler.Write(appointment,0);
             appointments = fileHandler.Read();
       }

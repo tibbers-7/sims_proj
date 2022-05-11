@@ -9,7 +9,7 @@ using Model;
 
 namespace Repository
 {
-    internal class PrescriptionRepository
+    public class PrescriptionRepository
     {
         public List<Prescription> prescriptions;
         private PrescriptionFileHandler fileHandler=new PrescriptionFileHandler();

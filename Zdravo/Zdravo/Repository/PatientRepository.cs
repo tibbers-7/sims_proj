@@ -4,20 +4,13 @@
  * Purpose: Definition of the Class Repository.PatientRepository
  ***********************************************************************/
 
-using System;
 using Model;
-using Controller;
-using Service;
 using FileHandler;
-using Repository;
-using System.Collections.Generic;
-using Zdravo.Repository;
 using System.Collections.ObjectModel;
-using Zdravo.Model;
 
 namespace Repository
 {
-   public class PatientRepository
+    public class PatientRepository
    {
       private ObservableCollection<Patient> patients;
         private ReportRepository reportRepo;

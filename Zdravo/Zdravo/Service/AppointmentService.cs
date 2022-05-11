@@ -8,25 +8,25 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Zdravo.DoctorWindows;
-using Zdravo.Model;
-using Zdravo.Repository;
 
 namespace Service
 {
    public class AppointmentService
    {
       private AppointmentRepository appointmentRepo;
-      private RoomRepository roomRepo;
-      private PatientRepository patientRepo=new PatientRepository();
-      private DrugRepository drugRepo=new DrugRepository();
-        private ReportRepository reportRepo=new ReportRepository();
-        private PrescriptionRepository prescriptionRepo=new PrescriptionRepository();
+      private PatientRepository patientRepo;
+      private DrugRepository drugRepo;
+        private ReportRepository reportRepo;
+        private PrescriptionRepository prescriptionRepo;
       
-        public AppointmentService()
+        public AppointmentService(AppointmentRepository aRepo, DrugRepository dRepo, PrescriptionRepository prescRepo,ReportRepository rRepo, PatientRepository pRepo)
         {
             
-            appointmentRepo= new AppointmentRepository();
+            appointmentRepo= aRepo;
+            prescriptionRepo = prescRepo;
+            drugRepo=dRepo;
+            reportRepo=rRepo;
+            patientRepo=pRepo;
         }
 
         internal List<Appointment> GetAppointmentsForDoctor(int doctorId)
@@ -120,6 +120,8 @@ namespace Service
             patientRepo.UpdateReport(rpt,patientId); //updating in patient list
             return rpt;
         }
+
+        
 
         internal void AddReport(Report rpt)
         {
