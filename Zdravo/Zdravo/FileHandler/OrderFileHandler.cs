@@ -30,5 +30,17 @@ namespace FileHandler
             }
             return loadedOrders;
         }
+        public void addNewOrder(Order newOrder)
+        {
+            string[] lines = System.IO.File.ReadAllLines(filepath);
+            string[] newLines = new string[lines.Length + 1];
+            for (int i = 0; i < lines.Length; i++)
+            {
+                newLines[i] = lines[i];
+            }
+            newLines[lines.Length] = newOrder.Name + "|" + newOrder.Quantity.ToString() + "|" + newOrder.OrderDateTime.ToString() + "|" + newOrder.Note;
+            System.IO.File.WriteAllText(filepath, "");
+            System.IO.File.WriteAllLines(filepath, newLines);
+        }
     }
 }

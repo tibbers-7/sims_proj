@@ -23,5 +23,9 @@ namespace Repository
             loadedOrders = filehandler.Load();
             return loadedOrders;
         }
+        public void addNewOrder(Order newOrder)
+        {
+            filehandler.addNewOrder(newOrder);
+        }
     }
 }

@@ -31,9 +31,9 @@
         <TextBlock HorizontalAlignment="Left" FontStyle="Italic" FontSize="15" Margin="153,434,0,0" TextWrapping="Wrap" Text="Equpiment info" VerticalAlignment="Top" Height="38" Width="121"/>
         <TextBlock HorizontalAlignment="Left" Margin="66,473,0,0" TextWrapping="Wrap" Text="Name:" FontSize="14" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="66,518,0,0" TextWrapping="Wrap" Text="Quantity:" FontSize="14" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="153,474,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155"/>
-        <TextBox HorizontalAlignment="Left" Margin="154,519,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,585,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="296" Height="62"/>
+        <TextBox Name="nameTextBox" HorizontalAlignment="Left" Margin="153,474,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155"/>
+        <TextBox Name="quantityTextBox" HorizontalAlignment="Left" Margin="154,519,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156"/>
+        <TextBox Name="noteTextBox" HorizontalAlignment="Center" Margin="0,585,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="296" Height="62"/>
         <TextBlock HorizontalAlignment="Left" FontStyle="Italic" FontSize="15" Margin="72,560,0,0" TextWrapping="Wrap" Text="Note" VerticalAlignment="Top" Height="20" Width="81"/>
 
     </Grid>
