@@ -26,7 +26,11 @@ namespace FileHandler
                 DateTime orderDateTime=Convert.ToDateTime(parameters[2]);
                 string note=parameters[3];
                 Order loadedOrder=new Order(name, quantity, orderDateTime, note);
-                loadedOrders.Add(loadedOrder);
+                var razlika = DateTime.Now - orderDateTime;
+                if (!(razlika.Hours > 72))
+                {
+                    loadedOrders.Add(loadedOrder);
+                }
             }
             return loadedOrders;
         }

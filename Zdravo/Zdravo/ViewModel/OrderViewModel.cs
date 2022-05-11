@@ -42,6 +42,20 @@ namespace ViewModel
             orders = orderRepository.getAllOrders();
             this.parentWindow= parentWindow;
         }
+        public OrderViewModel(OrdersWindow parentWindow,bool active)
+        {
+            
+            orderRepository = new OrderRepository();
+            if (active)
+            {
+                orders=orderRepository.getActiveOrders();
+            }
+            else
+            {
+                orders = orderRepository.getAllOrders();
+            }
+            this.parentWindow = parentWindow;
+        }
         public void Refresh()
         {
             orderRepository = new OrderRepository();
