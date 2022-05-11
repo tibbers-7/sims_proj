@@ -12,7 +12,7 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\App.xaml
 27-367821212
 
-102-293916848
+103-647570577
 194-1951243044
 DoctorHome.xaml;DoctorView\AppointmentMenu.xaml;DoctorView\ChoosePatient.xaml;DoctorView\NewAppointment.xaml;DoctorView\PatientChart.xaml;DoctorView\PrescriptionWindow.xaml;DoctorView\ReportWindow.xaml;MainWindow.xaml;ManagerHome.xaml;managerView\AddEquipment.xaml;managerView\BasicRenovation.xaml;managerView\ComplexRenovation.xaml;managerView\Equipment.xaml;managerView\EquipmentRelocation.xaml;managerView\MergedRoomsInfo.xaml;managerView\SplitedRoomsInfo.xaml;SecretaryHome.xaml;SecretaryWindows\AddPatient.xaml;SecretaryWindows\AllergenDescription.xaml;SecretaryWindows\Allergens.xaml;SecretaryWindows\AppointmentManagement.xaml;SecretaryWindows\DatePriority.xaml;SecretaryWindows\DoctorPriority.xaml;SecretaryWindows\EditAppointmentDate.xaml;SecretaryWindows\OrdersWindow.xaml;SecretaryWindows\UpdatePatient.xaml;SekretarHome.xaml;
 

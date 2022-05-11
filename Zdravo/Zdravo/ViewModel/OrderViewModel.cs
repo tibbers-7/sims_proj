@@ -10,6 +10,7 @@ using Service;
 using Model;
 using System.ComponentModel;
 using Repository;
+using Zdravo.SecretaryWindows;
 
 namespace ViewModel
 {
@@ -19,6 +20,7 @@ namespace ViewModel
         private ObservableCollection<Order> orders;
         private Order order;
         private OrderRepository orderRepository;
+        private OrdersWindow parentWindow;
         public ObservableCollection<Order> Orders
         {
             get
@@ -34,15 +36,18 @@ namespace ViewModel
             }
         }
 
-        public OrderViewModel()
+        public OrderViewModel(OrdersWindow parentWindow)
         {
             orderRepository=new OrderRepository();
             orders = orderRepository.getAllOrders();
+            this.parentWindow= parentWindow;
         }
         public void Refresh()
         {
             orderRepository = new OrderRepository();
             orders = orderRepository.getAllOrders();
+            parentWindow.DataContext = null;
+            parentWindow.DataContext = this;
         }
 
         protected void NotifyPropertyChanged(string propertyName)
