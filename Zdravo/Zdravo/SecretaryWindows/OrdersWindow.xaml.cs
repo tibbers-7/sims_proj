@@ -12,8 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ViewModel;
+using System.Collections.ObjectModel;
 using Model;
 using Service;
+using System.ComponentModel;
+using Repository;
+
 namespace Zdravo.SecretaryWindows
 {
     /// <summary>
@@ -50,6 +54,29 @@ namespace Zdravo.SecretaryWindows
             SecretaryHome secretaryHomeWindow=new SecretaryHome();
             secretaryHomeWindow.Show();
             this.Close();
+        }
+
+        private void NoteClick(object sender, RoutedEventArgs e)
+        {
+            Order selected = (Order)table.SelectedValue;
+            DateTime orderDateTime=selected.OrderDateTime;
+            DateTime now=DateTime.Now;
+            var difference = now - orderDateTime;
+            if (difference.TotalHours < 72) noteTextBox.Text = "manje";
+            else noteTextBox.Text = "vise"; 
+            MessageBox.Show(selected.Note);
+        }
+
+        private void AllClick(object sender, RoutedEventArgs e)
+        {
+            viewModel.Refresh();
+        }
+
+        private void ActiveClick(object sender, RoutedEventArgs e)
+        {
+            viewModel = new OrderViewModel(this,true);
+            this.DataContext = null;
+            this.DataContext = viewModel;
         }
     }
 }

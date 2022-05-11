@@ -35,6 +35,9 @@ namespace FileHandler
                     case "laboratory":
                         type1 = RoomType.laboratory;
                         break;
+                    case "magacin":
+                        type1 = RoomType.magacin;
+                        break;
                     default:
                         type1 = RoomType.operatingRoom;
                         break;

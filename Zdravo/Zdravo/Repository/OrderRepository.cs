@@ -27,5 +27,18 @@ namespace Repository
         {
             filehandler.addNewOrder(newOrder);
         }
+        public ObservableCollection<Order> getActiveOrders()
+        {
+            ObservableCollection<Order> loadedOrders = new ObservableCollection<Order>();
+            loadedOrders = filehandler.Load();
+            ObservableCollection<Order> activeOrders = new ObservableCollection<Order>();
+            foreach(Order order in loadedOrders)
+            {
+                if ((DateTime.Now - order.OrderDateTime).TotalHours < 72) {
+                    activeOrders.Add(order);
+                }
+            }
+            return activeOrders;
+        }
     }
 }
