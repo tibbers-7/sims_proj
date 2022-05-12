@@ -8,23 +8,19 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Darko\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Branka Kljajic\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Preuzimanja\\repo\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
+      "projectUniqueName": "C:\\Users\\Branka Kljajic\\p\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
       "projectName": "Zdravo",
-      "projectPath": "D:\\Preuzimanja\\repo\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
-      "packagesPath": "C:\\Users\\Darko\\.nuget\\packages\\",
-      "outputPath": "D:\\Preuzimanja\\repo\\sims_proj\\Zdravo\\Zdravo\\obj\\",
+      "projectPath": "C:\\Users\\Branka Kljajic\\p\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
+      "packagesPath": "C:\\Users\\Branka Kljajic\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Branka Kljajic\\p\\sims_proj\\Zdravo\\Zdravo\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Darko\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Branka Kljajic\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

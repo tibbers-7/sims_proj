@@ -7,18 +7,26 @@
         mc:Ignorable="d"
         Title="SplitedRoomsInfo" Height="450" Width="800">
     <Grid>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="74,110,0,0" VerticalAlignment="Top"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="74,0,0,0" VerticalAlignment="Center"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="74,283,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="231,123,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="231,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="231,287,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="512,118,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="618,122,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="512,0,0,0" VerticalAlignment="Center"/>
-        <TextBox HorizontalAlignment="Left" Margin="618,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="120"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="512,287,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="618,291,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-
+        <Label Content="Id:" HorizontalAlignment="Left" Margin="74,154,0,0" VerticalAlignment="Top"/>
+        <Label Content="Sprat" HorizontalAlignment="Left" Margin="74,226,0,0" VerticalAlignment="Top"/>
+        <Label Content="Tip:" HorizontalAlignment="Left" Margin="74,300,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="231,158,0,0" TextWrapping="Wrap" Text="{Binding Path=FirstRoomId,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="231,230,0,0" TextWrapping="Wrap" Text="{Binding Path=FirstRoomFloor,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Id:" HorizontalAlignment="Left" Margin="512,159,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="618,167,0,0" TextWrapping="Wrap" Text="{Binding Path=SecondRoomId,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Sprat:" HorizontalAlignment="Left" Margin="512,239,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="618,239,0,0" TextWrapping="Wrap" Text="{Binding Path=SecondRoomFloor,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Tip:" HorizontalAlignment="Left" Margin="512,300,0,0" VerticalAlignment="Top"/>
+        <Label Content="Soba:" HorizontalAlignment="Left" Margin="74,30,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="comboRoomSelection" ItemsSource="{Binding RoomIds}" HorizontalAlignment="Left" Margin="171,30,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Potvrdi" HorizontalAlignment="Left" Margin="400,376,0,0" VerticalAlignment="Top" Height="27" Width="53" Click="SubmitClick"/>
+        <Label Content="Kratak opis:" HorizontalAlignment="Left" Margin="74,76,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="171,84,0,0" TextWrapping="Wrap" Text="{Binding Path=Description,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Od:" HorizontalAlignment="Left" Margin="408,34,0,0" VerticalAlignment="Top"/>
+        <Label Content="Do:" HorizontalAlignment="Left" Margin="408,76,0,0" VerticalAlignment="Top"/>
+        <DatePicker SelectedDate="{Binding StartDate}" HorizontalAlignment="Left" Margin="480,35,0,0" VerticalAlignment="Top"/>
+        <DatePicker SelectedDate="{Binding EndDate}" HorizontalAlignment="Left" Margin="480,81,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="comboFirstRoomType" HorizontalAlignment="Left" Margin="231,304,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox Name="comboSecondRoomType" HorizontalAlignment="Left" Margin="618,304,0,0" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>

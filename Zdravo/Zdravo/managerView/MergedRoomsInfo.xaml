@@ -7,12 +7,17 @@
         mc:Ignorable="d"
         Title="MergedRoomsInfo" Height="450" Width="800">
     <Grid>
-        <Label Content="Id:" HorizontalAlignment="Left" Margin="133,102,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="250,102,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Sprat:" HorizontalAlignment="Left" Margin="133,161,0,0" VerticalAlignment="Top"/>
-        <Label Content="Tip:" HorizontalAlignment="Left" Margin="133,217,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="250,165,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="250,221,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Id:" HorizontalAlignment="Left" Margin="502,102,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="565,106,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Sprat:" HorizontalAlignment="Left" Margin="487,174,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.605,0.606"/>
+        <Label Content="Tip:" HorizontalAlignment="Left" Margin="493,242,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="565,174,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="565,246,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Soba 1:" HorizontalAlignment="Left" Margin="73,115,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="174,125,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Soba 2:" HorizontalAlignment="Left" Margin="73,227,0,0" VerticalAlignment="Top" Width="51"/>
+        <ComboBox HorizontalAlignment="Left" Margin="174,224,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Button" HorizontalAlignment="Center" Margin="0,372,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.6,0.584" Height="21" Width="84"/>
 
     </Grid>
 </Window>

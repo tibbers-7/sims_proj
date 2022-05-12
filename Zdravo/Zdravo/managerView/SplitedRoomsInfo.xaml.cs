@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Zdravo.ViewModel;
 
 namespace Zdravo.managerView
 {
@@ -19,9 +20,23 @@ namespace Zdravo.managerView
     /// </summary>
     public partial class SplitedRoomsInfo : Window
     {
+        private SplitingRoomsViewModel viewModel;
         public SplitedRoomsInfo()
         {
+            this.viewModel = new SplitingRoomsViewModel();
             InitializeComponent();
+            comboFirstRoomType.ItemsSource = Enum.GetValues(typeof(RoomType));
+            comboSecondRoomType.ItemsSource = Enum.GetValues(typeof(RoomType));
+            this.DataContext = viewModel;
+        }
+
+        private void SubmitClick(object sender, RoutedEventArgs e)
+        {
+            int selectedRoomId = (int)comboRoomSelection.SelectedItem;
+            RoomType firstRoomType = (RoomType)comboFirstRoomType.SelectedItem;
+            RoomType secondRoomType = (RoomType)comboSecondRoomType.SelectedItem;
+            viewModel.Create(selectedRoomId, firstRoomType, secondRoomType);
+            this.Close();
         }
     }
 }

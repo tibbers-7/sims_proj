@@ -205,5 +205,11 @@ namespace Zdravo
             AddEquipment ae = new AddEquipment();
             ae.Show();
         }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e)
+        {
+            SplitedRoomsInfo splitedRoomsInfo = new SplitedRoomsInfo();
+            splitedRoomsInfo.Show();
+        }
     }
 }
