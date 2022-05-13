@@ -69,7 +69,7 @@ namespace Zdravo.PatientView {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Zdravo;V1.0.0.0;component/secretarywindows/appointmentmanagement.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Zdravo;component/secretarywindows/appointmentmanagement.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\SecretaryWindows\AppointmentManagement.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

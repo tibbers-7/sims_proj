@@ -53,7 +53,7 @@ namespace Zdravo.managerView {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Zdravo;V1.0.0.0;component/managerview/addequipment.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Zdravo;component/managerview/addequipment.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\managerView\AddEquipment.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

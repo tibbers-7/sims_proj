@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Zdravo.FileHandler;
 using Zdravo.Model;
 
-namespace Zdravo.Repository
+namespace Repository
 {
     public class SplittingRoomRepository
     {

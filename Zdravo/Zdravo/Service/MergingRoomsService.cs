@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Zdravo.Model;
-using Zdravo.Repository;
+using Repository;
 
 namespace Zdravo.Service
 {

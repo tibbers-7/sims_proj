@@ -77,7 +77,7 @@ namespace Zdravo.PatientView {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Zdravo;V1.0.0.0;component/secretarywindows/allergendescription.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Zdravo;component/secretarywindows/allergendescription.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\SecretaryWindows\AllergenDescription.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
