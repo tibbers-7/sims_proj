@@ -31,6 +31,7 @@ namespace Model
             this.id = id;
             this.floor = floor;
             this.type = type;
+            this.equipmentIds = new ObservableCollection<int>();
         }
 
         /// <summary>
