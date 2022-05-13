@@ -210,3 +210,5 @@ C:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Secre
 C:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\EditAppointmentDate.baml
 C:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\OrdersWindow.baml
 C:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\UpdatePatient.baml
+C:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\managerView\EquipmentReview.g.cs
+C:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\managerView\EquipmentReview.baml

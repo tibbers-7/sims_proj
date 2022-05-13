@@ -218,5 +218,11 @@ namespace Zdravo
             mergedRoomsInfo.Show();
 
         }
+
+        private void Button_Click_10(object sender, RoutedEventArgs e)
+        {
+            EquipmentReview equipmentReview = new EquipmentReview();
+            equipmentReview.Show();
+        }
     }
 }

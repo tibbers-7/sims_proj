@@ -25,6 +25,9 @@
     <Compile Update="managerView\EquipmentRelocation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="managerView\EquipmentReview.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="SecretaryWindows\AddPatient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -82,6 +85,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="managerView\EquipmentRelocation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="managerView\EquipmentReview.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SecretaryWindows\AddPatient.xaml">
