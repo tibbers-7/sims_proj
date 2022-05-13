@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FileHandler;
-using System.Collections.ObjectModel;
-using Zdravo.Model;
-using Service;
+﻿using System.Collections.ObjectModel;
 using Model;
 using System.ComponentModel;
 using Repository;

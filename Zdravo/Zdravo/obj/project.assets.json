@@ -8,19 +8,19 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Branka Kljajic\\.nuget\\packages\\": {}
+    "C:\\Users\\Anja\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Branka Kljajic\\p\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
+      "projectUniqueName": "C:\\Users\\Anja\\Documents\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
       "projectName": "Zdravo",
-      "projectPath": "C:\\Users\\Branka Kljajic\\p\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
-      "packagesPath": "C:\\Users\\Branka Kljajic\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Branka Kljajic\\p\\sims_proj\\Zdravo\\Zdravo\\obj\\",
+      "projectPath": "C:\\Users\\Anja\\Documents\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
+      "packagesPath": "C:\\Users\\Anja\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Anja\\Documents\\sims_proj\\Zdravo\\Zdravo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Branka Kljajic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Anja\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -63,7 +63,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

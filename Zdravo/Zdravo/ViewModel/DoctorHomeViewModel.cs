@@ -1,12 +1,8 @@
 ﻿using Controller;
 using Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -15,9 +11,28 @@ namespace Zdravo.ViewModel
     public class DoctorHomeViewModel : INotifyPropertyChanged
     {
         AppointmentController apController;
+        VacationController vacationController;
         private ObservableCollection<Appointment> appointments;
         private DataGrid table;
         private int doctorId;
+        private string date;
+        public string Date { get { return date; } set { date = value; } }
+        private int hours;
+        public int Hours { get { return hours; } set { hours = value; } }
+        private int minutes;
+        public int Minutes { get { return minutes; } set { minutes = value; } }
+
+        private string startDate;
+        public string StartDate { get { return startDate; } set { startDate = value; } }
+
+        private string endDate;
+        public string EndDate { get { return endDate; } set { endDate = value; } }
+
+        private string reason;
+        public string Reason { get { return reason; } set { reason = value; } }
+        private bool emergency;
+        public bool Emergency { get { return emergency; } set { emergency = value; } }
+
 
         public ObservableCollection<Appointment> Appointments
         {
@@ -34,12 +49,13 @@ namespace Zdravo.ViewModel
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        
 
         public DoctorHomeViewModel(DataGrid table,int doctorId)
         {
             var app = Application.Current as App;
             apController = app.appointmentController;
+            vacationController=app.vacationController;
             this.table = table;
             this.doctorId=doctorId;
             appointments = new ObservableCollection<Appointment>(apController.GetAppointmentsForDoctor(doctorId));
@@ -65,6 +81,25 @@ namespace Zdravo.ViewModel
             newAppointment.Show();
         }
 
+        
+
+        internal void SearchTable()
+        {
+            appointments=apController.SearchTable(Date,Hours,Minutes);
+            NotifyPropertyChanged("Appointments");
+        }
+
+        internal void ResetTable()
+        {
+            Appointments = new ObservableCollection<Appointment>(apController.GetAppointmentsForDoctor(doctorId));
+        }
+
+        internal int ScheduleVacation(bool emergency)
+        {
+            return vacationController.ScheduleVacation(doctorId,startDate,endDate,reason, emergency);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)

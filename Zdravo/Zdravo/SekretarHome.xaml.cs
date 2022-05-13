@@ -34,7 +34,6 @@ namespace Zdravo
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string id = null;
             Patient izabran = (Patient)table.SelectedValue;
             PatientService service = new PatientService();
             service.checkId();

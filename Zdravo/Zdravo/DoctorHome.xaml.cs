@@ -58,9 +58,8 @@ namespace Zdravo
             viewModel.MenuShow(int.Parse((AppointmentTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text));
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-            //Environment.Exit(0);
             MainWindow m = new MainWindow();
             m.Show();
             
@@ -75,7 +74,41 @@ namespace Zdravo
 
         private void VacationButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (vacationRadio.IsChecked == false && sickLeaveRadio.IsChecked == false) MessageBox.Show("Niste uneli sve potrebne podatke.", "Greška");
+            else if (startDate_tb.Text.Equals("") | endDate_tb.Text.Equals("") | reason_tb.Text.Equals("")) MessageBox.Show("Niste uneli sve potrebne podatke.", "Greška");
+            else
+            {
+                int res = viewModel.ScheduleVacation((bool)emergency_Check.IsChecked);
+                switch (res)
+                {
+                    case 0: 
+                        MessageBox.Show("Zahtev za slobodne dane je uspešno poslat.", "Obaveštenje");
+                        break;
+                    case 1:
+                        MessageBox.Show("Nije moguće zakazati slobodne dane u prošlosti!", "Greška");
+                        break;
+                    case 2:
+                        MessageBox.Show("Krajnji datum je pre početnog!", "Greška");
+                        break;
+                    case 3:
+                        MessageBox.Show("Slobodni dani se zakazuju minimalno 48h ranije.", "Greška");
+                        break;
+                    case 4:
+                        MessageBox.Show("Zakazivanje slobodnih dana u tom periodu nije moguće zbog preklapanja.", "Greška");
+                        break;
+                }
+            }
+
+        }
+
+        private void ShowButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.SearchTable();
+        }
+
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.ResetTable();
         }
     }
 }

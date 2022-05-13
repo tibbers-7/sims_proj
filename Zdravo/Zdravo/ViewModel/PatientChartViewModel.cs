@@ -1,15 +1,10 @@
 ﻿using Controller;
 using Model;
-using Repository;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using Zdravo.DoctorWindows;
-using Zdravo.Model;
+
 namespace Zdravo.ViewModel
 {
     public class PatientChartViewModel
@@ -70,6 +65,8 @@ namespace Zdravo.ViewModel
 
         public PatientChartViewModel(int apptId,int patientId)
         {
+            var app = Application.Current as App;
+            appointmentController = app.appointmentController;
             Patient p;
             if (apptId != 0)
             {

@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using Model;
-using Zdravo.Model;
 using Repository;
 using Controller;
 namespace Zdravo.PatientView
@@ -63,7 +52,8 @@ namespace Zdravo.PatientView
             int patientId = Int32.Parse(jmbg);
             String selectedDate = datePicker.SelectedDate.ToString();
             String dateStringForParsing = selectedDate.Split(" ")[0];
-            appointmentController.CreateAppointment(patientId, doctorId,1, Int32.Parse(timeTb.Text.Split(":")[0]),Int32.Parse(timeTb.Text.Split(":")[1]), Int32.Parse(durationTb.Text),Int32.Parse(dateStringForParsing.Split("/")[1]), Int32.Parse(dateStringForParsing.Split("/")[0]),Int32.Parse(dateStringForParsing.Split("/")[2]), false);
+            DateOnly.TryParse(selectedDate, out DateOnly date);
+            appointmentController.CreateAppointment(patientId, doctorId,1, Int32.Parse(timeTb.Text.Split(":")[0]),Int32.Parse(timeTb.Text.Split(":")[1]), Int32.Parse(durationTb.Text),date.ToString("dd/MM/yyyy"), false);
             this.appointmentManagementWindow.viewModel.Refresh();
             this.appointmentManagementWindow.DataContext = null;
             this.appointmentManagementWindow.DataContext = this.appointmentManagementWindow.viewModel;

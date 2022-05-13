@@ -36,7 +36,8 @@ namespace Zdravo.PatientView
             appointmentController = app.appointmentController;
             String datePickerString = datePicker.SelectedDate.ToString();
             String dateStringForParsing = datePickerString.Split(" ")[0];
-            appointmentController.UpdateAppointment(appointment.Id, appointment.Patient, appointment.Doctor, 1, Int32.Parse(timeTb.Text.Split(":")[0]), Int32.Parse(timeTb.Text.Split(":")[1]), appointment.Duration, Int32.Parse(dateStringForParsing.Split("/")[1]), Int32.Parse(dateStringForParsing.Split("/")[0]), Int32.Parse(dateStringForParsing.Split("/")[2]), false);
+            DateOnly.TryParse(datePickerString, out DateOnly date);
+            appointmentController.UpdateAppointment(appointment.Id, appointment.Patient, appointment.Doctor, 1, Int32.Parse(timeTb.Text.Split(":")[0]), Int32.Parse(timeTb.Text.Split(":")[1]), appointment.Duration,date.ToString("dd/MM/yyyy"), false);
             this.appointmentManagementWindow.viewModel.Refresh();
             this.appointmentManagementWindow.DataContext = null;
             this.appointmentManagementWindow.DataContext = this.appointmentManagementWindow.viewModel;

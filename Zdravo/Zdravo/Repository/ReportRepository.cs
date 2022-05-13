@@ -1,16 +1,11 @@
-﻿using Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Zdravo.FileHandler;
+﻿using System.Collections.Generic;
+using FileHandler;
 using Model;
 using FileHandler;
 
-namespace Zdravo.Repository
+namespace Repository
 {
-    internal class ReportRepository
+    public class ReportRepository
     {
         private ReportFileHandler fileHandler=new ReportFileHandler();
         public List<Report> reports;

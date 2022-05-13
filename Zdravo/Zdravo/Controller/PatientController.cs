@@ -6,19 +6,15 @@
 
 using System;
 using Model;
-using Controller;
 using Service;
-using FileHandler;
 using Repository;
-using System.Collections.Generic;
 using System.Windows.Controls;
 using Zdravo;
 using System.Collections.ObjectModel;
-using Zdravo.Model;
 
 namespace Controller
 {
-   public class PatientController
+    public class PatientController
    {
         private PatientService service=new PatientService();
         private PatientRepository p;

@@ -7,17 +7,22 @@ using FileHandler;
 using Model;
 using System;
 using System.Collections.ObjectModel;
-using Zdravo.FileHandler;
+using FileHandler;
 namespace Repository
 {
    public class DoctorRepository
    {
       private ObservableCollection<Doctor> doctors;
-       
-      public Doctor getById(int id)
+
+    public DoctorRepository()
         {
             DoctorFileHandler fileHandler = new DoctorFileHandler();
             this.doctors = fileHandler.Load();
+        }
+       
+      public Doctor getById(int id)
+        {
+            
             foreach(Doctor doctor in doctors)
             {
                 if(doctor.Id == id)return doctor;

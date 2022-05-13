@@ -1,11 +1,7 @@
 ﻿using Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Model;
-using Zdravo.Repository;
 using Zdravo.ViewModel;
 using System.Windows;
 using Zdravo.Model;
