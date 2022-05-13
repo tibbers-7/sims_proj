@@ -211,5 +211,12 @@ namespace Zdravo
             SplitedRoomsInfo splitedRoomsInfo = new SplitedRoomsInfo();
             splitedRoomsInfo.Show();
         }
+
+        private void Button_Click_9(object sender, RoutedEventArgs e)
+        {
+            MergedRoomsInfo mergedRoomsInfo = new MergedRoomsInfo();
+            mergedRoomsInfo.Show();
+
+        }
     }
 }

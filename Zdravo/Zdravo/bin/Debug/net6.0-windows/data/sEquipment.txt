@@ -1,9 +1,9 @@
-1,sto,1,1
-2,stolica,1,1
+1,sto,1,7
+2,stolica,1,7
 3,hanzaplast,10,5
 4,bensedin,15,5
-5,sto,1,3
-6,lek,4,1
+5,sto,1,7
+6,lek,4,7
 7,ssss,4,4
 8,lek,4,4
 9,roko,1,7
