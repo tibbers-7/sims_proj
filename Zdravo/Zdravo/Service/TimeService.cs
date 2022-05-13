@@ -8,6 +8,8 @@ using Model;
 using Zdravo.Repository;
 using Zdravo.ViewModel;
 using System.Windows;
+using Zdravo.Model;
+using System.Collections.ObjectModel;
 
 namespace Service
 {
@@ -18,6 +20,8 @@ namespace Service
         private EquipmentRepository eqRepo = new EquipmentRepository();
         private EquipmentRelocationViewModel viewModel = new EquipmentRelocationViewModel();
         private OrderRepository orderRepo= new OrderRepository();
+        private SplittingRoomRepository splittingRoomRepo = new SplittingRoomRepository();
+
         public async void ThreadFunction()
         {
             while (true)
@@ -45,6 +49,34 @@ namespace Service
                             r.equipmentIds.Add(equipment.id);
                             roomRepo.UpdateEquipment(7, r.equipmentIds);
                             orderRepo.deleteOrder(order);
+                        }
+                    }
+
+                    foreach(SplittingRoom splittingRoom in splittingRoomRepo.GetAll())
+                    {
+                        if(DateTime.Compare(splittingRoom.EndDate, DateTime.Now) <= 0)
+                        {
+                            //ovo moze u posebnu fju
+                            Room selectedRoom = roomRepo.GetById(splittingRoom.SelectedRoomId);
+                            Room stockRoom = roomRepo.GetById(7);
+                            ObservableCollection<int> equipmentIds = stockRoom.equipmentIds;
+                            foreach (int equipmentId in selectedRoom.equipmentIds)
+                            {
+                                equipmentIds.Add(equipmentId);
+                                eqRepo.UpdateRoomId(equipmentId, 7);
+                            }
+                            roomRepo.UpdateEquipment(7, equipmentIds);
+                            //
+                            roomRepo.DeleteById(selectedRoom.id);
+
+                            //sledeca fja
+                            Room firstNewRoom = new Room(splittingRoom.FirstRoomId, selectedRoom.floor, splittingRoom.FirstRoomType);
+                            roomRepo.Create(firstNewRoom);
+                            Room secondNewRoom = new Room(splittingRoom.SecondRoomId, selectedRoom.floor, splittingRoom.SecondRoomType);
+                            roomRepo.Create(secondNewRoom);
+                            //
+                            //obrisati splitting
+                            splittingRoomRepo.Delete(splittingRoom);
                         }
                     }
                 }

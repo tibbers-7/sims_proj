@@ -22,5 +22,15 @@ namespace Zdravo.Repository
             roomSplittings.Add(splittingRoom);
             splittingRoomFileHandler.Write(roomSplittings);
         }
+
+        public ObservableCollection<SplittingRoom> GetAll() {
+            roomSplittings = splittingRoomFileHandler.Read();
+            return roomSplittings;
+        }
+
+        public void Delete(SplittingRoom splittingRoom) {
+            roomSplittings.Remove(splittingRoom);
+            splittingRoomFileHandler.Write(roomSplittings);
+        }
     }
 }
