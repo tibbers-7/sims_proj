@@ -7,17 +7,21 @@
         mc:Ignorable="d"
         Title="MergedRoomsInfo" Height="450" Width="800">
     <Grid>
-        <Label Content="Id:" HorizontalAlignment="Left" Margin="502,102,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="565,106,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Sprat:" HorizontalAlignment="Left" Margin="487,174,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.605,0.606"/>
+        <Label Content="Id:" HorizontalAlignment="Left" Margin="499,136,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="565,136,0,0" TextWrapping="Wrap" Text="{Binding Path=NewRoomId,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
         <Label Content="Tip:" HorizontalAlignment="Left" Margin="493,242,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="565,174,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="565,246,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <Label Content="Soba 1:" HorizontalAlignment="Left" Margin="73,115,0,0" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="174,125,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Soba 2:" HorizontalAlignment="Left" Margin="73,227,0,0" VerticalAlignment="Top" Width="51"/>
-        <ComboBox HorizontalAlignment="Left" Margin="174,224,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Button" HorizontalAlignment="Center" Margin="0,372,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.6,0.584" Height="21" Width="84"/>
+        <ComboBox Name="comboFirstRoomSelection" ItemsSource="{Binding RoomIds}" HorizontalAlignment="Left" Margin="174,125,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Soba 2:" HorizontalAlignment="Left" Margin="73,168,0,0" VerticalAlignment="Top" Width="51"/>
+        <ComboBox Name="secondRoomSelection" ItemsSource="{Binding RoomIds}" HorizontalAlignment="Left" Margin="174,170,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Potvrdi" HorizontalAlignment="Center" Margin="0,372,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.6,0.584" Height="21" Width="84" Click="Button_Click"/>
+        <ComboBox Name="comboNewRoomType" HorizontalAlignment="Left" Margin="565,239,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="174,310,0,0" TextWrapping="Wrap" Text="{Binding Path=Description,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Kratak opis:" HorizontalAlignment="Left" Margin="73,306,0,0" VerticalAlignment="Top"/>
+        <Label Content="Id:" HorizontalAlignment="Left" Margin="87,224,0,0" VerticalAlignment="Top"/>
+        <Label Content="Id:" HorizontalAlignment="Left" Margin="87,255,0,0" VerticalAlignment="Top"/>
+        <DatePicker SelectedDate="{Binding StartDate}" HorizontalAlignment="Left" Margin="192,226,0,0" VerticalAlignment="Top"/>
+        <DatePicker SelectedDate="{Binding EndDate}" HorizontalAlignment="Left" Margin="192,268,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

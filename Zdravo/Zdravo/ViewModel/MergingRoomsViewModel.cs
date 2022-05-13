@@ -10,20 +10,17 @@ using Zdravo.Controller;
 
 namespace Zdravo.ViewModel
 {
-    public class SplitingRoomsViewModel : INotifyPropertyChanged
+    public class MergingRoomsViewModel : INotifyPropertyChanged
     {
         #region NotifyProperties
         private ObservableCollection<int> roomIds;
         private string description;
         private DateTime startDate;
         private DateTime endDate;
-        private int firstRoomId;
-        private int firstRoomFloor;
-        private int secondRoomId;
-        private int secondRoomFloor;
+        private int newRoomId;
         private RoomController roomController;
-        private SplittingRoomController splittingRoomController;
-        
+        //private SplittingRoomController splittingRoomController;
+
 
         public ObservableCollection<int> RoomIds
         {
@@ -88,75 +85,28 @@ namespace Zdravo.ViewModel
             }
         }
 
-        public int FirstRoomId
+        public int NewRoomId
         {
             get
             {
-                return firstRoomId;
+                return newRoomId;
             }
             set
             {
-                if (value != firstRoomId)
+                if (value != newRoomId)
                 {
-                    firstRoomId = value;
-                    NotifyPropertyChanged("FirstRoomId");
-                }
-            }
-        }
-
-        public int FirstRoomFloor
-        {
-            get
-            {
-                return firstRoomFloor;
-            }
-            set
-            {
-                if (value != firstRoomFloor)
-                {
-                    firstRoomFloor = value;
-                    NotifyPropertyChanged("FirstRoomFloor");
-                }
-            }
-        }
-
-        public int SecondRoomId
-        {
-            get
-            {
-                return secondRoomId;
-            }
-            set
-            {
-                if (value != secondRoomId)
-                {
-                    secondRoomId = value;
-                    NotifyPropertyChanged("SecondRoomId");
-                }
-            }
-        }
-
-        public int SecondRoomFloor
-        {
-            get
-            {
-                return secondRoomFloor;
-            }
-            set
-            {
-                if (value != secondRoomFloor)
-                {
-                    secondRoomFloor = value;
-                    NotifyPropertyChanged("SecondRoomFloor");
+                    newRoomId = value;
+                    NotifyPropertyChanged("NewRoomId");
                 }
             }
         }
         #endregion
         public event PropertyChangedEventHandler PropertyChanged;
-        public SplitingRoomsViewModel() {
+        public MergingRoomsViewModel()
+        {
             roomController = new RoomController();
             roomIds = roomController.getAllIds();
-            splittingRoomController = new SplittingRoomController();
+            
         }
 
         protected void NotifyPropertyChanged(string propertyName)
@@ -165,8 +115,9 @@ namespace Zdravo.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void Create(int selectedRoomId, RoomType firstRoomType, RoomType secondRoomType) {
-            splittingRoomController.Create(selectedRoomId, description, StartDate, endDate, firstRoomId, firstRoomType, secondRoomId, secondRoomType);
+        public void Create(int selectedRoomId, RoomType firstRoomType, RoomType secondRoomType)
+        {
+           // splittingRoomController.Create(selectedRoomId, description, StartDate, endDate, firstRoomId, firstRoomType, secondRoomId, secondRoomType);
         }
     }
 }
