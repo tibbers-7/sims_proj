@@ -1,0 +1,24 @@
+﻿<Window x:Class="Zdravo.managerView.EquipmentReview"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zdravo.managerView"
+        mc:Ignorable="d"
+        Title="EquipmentReview" Height="450" Width="800">
+    <Grid>
+        <DataGrid ColumnWidth="*" x:Name="dataGridEquipment" ItemsSource="{Binding Equipment}" IsReadOnly="True" 
+                  SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="206,124,0,124" Width="355">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="id" Binding="{Binding id}"/>
+                <DataGridTextColumn Header="naziv" Binding="{Binding name}" />
+                <DataGridTextColumn Header="kolicina" Binding="{Binding amount}" />
+                <DataGridTextColumn Header="prostorija" Binding="{Binding roomId}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Premestanje" HorizontalAlignment="Left" Margin="384,373,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="searchTb" HorizontalAlignment="Left" Margin="206,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Search" HorizontalAlignment="Center" Margin="0,83,0,0" VerticalAlignment="Top" Height="18" Width="48" Click="SearchClick"/>
+
+    </Grid>
+</Window>

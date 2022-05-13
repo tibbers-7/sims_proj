@@ -1,5 +1,35 @@
 ﻿
 
+<<<<<<< HEAD
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\DoctorHome.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\DoctorView\AppointmentMenu.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\DoctorView\ChoosePatient.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\DoctorView\NewAppointment.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\DoctorView\PatientChart.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\DoctorView\PrescriptionWindow.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\DoctorView\ReportWindow.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\MainWindow.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\ManagerHome.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\managerView\AddEquipment.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\managerView\BasicRenovation.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\managerView\ComplexRenovation.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\managerView\Equipment.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\managerView\EquipmentRelocation.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\managerView\MergedRoomsInfo.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\managerView\SplitedRoomsInfo.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\SecretaryHome.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\SecretaryWindows\AddPatient.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\SecretaryWindows\AllergenDescription.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\SecretaryWindows\Allergens.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\SecretaryWindows\AppointmentManagement.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\SecretaryWindows\DatePriority.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\SecretaryWindows\DoctorPriority.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\SecretaryWindows\EditAppointmentDate.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\SecretaryWindows\OrdersWindow.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\SecretaryWindows\UpdatePatient.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\SekretarHome.xaml;;
+FC:\Users\Branka Kljajic\p\sims_proj\Zdravo\Zdravo\managerView\EquipmentReview.xaml;;
+=======
 FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\DoctorHome.xaml;;
 FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\DoctorView\AppointmentMenu.xaml;;
 FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\DoctorView\ChoosePatient.xaml;;
@@ -27,4 +57,5 @@ FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\SecretaryWindows\EditAppointmen
 FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\SecretaryWindows\OrdersWindow.xaml;;
 FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\SecretaryWindows\UpdatePatient.xaml;;
 FC:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\SekretarHome.xaml;;
+>>>>>>> main
 
