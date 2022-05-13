@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Zdravo.Model;
+using Model;
 
-namespace Zdravo.FileHandler
+namespace FileHandler
 {
     internal class VacationFileHandler
     {
@@ -19,7 +19,7 @@ namespace Zdravo.FileHandler
 
             foreach (string line in File.ReadLines(filePath))
             {
-                Regex regexObj = new Regex("#(\\d+)#(\\d+/\\d+/\\d+)#(\\d+/\\d+/\\d+)#([\\w\\s]+)#(\\w{1})");
+                Regex regexObj = new Regex("#(\\d+)#(\\d+)#(\\d+/\\d+/\\d+)#(\\d+/\\d+/\\d+)#([\\w\\s]+)#(\\w{1})#(\\w{1})");
                 Match matchResult = regexObj.Match(line);
                 if (matchResult.Success)
                 {
@@ -31,6 +31,7 @@ namespace Zdravo.FileHandler
                 {
                     if (line.Equals("")) break;
                     throw new ArgumentException("Regex issue");
+
                 }
 
             }
@@ -55,6 +56,8 @@ namespace Zdravo.FileHandler
             }
             newLines[lines.Length] = vacation.ToCSV();
 
+            System.IO.File.WriteAllText(filePath, "");
+            System.IO.File.WriteAllLines(filePath, newLines);
 
         }
 

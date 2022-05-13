@@ -57,11 +57,7 @@ namespace Zdravo
                 case 1:
                     MessageBox.Show("Pacijent sa tim JMBG ne postoji.", "Greška");
                     break;
-
                 case 2:
-                    MessageBox.Show("Uneseni datum nije validan.", "Greška");
-                    break;
-                case 3:
                     MessageBox.Show("Vreme koje ste odabrali za zakazivanje termina je prošlo.", "Greška");
                     break;
             }

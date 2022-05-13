@@ -4,22 +4,14 @@
  * Purpose: Definition of the Class Service.PatientService
  ***********************************************************************/
 
-using System;
 using Model;
-using Controller;
-using Service;
-using FileHandler;
 using Repository;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Zdravo.DoctorWindows;
-using Zdravo.Model;
-using Zdravo.Repository;
 
 namespace Service
 {
-    
-   public class PatientService
+
+    public class PatientService
 
    {
 

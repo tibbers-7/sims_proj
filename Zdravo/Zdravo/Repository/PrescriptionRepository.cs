@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Zdravo.FileHandler;
+using FileHandler;
 using Model;
 using FileHandler;
 
 namespace Repository
 {
-    internal class PrescriptionRepository
+    public class PrescriptionRepository
     {
         public List<Prescription> prescriptions;
         private PrescriptionFileHandler fileHandler=new PrescriptionFileHandler();

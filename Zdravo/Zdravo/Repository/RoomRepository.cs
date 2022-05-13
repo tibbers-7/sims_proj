@@ -1,14 +1,10 @@
-using System;
 using Model;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Zdravo;
-using Zdravo.Model;
-using Zdravo.Repository;
 
 namespace Repository
 {
-   public class RoomRepository
+    public class RoomRepository
    {
       private FileHandler.RoomFileHandler fileHandler;
         public ObservableCollection<Room> rooms;

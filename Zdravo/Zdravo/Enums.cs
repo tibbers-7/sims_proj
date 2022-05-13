@@ -40,4 +40,11 @@ namespace Zdravo
         lekar,
         upravnik
     }
+
+    public enum VacationStatus
+    {
+        accepted,
+        denied,
+        waiting
+    }
 }

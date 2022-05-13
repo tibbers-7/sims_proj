@@ -11,9 +11,9 @@ using System.Windows.Controls;
 
 namespace Zdravo.ViewModel
 {
-    internal class ReportViewModel : INotifyPropertyChanged
+    internal class ReportViewModel 
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        
         private int apptId;
         private int reportId;
         private int patientId;

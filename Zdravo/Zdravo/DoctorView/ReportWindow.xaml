@@ -24,7 +24,7 @@
         </ControlTemplate>
 
     </Window.Resources>
-    <Grid Background="#FF373F47">
+    <Grid Background="#FFDADADA">
         <Rectangle HorizontalAlignment="Center" Height="254" Margin="0,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="435" Fill="#FF6C91C2"/>
         <Label Content="Datum:" HorizontalAlignment="Left" Margin="9,42,0,0" VerticalAlignment="Top"/>
         <Label Content="Dijagnoza:" HorizontalAlignment="Left" Margin="336,15,0,0" VerticalAlignment="Top"/>
@@ -56,7 +56,7 @@
         <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
             
         
-            x:Name="day_tb"  Margin="76,39,335,313">
+            x:Name="day_tb"  Margin="76,39,335,308">
             <Binding Path="Day" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <Zdravo:RequiredFieldValidation ValidationStep="RawProposedValue"/>
@@ -68,7 +68,7 @@
         <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
             
         
-            x:Name="month_tb"  Margin="139,40,271,313">
+            x:Name="month_tb"  Margin="139,40,271,308">
             <Binding Path="Month" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <Zdravo:RequiredFieldValidation ValidationStep="RawProposedValue"/>
@@ -80,7 +80,7 @@
         <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
             
         
-            x:Name="year_tb"  Margin="203,40,188,313">
+            x:Name="year_tb"  Margin="203,40,188,308">
             <Binding Path="Year" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <Zdravo:RequiredFieldValidation ValidationStep="RawProposedValue"/>
