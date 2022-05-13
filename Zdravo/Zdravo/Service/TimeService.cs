@@ -21,6 +21,7 @@ namespace Service
         private EquipmentRelocationViewModel viewModel = new EquipmentRelocationViewModel();
         private OrderRepository orderRepo= new OrderRepository();
         private SplittingRoomRepository splittingRoomRepo = new SplittingRoomRepository();
+        private MergingRoomsRepository mergingRoomsRepository = new MergingRoomsRepository();
 
         public async void ThreadFunction()
         {
@@ -77,6 +78,35 @@ namespace Service
                             //
                             //obrisati splitting
                             splittingRoomRepo.Delete(splittingRoom);
+                        }
+                    }
+
+                    foreach(MergingRooms mergingRooms in mergingRoomsRepository.GetAll())
+                    {
+                        if (DateTime.Compare(mergingRooms.EndDate, DateTime.Now) <= 0)
+                        {
+                            Room firstRoomSelected = roomRepo.GetById(mergingRooms.FirstSelectedRoomId);
+                            Room secondRoomSelected = roomRepo.GetById(mergingRooms.SecondSelectedRoomId);
+                            Room stockRoom = roomRepo.GetById(7);
+                            ObservableCollection<int> equipmentIds = stockRoom.equipmentIds;
+                            foreach (int equipmentId in firstRoomSelected.equipmentIds)
+                            {
+                                equipmentIds.Add(equipmentId);
+                                eqRepo.UpdateRoomId(equipmentId, 7);
+                            }
+                            foreach (int equipmentId in secondRoomSelected.equipmentIds)
+                            {
+                                equipmentIds.Add(equipmentId);
+                                eqRepo.UpdateRoomId(equipmentId, 7);
+                            }
+                            roomRepo.UpdateEquipment(7, equipmentIds);
+                            roomRepo.DeleteById(firstRoomSelected.id);
+                            roomRepo.DeleteById(secondRoomSelected.id);
+
+                            Room newRoom = new Room(mergingRooms.NewRoomId, firstRoomSelected.floor, mergingRooms.NewRoomType);
+                            roomRepo.Create(newRoom);   
+                            
+                            mergingRoomsRepository.Delete(mergingRooms);
                         }
                     }
                 }

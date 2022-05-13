@@ -19,7 +19,7 @@ namespace Zdravo.ViewModel
         private DateTime endDate;
         private int newRoomId;
         private RoomController roomController;
-        //private SplittingRoomController splittingRoomController;
+        private MergingRoomsController mergingRoomsController;
 
 
         public ObservableCollection<int> RoomIds
@@ -106,6 +106,7 @@ namespace Zdravo.ViewModel
         {
             roomController = new RoomController();
             roomIds = roomController.getAllIds();
+            this.mergingRoomsController = new MergingRoomsController();
             
         }
 
@@ -115,9 +116,9 @@ namespace Zdravo.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void Create(int selectedRoomId, RoomType firstRoomType, RoomType secondRoomType)
+        public void Create(int firstSelectedRoomId, int secondSelectedRoomId, RoomType newRoomType)
         {
-           // splittingRoomController.Create(selectedRoomId, description, StartDate, endDate, firstRoomId, firstRoomType, secondRoomId, secondRoomType);
+            mergingRoomsController.Create(firstSelectedRoomId, secondSelectedRoomId, StartDate, endDate, description, newRoomId, newRoomType);
         }
     }
 }

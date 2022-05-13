@@ -18,9 +18,7 @@ namespace Zdravo.ViewModel
         private DateTime startDate;
         private DateTime endDate;
         private int firstRoomId;
-        private int firstRoomFloor;
         private int secondRoomId;
-        private int secondRoomFloor;
         private RoomController roomController;
         private SplittingRoomController splittingRoomController;
         
@@ -104,21 +102,7 @@ namespace Zdravo.ViewModel
             }
         }
 
-        public int FirstRoomFloor
-        {
-            get
-            {
-                return firstRoomFloor;
-            }
-            set
-            {
-                if (value != firstRoomFloor)
-                {
-                    firstRoomFloor = value;
-                    NotifyPropertyChanged("FirstRoomFloor");
-                }
-            }
-        }
+        
 
         public int SecondRoomId
         {
@@ -132,22 +116,6 @@ namespace Zdravo.ViewModel
                 {
                     secondRoomId = value;
                     NotifyPropertyChanged("SecondRoomId");
-                }
-            }
-        }
-
-        public int SecondRoomFloor
-        {
-            get
-            {
-                return secondRoomFloor;
-            }
-            set
-            {
-                if (value != secondRoomFloor)
-                {
-                    secondRoomFloor = value;
-                    NotifyPropertyChanged("SecondRoomFloor");
                 }
             }
         }
