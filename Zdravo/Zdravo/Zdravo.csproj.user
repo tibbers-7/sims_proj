@@ -25,7 +25,7 @@
     <Compile Update="managerView\EquipmentRelocation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="PatientView\AddPatient.xaml.cs">
+    <Compile Update="SecretaryWindows\AddPatient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="DoctorHome.xaml.cs">
@@ -37,22 +37,25 @@
     <Compile Update="ManagerHome.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="PatientView\AllergenDescription.xaml.cs">
+    <Compile Update="SecretaryWindows\AllergenDescription.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="PatientView\Allergens.xaml.cs">
+    <Compile Update="SecretaryWindows\Allergens.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="PatientView\AppointmentManagement.xaml.cs">
+    <Compile Update="SecretaryWindows\AppointmentManagement.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="PatientView\DoctorPriority.xaml.cs">
+    <Compile Update="SecretaryWindows\DoctorPriority.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="PatientView\EditAppointmentDate.xaml.cs">
+    <Compile Update="SecretaryWindows\EditAppointmentDate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="PatientView\UpdatePatient.xaml.cs">
+    <Compile Update="SecretaryWindows\OrdersWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SecretaryWindows\UpdatePatient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="SecretaryHome.xaml.cs">
@@ -81,7 +84,7 @@
     <Page Update="managerView\EquipmentRelocation.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="PatientView\AddPatient.xaml">
+    <Page Update="SecretaryWindows\AddPatient.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DoctorHome.xaml">
@@ -102,22 +105,25 @@
     <Page Update="ManagerHome.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="PatientView\AllergenDescription.xaml">
+    <Page Update="SecretaryWindows\AllergenDescription.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="PatientView\Allergens.xaml">
+    <Page Update="SecretaryWindows\Allergens.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="PatientView\AppointmentManagement.xaml">
+    <Page Update="SecretaryWindows\AppointmentManagement.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="PatientView\DoctorPriority.xaml">
+    <Page Update="SecretaryWindows\DoctorPriority.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="PatientView\EditAppointmentDate.xaml">
+    <Page Update="SecretaryWindows\EditAppointmentDate.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="PatientView\UpdatePatient.xaml">
+    <Page Update="SecretaryWindows\OrdersWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SecretaryWindows\UpdatePatient.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SecretaryHome.xaml">

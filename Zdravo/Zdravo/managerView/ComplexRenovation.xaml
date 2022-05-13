@@ -1,0 +1,21 @@
+﻿<Window x:Class="Zdravo.managerView.ComplexRenovation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zdravo.managerView"
+        mc:Ignorable="d"
+        Title="ComplexRenovation" Height="450" Width="800">
+    <Grid>
+        <DataGrid ColumnWidth="*" x:Name="dataGridRooms" ItemsSource="{Binding rooms}" IsReadOnly="True" 
+                  SelectionMode="Extended"  AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="201,53,0,195" Width="355">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="id" Binding="{Binding id}"/>
+                <DataGridTextColumn Header="sprat" Binding="{Binding floor}" />
+                <DataGridTextColumn Header="tip" Binding="{Binding type}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Spajanje" HorizontalAlignment="Left" Margin="228,310,0,0" VerticalAlignment="Top" Height="25" Width="63"/>
+        <Button Content="Razdvajanje" HorizontalAlignment="Left" Margin="450,310,0,0" VerticalAlignment="Top" Height="25" Width="78"/>
+    </Grid>
+</Window>

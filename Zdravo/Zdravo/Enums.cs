@@ -22,6 +22,7 @@ namespace Zdravo
         waitingRoom,
         laboratory,
         restRoom,
+        magacin,
         stockroom,
         toilet
     }

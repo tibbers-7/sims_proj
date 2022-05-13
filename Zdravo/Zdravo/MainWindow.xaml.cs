@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Threading;
+using Service;
 
 namespace Zdravo
 {
@@ -24,6 +25,10 @@ namespace Zdravo
         public MainWindow()
         {
             InitializeComponent();
+            TimeService ts = new TimeService();
+            Thread th = new Thread(new ThreadStart(ts.ThreadFunction));
+            th.IsBackground = true;
+            th.Start();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

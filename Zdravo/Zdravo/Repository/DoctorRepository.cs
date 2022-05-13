@@ -3,6 +3,7 @@
 // Created: Monday, March 28, 2022 3:57:38 PM
 // Purpose: Definition of Class DoctorRepository
 
+using FileHandler;
 using Model;
 using System;
 using System.Collections.ObjectModel;
