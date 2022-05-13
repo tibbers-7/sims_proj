@@ -78,16 +78,22 @@ namespace Zdravo
             else if (startDate_tb.Text.Equals("") | endDate_tb.Text.Equals("") | reason_tb.Text.Equals("")) MessageBox.Show("Niste uneli sve potrebne podatke.", "Greška");
             else
             {
-                int res = viewModel.ScheduleVacation();
+                int res = viewModel.ScheduleVacation((bool)emergency_Check.IsChecked);
                 switch (res)
                 {
                     case 0: 
-                        MessageBox.Show("Zahtev za slobodne dane je uspešno poslat", "Obaveštenje");
+                        MessageBox.Show("Zahtev za slobodne dane je uspešno poslat.", "Obaveštenje");
                         break;
                     case 1:
-                        MessageBox.Show("Krajnji datum je pre početnog!", "Greška");
+                        MessageBox.Show("Nije moguće zakazati slobodne dane u prošlosti!", "Greška");
                         break;
                     case 2:
+                        MessageBox.Show("Krajnji datum je pre početnog!", "Greška");
+                        break;
+                    case 3:
+                        MessageBox.Show("Slobodni dani se zakazuju minimalno 48h ranije.", "Greška");
+                        break;
+                    case 4:
                         MessageBox.Show("Zakazivanje slobodnih dana u tom periodu nije moguće zbog preklapanja.", "Greška");
                         break;
                 }

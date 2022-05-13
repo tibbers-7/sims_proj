@@ -12,11 +12,11 @@ namespace Controller
             this.service = service;
         }
 
-        internal int ScheduleVacation(int doctorId,string startDate, string endDate, string reason)
+        internal int ScheduleVacation(int doctorId,string startDate, string endDate, string reason,bool emergency)
         {
             DateOnly _startDate = AppointmentController.ParseDate(startDate);
             DateOnly _endDate = AppointmentController.ParseDate(endDate);
-            return service.ScheduleVacation(doctorId,_startDate, _endDate, reason);
+            return service.ScheduleVacation(doctorId,_startDate, _endDate, reason,emergency);
         }
     }
 }

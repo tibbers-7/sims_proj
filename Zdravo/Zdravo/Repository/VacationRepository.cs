@@ -17,12 +17,14 @@ namespace Repository
         public VacationRepository(DoctorRepository doctorRepository)
         {
             this.doctorRepository = doctorRepository;
-            vacations = fileHandler.Read();
+            GetVacations();
+            RemoveOldLogs();
         }
 
-        public List<Vacation> GetVacations()
+        public void GetVacations()
         {
-            return vacations;
+            vacations = fileHandler.Read();
+            RemoveOldLogs();
         }
 
         public Vacation GetVacationById(int id)
@@ -36,21 +38,60 @@ namespace Repository
 
         public void AddVacation(Vacation vacation)
         {
+            vacations = fileHandler.Read();
             vacation.Id = vacations.Last().Id+1;
             fileHandler.Write(vacation);
+            GetVacations();
         }
 
-        internal bool CheckSpecialization(Doctor d)
+        internal bool CheckSpecialization(Doctor d, Vacation newVacation)
         {
             int counter = 0;
-            foreach(Vacation vacation in vacations)
+            foreach(Vacation oldVacation in vacations)
             {
-                Doctor doctor = doctorRepository.getById(vacation.DoctorId);
-                if (doctor.Specialization.Equals(d.Specialization) && doctor.Id!=d.Id) counter++;
+                    Doctor doctor = doctorRepository.getById(oldVacation.DoctorId);
+                    if (doctor.Specialization.Equals(d.Specialization) && doctor.Id != d.Id && oldVacation.Status!=Zdravo.VacationStatus.denied)
+                    {
+                        if (FindVacationConflicts(newVacation, oldVacation)) counter++;
+                    }
+                
             }
 
             if (counter > 1) return false;
             return true;
+        }
+
+        internal static bool FindVacationConflicts(Vacation newVacation, Vacation oldVacation)
+        {
+            DateTime newStartDate = newVacation.StartDate.ToDateTime(TimeOnly.Parse("00:00 AM"));
+            DateTime newEndDate = newVacation.EndDate.ToDateTime(TimeOnly.Parse("00:00 AM"));
+            DateTime oldStartDate = oldVacation.StartDate.ToDateTime(TimeOnly.Parse("00:00 AM"));
+            DateTime oldEndDate = oldVacation.EndDate.ToDateTime(TimeOnly.Parse("00:00 AM"));
+
+            int newEndOldStart = DateTime.Compare(oldStartDate, newEndDate); 
+            int newStartOldEnd = DateTime.Compare(newStartDate, oldEndDate); 
+            int newStartOldStart = DateTime.Compare(newStartDate, oldStartDate); 
+            int newEndOldEnd = DateTime.Compare(newEndDate, oldEndDate);
+
+            if (newStartOldStart == 0) return true; // old and new start at the same date
+            if (newStartOldStart >= 0 && newStartOldEnd <= 0) return true; //new starts after old starts and old ends after new starts 
+            if (newStartOldStart <= 0 && newEndOldStart <= 0) return true; //old starts after new starts, old ends after new ends
+            if (newStartOldStart<=0 && newEndOldEnd>=0) return true; //old date is inside new date
+            if (newStartOldStart>=0 && newEndOldEnd<=0) return true; //old date encapsulates new date
+
+            return false;
+        }
+
+        internal void RemoveOldLogs()
+        {
+            List<Vacation> currentVacations = new List<Vacation>();
+            foreach(Vacation vacation in vacations)
+            {
+                int cmp = DateTime.Compare(DateTime.Now, vacation.EndDate.ToDateTime(TimeOnly.Parse("00:00 PM")));
+                if (cmp <= 0) currentVacations.Add(vacation);
+            }
+
+            vacations = currentVacations;
         }
     }
 }

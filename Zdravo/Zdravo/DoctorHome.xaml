@@ -205,7 +205,7 @@
 
                     <GroupBox Header="Odaberite vremenski period" Margin="51,143,51,181" Background="#FF6C91C2" Foreground="White">
                         <Grid>
-                            <CheckBox Content="HITNO" Margin="407,93,295,-94" Foreground="White" FontSize="30"/>
+                            <CheckBox x:Name="emergency_Check"  Content="HITNO" Margin="407,93,295,-94" Foreground="White" FontSize="30"/>
                             <TextBox x:Name="reason_tb" HorizontalAlignment="Left" Margin="329,210,0,-110" TextWrapping="Wrap" Width="298">
                                 <Binding Path="Reason" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>

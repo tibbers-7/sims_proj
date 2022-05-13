@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\App.xaml
-23-813867663
+27-367821212
 
-95-1708561323
+104-1633191458
 1941645785384
-DoctorHome.xaml;DoctorView\AppointmentMenu.xaml;DoctorView\ChoosePatient.xaml;DoctorView\NewAppointment.xaml;DoctorView\PatientChart.xaml;DoctorView\PrescriptionWindow.xaml;DoctorView\ReportWindow.xaml;MainWindow.xaml;ManagerHome.xaml;managerView\AddEquipment.xaml;managerView\BasicRenovation.xaml;managerView\Equipment.xaml;managerView\EquipmentRelocation.xaml;PatientView\AddPatient.xaml;PatientView\AllergenDescription.xaml;PatientView\Allergens.xaml;PatientView\AppointmentManagement.xaml;PatientView\DatePriority.xaml;PatientView\DoctorPriority.xaml;PatientView\EditAppointmentDate.xaml;PatientView\UpdatePatient.xaml;SecretaryHome.xaml;SekretarHome.xaml;
+DoctorHome.xaml;DoctorView\AppointmentMenu.xaml;DoctorView\ChoosePatient.xaml;DoctorView\NewAppointment.xaml;DoctorView\PatientChart.xaml;DoctorView\PrescriptionWindow.xaml;DoctorView\ReportWindow.xaml;MainWindow.xaml;ManagerHome.xaml;managerView\AddEquipment.xaml;managerView\BasicRenovation.xaml;managerView\ComplexRenovation.xaml;managerView\Equipment.xaml;managerView\EquipmentRelocation.xaml;managerView\MergedRoomsInfo.xaml;managerView\SplitedRoomsInfo.xaml;SecretaryHome.xaml;SecretaryWindows\AddPatient.xaml;SecretaryWindows\AllergenDescription.xaml;SecretaryWindows\Allergens.xaml;SecretaryWindows\AppointmentManagement.xaml;SecretaryWindows\DatePriority.xaml;SecretaryWindows\DoctorPriority.xaml;SecretaryWindows\EditAppointmentDate.xaml;SecretaryWindows\OrdersWindow.xaml;SecretaryWindows\UpdatePatient.xaml;SekretarHome.xaml;
 
 False
 

@@ -30,6 +30,8 @@ namespace Zdravo.ViewModel
 
         private string reason;
         public string Reason { get { return reason; } set { reason = value; } }
+        private bool emergency;
+        public bool Emergency { get { return emergency; } set { emergency = value; } }
 
 
         public ObservableCollection<Appointment> Appointments
@@ -92,9 +94,9 @@ namespace Zdravo.ViewModel
             Appointments = new ObservableCollection<Appointment>(apController.GetAppointmentsForDoctor(doctorId));
         }
 
-        internal int ScheduleVacation()
+        internal int ScheduleVacation(bool emergency)
         {
-            return vacationController.ScheduleVacation(doctorId,startDate,endDate,reason);
+            return vacationController.ScheduleVacation(doctorId,startDate,endDate,reason, emergency);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

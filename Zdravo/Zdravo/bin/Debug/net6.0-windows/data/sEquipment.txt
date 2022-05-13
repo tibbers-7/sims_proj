@@ -1,4 +1,4 @@
-1,sto,2,1
+1,sto,1,1
 2,stolica,1,1
 3,hanzaplast,10,2
 4,bensedin,15,2
@@ -8,3 +8,4 @@
 8,lek,4,4
 9,roko,1,7
 10,rokoNovi,2,7
+11,sto,1,6

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Zdravo;
 
 namespace Model
 {
@@ -17,10 +18,12 @@ namespace Model
         public DateOnly StartDate { get { return startDate; } set { startDate = value; } }
         private DateOnly endDate;
         public DateOnly EndDate { get { return endDate; } set { endDate = value; } }
-        private bool accepted;
-        public bool Accepted { get { return accepted; } set { accepted = value; } }
+        private VacationStatus status;
+        public VacationStatus Status { get { return status; } set { status = value; } }
         private string reason;
         public string Reason { get { return reason; } set { reason = value; } }
+        private bool emergency;
+        public bool Emergency { get { return emergency; } set { emergency = value; } }
         
         public void FromCSV(GroupCollection csvValues)
         {
@@ -28,17 +31,41 @@ namespace Model
             doctorId = int.Parse(csvValues[2].Value);
             startDate= DateOnly.Parse(csvValues[3].Value);
             endDate = DateOnly.Parse(csvValues[4].Value);
-            reason=csvValues[4].Value;
-            if(csvValues[5].Value.Equals('Y')) accepted = true; else accepted = false;
+            reason=csvValues[5].Value;
+            if (csvValues[6].Value.Equals("Y")) emergency = true; else emergency = false;
+            switch (csvValues[7].Value)
+            {
+                case "A":
+                    status = VacationStatus.accepted;
+                    break;
+                case "D":
+                    status = VacationStatus.denied;
+                    break;
+                default:
+                    status = VacationStatus.waiting;
+                    break;
+            }
         }
 
         internal string ToCSV()
         {
             //#doctorId#startDate#endDate#accepted
             //#1#2022/01/01#2022/02/02#Y
-            char _accepted;
-            if (accepted) _accepted = 'Y'; else _accepted = 'N';
-            string res = '#' + id.ToString()+ '#' + doctorId.ToString() + "#" + startDate.ToString() + "#" + endDate.ToString() + "#" + _accepted;
+            char _status,_emergency;
+            switch (status)
+            {
+                case VacationStatus.accepted:
+                    _status='A';
+                    break;
+                case VacationStatus.denied:
+                    _status='D';
+                    break;
+                default:
+                    _status = 'W';
+                    break;
+            }
+            if (emergency) _emergency = 'Y'; else _emergency = 'N';
+            string res = '#' + id.ToString()+ '#' + doctorId.ToString() + "#" + startDate.ToString() + "#" + endDate.ToString() + "#"+ reason.ToString()+ "#" + _emergency + "#" + _status;
             return res;
         }
 
