@@ -1,0 +1,131 @@
+[33m1ea43b9[m[33m ([m[1;36mHEAD -> [m[1;32mReferralDrugFeature[m[33m)[m Finished feature
+[33m1189d39[m[33m ([m[1;31morigin/ReferralDrugFeature[m[33m)[m Design changes; Window fixes
+[33m451f442[m Implemented accepting & denying drug
+[33m3c4696b[m[33m ([m[1;32mReferral[m[33m)[m Merge pull request #39 from tibbers-7/equipmentReviewFeature
+[33mc3bd5b3[m[33m ([m[1;31morigin/equipmentReviewFeature[m[33m)[m Merge branch 'main' into equipmentReviewFeature
+[33m3e46da8[m Added search equipment functionality
+[33mc136cd6[m Vacation functionality implemented
+[33mfb5c957[m Merging main with VacationFeaturre
+[33m8b24b97[m Merging with VacationFeaturre
+[33me602a2d[m[33m ([m[1;31morigin/VacationFeaturre[m[33m, [m[1;32mVacationFeaturre[m[33m)[m Merged with main
+[33m5954060[m Merging from main
+[33m01ff458[m Vacation feature implemented
+[33m7eee4f5[m Vacation functionality implemented
+[33m396fba0[m Merge pull request #38 from tibbers-7/schedulingRenovationFeature
+[33mc91ef5f[m[33m ([m[1;31morigin/schedulingRenovationFeature[m[33m)[m Added merging rooms functionality
+[33m6d513e0[m Merge pull request #37 from tibbers-7/schedulingRenovationFeature
+[33m5cee660[m Added viewModel for meging rooms
+[33m4bd9f4e[m Merge pull request #36 from tibbers-7/schedulingRenovationFeature
+[33mf365a28[m Added splitting room functionality
+[33mce75249[m Added scheduling of complex renovation
+[33m405b662[m Merge pull request #35 from tibbers-7/equipmentOrderingFeature
+[33m02e6eda[m[33m ([m[1;31morigin/equipmentOrderingFeature[m[33m)[m order moving to stockroom implemented
+[33m5bea2a2[m Merge pull request #34 from tibbers-7/equipmentOrderingFeature
+[33maa0880f[m filtering orders implemented
+[33md73d2d1[m Merge pull request #33 from tibbers-7/equipmentOrderingFeature
+[33mcc71f84[m placing new orders functionality added
+[33m1413b7e[m Merge pull request #32 from tibbers-7/equipmentOrderingFeature
+[33mf7169ac[m added orders viewModel
+[33m03975e4[m Merge pull request #31 from tibbers-7/equipmentOrderingFeature
+[33m1298bff[m added orders window and filehandler
+[33md803106[m Vacation functions across layers implemented
+[33ma6e2d4f[m Merge pull request #30 from tibbers-7/schedulingRenovationFeature
+[33mdc7712a[m Added windows for complex renovation
+[33mee1400d[m Merge pull request #29 from tibbers-7/roomsSerializationFeature
+[33me7a47d4[m[33m ([m[1;31morigin/roomsSerializationFeature[m[33m)[m Bug fixed
+[33m3cb738b[m Implemented appointment search; More code cleanup
+[33m799d823[m some code cleanup
+[33ma4a297a[m Data&Project fix
+[33m6553af6[m Bugfixes;Added choose patient window
+[33m2454108[m Bugfixes;Added choose patient window
+[33m7c2bf65[m added appointment rescheduling activity diagram and made changes to class diagrams
+[33ma3ef274[m merge
+[33m6de9c4a[m merge
+[33mb050cb6[m Merge pull request #28 from tibbers-7/appointmentManagementFeature
+[33me20d554[m rescheduling appointment funcionality added
+[33m738ab83[m Merge pull request #27 from tibbers-7/sequenceDiagram
+[33m6617182[m[33m ([m[1;31morigin/sequenceDiagram[m[33m)[m Added sequence diagram for scheduling relocation
+[33m9ca63a1[m Prescription activity diagram added
+[33m1bc8294[m Merge pull request #26 from tibbers-7/appointmentManagementFeature
+[33m187d9b7[m fixed bugs with data
+[33m07b0beb[m Added add equipment feature
+[33m8e4598d[m Merge pull request #25 from tibbers-7/reportPrescriptionFeature
+[33m55d41b0[m[33m ([m[1;31morigin/reportPrescriptionFeature[m[33m, [m[1;32mreportPrescriptionFeature[m[33m)[m Visual fixes;Binded with roomRepo;Fixed allergens list
+[33m41763ed[m Bugfixes;Showing appts based on doctor login
+[33m0d0204d[m Merge pull request #24 from tibbers-7/equipmentRelocationFeature
+[33m7f46bef[m[33m ([m[1;31morigin/equipmentRelocationFeature[m[33m)[m Added equipment relocation feature
+[33m9b22053[m Fixed conflicts
+[33m7ebc5ab[m Merge pull request #23 from tibbers-7/appointmentManagementFeature
+[33mf533e86[m appointment creating feature added for secretary
+[33mec1d6a6[m Adding a report implemented;Class diagram updated
+[33m9232507[m Merge pull request #22 from tibbers-7/appointmentManagementFeature
+[33m898d08f[m added windows for appointment scheduling
+[33m1903e67[m Merge pull request #21 from tibbers-7/schedulingRenovationFeature
+[33ma5287e5[m Bug fixed
+[33med262bb[m Merge pull request #20 from tibbers-7/equipmentRelocationFeature
+[33me40380c[m Merge branch 'main' into equipmentRelocationFeature
+[33m62b8c8b[m Added schedule relocation feature
+[33m785b872[m Merge pull request #19 from tibbers-7/schedulingRenovationFeature
+[33mbcfdb6d[m Added date and room availability check
+[33ma5f2b2a[m Merge pull request #18 from tibbers-7/schedulingRenovationFeature
+[33m6ffa9ed[m Added scheduling renovation feature
+[33m8865244[m Merge pull request #17 from tibbers-7/equipmentReviewFeature
+[33ma394b75[m Added conroller,service, repo and fh for equipment
+[33m730c92e[m Merge pull request #16 from tibbers-7/roomsSerializationFeature
+[33m08869b5[m Finished read and write to file features
+[33mf9ee3bc[m Merge pull request #15 from tibbers-7/roomsSerializationFeature
+[33m4a373fd[m Added write to file feature for rooms
+[33m63623d5[m Merge pull request #14 from tibbers-7/appointmentManagementFeature
+[33mc233f9b[m added appointment cancelation feature
+[33m1b8590c[m Merge pull request #13 from tibbers-7/appointmentManagementFeature
+[33mf38220d[m added appointment review functionality for secretary
+[33m6d244ac[m Merge pull request #12 from tibbers-7/appointmentManagementFeature
+[33mf18df3f[m initial commit-added window for appointment management
+[33ma78002b[m Merge pull request #11 from tibbers-7/medicalRecordFeature
+[33mf6bf5fc[m[33m ([m[1;31morigin/medicalRecordFeature[m[33m)[m changed homepage for secretary
+[33mb97c3bc[m Merge pull request #10 from tibbers-7/medicalRecordFeature
+[33mb7ac282[m fixes bugs for adding allergens
+[33m7f44124[m Merge pull request #9 from tibbers-7/medicalRecordFeature
+[33m21b448e[m implemented adding new allergen functionality
+[33mdcd7826[m Merge pull request #8 from tibbers-7/medicalRecordFeature
+[33m9f8aa1f[m added allergen review functionality
+[33m5195f7e[m Merge pull request #7 from tibbers-7/medicalRecordFeature
+[33m12a67cb[m refresh button deleted and implemented auto-refresh to patients grid
+[33m9c542d2[m Added equipment review functionality
+[33m178b3e0[m Manager Sequence Diagram added;Updating reports implemented;Report history table doesn't refresh
+[33m46122d9[m Viewing reports implemented
+[33m270e1c9[m[33m ([m[1;31morigin/equipmentFeature[m[33m)[m Merge pull request #6 from tibbers-7/medicalRecordFeature
+[33m41572e5[m added allergens window
+[33m6dbe98f[m Merge pull request #5 from tibbers-7/medicalRecordFeature
+[33ma8f5ce3[m added medical record button to patients table
+[33m815e248[m merge done
+[33mcab1e93[m merge
+[33m35d5e28[m Merge pull request #4 from tibbers-7/reportPrescriptionFeature
+[33mb6e01c9[m Added fileHandlers for Report&Prescription
+[33m482df48[m Added fileHandlers for Report&Prescription
+[33m2576cb3[m Added fileHandlers for Report&Prescription
+[33m72466b1[m Merge pull request #3 from tibbers-7/loginFeature
+[33me5d4765[m[33m ([m[1;31morigin/loginFeature[m[33m)[m changed design of login page and added error message
+[33mf44cc5a[m Merge branch 'loginFeature' of https://github.com/tibbers-7/sims_proj into loginFeature
+[33m0956b25[m added log out buttons to all main windows
+[33m95b32f5[m Merge pull request #2 from tibbers-7/darkoBranch
+[33m8a1ea92[m[33m ([m[1;31morigin/darkoBranch[m[33m)[m testCommit
+[33m435271c[m merge
+[33m5580e9b[m Merror: failed to push some refs to 'https://github.com/tibbers-7/sims_proj.git'erge branch 'workbranch' poruka ][[{}
+[33mfb5d757[m changes on secretary main window
+[33m084701a[m changes to secretary main window
+[33mabd3a09[m Added reports,prescriptions and visual changes to doctor windows
+[33m478509c[m Appointments CRUD fully functional
+[33m94881cd[m crud for patient added
+[33mcc10816[m Implemented deleting,updating appointments and writing a report after appointment
+[33m9bffd99[m Merged DoctorHome with MainWindow; Implemented adding a new appointment in file; Table doesn't update
+[33m0a322a0[m added login feature and all windows connected
+[33mabe8546[m[33m ([m[1;31morigin/feature/login[m[33m)[m New classes added for Secretary
+[33m43c41c5[m Added new classes in class diagram
+[33m5187e28[m Merge branch 'main' of https://github.com/tibbers-7/sims_proj
+[33m37f28b7[m Deleted old use case digram
+[33m04fd491[m initial Class Diagram: Appointments
+[33mf95b192[m final use-case diagrams
+[33m47c2605[m initial design upload
+[33m913aea6[m initial design upload
+[33mff392ab[m Initial commit
