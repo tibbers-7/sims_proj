@@ -23,8 +23,8 @@
 
         </DataTemplate>
     </Window.Resources>
-    <Grid Background="#FF6C91C2">
-        <ListBox SelectedItem="{Binding SelectedDrug}" ItemsSource="{Binding Drugs}" Margin="42,31,42,98" Background="#FFC3C9E9"/>
+    <Grid Background="#FFDADADA">
+
         <Button Content="" Margin="87,329,191,28" Click="AcceptButton_Click" BorderBrush="{x:Null}" >
             <Button.Background>
                 <ImageBrush ImageSource="/images/accept.png"/>
@@ -35,6 +35,18 @@
                 <ImageBrush ImageSource="/images/cancel.png"/>
             </Button.Background>
         </Button>
+        <DataGrid x:Name="drugTable" ItemsSource="{Binding Drugs, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" IsReadOnly ="True" SelectionMode="Single" ColumnWidth="*" Background="#FF6C91C2" Margin="34,10,40,103" GridLinesVisibility="Horizontal">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <EventSetter Event="Control.MouseDoubleClick" Handler="Row_DoubleClick"/>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="id" MaxWidth="0" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Ime" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Tip" Binding="{Binding Type}"  />
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>

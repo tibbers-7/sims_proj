@@ -73,11 +73,11 @@ namespace Zdravo.DoctorWindows
         }
 
 
-        private void Row_DoubleClick(object sender, RoutedEventArgs e)
+        private void ReportRow_DoubleClick(object sender, RoutedEventArgs e)
         {
             object item = reportTable.SelectedItem;
-            string s = (reportTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
             viewModel.ShowReport(int.Parse((reportTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text));
         }
+
     }
 }

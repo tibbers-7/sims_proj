@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo.DoctorWindows"
         mc:Ignorable="d"
-        Title="Karton" Height="694" Width="582" FontFamily="Nirmala UI Semilight">
+        Title="Karton" Height="681" Width="582" FontFamily="Nirmala UI Semilight">
     <Window.Resources>
         <Style TargetType="{x:Type Control}" x:Key="baseStyle">
             <Setter Property="FontSize" Value="15" />
@@ -29,45 +29,42 @@
             <ColumnDefinition Width="84*"/>
             <ColumnDefinition Width="181*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="Osnovne Informacije" Margin="0,0,0,265" Background="#FF8AB6DD" Grid.ColumnSpan="2"/>
-        <Rectangle HorizontalAlignment="Left" Height="40" Margin="10,27,0,0" Stroke="Black" VerticalAlignment="Top" Width="510" Grid.ColumnSpan="2"/>
-        <Label Content="Broj Kartona:" Margin="10,29,0,0" Foreground="#FFF4F1F1" Grid.ColumnSpan="2"></Label>
+        <GroupBox Header="Osnovne Informacije" Margin="0,0,0,310" Background="#FF8AB6DD" Grid.ColumnSpan="2"/>
+
         <Label Content="" Margin="106,29,237,527" Grid.ColumnSpan="2"/>
-        <Label Content="JMBG:" Margin="10,90,84,449"/>
-        <TextBox Text="{Binding Path=IdPatient}"  TextWrapping="Wrap" Margin="145,90,237,548" Grid.ColumnSpan="2" IsReadOnly="True"/>
-        <Label Content="Prezime:" Margin="10,128,283,386" Grid.ColumnSpan="2"/>
-        <TextBox TextWrapping="Wrap" Text="{Binding Path=LastName}" Margin="145,130,237,504" Grid.ColumnSpan="2"  IsReadOnly="True"/>
-        <Label Content="Ime:" Margin="10,171,23,304"/>
-        <TextBox TextWrapping="Wrap" Text="{Binding Path=FirstName}" Margin="145,173,237,461" Grid.ColumnSpan="2"  IsReadOnly="True"/>
-        <Label Content="Datum rođenja:" Margin="10,210,255,284" Grid.ColumnSpan="2"/>
-        <TextBox TextWrapping="Wrap" Text="{Binding Path=BirthDate}" Margin="145,217,237,410" Grid.ColumnSpan="2"  IsReadOnly="True"/>
-        <GroupBox Header="Pol" Margin="185,70,20,477" Grid.Column="1"/>
-        <GroupBox Header="Bračno stanje" Margin="175,200,10,284" Background="AliceBlue" FontSize="20" FontWeight="Normal" Grid.Column="1"/>
-        <Label Content="Adresa stanovanja:" Margin="71,255,210,259" Grid.ColumnSpan="2"/>
-        <TextBox TextWrapping="Wrap" Text="{Binding Path=Address}" Margin="34,282,238,354" Grid.ColumnSpan="2"  IsReadOnly="True"/>
-        <Label Content="Radno mesto:" Margin="71,324,205,183" Grid.ColumnSpan="2"/>
-        <TextBox TextWrapping="Wrap" Text="{Binding Path=WorkPlace}" Margin="35,351,237,288" Grid.ColumnSpan="2"  IsReadOnly="True"/>
-        <StackPanel Margin="158,250,17,226" Grid.Column="1">
+        <Label Content="JMBG:" Margin="10,54,84,485"/>
+        <TextBox Text="{Binding Path=IdPatient}"  TextWrapping="Wrap" Margin="145,54,237,562" Grid.ColumnSpan="2" IsReadOnly="True"/>
+        <Label Content="Prezime:" Margin="10,92,283,422" Grid.ColumnSpan="2"/>
+        <TextBox TextWrapping="Wrap" Text="{Binding Path=LastName}" Margin="145,94,237,527" Grid.ColumnSpan="2"  IsReadOnly="True"/>
+        <Label Content="Ime:" Margin="10,135,23,340"/>
+        <TextBox TextWrapping="Wrap" Text="{Binding Path=FirstName}" Margin="145,137,237,483" Grid.ColumnSpan="2"  IsReadOnly="True"/>
+        <Label Content="Datum rođenja:" Margin="10,174,255,320" Grid.ColumnSpan="2"/>
+        <TextBox TextWrapping="Wrap" Text="{Binding Path=BirthDate}" Margin="145,181,237,435" Grid.ColumnSpan="2"  IsReadOnly="True"/>
+        <GroupBox Header="Pol" Margin="186,44,19,527" Grid.Column="1"/>
+        <GroupBox Header="Bračno stanje" Margin="176,151,9,357" Background="AliceBlue" FontSize="20" FontWeight="Normal" Grid.Column="1"/>
+        <Label Content="Adresa stanovanja:" Margin="54,239,227,275" Grid.ColumnSpan="2"/>
+        <TextBox TextWrapping="Wrap" Text="{Binding Path=Address}" Margin="17,266,255,357" Grid.ColumnSpan="2"  IsReadOnly="True"/>
+        <StackPanel Margin="171,181,4,295" Grid.Column="1">
             <RadioButton x:Name="single" Content="neoženjen-neudata" Height="26" Width="170"/>
             <RadioButton x:Name="married" Content="oženjen-udata" Height="22" Width="171"/>
             <RadioButton x:Name="widow" Content="udovac-udovica" Height="24" Width="172"/>
             <RadioButton x:Name="divorced" Content="razveden-razvedena" Height="25" Width="172"/>
         </StackPanel>
-        <StackPanel Margin="198,121,31,452" Grid.Column="1">
+        <StackPanel Margin="192,71,37,502" Grid.Column="1">
             <RadioButton x:Name="male" Content="Muško" Height="19" Width="78"/>
             <RadioButton x:Name="female" Content="Žensko" Height="31" Width="78"/>
         </StackPanel>
-        <ListBox ItemsSource="{Binding Allergens}" Margin="34,453,392,61" FontSize="16" Background="#FFACC3EE" Grid.ColumnSpan="2"/>
-        <Label Content="Alergeni" Margin="70,403,0,183" FontSize="20"/>
-        <Button Content="" Margin="86,622,264,10" Foreground="Black" Grid.Column="1" BorderBrush="{x:Null}" Click="OkButton_Click">
+        <ListBox ItemsSource="{Binding Allergens}" Margin="28,408,0,106" FontSize="16" Background="#FFACC3EE"/>
+        <Label Content="Alergeni" Margin="64,358,5,228" FontSize="20"/>
+        <Button Content="" Margin="64,577,255,10" Foreground="Black" Grid.Column="1" BorderBrush="{x:Null}" Click="OkButton_Click" RenderTransformOrigin="0.142,0.458">
             <Button.Background>
                 <ImageBrush ImageSource="/images/accept.png"/>
             </Button.Background>
         </Button>
-        <DataGrid x:Name="reportTable" ItemsSource="{Binding Reports, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" IsReadOnly ="True"  SelectionMode="Single" ColumnWidth="*" Background="#FFACC3EE" Margin="15,447,199,61" Grid.Column="1">
+        <DataGrid x:Name="reportTable" ItemsSource="{Binding Reports, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" IsReadOnly ="True"  SelectionMode="Single" ColumnWidth="*" Background="#FFACC3EE" Margin="10,402,205,106" Grid.Column="1">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridRow}">
-                    <EventSetter Event="Control.MouseDoubleClick" Handler="Row_DoubleClick"/>
+                    <EventSetter Event="Control.MouseDoubleClick" Handler="ReportRow_DoubleClick"/>
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
@@ -76,15 +73,16 @@
                 <DataGridTextColumn Header="Dijagnoza" Binding="{Binding Diagnosis}" Width="1.5*" />
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid ItemsSource="{Binding Prescriptions, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False"  IsReadOnly ="True" SelectionMode="Single" ColumnWidth="*" Background="#FFACC3EE" Margin="214,447,31,61" Grid.Column="1">
+        <DataGrid x:Name="prescTable" ItemsSource="{Binding Prescriptions, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False"  IsReadOnly ="True" SelectionMode="Single" ColumnWidth="*" Background="#FFACC3EE" Margin="209,402,37,106" Grid.Column="1">
+            
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" MaxWidth="0"/>
                 <DataGridTextColumn Header="Lek" Binding="{Binding DrugId}"  />
                 <DataGridTextColumn Header="Datum" Binding="{Binding Date}"  />
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Izveštaji" Margin="71,398,210,183" FontSize="20" Grid.Column="1"/>
-        <Label Content="Recepti" Margin="243,395,47,206" FontSize="20" Grid.Column="1"/>
+        <Label Content="Izveštaji" Margin="66,353,216,228" FontSize="20" Grid.Column="1"/>
+        <Label Content="Recepti" Margin="238,350,53,251" FontSize="20" Grid.Column="1"/>
 
     </Grid>
 </Window>

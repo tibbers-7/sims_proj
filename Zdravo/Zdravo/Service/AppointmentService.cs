@@ -73,14 +73,17 @@ namespace Service
             return result;
         }
 
-        internal bool CheckAllergies(int appointmentId, string selectedDrug)
+        internal bool CheckAllergies(int appointmentId, Drug drug)
         {
             Appointment appointment = appointmentRepo.GetByID(appointmentId);
             Patient patient = patientRepo.GetById(appointment.Patient);
             if (patient.Allergens == null) return true;
-            foreach(Allergen allergen in patient.Allergens)
+            foreach (string ingredient in drug.Ingredients)
             {
-                if (allergen.Name.Equals(selectedDrug)) return false;
+                foreach (Allergen allergen in patient.Allergens)
+                {
+                    if (allergen.Name.ToLower().Equals(ingredient.ToLower())) return false;
+                }
             }
             return true;
         }
@@ -115,9 +118,9 @@ namespace Service
         }
 
 
-        internal Report UpdateReport(int patientId,int reportId, DateOnly date, string diagnosis, string reportString)
+        internal Report UpdateReport(int patientId,int reportId, DateOnly date, string diagnosis, string reportString, string anamnesis)
         {
-            Report rpt=new Report() { PatientId=patientId, Id=reportId, ReportString= reportString, Diagnosis=diagnosis,Date=date };
+            Report rpt=new Report() { PatientId=patientId, Id=reportId, ReportString= reportString, Diagnosis=diagnosis,Date=date, Anamnesis=anamnesis };
             reportRepo.UpdateReport(rpt); //updating in file
             patientRepo.UpdateReport(rpt,patientId); //updating in patient list
             return rpt;
@@ -135,9 +138,9 @@ namespace Service
             return reportRepo.GetReportById(id);
         }
 
-        internal void AddPrescription(Prescription p,string selectedDrug)
+        internal void AddPrescription(Prescription p,int drugId)
         {
-            p.DrugId = drugRepo.GetByName(selectedDrug).Id;
+            p.DrugId = drugId;
             prescriptionRepo.AddPrescription(p);
         }
 

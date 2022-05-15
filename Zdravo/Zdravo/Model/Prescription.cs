@@ -6,6 +6,7 @@ namespace Model
     public class Prescription
     {
         private int id;
+
         public int Id { get { return id; } set { id = value; } }
         private int patientId;
         public int PatientId { get { return patientId; } set { patientId = value; } }
@@ -14,6 +15,8 @@ namespace Model
         public int DrugId { get { return drugId; } set { drugId = value; } }
         private DateOnly date;
         public DateOnly Date { get { return date; } set { date = value; } }
+
+
 
         internal void FromCSV(GroupCollection csvValues)
         {

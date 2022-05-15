@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Zdravo" xmlns:viewmodel="clr-namespace:Zdravo.ViewModel" xmlns:Zdravo="clr-namespace:Zdravo" x:Class="Zdravo.DoctorWindows.ReportWindow"
         d:DataContext="{d:DesignInstance Type={x:Type viewmodel:ReportViewModel}}"
         mc:Ignorable="d"
-        Title="Izveštaj" Height="405" Width="454" FontSize="14" FontFamily="Yu Gothic">
+        Title="Izveštaj" Height="433" Width="491" FontSize="14" FontFamily="Yu Gothic">
     <Window.Resources>
         <ControlTemplate x:Key="validationTemplate">
             <Grid Height="Auto" Width="Auto">
@@ -25,20 +25,20 @@
 
     </Window.Resources>
     <Grid Background="#FFDADADA">
-        <Rectangle HorizontalAlignment="Center" Height="264" Stroke="Black" VerticalAlignment="Top" Width="533" Fill="#FF6C91C2"/>
+        <Rectangle HorizontalAlignment="Center" Height="305" Stroke="Black" VerticalAlignment="Top" Width="533" Fill="#FF6C91C2"/>
 
-        <Button Content="" Margin="140,278,248,37" BorderBrush="{x:Null}" Click="AcceptButton_Click" >
+        <Button Content="" Margin="144,329,264,10" BorderBrush="{x:Null}" Click="AcceptButton_Click" >
             <Button.Background>
                 <ImageBrush ImageSource="/images/accept.png"/>
             </Button.Background>
         </Button>
-        <Button Content="" Margin="234,278,150,37" Click="CancelButton_Click" BorderBrush="{x:Null}">
+        <Button Content="" Margin="261,329,150,10" Click="CancelButton_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/images/cancel.png"/>
             </Button.Background>
         </Button>
 
-        <GroupBox Header="" Margin="22,0,22,293" Background="#FFC3C9E9">
+        <GroupBox Header="" Margin="22,0,22,321" Background="#FFC3C9E9">
             <Grid>
                 <TextBox x:Name="date_tb" Margin="22,22,264,0" Validation.ErrorTemplate="{StaticResource validationTemplate}">
                     <Binding Path="Date" UpdateSourceTrigger="LostFocus">
@@ -60,13 +60,21 @@
 
             </Grid>
         </GroupBox>
-        <TextBox x:Name="reportString_tb" Validation.ErrorTemplate="{StaticResource validationTemplate}"  HorizontalAlignment="Center" Margin="0,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="411" Background="#FFDEDEDE" Height="139">
+        <TextBox x:Name="reportString_tb" Validation.ErrorTemplate="{StaticResource validationTemplate}"  HorizontalAlignment="Left" Margin="22,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="224" Background="#FFDEDEDE" Height="174">
             <Binding Path="ReportString" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
-        <Label Content="Izveštaj:" HorizontalAlignment="Left" Margin="32,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="Izveštaj:" HorizontalAlignment="Left" Margin="22,89,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="anamnesis_tb" Validation.ErrorTemplate="{StaticResource validationTemplate}"  HorizontalAlignment="Left" Margin="267,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="202" Background="#FFDEDEDE" Height="174">
+            <Binding Path="Anamnesis" UpdateSourceTrigger="PropertyChanged">
+                <Binding.ValidationRules>
+                    <Zdravo:RequiredFieldValidation ValidationStep="RawProposedValue"/>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+        <Label Content="Anamneza:" HorizontalAlignment="Left" Margin="269,89,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

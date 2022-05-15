@@ -16,6 +16,8 @@ namespace Model
         public string ReportString { get { return reportString; } set { reportString = value; } }
         private int patientId;
         public int PatientId { get { return patientId; } set { patientId = value; } }
+        private string anamnesis;
+        public string Anamnesis { get { return anamnesis; } set { anamnesis = value; } }
 
         internal void FromCSV(GroupCollection csvValues)
         {
@@ -24,11 +26,12 @@ namespace Model
             diagnosis = csvValues[3].Value;
             date = DateOnly.Parse(csvValues[4].Value);
             reportString = csvValues[5].Value;
+            anamnesis=csvValues[6].Value;
         }
 
         internal string ToCSV()
         {
-            return "#"+id.ToString()+"#"+patientId.ToString()+"#"+diagnosis+"#"+date.ToString()+"#"+ reportString;
+            return "#"+id.ToString()+"#"+patientId.ToString()+"#"+diagnosis+"#"+date.ToString()+"#"+ reportString+"#"+anamnesis;
         }
     }
 }

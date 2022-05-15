@@ -18,7 +18,7 @@ using System.Windows;
 
 namespace Zdravo.ViewModel
 {
-    public class NewAppointmentViewModel
+    public class NewAppointmentViewModel: INotifyPropertyChanged
     {
 
         private int patientId;
@@ -60,7 +60,6 @@ namespace Zdravo.ViewModel
 
         private AppointmentController apptController;
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public NewAppointmentViewModel(int id,int doctorId)
         {
@@ -120,8 +119,17 @@ namespace Zdravo.ViewModel
         public void UpdatePatient(int patientId)
         {
             this.patientId=patientId;
-        }
+            NotifyPropertyChanged("PatientId");
             
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
     }
       
 }

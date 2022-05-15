@@ -28,7 +28,7 @@ namespace Zdravo.DoctorView
             viewModel = new DrugViewModel(drugId);
             this.DataContext = viewModel;
             InitializeComponent();
-            if (!viewModel.Status.Equals("NA ČEKANJU"))
+            if (!viewModel.Status.Equals("NA ČEKANJU") | callerWindow==null)
             {
                 acceptButton.IsEnabled = false;
                 denyButton.IsEnabled = false;
@@ -38,8 +38,13 @@ namespace Zdravo.DoctorView
 
         private void AcceptButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.AcceptDrug();
-            callerWindow.RefreshDrugs();
+
+            if (callerWindow != null)
+            {
+                viewModel.AcceptDrug();
+                callerWindow.RefreshDrugs();
+            }
+            else { }
             this.Close();
             
         }
@@ -47,7 +52,7 @@ namespace Zdravo.DoctorView
         private void DenyButton_Click(object sender, RoutedEventArgs e)
         {
             viewModel.DenyDrug();
-            callerWindow.RefreshDrugs();
+            if (callerWindow != null) callerWindow.RefreshDrugs();
             this.Close();
         }
         private void CancelButton_Click(object sender, RoutedEventArgs e)

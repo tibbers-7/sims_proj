@@ -12,7 +12,7 @@ using Zdravo.DoctorWindows;
 
 namespace Zdravo.ViewModel
 {
-    internal class ReferralViewModel
+    internal class ReferralViewModel: INotifyPropertyChanged
     {
         private int patientId;
         public int PatientId { get { return patientId; } set { patientId = value; } }
@@ -29,8 +29,7 @@ namespace Zdravo.ViewModel
         private int doctorId;
         private string currentDoctor;
         public string CurrentDoctor { get { return currentDoctor; } set { currentDoctor = value; } }
-
-        private ReferralWindow caller;
+        
         private AppointmentController apptController;
        
 

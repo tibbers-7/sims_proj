@@ -24,14 +24,14 @@
         </ControlTemplate>
 
     </Window.Resources>
-    <Grid>
+    <Grid Background="#FFDADADA">
         <Grid.RowDefinitions>
             <RowDefinition Height="219*"/>
             <RowDefinition Height="197*"/>
         </Grid.RowDefinitions>
 
         <Rectangle Margin="0,0,0,78" Fill="#FF6C91C2" Grid.RowSpan="2" Stroke="Black" />
-        <GroupBox Header="Osnovne informacije" Margin="6,29,10,37" Background="#FFC3C9E9">
+        <GroupBox Header="" Margin="6,29,10,37" Background="#FFC3C9E9">
             <Grid>
                 <Label Content="Kod lekara:" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Height="67" Width="116"/>
                 <Label Content="Pacijenta:" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Height="67" Width="116"/>
@@ -44,7 +44,7 @@
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox>
-                <Button x:Name="patientButton" Content="Izaberi Pacijenta" HorizontalAlignment="Left" Margin="262,16,0,0" VerticalAlignment="Top" Height="27" Width="100"  FontSize="12" Background="#FF373F47" Foreground="White" Click="PatientButton_Click"/>
+                <Button x:Name="patientButton" Content="Izaberi Pacijenta" HorizontalAlignment="Left" Margin="258,16,0,0" VerticalAlignment="Top" Height="27" Width="104"  FontSize="12" Background="#FF373F47" Foreground="White" Click="PatientButton_Click"/>
                 <Button x:Name="Schedule" Content="" Margin="141,140,211,2" BorderBrush="{x:Null}" Grid.Row="1">
                     <Button.Background>
                         <ImageBrush ImageSource="/images/accept.png"/>
@@ -73,7 +73,7 @@
             </Button.Background>
         </Button>
         <CheckBox IsChecked="{Binding Emergency}" x:Name="emergency_cb" Content="Hitno" HorizontalAlignment="Left" Margin="152,78,0,0" VerticalAlignment="Top" Height="31" Width="90" FontSize="20" RenderTransformOrigin="0.429,4.4" Grid.Row="1"/>
-        <Label Content="Upućuje:" HorizontalAlignment="Left" Margin="21,3,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="82,8,0,0" TextWrapping="Wrap" Text="{Binding CurrentDoctor}" VerticalAlignment="Top" Width="288" Background="White"/>
+        <Label Content="upućuje:" HorizontalAlignment="Left" Margin="298,4,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="10,8,0,0" TextWrapping="Wrap" IsReadOnly="True" Text="{Binding CurrentDoctor}" VerticalAlignment="Top" Width="288" Background="White"/>
     </Grid>
 </Window>

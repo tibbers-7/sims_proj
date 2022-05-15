@@ -106,13 +106,16 @@ namespace Repository
             
             foreach(Appointment appointment in appointments)
             {
-                if (appointment.Doctor == doctorId)
+                if (appointment.Status == Zdravo.Status.accepted)
                 {
-                    DateTime apptDatetime = appointment.Date.ToDateTime(appointment.Time);
-                    int cmp2 = DateTime.Compare(apptDatetime, datetime);
-                    if (cmp2 > 0) list.Add(appointment);   // Show appointments after the specified date and time
+                    if (appointment.Doctor == doctorId)
+                    {
+                        DateTime apptDatetime = appointment.Date.ToDateTime(appointment.Time);
+                        int cmp2 = DateTime.Compare(apptDatetime, datetime);
+                        if (cmp2 > 0) list.Add(appointment);   // Show appointments after the specified date and time
+                    }
+
                 }
-                
             }
 
             return list;
