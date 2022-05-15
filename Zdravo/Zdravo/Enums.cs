@@ -41,7 +41,7 @@ namespace Zdravo
         upravnik
     }
 
-    public enum VacationStatus
+    public enum Status
     {
         accepted,
         denied,

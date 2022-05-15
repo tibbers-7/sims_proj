@@ -17,14 +17,8 @@ namespace Zdravo.ViewModel
         private int apptId;
         private int reportId;
         private int patientId;
-        private int day;
-        private int month;
-        private int year;
-        public int Day { get { return day; } set { day = value; } }
-        public int Month { get { return month; } set { month = value; } }
-        public int Year { get { return year; } set { year = value; } }
-        private DateOnly date;
-        public DateOnly Date { get { return date; } set { date = value; } }
+        private string date;
+        public string Date { get { return date; } set { date = value; } }
         private string diagnosis;
         public string Diagnosis { get { return diagnosis; } set { diagnosis = value; } }
         private string reportString;
@@ -38,21 +32,15 @@ namespace Zdravo.ViewModel
             this.reportId = reportId;
             if(reportId != 0)
             {
-
                 Report r = appointmentController.GetReport(reportId);
-                day = r.Date.Day;
-                month = r.Date.Month;
-                year = r.Date.Year;
-                diagnosis=r.Diagnosis;
+                date = r.Date.ToString("dd/MM/yyyy");
+                diagnosis =r.Diagnosis;
                 reportString = r.ReportString;
                 patientId=r.PatientId;
             }
             else
             {
-                day = DateTime.Now.Day;
-                month=DateTime.Now.Month;
-                year=DateTime.Now.Year;
-                date =DateOnly.FromDateTime(DateTime.Now);
+                date = DateTime.Now.ToString("dd/MM/yyyy");
             }
         }
 
@@ -65,7 +53,6 @@ namespace Zdravo.ViewModel
                     appointmentController.CreateReport(apptId, date, diagnosis, reportString);
                     break;
                 case 1: 
-                    date=new DateOnly(Year,Month,Day);
                     appointmentController.UpdateReport(patientId,reportId, date, diagnosis, reportString);
                     break;
             }

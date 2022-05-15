@@ -73,7 +73,12 @@ namespace Controller
             return false;
       }
 
-      public ObservableCollection<Prescription> GetPrescriptions(int patientId)
+        internal Doctor GetChosenDoctor(string doctorSpecialty,int patientId)
+        {
+            return service.GetChosenDoctor(doctorSpecialty,patientId);
+        }
+
+        public ObservableCollection<Prescription> GetPrescriptions(int patientId)
         {
             return service.GetPrescriptions(patientId);
         }

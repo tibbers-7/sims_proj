@@ -18,7 +18,7 @@ namespace Service
         {
             if (CheckIsInPast(startDate)) return 1;
             if (!CheckDates(startDate, endDate)) return 2;// Greska; Pocetni datum je posle krajnjeg
-            Vacation vacation = new Vacation() { Status=Zdravo.VacationStatus.waiting, DoctorId = doctorId, EndDate = endDate, StartDate = startDate, Reason = reason, Emergency = emergency };
+            Vacation vacation = new Vacation() { Status=Zdravo.Status.waiting, DoctorId = doctorId, EndDate = endDate, StartDate = startDate, Reason = reason, Emergency = emergency };
             if (!emergency)
             {
                 if (!Check48h(startDate)) return 3; //Greska: nije 48h ranije

@@ -31,9 +31,7 @@ namespace Zdravo.DoctorWindows
             this.callerWindow = callerWindow;
             if(reportId==0)
             {
-                day_tb.IsReadOnly = true;
-                month_tb.IsReadOnly = true;
-                year_tb.IsReadOnly = true;
+                date_tb.IsReadOnly = true;
             }
             viewModel = new ReportViewModel(appointmentId,reportId);
             DataContext = viewModel;

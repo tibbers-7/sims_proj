@@ -23,7 +23,8 @@ namespace FileHandler
 
             foreach (string line in File.ReadLines(filePath))
             {
-                    Regex regexObj = new Regex("(\\d+),(\\d+),(\\w+),(\\d+/\\d+/\\d+),(\\d+:\\d{2}),(\\d+),(\\d+),(Y|N)");
+                //                          INT id,INT patientId,INT room,DATEONLY date,TIMEONLY time,INT duration,INT doctorId,INT scheduledDoctorId,CHAR type,CHAR emergency,CHAR status
+                Regex regexObj = new Regex("(\\d+),(\\d+),(\\d*),(\\d*/\\d*/\\d*),(\\d*:\\d*),(\\d+),(\\d*),(\\d+),(O|A),(Y|N),(A|D|W)");
                     Match matchResult = regexObj.Match(line);
                     if (matchResult.Success)
                     {

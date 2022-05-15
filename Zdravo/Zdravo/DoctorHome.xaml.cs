@@ -52,10 +52,15 @@ namespace Zdravo
 
 
 
-        private void Row_DoubleClick(object sender, RoutedEventArgs e)
+        private void AppointmentRow_DoubleClick(object sender, RoutedEventArgs e)
         {
             object item = AppointmentTable.SelectedItem;
             viewModel.MenuShow(int.Parse((AppointmentTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text));
+        }
+        private void DrugRow_DoubleClick(object sender, RoutedEventArgs e)
+        {
+            object item = DrugsTable.SelectedItem;
+            viewModel.DrugShow(int.Parse((DrugsTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text));
         }
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
@@ -69,7 +74,7 @@ namespace Zdravo
 
         private void Referral_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            viewModel.ShowReferral();
         }
 
         private void VacationButton_Click(object sender, RoutedEventArgs e)

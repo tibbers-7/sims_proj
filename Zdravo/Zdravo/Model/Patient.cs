@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Zdravo;
 using System.Collections.ObjectModel;
 using Repository;
+
 namespace Model
 {
    public class Patient : User
@@ -30,6 +31,8 @@ namespace Model
         public string WorkPlace { get { return workPlace; } set { workPlace = value; } }
         private MarriageStatus status;
         public MarriageStatus Status { get { return status; } set { status = value; } }
+        private List<int> chosenDoctors;
+        public List<int> ChosenDoctors { get { return chosenDoctors; } set { chosenDoctors = value;} }
         public Patient(string fn, string ln, int i, string un, string pas, string pn, DateTime date, Gender g, string ad, bool gu,string mejl,List<int> allergenIds) :base(fn,ln,i,un,pas,pn,date,g,ad,gu,mejl)
         {
             reports = new List<Report>();
@@ -86,5 +89,7 @@ namespace Model
         {
             prescriptions.Add(p);
         }
+
+        
    }
 }

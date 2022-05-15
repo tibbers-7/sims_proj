@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using Zdravo.Controller;
+using Zdravo.DoctorView;
 
 namespace Zdravo.ViewModel
 {
@@ -12,7 +14,9 @@ namespace Zdravo.ViewModel
     {
         AppointmentController apController;
         VacationController vacationController;
+        DrugController drugController;
         private ObservableCollection<Appointment> appointments;
+        private ObservableCollection<Drug> drugs;
         private DataGrid table;
         private int doctorId;
         private string date;
@@ -49,17 +53,44 @@ namespace Zdravo.ViewModel
             }
         }
 
-        
+        public ObservableCollection<Drug> Drugs
+        {
+            get
+            {
+                return drugs;
+            }
+            set
+            {
+                if (drugs == value)
+                    return;
+                drugs = new ObservableCollection<Drug>(drugController.GetValidDrugs());
+                NotifyPropertyChanged("Drugs");
+            }
+        }
+
+        internal void DrugShow(int drugId)
+        {
+            DrugWindow drugWindow = new DrugWindow(this,drugId);
+            drugWindow.Show();
+        }
 
         public DoctorHomeViewModel(DataGrid table,int doctorId)
         {
             var app = Application.Current as App;
             apController = app.appointmentController;
+            drugController = app.drugController;
             vacationController=app.vacationController;
             this.table = table;
             this.doctorId=doctorId;
             appointments = new ObservableCollection<Appointment>(apController.GetAppointmentsForDoctor(doctorId));
+            drugs=new ObservableCollection<Drug>(drugController.GetValidDrugs());
             
+        }
+
+        internal void ShowReferral()
+        {
+            ReferralWindow referralWindow = new ReferralWindow(doctorId);
+            referralWindow.Show();
         }
 
         public void MenuShow(int rowId)
@@ -75,6 +106,11 @@ namespace Zdravo.ViewModel
             table.ItemsSource = Appointments;
         }
 
+        public void RefreshDrugs()
+        {
+            Drugs = new ObservableCollection<Drug>(drugController.GetValidDrugs());
+        }
+
         public void NewAppointment()
         {
              NewAppointment newAppointment = new NewAppointment(this,0,doctorId);
@@ -85,7 +121,7 @@ namespace Zdravo.ViewModel
 
         internal void SearchTable()
         {
-            appointments=apController.SearchTable(Date,Hours,Minutes);
+            appointments=apController.SearchTable(doctorId,Date,Hours,Minutes);
             NotifyPropertyChanged("Appointments");
         }
 

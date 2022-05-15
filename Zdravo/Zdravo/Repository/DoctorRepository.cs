@@ -8,6 +8,8 @@ using Model;
 using System;
 using System.Collections.ObjectModel;
 using FileHandler;
+using System.Collections.Generic;
+
 namespace Repository
 {
    public class DoctorRepository
@@ -36,5 +38,27 @@ namespace Repository
             return this.doctors;
         }
 
-   }
+        internal Doctor FindBySpecialization(string doctorSpecialty)
+        {
+            foreach(Doctor doctor in doctors)
+            {
+                if (doctor.Specialization.Equals(doctorSpecialty))
+                {
+                    return doctor;
+                }
+            }
+
+            return null;
+        }
+
+        internal List<string> GetAllSpetializations()
+        {
+            List<string> spetializations=new List<string>();
+            foreach (Doctor doctor in doctors)
+            {
+                spetializations.Add(doctor.Specialization);
+            }
+            return spetializations;
+        }
+    }
 }

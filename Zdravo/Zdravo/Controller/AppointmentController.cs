@@ -19,11 +19,13 @@ namespace Controller
    {
         private AppointmentService service;
        private PatientController patientController;
+        private DoctorRepository doctorRepository;
 
-      public AppointmentController(AppointmentService _service,PatientController patientController)
+      public AppointmentController(AppointmentService _service,PatientController patientController, DoctorRepository doctorRepository)
         {
             service = _service;
             this.patientController = patientController;
+            this.doctorRepository = doctorRepository;
             
         }
 
@@ -44,7 +46,7 @@ namespace Controller
             int cmp = DateTime.Compare(datetime, DateTime.Now);
             if (cmp < 0) return 2;   // Cannot make appointment in the past
 
-            Appointment appt = new Appointment() { Date = _date, Time = _time, Doctor = doctor, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency };
+            Appointment appt = new Appointment() { Date = _date, Time = _time, Doctor = doctor, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency, Status = Status.accepted, DoctorSchedules = doctor, Type = 'A' };
             service.CreateAppointment(appt);
             
 
@@ -52,6 +54,30 @@ namespace Controller
 
 
         }
+
+        internal ObservableCollection<string> GetAllSpetializations()
+        {
+            DoctorRepository doctorRepository = new DoctorRepository();
+            return new ObservableCollection<string>(doctorRepository.GetAllSpetializations());
+        }
+
+        internal int CreateReferral(int patientId, int doctorId, string doctorSpecialty, bool isAppt, bool emergency)
+        {
+            Patient p = patientController.GetById(patientId);
+            if (p == null) return 1;
+            Doctor d = patientController.GetChosenDoctor(doctorSpecialty,patientId);
+            if (d == null) return 2;
+            char type;
+            if (isAppt) type = 'A'; else type = 'O';
+
+
+            Appointment appointment = new Appointment() { Patient = patientId, Emergency = emergency, Status = Status.waiting, Type = type, DoctorSchedules = doctorId, Doctor=d.Id};
+            service.CreateAppointment(appointment);
+
+            return 0;
+        }
+
+        
 
         internal void AddPrescription(int patient, string selectedDrug, DateTime now)
         {
@@ -64,10 +90,14 @@ namespace Controller
             return service.DeleteAppointment(id);
         }
 
-        internal ObservableCollection<Appointment> SearchTable(string date, int hours, int minutes)
+        internal bool CheckAllergies(int appointmentId, string selectedDrug)
+        {
+            return service.CheckAllergies(appointmentId, selectedDrug);
+        }
+        internal ObservableCollection<Appointment> SearchTable(int doctorId,string date, int hours, int minutes)
         {
             DateOnly _date = ParseDate(date);
-            return service.SearchTable(_date, hours, minutes);
+            return service.SearchTable(doctorId,_date, hours, minutes);
         }
 
         //should update in the patient's list too
@@ -82,17 +112,17 @@ namespace Controller
             if (cmp < 0) return 3;   // Cannot make appointment in the past
 
             
-            Appointment appt = new Appointment() { Id = id, Date = _date, Time = _time, Doctor = doctorId, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency };
+            Appointment appt = new Appointment() { Id = id, Date = _date, Time = _time, Doctor = doctorId, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency, DoctorSchedules=doctorId, Type='A', Status = Status.accepted };
             service.UpdateAppointment(appt);
             return 0;
         }
 
 
         //link report to patient
-        internal void CreateReport(int apptId,DateOnly date, string diagnosis, string report)
+        internal void CreateReport(int apptId,string date, string diagnosis, string report)
         {
             Appointment appt=service.GetAppointment(apptId);
-            Report rpt = new Report() { Date = date, PatientId = appt.Patient, ReportString = report, Diagnosis = diagnosis };
+            Report rpt = new Report() { Date = ParseDate(date), PatientId = appt.Patient, ReportString = report, Diagnosis = diagnosis };
 
             // Change to controller later
             Patient p = patientController.GetById(appt.Patient);
@@ -100,26 +130,25 @@ namespace Controller
             service.AddReport(rpt);
         }
 
-        internal void UpdateReport(int patientId,int reportId, DateOnly date, string diagnosis, string reportString)
+        internal void UpdateReport(int patientId,int reportId, string date, string diagnosis, string reportString)
         {
-            service.UpdateReport(patientId,reportId, date, diagnosis, reportString);
+            service.UpdateReport(patientId,reportId, ParseDate(date), diagnosis, reportString);
         }
 
-        internal bool CheckAllergies(int appointmentId, string selectedDrug)
-        {
-            return service.CheckAllergies(appointmentId,selectedDrug);
-        }
-
-        internal ObservableCollection<string> GetAllDrugNames()
-        {
-            return new ObservableCollection<string>(service.GetAllDrugNames());
-        }
+        
 
 
       public List<Appointment> GetAll()
         {
           return service.GetAll();
       }
+
+        public string GetDoctorInfo(int doctorId)
+        {
+            Doctor doctor=doctorRepository.getById(doctorId);
+            string res = doctor.Name + " " + doctor.LastName + ", " + doctor.Specialization;
+            return res;
+        }
        
 
         public Appointment GetAppointment(int id)
@@ -142,7 +171,9 @@ namespace Controller
 
         public static DateOnly ParseDate(string s)
         {
+            
             DateOnly date=new DateOnly();
+            if (s == null) return date;
             Regex regexObj = new Regex("(\\d+)/(\\d+)/(\\d+)");
             Match matchResult = regexObj.Match(s);
             if (matchResult.Success)

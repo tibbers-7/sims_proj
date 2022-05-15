@@ -58,7 +58,10 @@ namespace Repository
             doctorAppts = new List<Appointment>();
             foreach(Appointment appt in appointments)
             {
-                if (appt.Doctor == doctorId) doctorAppts.Add(appt);                
+                if (appt.Doctor == doctorId)
+                { if(appt.Status==Zdravo.Status.accepted)
+                    doctorAppts.Add(appt);
+                }
                
             }
             return doctorAppts;
@@ -92,19 +95,23 @@ namespace Repository
                 return true;
         }
 
-        internal ObservableCollection<Appointment> SearchTable(DateOnly date, int hours, int minutes)
+        internal ObservableCollection<Appointment> SearchTable(int doctorId,DateOnly date, int hours, int minutes)
         {
             ObservableCollection<Appointment> list=new ObservableCollection<Appointment>();
             DateOnly _date;
             TimeOnly _time=new TimeOnly(hours,minutes);
-            if (date.Equals("")) _date = DateOnly.FromDateTime(DateTime.Now); else _date = date;
+            int cmp = DateTime.Compare(new DateTime(), date.ToDateTime(TimeOnly.Parse("12:00 AM")));
+            if (cmp==0) _date = DateOnly.FromDateTime(DateTime.Now); else _date = date;
             DateTime datetime = _date.ToDateTime(_time);
             
             foreach(Appointment appointment in appointments)
             {
-                DateTime apptDatetime = appointment.Date.ToDateTime(appointment.Time);
-                int cmp = DateTime.Compare(apptDatetime,datetime);
-                if (cmp > 0) list.Add(appointment);   // Show appointments after the specified date and time
+                if (appointment.Doctor == doctorId)
+                {
+                    DateTime apptDatetime = appointment.Date.ToDateTime(appointment.Time);
+                    int cmp2 = DateTime.Compare(apptDatetime, datetime);
+                    if (cmp2 > 0) list.Add(appointment);   // Show appointments after the specified date and time
+                }
                 
             }
 

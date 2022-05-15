@@ -1,0 +1,79 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zdravo.DoctorView"
+        xmlns:Zdravo="clr-namespace:Zdravo" xmlns:viewmodel="clr-namespace:Zdravo.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ReferralViewModel}" x:Class="Zdravo.DoctorView.ReferralWindow"
+        mc:Ignorable="d"
+        Title="ReferralWindow" Height="431" Width="400" FontFamily="Yu Gothic">
+    <Window.Resources>
+        <ControlTemplate x:Key="validationTemplate">
+            <Grid Height="Auto" Width="Auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
+                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+            </Grid>
+        </ControlTemplate>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="219*"/>
+            <RowDefinition Height="197*"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Margin="0,0,0,78" Fill="#FF6C91C2" Grid.RowSpan="2" Stroke="Black" />
+        <GroupBox Header="Osnovne informacije" Margin="6,29,10,37" Background="#FFC3C9E9">
+            <Grid>
+                <Label Content="Kod lekara:" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Height="67" Width="116"/>
+                <Label Content="Pacijenta:" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Height="67" Width="116"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"  
+        x:Name="patientId_tb" HorizontalAlignment="Center" Margin="0,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Background="White" Height="23" >
+                    <Binding Path="PatientId" UpdateSourceTrigger="PropertyChanged"  Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <Zdravo:NumericValidation ValidationStep="RawProposedValue"/>
+                            <Zdravo:RequiredFieldValidation ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
+                <Button x:Name="patientButton" Content="Izaberi Pacijenta" HorizontalAlignment="Left" Margin="262,16,0,0" VerticalAlignment="Top" Height="27" Width="100"  FontSize="12" Background="#FF373F47" Foreground="White" Click="PatientButton_Click"/>
+                <Button x:Name="Schedule" Content="" Margin="141,140,211,2" BorderBrush="{x:Null}" Grid.Row="1">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/images/accept.png"/>
+                    </Button.Background>
+                </Button>
+                <ComboBox x:Name="doctorSpetialization_cb" SelectedItem="{Binding DoctorSpetialization}" ItemsSource="{Binding Spetializations}" HorizontalAlignment="Center" Margin="0,65,0,28" Width="144"/>
+            </Grid>
+
+        </GroupBox>
+        <Button Content="" Margin="223,140,125,10"  BorderBrush="{x:Null}" Grid.Row="1" Click="Button_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/images/cancel.png"/>
+            </Button.Background>
+        </Button>
+        <GroupBox Header="Tip uputa" Margin="8,178,8,145" Background="#FFC3C9E9" Grid.RowSpan="2">
+            <Grid>
+                <RadioButton x:Name="surgery_rb" IsChecked="{Binding Surgery}" Content="Operacija" HorizontalAlignment="Left" Margin="37,9,0,0" VerticalAlignment="Top" FontSize="20"/>
+                <RadioButton x:Name="appt_tb" IsChecked="{Binding Appt}" Content="Pregled" HorizontalAlignment="Left" Margin="234,9,0,0" VerticalAlignment="Top" FontSize="20"/>
+
+            </Grid>
+
+        </GroupBox>
+        <Button x:Name="Schedule1" Content="" Margin="141,140,208,10" Click="ScheduleButton_Click" BorderBrush="{x:Null}" Grid.Row="1">
+            <Button.Background>
+                <ImageBrush ImageSource="/images/accept.png"/>
+            </Button.Background>
+        </Button>
+        <CheckBox IsChecked="{Binding Emergency}" x:Name="emergency_cb" Content="Hitno" HorizontalAlignment="Left" Margin="152,78,0,0" VerticalAlignment="Top" Height="31" Width="90" FontSize="20" RenderTransformOrigin="0.429,4.4" Grid.Row="1"/>
+        <Label Content="Upućuje:" HorizontalAlignment="Left" Margin="21,3,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="82,8,0,0" TextWrapping="Wrap" Text="{Binding CurrentDoctor}" VerticalAlignment="Top" Width="288" Background="White"/>
+    </Grid>
+</Window>

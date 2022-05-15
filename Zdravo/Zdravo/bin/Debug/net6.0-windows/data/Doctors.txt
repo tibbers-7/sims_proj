@@ -3,3 +3,6 @@
 3,Stefan,Markovic,Hirurg
 4,Milos,Urosevic,Pedijatar
 5,Ljubica,Misic,Zubar
+6,Dragan,Zoric,Ginekolog
+7,Zorica,Babic,Oftamolog
+8,Andjela,Simovic,Opsta
