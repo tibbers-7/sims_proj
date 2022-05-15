@@ -39,6 +39,10 @@ namespace Zdravo
                 patientButton.Content = "Izaberi pacijenta";
 
             }
+            else
+            {
+                patientId_tb.IsReadOnly = true;
+            }
             this.callerWindow = callerWindow;
             this.apptId = apptId;
             viewModel = new NewAppointmentViewModel(apptId, doctorId);
@@ -47,6 +51,11 @@ namespace Zdravo
         
         private void ScheduleButton_Click(object sender, RoutedEventArgs e)
         {
+            if (rooms_cb.SelectedIndex==-1 | duration_tb.Text.Equals("0") | date_tb.Text.Equals(""))
+            {
+                MessageBox.Show("Nisu unete svi potrebne informacije.", "Greška");
+                return;
+            } 
             int errorCode=viewModel.CreateAppointment();
             switch (errorCode)
             {

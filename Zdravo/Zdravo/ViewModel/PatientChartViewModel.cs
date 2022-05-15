@@ -86,7 +86,7 @@ namespace Zdravo.ViewModel
                 allergens = p.GetAllergens();
                 reports = patientController.GetReports(idPatient);
                 prescriptions = patientController.GetPrescriptions(idPatient);
-                birthDate = p.DatumRodjenja.ToString("mm.dd.yyyy.");
+            birthDate = p.DatumRodjenja.ToString("dd/MM/yyyy");
                 address = p.Adresa;
                 if (p.pol == Zdravo.Gender.male)
                 {

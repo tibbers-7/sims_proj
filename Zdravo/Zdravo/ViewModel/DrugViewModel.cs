@@ -32,7 +32,7 @@ namespace Zdravo.ViewModel
             var app = Application.Current as App;
             drugController = app.drugController;
             Drug drug = drugController.GetById(drugId);
-            Ingredients = new ObservableCollection<string>(drug.Ingredients);
+            ingredients = new ObservableCollection<string>(drug.Ingredients);
             name=drug.Name.ToUpper();
             type=drug.Type;
             status = drug.StatusString;

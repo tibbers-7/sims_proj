@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using Zdravo;
+using Zdravo.Controller;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Controller
@@ -20,12 +21,14 @@ namespace Controller
         private AppointmentService service;
        private PatientController patientController;
         private DoctorRepository doctorRepository;
+        private DrugController drugController;
 
-      public AppointmentController(AppointmentService _service,PatientController patientController, DoctorRepository doctorRepository)
+      public AppointmentController(AppointmentService _service,PatientController patientController, DoctorRepository doctorRepository, DrugController drugController)
         {
             service = _service;
             this.patientController = patientController;
             this.doctorRepository = doctorRepository;
+            this.drugController = drugController;
             
         }
 
@@ -79,10 +82,10 @@ namespace Controller
 
         
 
-        internal void AddPrescription(int patient, string selectedDrug, DateTime now)
+        internal void AddPrescription(int patient, int drugId, DateTime now)
         {
             Prescription presc = new Prescription() { Date = DateOnly.FromDateTime(now), PatientId = patient };
-            service.AddPrescription(presc,selectedDrug);
+            service.AddPrescription(presc,drugId);
         }
 
         public bool DeleteAppointment(int id)
@@ -90,9 +93,10 @@ namespace Controller
             return service.DeleteAppointment(id);
         }
 
-        internal bool CheckAllergies(int appointmentId, string selectedDrug)
+        internal bool CheckAllergies(int appointmentId, int drugId)
         {
-            return service.CheckAllergies(appointmentId, selectedDrug);
+            Drug drug=drugController.GetById(drugId);
+            return service.CheckAllergies(appointmentId, drug);
         }
         internal ObservableCollection<Appointment> SearchTable(int doctorId,string date, int hours, int minutes)
         {
@@ -119,10 +123,10 @@ namespace Controller
 
 
         //link report to patient
-        internal void CreateReport(int apptId,string date, string diagnosis, string report)
+        internal void CreateReport(int apptId,string date, string diagnosis, string report,string anamnesis)
         {
             Appointment appt=service.GetAppointment(apptId);
-            Report rpt = new Report() { Date = ParseDate(date), PatientId = appt.Patient, ReportString = report, Diagnosis = diagnosis };
+            Report rpt = new Report() { Date = ParseDate(date), PatientId = appt.Patient, ReportString = report, Diagnosis = diagnosis, Anamnesis=anamnesis };
 
             // Change to controller later
             Patient p = patientController.GetById(appt.Patient);
@@ -130,9 +134,9 @@ namespace Controller
             service.AddReport(rpt);
         }
 
-        internal void UpdateReport(int patientId,int reportId, string date, string diagnosis, string reportString)
+        internal void UpdateReport(int patientId,int reportId, string date, string diagnosis, string reportString,string anamnesis)
         {
-            service.UpdateReport(patientId,reportId, ParseDate(date), diagnosis, reportString);
+            service.UpdateReport(patientId,reportId, ParseDate(date), diagnosis, reportString,anamnesis);
         }
 
         

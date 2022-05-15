@@ -20,7 +20,7 @@ namespace FileHandler
             {
                 //|1|43243|F22|8/10/2021|Polomljena noga
 
-                Regex regexObj = new Regex("#(\\d+)#(\\d+)#(\\w+)#(\\d+/\\d+/\\d+)#([\\w\\s]+)");
+                Regex regexObj = new Regex("#(\\d+)#(\\d+)#(\\w+)#(\\d+/\\d+/\\d+)#([\\w\\s]+)#([\\w\\s]+)");
                 Match matchResult = regexObj.Match(line);
                 if (matchResult.Success)
                 {

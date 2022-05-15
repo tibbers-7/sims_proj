@@ -22,9 +22,9 @@ namespace Zdravo.Service
             return drugRepo.GetValidDrugs();
         }
 
-        internal List<string> GetAllDrugNames()
+        internal List<Drug> GetAllDrugs()
         {
-            return drugRepo.GetAllDrugNames();
+            return drugRepo.GetAllDrugs();
         }
 
         internal Drug GetById(int drugId)

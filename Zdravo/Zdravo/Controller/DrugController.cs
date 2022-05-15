@@ -26,9 +26,9 @@ namespace Zdravo.Controller
 
         
 
-        internal ObservableCollection<string> GetAllDrugNames()
+        internal ObservableCollection<Drug> GetAllDrugs()
         {
-            return new ObservableCollection<string>(service.GetAllDrugNames());
+            return new ObservableCollection<Drug>(service.GetAllDrugs());
         }
 
         internal Drug GetById(int drugId)
@@ -40,5 +40,6 @@ namespace Zdravo.Controller
         {
             service.ChangeStatus(isAccepted, drugId);
         }
+
     }
 }

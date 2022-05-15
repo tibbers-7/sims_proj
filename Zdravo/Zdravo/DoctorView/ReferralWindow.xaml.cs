@@ -32,7 +32,9 @@ namespace Zdravo.DoctorView
 
         private void ScheduleButton_Click(object sender, RoutedEventArgs e)
         {
-            int errorCode=viewModel.ScheduleReferral();
+            int errorCode;
+            if (surgery_rb.IsChecked == false && appt_tb.IsChecked == false) errorCode = 3;
+            else errorCode=viewModel.ScheduleReferral();
             switch (errorCode)
             {
                 case 0:
@@ -44,6 +46,9 @@ namespace Zdravo.DoctorView
                     break;
                 case 2:
                     MessageBox.Show("Trenutno ne postoji lekar te specijalizacije u sistemu!","Greška");
+                    break;
+                case 3:
+                    MessageBox.Show("Niste uneli sve neophodne informacije!", "Greška");
                     break;
             }
         }

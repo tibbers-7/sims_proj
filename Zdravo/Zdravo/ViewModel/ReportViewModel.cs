@@ -24,6 +24,8 @@ namespace Zdravo.ViewModel
         private string reportString;
         public string ReportString { get { return reportString; } set { reportString = value; } }
         private AppointmentController appointmentController;
+        private string anamnesis;
+        public string Anamnesis { get { return anamnesis; } set { anamnesis = value; } }
         public ReportViewModel(int apptId,int reportId)
         {
             var app = Application.Current as App;
@@ -37,6 +39,7 @@ namespace Zdravo.ViewModel
                 diagnosis =r.Diagnosis;
                 reportString = r.ReportString;
                 patientId=r.PatientId;
+                anamnesis=r.Anamnesis;
             }
             else
             {
@@ -50,10 +53,10 @@ namespace Zdravo.ViewModel
             {
                 //Add report
                 case 0:
-                    appointmentController.CreateReport(apptId, date, diagnosis, reportString);
+                    appointmentController.CreateReport(apptId, date, diagnosis, reportString,anamnesis);
                     break;
                 case 1: 
-                    appointmentController.UpdateReport(patientId,reportId, date, diagnosis, reportString);
+                    appointmentController.UpdateReport(patientId,reportId, date, diagnosis, reportString,anamnesis);
                     break;
             }
             

@@ -54,7 +54,7 @@ namespace Zdravo
 
             drugController = new DrugController(drugService);
             patientController = new PatientController();
-            appointmentController = new AppointmentController(appointmentService,patientController,doctorRepository);
+            appointmentController = new AppointmentController(appointmentService,patientController,doctorRepository,drugController);
             allergenController = new AllergenController();
             basicRenovationController = new BasicRenovationController();
             equipmentController = new EquipmentController();

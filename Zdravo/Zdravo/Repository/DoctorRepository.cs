@@ -56,7 +56,7 @@ namespace Repository
             List<string> spetializations=new List<string>();
             foreach (Doctor doctor in doctors)
             {
-                spetializations.Add(doctor.Specialization);
+                if(!spetializations.Contains(doctor.Specialization)) spetializations.Add(doctor.Specialization);
             }
             return spetializations;
         }

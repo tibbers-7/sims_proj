@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="DrugWindow" Height="431" Width="400" FontFamily="Yu Gothic">
 
-    <Grid Background="White">
+    <Grid Background="#FFDADADA">
         <Rectangle Fill="#FF6C91C2" Margin="0,0,0,92" Stroke="Black"></Rectangle>
         <TextBox HorizontalAlignment="Center" Margin="0,19,0,0" TextWrapping="Wrap" Text="{Binding Name}" IsReadOnly="True" VerticalAlignment="Top" Width="352" Height="44" TextAlignment="Center" BorderBrush="Black" Background="#FF373F47" Foreground="White" FontSize="20" FontWeight="SemiBold"/>
-        <ListBox d:ItemsSource="{Binding Ingredients}" Margin="24,112,233,106"/>
+        <ListBox ItemsSource="{Binding Ingredients}" Margin="24,112,233,106"/>
         <TextBox HorizontalAlignment="Left" Margin="204,180,0,0" TextWrapping="Wrap" Text="{Binding Type}" IsReadOnly="True" VerticalAlignment="Top" Width="170" Height="28" TextAlignment="Center"/>
         <TextBox HorizontalAlignment="Left" Margin="204,106,0,0" TextWrapping="Wrap" Text="{Binding Status}" IsReadOnly="True" VerticalAlignment="Top" Width="170" Height="27" TextAlignment="Center"/>
         <Label Content="Status" HorizontalAlignment="Left" Margin="266,77,0,0" VerticalAlignment="Top"/>
