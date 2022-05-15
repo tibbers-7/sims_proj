@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Zdravo"
         
         mc:Ignorable="d"
-        Title="NewAppointment" Height="489" Width="471" FontSize="15">
+        Title="NewAppointment" Height="431" Width="400" FontSize="15" FontFamily="Yu Gothic">
 
     <Window.Resources>
         <ControlTemplate x:Key="validationTemplate">
@@ -33,11 +33,11 @@
             <ColumnDefinition Width="111*"/>
             <ColumnDefinition Width="364*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Margin="0,0,0,112" Fill="#FF6C91C2" Grid.ColumnSpan="2" />
-        <GroupBox Header="Pacijent" Margin="6,7,10,378" Grid.ColumnSpan="2" Background="#FF8B8982"/>
-        <Label Content="JMBG:" HorizontalAlignment="Left" Margin="42,32,0,0" VerticalAlignment="Top"/>
+        <Rectangle Margin="0,0,0,112" Fill="#FF6C91C2" Grid.ColumnSpan="2" Stroke="Black" />
+        <GroupBox Header="Pacijent" Margin="6,7,10,325" Grid.ColumnSpan="2" Background="#FFC3C9E9"/>
+        <Label Content="JMBG:" HorizontalAlignment="Left" Margin="16,33,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.282,0.692"/>
         <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"  
-                  x:Name="patientId_tb" HorizontalAlignment="Left" Margin="10,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Background="#FFE7D2D2" Grid.Column="1" Height="25" >
+                  x:Name="patientId_tb" HorizontalAlignment="Left" Margin="84,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Background="#FFFEFEFE" Height="25" Grid.ColumnSpan="2" >
             <Binding Path="PatientId" UpdateSourceTrigger="PropertyChanged"  Mode="TwoWay">
                 <Binding.ValidationRules>
                     <local:NumericValidation ValidationStep="RawProposedValue"/>
@@ -45,9 +45,9 @@
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
-        <Label Content="Sala:" HorizontalAlignment="Left" Margin="47,235,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.293,0.522"/>
-        <CheckBox IsChecked="{Binding Emergency}" x:Name="emergency_cb" Content="Hitno" HorizontalAlignment="Left" Margin="99,283,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Button x:Name="patientButton" Content="Pregled Pacijenta" HorizontalAlignment="Left" Margin="225,36,0,0" VerticalAlignment="Top" Height="29" Width="104" Click="Patient_Click" Grid.Column="1" FontSize="12" Background="#FF373F47" Foreground="White"/>
+        <Label Content="Sala:" HorizontalAlignment="Left" Margin="23,208,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.293,0.522"/>
+        <CheckBox IsChecked="{Binding Emergency}" x:Name="emergency_cb" Content="Hitno" HorizontalAlignment="Left" Margin="84,259,0,0" VerticalAlignment="Top" Grid.Column="1" FontSize="20"/>
+        <Button x:Name="patientButton" Content="Pregled Pacijenta" HorizontalAlignment="Left" Margin="154,36,0,0" VerticalAlignment="Top" Height="29" Width="119" Click="Patient_Click" Grid.Column="1" FontSize="12" Background="#FF373F47" Foreground="White"/>
 
         <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
             
@@ -94,20 +94,20 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Button x:Name="Schedule" Content="" Margin="58,392,246,29" Click="ScheduleButton_Click" Grid.Column="1" BorderBrush="{x:Null}">
+        <Button x:Name="Schedule" Content="" Margin="23,325,213,22" Click="ScheduleButton_Click" Grid.Column="1" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/images/accept.png"/>
             </Button.Background>
         </Button>
-        <Button Content="" Margin="149,391,154,29" Click="CancelButton_Click" Grid.Column="1" BorderBrush="{x:Null}">
+        <Button Content="" Margin="111,325,122,22" Click="CancelButton_Click" Grid.Column="1" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/images/cancel.png"/>
             </Button.Background>
         </Button>
-        <ComboBox x:Name="rooms_cb" SelectedItem="{Binding RoomId}" ItemsSource="{Binding Rooms}" Margin="110,239,276,0" VerticalAlignment="Top" RenderTransformOrigin="4.783,1.026" Grid.ColumnSpan="2"/>
-        <Label Content="Trajanje:" HorizontalAlignment="Left" Margin="183,236,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <ComboBox x:Name="rooms_cb" SelectedItem="{Binding RoomId}" ItemsSource="{Binding Rooms}" Margin="67,212,219,0" VerticalAlignment="Top" RenderTransformOrigin="4.783,1.026" Grid.ColumnSpan="2"/>
+        <Label Content="Trajanje:" HorizontalAlignment="Left" Margin="139,209,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"
-            x:Name="duration_tb" HorizontalAlignment="Left" Margin="246,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" Background="#FFE7D2D2" Height="32" Grid.Column="1">
+            x:Name="duration_tb" HorizontalAlignment="Left" Margin="208,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" Background="White" Height="32" Grid.Column="1">
             <Binding Path="Duration" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <local:NumericValidation ValidationStep="RawProposedValue"/>
@@ -115,8 +115,8 @@
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
-        <GroupBox Header="Datum" Margin="20,102,221,260" Grid.ColumnSpan="2" Background="#FF8B8982">
-            <TextBox x:Name="date_tb" Margin="34,0,34,0" Validation.ErrorTemplate="{StaticResource validationTemplate}" Height="45">
+        <GroupBox Header="Datum" Margin="20,102,188,218" Grid.ColumnSpan="2" Background="#FFC3C9E9">
+            <TextBox x:Name="date_tb" Margin="10,0,11,0" Validation.ErrorTemplate="{StaticResource validationTemplate}" Height="36">
                 <Binding Path="Date" UpdateSourceTrigger="LostFocus">
                     <Binding.ValidationRules>
                         <local:DateValidation ValidationStep="RawProposedValue"/>
@@ -127,11 +127,11 @@
 
 
         </GroupBox>
-        <GroupBox Header="Vreme" Margin="149,101,14,260" Grid.Column="1" Background="#FF8B8982"/>
+        <GroupBox Header="Vreme" Margin="124,101,10,218" Grid.Column="1" Background="#FFC3C9E9"/>
         <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
             
         
-            x:Name="hour_tb_Copy"  Margin="182,145,131,290" Grid.Column="1">
+            x:Name="hour_tb_Copy"  Margin="161,134,90,229" Grid.Column="1">
             <Binding Path="Hour" UpdateSourceTrigger="LostFocus">
                 <Binding.ValidationRules>
                     <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
@@ -141,7 +141,7 @@
             </Binding>
         </TextBox>
         <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"
-            x:Name="minutes_tb_Copy"  Margin="273,146,42,290" Grid.Column="1">
+            x:Name="minutes_tb_Copy"  Margin="228,134,24,229" Grid.Column="1">
             <Binding Path="Minutes" UpdateSourceTrigger="LostFocus">
                 <Binding.ValidationRules>
                     <local:NumericValidation ValidationStep="RawProposedValue"/>
@@ -151,7 +151,7 @@
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
-        <Label Content=":" FontSize="10pt" HorizontalAlignment="Left" Margin="245,146,0,284" RenderTransformOrigin="25.685,0.599" Height="39" Grid.Column="1"/>
+        <Label Content=":" FontSize="10pt" HorizontalAlignment="Left" Margin="214,137,0,229" RenderTransformOrigin="25.685,0.599" Grid.Column="1" Width="39"/>
 
 
     </Grid>

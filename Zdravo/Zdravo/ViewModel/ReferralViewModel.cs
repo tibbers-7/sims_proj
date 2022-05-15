@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Zdravo.DoctorView;
 using Zdravo.DoctorWindows;
 
 namespace Zdravo.ViewModel
@@ -25,8 +27,10 @@ namespace Zdravo.ViewModel
         private string doctorSpetialization;
         public string DoctorSpetialization { get { return doctorSpetialization; } set { doctorSpetialization = value; } }
         private int doctorId;
-        public string CurrentDoctor;
+        private string currentDoctor;
+        public string CurrentDoctor { get { return currentDoctor; } set { currentDoctor = value; } }
 
+        private ReferralWindow caller;
         private AppointmentController apptController;
        
 
@@ -36,7 +40,14 @@ namespace Zdravo.ViewModel
             var app = Application.Current as App;
             apptController = app.appointmentController;
             spetializations = apptController.GetAllSpetializations();
+            currentDoctor = apptController.GetDoctorInfo(doctorId);
 
+        }
+
+        internal void ChoosePatientShow()
+        {
+            ChoosePatient choosePatient = new ChoosePatient(this);
+            choosePatient.Show();
         }
 
         internal int ScheduleReferral()
@@ -49,6 +60,20 @@ namespace Zdravo.ViewModel
         {
             PatientChart chartWindow = new PatientChart(0, patientId);
             chartWindow.Show();
+        }
+
+        internal void UpdatePatient(int chosenPatient)
+        {
+            patientId = chosenPatient;
+            NotifyPropertyChanged("PatientId");
+            
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

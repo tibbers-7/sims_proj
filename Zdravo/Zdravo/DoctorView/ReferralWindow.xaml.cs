@@ -25,8 +25,9 @@ namespace Zdravo.DoctorView
         public ReferralWindow(int doctorId)
         {
             viewModel = new ReferralViewModel(doctorId);
-            InitializeComponent();
             this.DataContext = viewModel;
+            InitializeComponent();
+            
         }
 
         private void ScheduleButton_Click(object sender, RoutedEventArgs e)
@@ -49,7 +50,7 @@ namespace Zdravo.DoctorView
 
         private void PatientButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.ShowChart();
+            viewModel.ChoosePatientShow();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

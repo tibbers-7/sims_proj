@@ -28,8 +28,8 @@ namespace Zdravo.DoctorView
     {
         private ChoosePatientViewModel viewModel=new ChoosePatientViewModel();
         internal int chosenPatient;
-        private NewAppointmentViewModel caller;
-        public ChoosePatient(NewAppointmentViewModel caller)
+        private object caller;
+        public ChoosePatient(object caller)
         {
             this.caller = caller;
 
@@ -60,7 +60,16 @@ namespace Zdravo.DoctorView
             else
             {
                 chosenPatient = int.Parse((patientTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text);
-                caller.UpdatePatient(chosenPatient);
+                if (caller.GetType().Name.Equals("NewAppointmentViewModel"))
+                {
+                    NewAppointmentViewModel _caller = (NewAppointmentViewModel)caller;
+                    _caller.UpdatePatient(chosenPatient);
+                }
+                else
+                {
+                    ReferralViewModel _caller = (ReferralViewModel)caller;
+                    _caller.UpdatePatient(chosenPatient);
+                }
                 this.Close();
             }
         }

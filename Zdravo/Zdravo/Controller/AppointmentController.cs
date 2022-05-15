@@ -19,11 +19,13 @@ namespace Controller
    {
         private AppointmentService service;
        private PatientController patientController;
+        private DoctorRepository doctorRepository;
 
-      public AppointmentController(AppointmentService _service,PatientController patientController)
+      public AppointmentController(AppointmentService _service,PatientController patientController, DoctorRepository doctorRepository)
         {
             service = _service;
             this.patientController = patientController;
+            this.doctorRepository = doctorRepository;
             
         }
 
@@ -44,7 +46,7 @@ namespace Controller
             int cmp = DateTime.Compare(datetime, DateTime.Now);
             if (cmp < 0) return 2;   // Cannot make appointment in the past
 
-            Appointment appt = new Appointment() { Date = _date, Time = _time, Doctor = doctor, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency, Status = Status.waiting, DoctorSchedules=doctor };
+            Appointment appt = new Appointment() { Date = _date, Time = _time, Doctor = doctor, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency, Status = Status.accepted, DoctorSchedules = doctor, Type = 'A' };
             service.CreateAppointment(appt);
             
 
@@ -110,17 +112,17 @@ namespace Controller
             if (cmp < 0) return 3;   // Cannot make appointment in the past
 
             
-            Appointment appt = new Appointment() { Id = id, Date = _date, Time = _time, Doctor = doctorId, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency, DoctorSchedules=doctorId, Type='A' };
+            Appointment appt = new Appointment() { Id = id, Date = _date, Time = _time, Doctor = doctorId, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency, DoctorSchedules=doctorId, Type='A', Status = Status.accepted };
             service.UpdateAppointment(appt);
             return 0;
         }
 
 
         //link report to patient
-        internal void CreateReport(int apptId,DateOnly date, string diagnosis, string report)
+        internal void CreateReport(int apptId,string date, string diagnosis, string report)
         {
             Appointment appt=service.GetAppointment(apptId);
-            Report rpt = new Report() { Date = date, PatientId = appt.Patient, ReportString = report, Diagnosis = diagnosis };
+            Report rpt = new Report() { Date = ParseDate(date), PatientId = appt.Patient, ReportString = report, Diagnosis = diagnosis };
 
             // Change to controller later
             Patient p = patientController.GetById(appt.Patient);
@@ -128,9 +130,9 @@ namespace Controller
             service.AddReport(rpt);
         }
 
-        internal void UpdateReport(int patientId,int reportId, DateOnly date, string diagnosis, string reportString)
+        internal void UpdateReport(int patientId,int reportId, string date, string diagnosis, string reportString)
         {
-            service.UpdateReport(patientId,reportId, date, diagnosis, reportString);
+            service.UpdateReport(patientId,reportId, ParseDate(date), diagnosis, reportString);
         }
 
         
@@ -140,6 +142,13 @@ namespace Controller
         {
           return service.GetAll();
       }
+
+        public string GetDoctorInfo(int doctorId)
+        {
+            Doctor doctor=doctorRepository.getById(doctorId);
+            string res = doctor.Name + " " + doctor.LastName + ", " + doctor.Specialization;
+            return res;
+        }
        
 
         public Appointment GetAppointment(int id)

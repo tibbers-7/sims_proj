@@ -207,35 +207,45 @@
                             <DataGridTextColumn Header="ID" Width="2" Binding="{Binding Id}" MaxWidth="0"/>
                             <DataGridTextColumn Header="Naziv" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Tip" Binding="{Binding Type}"  />
-                            <DataGridTextColumn Header="Status" Width="1*" Binding="{Binding StatusString}" />
+                            <DataGridTextColumn Header="Status" Width="1*" Binding="{Binding StatusString}" >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <Trigger Property="Text" Value="ODOBRENO">
+                                                <Setter Property="Background" Value="Green"/>
+                                                <Setter Property="Foreground" Value="White"/>
+                                            </Trigger>
+                                            <Trigger Property="Text" Value="NA ČEKANJU">
+                                                <Setter Property="Background" Value="DarkGray"/>
+                                                <Setter Property="Foreground" Value="Black"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Slobodni dani">
                 <Grid Background="#FFE5E5E5">
-                    <Rectangle Stroke="Black" Fill="#FF8B8982"/>
-                    <GroupBox Header="Odaberite tip" Margin="117,24,89,371" Background="#FF373F47" Foreground="White" FontWeight="Normal">
+
+                    <Rectangle Stroke="Black" Fill="#FF373F47"/>
+                    <Rectangle HorizontalAlignment="Left" Height="417" Margin="17,17,0,0" Stroke="Black" VerticalAlignment="Top" Width="990" Fill="#FF8B8982" RenderTransformOrigin="-1.283,0.708"/>
+
+                    <GroupBox Header="Odaberite tip" Margin="116,17,90,362" Background="#FF373F47" Foreground="White" FontWeight="Normal">
                         <Grid>
                             <RadioButton x:Name="vacationRadio" Content="Godišnji odmor" HorizontalAlignment="Left" Margin="116,0,0,-29" Height="80" VerticalAlignment="Bottom" FontSize="30" Foreground="White"/>
-                            <RadioButton x:Name="sickLeaveRadio" Content="Bolovanje" HorizontalAlignment="Left" Margin="517,21,0,-20" FontSize="30" Foreground="White"/>
+                            <RadioButton x:Name="sickLeaveRadio" Content="Bolovanje" HorizontalAlignment="Left" Margin="518,15,0,-12" FontSize="30" Foreground="White"/>
                         </Grid>
                     </GroupBox>
 
-                    <GroupBox Header="Odaberite vremenski period" Margin="51,143,51,181" Background="#FF6C91C2" Foreground="White">
+                    <GroupBox Header="Odaberite vremenski period" Margin="53,170,439,176" Background="#FF6C91C2" Foreground="White">
                         <Grid>
-                            <CheckBox x:Name="emergency_Check"  Content="HITNO" Margin="407,93,295,-94" Foreground="White" FontSize="30"/>
-                            <TextBox x:Name="reason_tb" HorizontalAlignment="Left" Margin="329,210,0,-110" TextWrapping="Wrap" Width="298">
-                                <Binding Path="Reason" UpdateSourceTrigger="PropertyChanged">
-                                    <Binding.ValidationRules>
-                                        <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </TextBox>
                         </Grid>
                     </GroupBox>
                     <Grid>
-                        <TextBox x:Name="startDate_tb" Margin="191,199,597,255" Validation.ErrorTemplate="{StaticResource validationTemplate}">
+                        <TextBox x:Name="startDate_tb" Margin="79,238,749,216" Validation.ErrorTemplate="{StaticResource validationTemplate}">
                             <Binding Path="StartDate" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
                                     <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
@@ -243,7 +253,7 @@
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox>
-                        <TextBox x:Name="endDate_tb" Margin="597,201,191,255" Validation.ErrorTemplate="{StaticResource validationTemplate}">
+                        <TextBox x:Name="endDate_tb" Margin="344,239,472,217" Validation.ErrorTemplate="{StaticResource validationTemplate}">
                             <Binding Path="EndDate" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
                                     <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
@@ -254,13 +264,25 @@
 
                     </Grid>
 
-                    <Button x:Name="Schedule" Content="" Margin="496,427,468,10" Click="VacationButton_Click" BorderBrush="{x:Null}">
+                    <Button x:Name="Schedule" Content="" Margin="495,338,469,100" Click="VacationButton_Click" BorderBrush="{x:Null}">
                         <Button.Background>
                             <ImageBrush ImageSource="/images/accept.png"/>
                         </Button.Background>
                     </Button>
-                    <Label Content="-" Margin="499,169,471,241" Foreground="White" FontSize="60"/>
-                    <Label Content="Razlog:" HorizontalAlignment="Left" Margin="484,328,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.446,0.057" Foreground="White" FontSize="25"/>
+                    <Label Content="-" Margin="292,205,678,205" Foreground="White" FontSize="60"/>
+                    <GroupBox Header="Detalji" Margin="637,167,52,173" Background="#FF6C91C2" Foreground="White">
+                        <Grid>
+                            <CheckBox x:Name="emergency_Check"  Content="HITNO" Margin="94,71,47,10" Foreground="White" FontSize="30"/>
+                            <Label Content="Razlog:" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.446,0.057" Foreground="White" FontSize="25"/>
+                            <TextBox x:Name="reason_tb" HorizontalAlignment="Left" Margin="99,12,0,85" TextWrapping="Wrap" Width="219">
+                                <Binding Path="Reason" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox>
+                        </Grid>
+                    </GroupBox>
                 </Grid>
             </TabItem>
         </TabControl>

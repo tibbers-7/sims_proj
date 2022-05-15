@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo.DoctorWindows"
         mc:Ignorable="d"
-        Title="Recept" Height="443" Width="358">
+        Title="Recept" Height="443" Width="358" FontFamily="Yu Gothic">
 
     <Window.Resources>
         <DataTemplate x:Key="highlightRow">
@@ -23,8 +23,8 @@
 
         </DataTemplate>
     </Window.Resources>
-    <Grid Background="#FFAAABBC">
-        <ListBox SelectedItem="{Binding SelectedDrug}" ItemsSource="{Binding Drugs}" Margin="42,31,42,98" Background="#FF6C91C2"/>
+    <Grid Background="#FF6C91C2">
+        <ListBox SelectedItem="{Binding SelectedDrug}" ItemsSource="{Binding Drugs}" Margin="42,31,42,98" Background="#FFC3C9E9"/>
         <Button Content="" Margin="87,329,191,28" Click="AcceptButton_Click" BorderBrush="{x:Null}" >
             <Button.Background>
                 <ImageBrush ImageSource="/images/accept.png"/>
