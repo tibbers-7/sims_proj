@@ -119,8 +119,8 @@
             <TextBox x:Name="date_tb" Margin="34,0,34,0" Validation.ErrorTemplate="{StaticResource validationTemplate}" Height="45">
                 <Binding Path="Date" UpdateSourceTrigger="LostFocus">
                     <Binding.ValidationRules>
-                        <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
                         <local:DateValidation ValidationStep="RawProposedValue"/>
+                        <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox>

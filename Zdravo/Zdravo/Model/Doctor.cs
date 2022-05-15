@@ -26,5 +26,9 @@ namespace Model
             this.lastName = ln;
             this.specialization = spec;
         }
+
+        public Doctor()
+        {
+        }
     }
 }

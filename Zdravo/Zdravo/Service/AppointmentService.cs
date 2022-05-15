@@ -85,10 +85,12 @@ namespace Service
             return true;
         }
 
-        internal ObservableCollection<Appointment> SearchTable(DateOnly date, int hours, int minutes)
+        internal ObservableCollection<Appointment> SearchTable(int doctorId,DateOnly date, int hours, int minutes)
         {
-            return appointmentRepo.SearchTable(date, hours, minutes);
+            return appointmentRepo.SearchTable(doctorId,date, hours, minutes);
         }
+
+        
 
         public void CreateAppointment(Appointment appt)
         {
@@ -139,9 +141,6 @@ namespace Service
             prescriptionRepo.AddPrescription(p);
         }
 
-        internal List<string> GetAllDrugNames()
-        {
-            return drugRepo.GetAllDrugNames();
-        }
+        
     }
 }

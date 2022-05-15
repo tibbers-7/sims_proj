@@ -7,6 +7,8 @@
 using Model;
 using FileHandler;
 using System.Collections.ObjectModel;
+using Zdravo.FileHandler;
+using System.Collections.Generic;
 
 namespace Repository
 {
@@ -20,9 +22,21 @@ namespace Repository
             fileHandler = new PatientFileHandler();
             patients = fileHandler.read();
             reportRepo = new ReportRepository();
+            BindDoctors();
         }
 
+        internal void BindDoctors()
+        {
+            ChosenDoctorsFileHandler chosenDoctorsFileHandler = new ChosenDoctorsFileHandler();
+            List<ChosenDoctors> chosenDoctors = chosenDoctorsFileHandler.Read();
+            foreach (Patient patient in patients) {
+                foreach (ChosenDoctors chosenDoctor in chosenDoctors)
+                {
+                    if (chosenDoctor.PatientId == patient.Id) patient.ChosenDoctors = chosenDoctor.ChosenDoctorIds;
 
+                }
+            }
+        }
 
         public Patient GetById(int id)
       {

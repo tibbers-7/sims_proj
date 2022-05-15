@@ -18,8 +18,8 @@ namespace Model
         public DateOnly StartDate { get { return startDate; } set { startDate = value; } }
         private DateOnly endDate;
         public DateOnly EndDate { get { return endDate; } set { endDate = value; } }
-        private VacationStatus status;
-        public VacationStatus Status { get { return status; } set { status = value; } }
+        private Status status;
+        public Status Status { get { return status; } set { status = value; } }
         private string reason;
         public string Reason { get { return reason; } set { reason = value; } }
         private bool emergency;
@@ -36,13 +36,13 @@ namespace Model
             switch (csvValues[7].Value)
             {
                 case "A":
-                    status = VacationStatus.accepted;
+                    status = Status.accepted;
                     break;
                 case "D":
-                    status = VacationStatus.denied;
+                    status = Status.denied;
                     break;
                 default:
-                    status = VacationStatus.waiting;
+                    status = Status.waiting;
                     break;
             }
         }
@@ -54,10 +54,10 @@ namespace Model
             char _status,_emergency;
             switch (status)
             {
-                case VacationStatus.accepted:
+                case Status.accepted:
                     _status='A';
                     break;
-                case VacationStatus.denied:
+                case Status.denied:
                     _status='D';
                     break;
                 default:

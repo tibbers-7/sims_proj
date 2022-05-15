@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo" xmlns:viewmodel="clr-namespace:Zdravo.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:DoctorHomeViewModel}"
         mc:Ignorable="d"  Loaded="Window_Loaded"
-        Title="DoctorHome" Height="564" Width="1042" FontSize="17" FontFamily="Microsoft YaHei UI" >
+        Title="DoctorHome" Height="564" Width="1042" FontSize="17" FontFamily="Yu Gothic" >
     <Window.Resources>
         <ControlTemplate x:Key="validationTemplate">
             <Grid Height="Auto" Width="Auto">
@@ -173,11 +173,10 @@
                         </DataGrid.Columns>
                         <DataGrid.Resources>
                             <Style TargetType="DataGridRow">
-                                <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                                <EventSetter Event="MouseDoubleClick" Handler="AppointmentRow_DoubleClick"/>
                             </Style>
                         </DataGrid.Resources>
                     </DataGrid>
-                    <Button Grid.Column="2" Content="Log out" HorizontalAlignment="Left" Margin="441,452,0,0" VerticalAlignment="Top" Height="36" Width="176" Click="LogoutButton_Click"/>
                     <Label Content="Nov Pregled" Margin="42,161,547,213" Grid.ColumnSpan="2"/>
                     <Label Grid.Column="1" Content="Zahtevi" HorizontalAlignment="Left" Margin="239,137,0,0" VerticalAlignment="Top"/>
 
@@ -191,7 +190,27 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
             <TabItem Header="Lekovi">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FF373F47">
+                    <DataGrid ColumnWidth="*" x:Name="DrugsTable"
+                    IsReadOnly ="True"  SelectionMode="Single"
+                    ItemsSource="{Binding Drugs, UpdateSourceTrigger=PropertyChanged}"
+                    AutoGenerateColumns="False"
+                    Margin="34,10,0,74" HorizontalAlignment="Left" Width="962" Background="#FFDCE1DE" FontWeight="Normal" >
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <EventSetter Event="Control.MouseDoubleClick" Handler="DrugRow_DoubleClick"/>
+                            </Style>
+                        </DataGrid.Resources>
+
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Width="2" Binding="{Binding Id}" MaxWidth="0"/>
+                            <DataGridTextColumn Header="Naziv" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Tip" Binding="{Binding Type}"  />
+                            <DataGridTextColumn Header="Status" Width="1*" Binding="{Binding StatusString}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </TabItem>
             <TabItem Header="Slobodni dani">
                 <Grid Background="#FFE5E5E5">
@@ -252,6 +271,7 @@
 
 
 
+        <Button Grid.Column="1" Content="Log out" HorizontalAlignment="Left" Margin="727,492,0,0" VerticalAlignment="Top" Height="36" Width="176" Click="LogoutButton_Click" Grid.ColumnSpan="2"/>
 
 
     </Grid>

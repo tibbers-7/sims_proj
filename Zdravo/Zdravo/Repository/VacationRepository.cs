@@ -50,7 +50,7 @@ namespace Repository
             foreach(Vacation oldVacation in vacations)
             {
                     Doctor doctor = doctorRepository.getById(oldVacation.DoctorId);
-                    if (doctor.Specialization.Equals(d.Specialization) && doctor.Id != d.Id && oldVacation.Status!=Zdravo.VacationStatus.denied)
+                    if (doctor.Specialization.Equals(d.Specialization) && doctor.Id != d.Id && oldVacation.Status!=Zdravo.Status.denied)
                     {
                         if (FindVacationConflicts(newVacation, oldVacation)) counter++;
                     }

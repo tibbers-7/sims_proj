@@ -44,7 +44,7 @@ namespace Controller
             int cmp = DateTime.Compare(datetime, DateTime.Now);
             if (cmp < 0) return 2;   // Cannot make appointment in the past
 
-            Appointment appt = new Appointment() { Date = _date, Time = _time, Doctor = doctor, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency };
+            Appointment appt = new Appointment() { Date = _date, Time = _time, Doctor = doctor, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency, Status = Status.waiting, DoctorSchedules=doctor };
             service.CreateAppointment(appt);
             
 
@@ -52,6 +52,30 @@ namespace Controller
 
 
         }
+
+        internal ObservableCollection<string> GetAllSpetializations()
+        {
+            DoctorRepository doctorRepository = new DoctorRepository();
+            return new ObservableCollection<string>(doctorRepository.GetAllSpetializations());
+        }
+
+        internal int CreateReferral(int patientId, int doctorId, string doctorSpecialty, bool isAppt, bool emergency)
+        {
+            Patient p = patientController.GetById(patientId);
+            if (p == null) return 1;
+            Doctor d = patientController.GetChosenDoctor(doctorSpecialty,patientId);
+            if (d == null) return 2;
+            char type;
+            if (isAppt) type = 'A'; else type = 'O';
+
+
+            Appointment appointment = new Appointment() { Patient = patientId, Emergency = emergency, Status = Status.waiting, Type = type, DoctorSchedules = doctorId, Doctor=d.Id};
+            service.CreateAppointment(appointment);
+
+            return 0;
+        }
+
+        
 
         internal void AddPrescription(int patient, string selectedDrug, DateTime now)
         {
@@ -64,10 +88,14 @@ namespace Controller
             return service.DeleteAppointment(id);
         }
 
-        internal ObservableCollection<Appointment> SearchTable(string date, int hours, int minutes)
+        internal bool CheckAllergies(int appointmentId, string selectedDrug)
+        {
+            return service.CheckAllergies(appointmentId, selectedDrug);
+        }
+        internal ObservableCollection<Appointment> SearchTable(int doctorId,string date, int hours, int minutes)
         {
             DateOnly _date = ParseDate(date);
-            return service.SearchTable(_date, hours, minutes);
+            return service.SearchTable(doctorId,_date, hours, minutes);
         }
 
         //should update in the patient's list too
@@ -82,7 +110,7 @@ namespace Controller
             if (cmp < 0) return 3;   // Cannot make appointment in the past
 
             
-            Appointment appt = new Appointment() { Id = id, Date = _date, Time = _time, Doctor = doctorId, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency };
+            Appointment appt = new Appointment() { Id = id, Date = _date, Time = _time, Doctor = doctorId, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency, DoctorSchedules=doctorId, Type='A' };
             service.UpdateAppointment(appt);
             return 0;
         }
@@ -105,15 +133,7 @@ namespace Controller
             service.UpdateReport(patientId,reportId, date, diagnosis, reportString);
         }
 
-        internal bool CheckAllergies(int appointmentId, string selectedDrug)
-        {
-            return service.CheckAllergies(appointmentId,selectedDrug);
-        }
-
-        internal ObservableCollection<string> GetAllDrugNames()
-        {
-            return new ObservableCollection<string>(service.GetAllDrugNames());
-        }
+        
 
 
       public List<Appointment> GetAll()
@@ -142,7 +162,9 @@ namespace Controller
 
         public static DateOnly ParseDate(string s)
         {
+            
             DateOnly date=new DateOnly();
+            if (s == null) return date;
             Regex regexObj = new Regex("(\\d+)/(\\d+)/(\\d+)");
             Match matchResult = regexObj.Match(s);
             if (matchResult.Success)

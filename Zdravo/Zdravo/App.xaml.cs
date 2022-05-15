@@ -8,6 +8,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Zdravo.Controller;
+using Zdravo.Service;
 
 namespace Zdravo
 {
@@ -23,6 +25,7 @@ namespace Zdravo
         public PatientController patientController;
         public RoomController roomController;
         public VacationController vacationController;
+        public DrugController drugController;
         public App()
         {
             var appointmentRepository = new AppointmentRepository();
@@ -30,16 +33,16 @@ namespace Zdravo
             var basicRenovationRepository=new BasicRenovationRepository();
             var doctorRepository = new DoctorRepository();
             var drugRepository=new DrugRepository();
+            var reportRepository = new ReportRepository();
             var equipmentRepository = new EquipmentRepository();
             var patientRepository=new PatientRepository();
             var prescriptionRepository = new PrescriptionRepository();
             var relocationRepository = new RelocationRepository();
             var vacationRepository = new VacationRepository(doctorRepository);
-            var reportRepository = new ReportRepository();
 
 
 
-
+            var drugService = new DrugService(drugRepository);
             var appointmentService = new AppointmentService(appointmentRepository,drugRepository,prescriptionRepository,reportRepository,patientRepository);
             var vacationService = new VacationService(vacationRepository,doctorRepository);
             var allergenService = new AllergenService();
@@ -49,7 +52,7 @@ namespace Zdravo
             var roomService = new RoomService();
             var timeService = new TimeService();
 
-
+            drugController = new DrugController(drugService);
             patientController = new PatientController();
             appointmentController = new AppointmentController(appointmentService,patientController);
             allergenController = new AllergenController();
