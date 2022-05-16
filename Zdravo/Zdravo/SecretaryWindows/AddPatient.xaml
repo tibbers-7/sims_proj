@@ -5,34 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo"
         mc:Ignorable="d"
-        Title="AddPatient" Height="445" Width="335" WindowStartupLocation="CenterScreen">
-    <Grid Margin="0,0,10,-45">
-        <Label Content="Ime:" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Prezime:&#xD;&#xA;" HorizontalAlignment="Left" Margin="40,64,0,0" VerticalAlignment="Top"/>
-        <Label Content="JMBG:" HorizontalAlignment="Left" Margin="47,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.892,1.893"/>
-        <Label Content="Username:&#xD;&#xA;" HorizontalAlignment="Left" Margin="43,94,0,0" VerticalAlignment="Top"/>
-        <Label Content="Sifra:&#xD;&#xA;" HorizontalAlignment="Left" Margin="42,136,0,0" VerticalAlignment="Top"/>
-        <Label Content="Telefon:&#xD;&#xA;" HorizontalAlignment="Left" Margin="42,178,0,0" VerticalAlignment="Top"/>
-        <Label Content="Datum rodjenja:&#xD;&#xA;" HorizontalAlignment="Left" Margin="42,211,0,0" VerticalAlignment="Top"/>
-        <Label Content="Pol:&#xD;&#xA;" HorizontalAlignment="Left" Margin="42,245,0,0" VerticalAlignment="Top"/>
-        <Label Content="Adresa:&#xD;&#xA;" HorizontalAlignment="Left" Margin="43,279,0,0" VerticalAlignment="Top"/>
-        <Label Content="Guest:" HorizontalAlignment="Left" Margin="42,315,0,0" VerticalAlignment="Top"/>
-        <Label Content="E-mail:" HorizontalAlignment="Left" Margin="42,341,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="tbIme" HorizontalAlignment="Left" Margin="172,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-        <TextBox Name="tbPrezime" HorizontalAlignment="Left" Margin="172,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox  Name="tbId" HorizontalAlignment="Left" Margin="172,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="tbUsername" HorizontalAlignment="Left" Margin="172,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="tbSifra" HorizontalAlignment="Left" Margin="172,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="tbTelefon" HorizontalAlignment="Left" Margin="172,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="tbDatum" HorizontalAlignment="Left" Margin="172,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="tbAdresa" HorizontalAlignment="Left" Margin="172,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="tbMail" HorizontalAlignment="Left" Margin="172,341,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <CheckBox Name="checkBoxGuest" Content="" HorizontalAlignment="Left" Margin="172,313,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.362,3.597"/>
-        <ComboBox Name="cbPol" HorizontalAlignment="Left" SelectedIndex="0" Margin="172,237,0,0" VerticalAlignment="Top" Width="120">
+        Title="AddPatient" Height="750" Width="430" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,-15,10,-6">
+        <Label Content="Ime:" FontSize="20" HorizontalAlignment="Left" Margin="34,124,0,0" VerticalAlignment="Top"/>
+        <Label Content="Prezime:&#xD;&#xA;" FontSize="20" HorizontalAlignment="Left" Margin="33,226,0,0" VerticalAlignment="Top"/>
+        <Label Content="JMBG:" FontSize="20" HorizontalAlignment="Left" Margin="34,176,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.892,1.893"/>
+        <Label Content="Username:&#xD;&#xA;" FontSize="20" HorizontalAlignment="Left" Margin="34,273,0,0" VerticalAlignment="Top"/>
+        <Label Content="Sifra:&#xD;&#xA;" FontSize="20" HorizontalAlignment="Left" Margin="34,320,0,0" VerticalAlignment="Top"/>
+        <Label Content="Telefon:&#xD;&#xA;" FontSize="20" HorizontalAlignment="Left" Margin="34,367,0,0" VerticalAlignment="Top"/>
+        <Label Content="Datum rodjenja:&#xD;&#xA;" FontSize="20" HorizontalAlignment="Left" Margin="34,418,0,0" VerticalAlignment="Top"/>
+        <Label Content="Pol:&#xD;&#xA;" FontSize="20" HorizontalAlignment="Left" Margin="32,463,0,0" VerticalAlignment="Top"/>
+        <Label Content="Adresa:&#xD;&#xA;" FontSize="20" HorizontalAlignment="Left" Margin="33,565,0,0" VerticalAlignment="Top"/>
+        <Label Content="Guest:" FontSize="20" HorizontalAlignment="Left" Margin="31,516,0,0" VerticalAlignment="Top"/>
+        <Label Content="E-mail:" FontSize="20" HorizontalAlignment="Left" Margin="29,621,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="tbIme"  HorizontalAlignment="Left" Margin="190,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Height="28"/>
+        <TextBox Name="tbPrezime" HorizontalAlignment="Left" Margin="190,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Height="28"/>
+        <TextBox  Name="tbId" HorizontalAlignment="Left" Margin="190,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Height="28"/>
+        <TextBox Name="tbUsername" HorizontalAlignment="Left" Margin="190,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Height="28"/>
+        <TextBox Name="tbSifra" HorizontalAlignment="Left" Margin="190,322,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" Height="30"/>
+        <TextBox Name="tbTelefon" HorizontalAlignment="Left" Margin="190,369,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" Height="30"/>
+        <TextBox Name="tbAdresa" HorizontalAlignment="Left" Margin="190,568,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" Height="29"/>
+        <TextBox Name="tbMail" HorizontalAlignment="Left" Margin="190,621,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" RenderTransformOrigin="0.522,6.802" Height="29"/>
+        <CheckBox Name="checkBoxGuest" Content="" HorizontalAlignment="Left" Margin="190,527,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.362,3.597" Height="26" Width="35"/>
+        <ComboBox Name="cbPol" HorizontalAlignment="Left" SelectedIndex="0" Margin="190,463,0,0" VerticalAlignment="Top" Width="140" Height="32">
             <ComboBoxItem Content="Muski"/>
             <ComboBoxItem Content="Zenski"/>
         </ComboBox>
-        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="42,379,0,0" VerticalAlignment="Top" Click="Button_Click" Height="26" Width="60"/>
-        <Button Content="Otkazi" HorizontalAlignment="Left" Margin="231,379,0,0" VerticalAlignment="Top" Height="26" Width="61" Click="Button_Click_1"/>
+        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="296,687,0,0" VerticalAlignment="Top" Click="Button_Click" Height="34" Width="81"/>
+        <Button Content="Otkazi" HorizontalAlignment="Left" Margin="71,687,0,0" VerticalAlignment="Top" Height="34" Width="81" Click="Button_Click_1"/>
+        <DatePicker HorizontalAlignment="Left" Margin="190,418,0,0" VerticalAlignment="Top" Height="32" Width="138"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,42,0,0" TextWrapping="Wrap" Text="Add new patient" FontSize="30" VerticalAlignment="Top"/>
     </Grid>
 </Window>

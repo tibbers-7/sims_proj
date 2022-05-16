@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo.PatientView"
         mc:Ignorable="d"
-        Title="AppointmentManagement" Height="503" Width="622" WindowStartupLocation="CenterScreen">
+        Title="AppointmentManagement" Height="750" Width="430" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="19*"/>
@@ -46,21 +46,21 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox Name="searchTb" HorizontalAlignment="Left" Margin="106,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" Height="27"/>
-        <Button Content="" HorizontalAlignment="Left" Margin="254,27,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.601,0.083" Width="27" Height="27" Click="SearchButtonClick">
+        <TextBox Name="searchTb" HorizontalAlignment="Left" Margin="106,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" Height="23"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="222,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.601,0.083" Width="27" Height="27" Click="SearchButtonClick">
             <Button.Background>
                 <ImageBrush ImageSource="/images/search.png"/>
             </Button.Background>
         </Button>
         <TextBlock HorizontalAlignment="Left" Margin="38,30,0,0" TextWrapping="Wrap" Text="JMBG:" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" RenderTransformOrigin="0.41,1.134"/>
-        <Button Content="Back" HorizontalAlignment="Left" Margin="467,275,0,0" VerticalAlignment="Top" Height="27" Width="103" Click="BackButtonClick" Grid.Row="1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="373,31,0,0" TextWrapping="Wrap" Text="Add new appointment:" FontSize="14" VerticalAlignment="Top"/>
-        <Button Content="" HorizontalAlignment="Left" Margin="538,28,0,0" VerticalAlignment="Top" Height="26" Width="32" Click="newAppointmentClick">
+        <Button Content="Back" HorizontalAlignment="Left" Margin="276,450,0,0" VerticalAlignment="Top" Height="37" Width="104" Click="BackButtonClick" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="306,32,0,0" TextWrapping="Wrap" Text="New:" FontSize="14" VerticalAlignment="Top" Width="174"/>
+        <Button Content=""  HorizontalAlignment="Left" Margin="353,28,0,0" VerticalAlignment="Top" Width="27" Height="27" Click="newAppointmentClick">
             <Button.Background>
                 <ImageBrush ImageSource="/images/addNew.png"/>
             </Button.Background>
         </Button>
-        <Button Content="Emergency appointment" HorizontalAlignment="Left" Margin="38,274,0,0" Grid.Row="1" VerticalAlignment="Top" Height="28" Width="142" Click="EmergencyAppointmentClick"/>
+        <Button Content="Emergency appointment" HorizontalAlignment="Left" Margin="62,454,0,0" Grid.Row="1" VerticalAlignment="Top" Height="33" Width="141" Click="EmergencyAppointmentClick"/>
 
     </Grid>
 </Window>
