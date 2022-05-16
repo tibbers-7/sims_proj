@@ -60,6 +60,7 @@
                 <ImageBrush ImageSource="/images/addNew.png"/>
             </Button.Background>
         </Button>
+        <Button Content="Emergency appointment" HorizontalAlignment="Left" Margin="38,274,0,0" Grid.Row="1" VerticalAlignment="Top" Height="28" Width="142" Click="EmergencyAppointmentClick"/>
 
     </Grid>
 </Window>

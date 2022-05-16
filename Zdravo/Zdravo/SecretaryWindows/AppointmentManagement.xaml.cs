@@ -3,6 +3,9 @@ using Zdravo.ViewModel;
 using System.Collections.ObjectModel;
 using Controller;
 using Model;
+using Zdravo.SecretaryWindows;
+using Repository;
+
 namespace Zdravo.PatientView
 {
     /// <summary>
@@ -74,6 +77,13 @@ namespace Zdravo.PatientView
                 DataContext = null;
                 DataContext = viewModel;
             }
+        }
+
+        private void EmergencyAppointmentClick(object sender, RoutedEventArgs e)
+        {
+            EmergencyAppointmentWindow emergencyAppointmentWindow = new EmergencyAppointmentWindow();
+            emergencyAppointmentWindow.Show();
+            this.Close();
         }
     }
 }
