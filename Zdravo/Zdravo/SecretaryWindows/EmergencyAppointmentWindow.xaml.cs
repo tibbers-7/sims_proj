@@ -91,6 +91,8 @@ namespace Zdravo.SecretaryWindows
             DateOnly.TryParse(selectedDate, out DateOnly date);
             String timeTb= selectedDate.Split(" ")[1];
             appointmentController.CreateAppointment(patientId, selectedDoctor.Id, 1, Int32.Parse(timeTb.Split(":")[0]), Int32.Parse(timeTb.Split(":")[1]), 60, dateStringForParsing, false);
+            AppointmentManagement appointmentManagementWindow = new AppointmentManagement();
+            appointmentManagementWindow.Show();
             this.Close();
         }
 
