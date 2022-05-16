@@ -23,7 +23,7 @@ namespace Zdravo.ViewModel
             appointmentController = app.appointmentController;
             drugController=app.drugController;
             this.appointmentId = appointmentId;
-            drugs = drugController.GetAllDrugs();
+            drugs = new ObservableCollection<Drug>(drugController.GetAllDrugs());
 
 
         }

@@ -28,14 +28,9 @@ namespace Zdravo.DoctorView
             viewModel = new DrugViewModel(callerWindow,drugId);
             this.DataContext = viewModel;
             InitializeComponent();
-            if (callerWindow==null)
+            if (callerWindow==null | viewModel.Status.Equals("PRIJAVLJENO"))
             {
-                acceptButton.IsEnabled = false;
                 denyButton.IsEnabled = false;
-            }
-            if (viewModel.Status.Equals("ODOBRENO"))
-            {
-                acceptButton.IsEnabled = false;
             }
             
         }

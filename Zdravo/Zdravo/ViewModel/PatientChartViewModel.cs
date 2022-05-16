@@ -1,8 +1,11 @@
 ﻿using Controller;
 using Model;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
+using Zdravo.Controller;
+using Zdravo.DoctorView;
 using Zdravo.DoctorWindows;
 
 namespace Zdravo.ViewModel
@@ -33,6 +36,7 @@ namespace Zdravo.ViewModel
         public ObservableCollection<string> Allergens { get { return allergens; } set { allergens = value; } }
         private ObservableCollection<Report> reports;
         private ObservableCollection<Prescription> prescriptions;
+        private DrugController drugController;
         public ObservableCollection<Report> Reports
         {
             get { return reports; }
@@ -67,6 +71,7 @@ namespace Zdravo.ViewModel
         {
             var app = Application.Current as App;
             appointmentController = app.appointmentController;
+            drugController = app.drugController;
             Patient p;
             if (apptId != 0)
             {
@@ -112,16 +117,16 @@ namespace Zdravo.ViewModel
             }
         
 
-        internal void ShowReport(int reportId)
+        internal void ShowDrug(int drugId)
         {
-            foreach (Report r in reports)
+            List<Drug> drugs = drugController.GetAllDrugs();
+            foreach (Drug drug in drugs)
             {
-                if (r.Id == reportId)
+                if (drugId==drug.Id)
                 {
-                    ReportWindow reportWindow = new ReportWindow(0, reportId, 1, this);
-                    reportWindow.Show();
+                    DrugWindow drugWindow = new DrugWindow(null, drugId);
+                    drugWindow.Show();
 
-                    if (!reportWindow.IsActive) RefreshReports();
                 }
             }
 

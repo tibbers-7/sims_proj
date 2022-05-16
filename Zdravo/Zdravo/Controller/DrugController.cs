@@ -26,9 +26,9 @@ namespace Zdravo.Controller
 
         
 
-        internal ObservableCollection<Drug> GetAllDrugs()
+        internal List<Drug> GetAllDrugs()
         {
-            return new ObservableCollection<Drug>(service.GetAllDrugs());
+            return service.GetAllDrugs();
         }
 
         internal Drug GetById(int drugId)

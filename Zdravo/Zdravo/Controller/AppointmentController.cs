@@ -109,7 +109,7 @@ namespace Controller
             Patient p = patientController.GetById(patientId);
             if (p == null) return 1;
             TimeOnly _time = new TimeOnly(hours, minutes);
-            DateOnly _date = DateOnly.Parse(date);
+            DateOnly _date = ParseDate(date);
             DateTime datetime = _date.ToDateTime(_time);
             int cmp = DateTime.Compare(datetime, DateTime.Now);
             if (cmp < 0) return 3;   // Cannot make appointment in the past

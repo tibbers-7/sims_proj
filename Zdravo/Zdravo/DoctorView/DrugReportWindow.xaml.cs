@@ -32,9 +32,17 @@ namespace Zdravo.DoctorView
 
         private void AcceptButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.CreateDrugReport();
-            callerWindow.RefreshDrugs();
-            this.Close();
+            if (reason_tb.Text.Equals(""))
+            {
+                MessageBox.Show("Niste uneli sve potrebne podatke!", "Greška");
+            }
+            else
+            {
+                viewModel.CreateDrugReport();
+                callerWindow.RefreshDrugs();
+                this.Close();
+            }
+            
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
