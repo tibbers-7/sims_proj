@@ -15,6 +15,7 @@ using Repository;
 using System.Collections.ObjectModel;
 using Model;
 using Controller;
+using Zdravo.PatientView;
 namespace Zdravo.SecretaryWindows
 {
     /// <summary>
@@ -76,6 +77,7 @@ namespace Zdravo.SecretaryWindows
 
         private void okButtonClick(object sender, RoutedEventArgs e)
         {
+            doctorRepository = new DoctorRepository();
             ObservableCollection<Doctor> doctors = doctorRepository.getAll();
             Doctor selectedDoctor = new Doctor();
             foreach(Doctor doctor in doctors)
@@ -84,12 +86,19 @@ namespace Zdravo.SecretaryWindows
             }
             String jmbg = jmbgTextBox.Text;
             int patientId = Int32.Parse(jmbg);
-            DateTime now = DateTime.Now.AddMinutes(10);
-            String selectedDate = now.ToString();
+            String selectedDate =DateTime.Now.AddMinutes(5).ToString();   
             String dateStringForParsing = selectedDate.Split(" ")[0];
-            String time= selectedDate.Split(" ")[1];
             DateOnly.TryParse(selectedDate, out DateOnly date);
-            appointmentController.CreateAppointment(patientId, selectedDoctor.Id, 1, Int32.Parse(time.Split(":")[0]), Int32.Parse(time.Split(":")[1]), 60, dateStringForParsing, false);
+            String timeTb= selectedDate.Split(" ")[1];
+            appointmentController.CreateAppointment(patientId, selectedDoctor.Id, 1, Int32.Parse(timeTb.Split(":")[0]), Int32.Parse(timeTb.Split(":")[1]), 60, dateStringForParsing, false);
+            this.Close();
+        }
+
+        private void backButtonClick(object sender, RoutedEventArgs e)
+        {
+            AppointmentManagement appointmentManagementWindow = new AppointmentManagement();
+            appointmentManagementWindow.Show();
+            this.Close();
         }
     }
 }

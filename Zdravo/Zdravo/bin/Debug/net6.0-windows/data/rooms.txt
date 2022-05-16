@@ -1,6 +1,6 @@
 4,4,operatingRoom,1,3,7,8
 6,6,operatingRoom,2,4,11
-7,7,storage
+7,7,magacin
 14,1,laboratory
 15,1,operatingRoom
 16,5,laboratory

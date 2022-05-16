@@ -31,11 +31,11 @@ namespace Controller
             this.drugController = drugController;
             
         }
+
         public List<Appointment> GetAppointmentsForDoctor(int doctorId)
         {
             return service.GetAppointmentsForDoctor(doctorId);
         }
-
         
         public int CreateAppointment(int patientId, int doctor, int roomId, int hours, int minutes, int duration, string date, bool emergency)
         {

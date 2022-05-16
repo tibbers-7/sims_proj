@@ -103,6 +103,9 @@ namespace FileHandler
                     case RoomType.laboratory:
                         rt = "laboratory";
                         break;
+                    case RoomType.magacin:
+                        rt = "magacin";
+                        break;
                     default:
                         rt = "operatingRoom";
                         break;
