@@ -5,14 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo"
         mc:Ignorable="d"
-        Title="Log in" Height="244" Width="360"
+        Title="Log in" Height="750" Width="430"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,0,3">
-        <TextBox Name="tbUsername"  HorizontalAlignment="Left" Margin="67,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" Height="30"/>
-        <PasswordBox Name="tbPassword" HorizontalAlignment="Left" Margin="67,109,0,0" VerticalAlignment="Top" Width="208" Height="28"/>
-        <Button Content="Log in&#xD;&#xA;" HorizontalAlignment="Left" Margin="137,170,0,0" VerticalAlignment="Top" Height="26" Width="87" Click="Button_Click"/>
-        <Label Content="Username" FontFamily="Italic" HorizontalAlignment="Left" Margin="67,18,0,0" VerticalAlignment="Top"/>
-        <Label Content="Password" FontFamily="Italic" HorizontalAlignment="Left" Margin="67,83,0,0" VerticalAlignment="Top"/>
-        <Label Content="" Name="errorLabel" HorizontalAlignment="Left" Margin="67,142,0,0" VerticalAlignment="Top" Foreground="Red" FontWeight="Bold"/>
+        <TextBox Name="tbUsername"  HorizontalAlignment="Center" Margin="0,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" Height="30"/>
+        <PasswordBox Name="tbPassword" HorizontalAlignment="Center" Margin="0,385,0,0" VerticalAlignment="Top" Width="208" Height="28"/>
+        <Button Content="Log in&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,472,0,0" VerticalAlignment="Top" Height="41" Width="126" Click="Button_Click"/>
+        <Label Content="Username" FontFamily="Italic" HorizontalAlignment="Left" Margin="111,230,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password" FontFamily="Italic" HorizontalAlignment="Left" Margin="111,350,0,0" VerticalAlignment="Top"/>
+        <Label Content="" Name="errorLabel" HorizontalAlignment="Left" Margin="82,438,0,0" VerticalAlignment="Top" Foreground="Red" FontWeight="Bold" Width="276"/>
+        <Rectangle HorizontalAlignment="Center" Height="375" Margin="0,189,0,0" Stroke="Black" VerticalAlignment="Top" Width="362" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <TextBlock HorizontalAlignment="Left" FontSize="36" Margin="48,38,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="48,91,0,0" FontSize="17" TextWrapping="Wrap" Text="Please sing in to continue" VerticalAlignment="Top" Height="49" Width="291"/>
+        <Image  HorizontalAlignment="Left" Height="100" Margin="298,38,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>
