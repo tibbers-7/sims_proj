@@ -111,7 +111,6 @@ D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWi
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\AllergenDescription.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\Allergens.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\AppointmentManagement.g.cs
-D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\DatePriority.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\DoctorPriority.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\EditAppointmentDate.g.cs
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\OrdersWindow.g.cs
@@ -146,7 +145,6 @@ D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWi
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\AllergenDescription.baml
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\Allergens.baml
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\AppointmentManagement.baml
-D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\DatePriority.baml
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\DoctorPriority.baml
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\EditAppointmentDate.baml
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\OrdersWindow.baml
@@ -162,3 +160,5 @@ D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\refint\Zdra
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo.pdb
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo.genruntimeconfig.cache
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\ref\Zdravo.dll
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\EmergencyAppointmentWindow.g.cs
+D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\EmergencyAppointmentWindow.baml

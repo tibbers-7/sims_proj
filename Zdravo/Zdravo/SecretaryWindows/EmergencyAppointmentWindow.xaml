@@ -1,0 +1,30 @@
+﻿<Window x:Class="Zdravo.SecretaryWindows.EmergencyAppointmentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zdravo.SecretaryWindows"
+        mc:Ignorable="d"
+        Title="EmergencyAppointmentWindow" WindowStartupLocation="CenterScreen" Height="414" Width="430">
+    <Grid>
+        <TextBlock HorizontalAlignment="Center" FontSize="25" Margin="0,10,0,0" TextWrapping="Wrap" Text="Emergency appointment" VerticalAlignment="Top" Width="274"/>
+        <TextBlock HorizontalAlignment="Left" Margin="25,97,0,0" TextWrapping="Wrap" Text="JMBG: " FontSize="18" VerticalAlignment="Top" Height="22" Width="67"/>
+        <TextBlock HorizontalAlignment="Left" Margin="990,208,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBox x:Name="jmbgTextBox" HorizontalAlignment="Center" Margin="0,97,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="170" Height="24" TextChanged="jmbgChangedEvent"/>
+        <Label x:Name="foundLabel" Content="" Foreground="Red" HorizontalAlignment="Left" Margin="92,126,0,0" VerticalAlignment="Top" Width="274"/>
+        <Button x:Name="createAccountButton" Content="Create account" HorizontalAlignment="Left" Margin="144,157,0,0" VerticalAlignment="Top" Height="30" Width="110" Click="createAccountClick"/>
+        <TextBlock HorizontalAlignment="Left" Margin="18,217,0,0" TextWrapping="Wrap" Text="Doctor type: " FontSize="18" VerticalAlignment="Top" Height="22" Width="110" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.144"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <ComboBox x:Name="comboBoxSpecializations" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" Width="170" RenderTransformOrigin="0.633,0.434"/>
+        <Button Content="Ok" HorizontalAlignment="Left" Margin="165,317,0,0" VerticalAlignment="Top" Height="35" Width="89" Click="okButtonClick"/>
+
+    </Grid>
+</Window>

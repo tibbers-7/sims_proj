@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\Preuzimanja\repo\sims_proj\Zdravo\Zdravo\App.xaml
-31-87272779
+31-1180376710
 
-133-1366686904
+133196201903
 1942030480316
-DoctorHome.xaml;DoctorView\AppointmentMenu.xaml;DoctorView\ChoosePatient.xaml;DoctorView\DrugReportWindow.xaml;DoctorView\DrugWindow.xaml;DoctorView\NewAppointment.xaml;DoctorView\PatientChart.xaml;DoctorView\PrescriptionWindow.xaml;DoctorView\ReferralWindow.xaml;DoctorView\ReportWindow.xaml;MainWindow.xaml;ManagerHome.xaml;managerView\AddEquipment.xaml;managerView\BasicRenovation.xaml;managerView\ComplexRenovation.xaml;managerView\Equipment.xaml;managerView\EquipmentRelocation.xaml;managerView\EquipmentReview.xaml;managerView\MergedRoomsInfo.xaml;managerView\SplitedRoomsInfo.xaml;SecretaryHome.xaml;SecretaryWindows\AddPatient.xaml;SecretaryWindows\AllergenDescription.xaml;SecretaryWindows\Allergens.xaml;SecretaryWindows\AppointmentManagement.xaml;SecretaryWindows\DatePriority.xaml;SecretaryWindows\DoctorPriority.xaml;SecretaryWindows\EditAppointmentDate.xaml;SecretaryWindows\OrdersWindow.xaml;SecretaryWindows\UpdatePatient.xaml;SekretarHome.xaml;
+DoctorHome.xaml;DoctorView\AppointmentMenu.xaml;DoctorView\ChoosePatient.xaml;DoctorView\DrugReportWindow.xaml;DoctorView\DrugWindow.xaml;DoctorView\NewAppointment.xaml;DoctorView\PatientChart.xaml;DoctorView\PrescriptionWindow.xaml;DoctorView\ReferralWindow.xaml;DoctorView\ReportWindow.xaml;MainWindow.xaml;ManagerHome.xaml;managerView\AddEquipment.xaml;managerView\BasicRenovation.xaml;managerView\ComplexRenovation.xaml;managerView\Equipment.xaml;managerView\EquipmentRelocation.xaml;managerView\EquipmentReview.xaml;managerView\MergedRoomsInfo.xaml;managerView\SplitedRoomsInfo.xaml;SecretaryHome.xaml;SecretaryWindows\AddPatient.xaml;SecretaryWindows\AllergenDescription.xaml;SecretaryWindows\Allergens.xaml;SecretaryWindows\AppointmentManagement.xaml;SecretaryWindows\DoctorPriority.xaml;SecretaryWindows\EditAppointmentDate.xaml;SecretaryWindows\EmergencyAppointmentWindow.xaml;SecretaryWindows\OrdersWindow.xaml;SecretaryWindows\UpdatePatient.xaml;SekretarHome.xaml;
 
-False
+True
 

@@ -37,7 +37,7 @@ namespace Controller
             if (checkBoxGuest.IsChecked == true) guest = true;
             else guest = false;
             string email = tbMail.Text;
-            Patient p = new Patient(ime, prezime, tbId, username, sifra, telefon, datumRodjenja, pol, adresa, guest, email,null);
+            Patient p = new Patient(ime, prezime, tbId, username, sifra, telefon, datumRodjenja, pol, adresa, guest, email);
             return p;
       }
 

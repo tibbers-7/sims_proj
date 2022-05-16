@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo.PatientView"
         mc:Ignorable="d"
-        Title="DoctorPriority" Height="511" Width="407">
+        Title="DoctorPriority" WindowStartupLocation="CenterScreen" Height="511" Width="407">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="7*"/>

@@ -35,8 +35,6 @@
         <TextBox Name="quantityTextBox" HorizontalAlignment="Left" Margin="154,519,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156"/>
         <TextBox Name="noteTextBox" HorizontalAlignment="Center" Margin="0,585,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="296" Height="62"/>
         <TextBlock HorizontalAlignment="Left" FontStyle="Italic" FontSize="15" Margin="72,560,0,0" TextWrapping="Wrap" Text="Note" VerticalAlignment="Top" Height="20" Width="81"/>
-        <RadioButton  Content="Active" HorizontalAlignment="Left" Margin="316,28,0,0" VerticalAlignment="Top" Click="ActiveClick" Height="16" Width="51"/>
-        <RadioButton IsChecked="True" Content="All" HorizontalAlignment="Left" Margin="278,28,0,0" VerticalAlignment="Top" Click="AllClick" RenderTransformOrigin="0.664,0.657"/>
 
     </Grid>
 </Window>

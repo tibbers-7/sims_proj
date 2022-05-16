@@ -31,7 +31,6 @@ namespace Controller
             this.drugController = drugController;
             
         }
-
         public List<Appointment> GetAppointmentsForDoctor(int doctorId)
         {
             return service.GetAppointmentsForDoctor(doctorId);
@@ -44,10 +43,10 @@ namespace Controller
             if (p == null) return 1;
 
             TimeOnly _time = new TimeOnly(hours, minutes);
-            DateOnly _date=ParseDate(date);
+            DateOnly _date = DateOnly.Parse(date);
             DateTime datetime = _date.ToDateTime(_time);
-            int cmp = DateTime.Compare(datetime, DateTime.Now);
-            if (cmp < 0) return 2;   // Cannot make appointment in the past
+           // int cmp = DateTime.Compare(datetime, DateTime.Now);
+         //   if (cmp < 0) return 2;   // Cannot make appointment in the past
 
             Appointment appt = new Appointment() { Date = _date, Time = _time, Doctor = doctor, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency, Status = Status.accepted, DoctorSchedules = doctor, Type = 'A' };
             service.CreateAppointment(appt);

@@ -41,7 +41,7 @@ namespace Model
             AllergenRepository repo = new AllergenRepository();
             ObservableCollection<Allergen> allAllergens = repo.getAllAllergens();
             ObservableCollection<Allergen> allergeniPacijenta = new ObservableCollection<Allergen>();
-            List<int> ids = allergenIds;
+                List<int> ids = allergenIds;
 
                 foreach (Allergen a in allAllergens)
                 {
@@ -53,7 +53,13 @@ namespace Model
 
             this.allergens = allergeniPacijenta;
         }
+        public Patient(string fn, string ln, int i, string un, string pas, string pn, DateTime date, Gender g, string ad, bool gu, string mejl) : base(fn, ln, i, un, pas, pn, date, g, ad, gu, mejl)
+        {
+            reports = new List<Report>();
+            appointments = new List<Appointment>();
+            prescriptions = new List<Prescription>();
 
+        }
         internal ObservableCollection<string> GetAllergens()
         {
             ObservableCollection<string> res = new ObservableCollection<string>();
