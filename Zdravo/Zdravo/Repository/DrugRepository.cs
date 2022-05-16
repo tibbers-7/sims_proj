@@ -48,8 +48,9 @@ namespace Repository
                 if (drug.Id == drugId)
                 {
                     if (isAccepted) drug.Status = Zdravo.Status.accepted;
-                    else drug.Status = Zdravo.Status.denied;
+                    else drug.Status = Zdravo.Status.reported;
                     selectedDrug = drug;
+                    break;
                 }
             }
             fileHandler.Write(selectedDrug, 1);

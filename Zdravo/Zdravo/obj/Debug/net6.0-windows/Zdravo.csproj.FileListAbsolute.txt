@@ -78,3 +78,5 @@ C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo.
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\ref\Zdravo.dll
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\DrugWindow.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\DrugWindow.baml
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\DrugReportWindow.g.cs
+C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\DrugReportWindow.baml

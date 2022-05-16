@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo.DoctorWindows"
         mc:Ignorable="d"
-        Title="Karton" Height="681" Width="582" FontFamily="Nirmala UI Semilight">
+        Title="Karton" Height="681" Width="582" FontFamily="Yu Gothic">
     <Window.Resources>
         <Style TargetType="{x:Type Control}" x:Key="baseStyle">
             <Setter Property="FontSize" Value="15" />

@@ -10,6 +10,9 @@
     <Compile Update="DoctorView\ChoosePatient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="DoctorView\DrugReportWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="DoctorView\DrugWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -73,6 +76,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="DoctorView\ChoosePatient.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="DoctorView\DrugReportWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DoctorView\DrugWindow.xaml">

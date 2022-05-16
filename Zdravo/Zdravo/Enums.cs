@@ -45,6 +45,7 @@ namespace Zdravo
     {
         accepted,
         denied,
-        waiting
+        waiting,
+        reported
     }
 }

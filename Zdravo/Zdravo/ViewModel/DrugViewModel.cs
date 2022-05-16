@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Zdravo.Controller;
 using System.Windows;
 using System.Windows.Controls;
+using Zdravo.DoctorView;
 
 namespace Zdravo.ViewModel
 {
@@ -25,10 +26,12 @@ namespace Zdravo.ViewModel
 
 
         private DrugController drugController;
+        private DoctorHomeViewModel callerWindow;
 
-        public DrugViewModel(int drugId)
+        public DrugViewModel(DoctorHomeViewModel callerWindow,int drugId)
         {
             this.drugId = drugId;
+            this.callerWindow=callerWindow;
             var app = Application.Current as App;
             drugController = app.drugController;
             Drug drug = drugController.GetById(drugId);
@@ -42,7 +45,10 @@ namespace Zdravo.ViewModel
 
         internal void DenyDrug()
         {
-            drugController.ChangeStatus(false, drugId);
+            DrugReportWindow drugReportWindow = new DrugReportWindow(callerWindow,drugId);
+            drugReportWindow.Show();
+            
+            
         }
 
         internal void AcceptDrug()

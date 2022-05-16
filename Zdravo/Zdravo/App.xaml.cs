@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Zdravo.Controller;
+using Zdravo.Repository;
 using Zdravo.Service;
 
 namespace Zdravo
@@ -39,10 +40,11 @@ namespace Zdravo
             var prescriptionRepository = new PrescriptionRepository();
             var relocationRepository = new RelocationRepository();
             var vacationRepository = new VacationRepository(doctorRepository);
+            var drugReportRepository = new DrugReportRepository();
 
 
 
-            var drugService = new DrugService(drugRepository);
+            var drugService = new DrugService(drugRepository,drugReportRepository);
             var appointmentService = new AppointmentService(appointmentRepository,drugRepository,prescriptionRepository,reportRepository,patientRepository);
             var vacationService = new VacationService(vacationRepository,doctorRepository);
             var allergenService = new AllergenService();

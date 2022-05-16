@@ -25,13 +25,17 @@ namespace Zdravo.DoctorView
         public DrugWindow(DoctorHomeViewModel callerWindow,int drugId)
         {
             this.callerWindow = callerWindow;
-            viewModel = new DrugViewModel(drugId);
+            viewModel = new DrugViewModel(callerWindow,drugId);
             this.DataContext = viewModel;
             InitializeComponent();
-            if (!viewModel.Status.Equals("NA ČEKANJU") | callerWindow==null)
+            if (callerWindow==null)
             {
                 acceptButton.IsEnabled = false;
                 denyButton.IsEnabled = false;
+            }
+            if (viewModel.Status.Equals("ODOBRENO"))
+            {
+                acceptButton.IsEnabled = false;
             }
             
         }

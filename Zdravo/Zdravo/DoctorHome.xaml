@@ -219,6 +219,10 @@
                                                 <Setter Property="Background" Value="DarkGray"/>
                                                 <Setter Property="Foreground" Value="Black"/>
                                             </Trigger>
+                                            <Trigger Property="Text" Value="PRIJAVLJENO">
+                                                <Setter Property="Background" Value="Orange"/>
+                                                <Setter Property="Foreground" Value="White"/>
+                                            </Trigger>
                                         </Style.Triggers>
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
@@ -235,12 +239,12 @@
 
                     <GroupBox Header="Odaberite tip" Margin="116,17,90,362" Background="#FF373F47" Foreground="White" FontWeight="Normal">
                         <Grid>
-                            <RadioButton x:Name="vacationRadio" Content="Godišnji odmor" HorizontalAlignment="Left" Margin="116,0,0,-29" Height="80" VerticalAlignment="Bottom" FontSize="30" Foreground="White"/>
+                            <RadioButton x:Name="vacationRadio" Content="Godišnji odmor" HorizontalAlignment="Left" Margin="117,0,0,-12" Height="80" VerticalAlignment="Bottom" FontSize="30" Foreground="White"/>
                             <RadioButton x:Name="sickLeaveRadio" Content="Bolovanje" HorizontalAlignment="Left" Margin="518,15,0,-12" FontSize="30" Foreground="White"/>
                         </Grid>
                     </GroupBox>
 
-                    <GroupBox Header="Odaberite vremenski period" Margin="53,170,439,176" Background="#FF6C91C2" Foreground="White">
+                    <GroupBox Header="Odaberite vremenski period" Margin="53,170,453,176" Background="#FF6C91C2" Foreground="White">
                         <Grid>
                         </Grid>
                     </GroupBox>
@@ -264,15 +268,15 @@
 
                     </Grid>
 
-                    <Button x:Name="Schedule" Content="" Margin="512,351,452,87" Click="VacationButton_Click" BorderBrush="{x:Null}">
+                    <Button x:Name="Schedule" Content="" Margin="498,350,453,75" Click="VacationButton_Click" BorderBrush="{x:Null}">
                         <Button.Background>
                             <ImageBrush ImageSource="/images/accept.png"/>
                         </Button.Background>
                     </Button>
-                    <Label Content="-" Margin="292,205,678,205" Foreground="White" FontSize="60"/>
-                    <GroupBox Header="Detalji" Margin="637,167,52,173" Background="#FF6C91C2" Foreground="White">
+                    <Label Content="-" Margin="292,202,678,208" Foreground="White" FontSize="60"/>
+                    <GroupBox Header="Detalji" Margin="604,167,52,173" Background="#FF6C91C2" Foreground="White">
                         <Grid>
-                            <CheckBox x:Name="emergency_Check"  Content="HITNO" Margin="106,81,34,0" Foreground="White" FontSize="30"/>
+                            <CheckBox x:Name="emergency_Check"  Content="HITNO" Margin="106,67,34,14" Foreground="White" FontSize="30"/>
                             <Label Content="Razlog:" HorizontalAlignment="Left" Margin="10,22,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.446,0.057" Foreground="White" FontSize="20"/>
                             <TextBox x:Name="reason_tb" HorizontalAlignment="Left" Margin="99,20,0,69" TextWrapping="Wrap" Width="209">
                                 <Binding Path="Reason" UpdateSourceTrigger="PropertyChanged">

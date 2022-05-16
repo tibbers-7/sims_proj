@@ -90,7 +90,7 @@ namespace Zdravo
                         MessageBox.Show("Zahtev za slobodne dane je uspešno poslat.", "Obaveštenje");
                         break;
                     case 1:
-                        MessageBox.Show("Slobodni dani se mogu zakazati minimalno 48 sati ranije!", "Greška");
+                        MessageBox.Show("Navedeni datum je prošao!", "Greška");
                         break;
                     case 2:
                         MessageBox.Show("Krajnji datum je pre početnog!", "Greška");

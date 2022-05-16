@@ -41,5 +41,9 @@ namespace Zdravo.Controller
             service.ChangeStatus(isAccepted, drugId);
         }
 
+        internal void CreateDrugReport(int drugId, string reason)
+        {
+            service.CreateDrugReport(drugId, reason);
+        }
     }
 }

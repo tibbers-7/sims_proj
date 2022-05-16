@@ -25,6 +25,9 @@ namespace Model
                     case (Zdravo.Status.denied):
                         retVal = "ODBIJENO";
                         break;
+                    case (Zdravo.Status.reported):
+                        retVal = "PRIJAVLJENO";
+                        break;
                     default:
                         retVal = "NA ČEKANJU";
                         break;
@@ -55,6 +58,9 @@ namespace Model
                 case "D":
                     status = Zdravo.Status.denied;
                     break;
+                case "R":
+                    status=Zdravo.Status.reported;
+                    break;
                 default:
                     status = Zdravo.Status.waiting;
                     break;
@@ -78,17 +84,22 @@ namespace Model
                 case Zdravo.Status.denied:
                     statusChar = 'D';
                     break;
+                case Zdravo.Status.reported:
+                    statusChar = 'R';
+                    break;
                 default:
                     statusChar = 'W';
                     break;
 
             }
-            string res = "#" + id.ToString() + "#" + name+ "#" + type + "#" + statusChar + "#";
+            string ingredientsString = "";
             foreach (string ingredient in ingredients)
             {
-                res=res+ingredient+";";
+                ingredientsString = ingredientsString + ingredient + ";";
 
             }
+            string res = "#" + id.ToString() + "#" + name+ "#" + type + "#" + statusChar + "#"+ingredientsString;
+            
             return res;
 
         }

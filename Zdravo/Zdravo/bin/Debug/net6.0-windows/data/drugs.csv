@@ -1,9 +1,9 @@
-#1#AMOXICILLIN#kapsula#A#yellow ferric oxide;titanium dioxide;gelatin;propylene glycol;
-#2#FEBRICET#prašak#A#acetaminophen;
-#3#PANKLAV#film tableta#A#penicilin;clavulanic acid;
-#4#BETAKLAV#tableta#A#penicilin;clavulanic acid;
-#5#SINACILLIN#kapsula#D#penicilin;
-#6#MINIRIN#nazalni sprej#W#desmopresin;
-#7#ASPIRIN#šumeća tableta#A#acetylsalicylic acid;
-#8#BRUFEN#film tableta#W#ibuprofen;laktoza;
+#1#AMOXICILLIN#kapsula#A#yellow ferric oxide;titanium dioxide;gelatin;propylene glycol;;
+#2#FEBRICET#prašak#A#acetaminophen;;
+#3#PANKLAV#film tableta#A#penicilin;clavulanic acid;;
+#4#BETAKLAV#tableta#R#penicilin;clavulanic acid;;
+#5#SINACILLIN#kapsula#D#penicilin;;
+#6#MINIRIN#nazalni sprej#W#desmopresin;;
+#7#ASPIRIN#šumeća tableta#A#acetylsalicylic acid;;
+#8#BRUFEN#film tableta#R#ibuprofen;laktoza;;
 

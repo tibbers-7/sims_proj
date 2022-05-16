@@ -17,7 +17,7 @@ namespace FileHandler
             foreach (string line in File.ReadLines(filePath))
             {
                 // id # naziv # tip # status # sastojci
-                Regex regexObj = new Regex("#(\\d+)#(\\w+)#([\\w\\s]+)#(A|D|W)#([\\w\\s;]*)");
+                Regex regexObj = new Regex("#(\\d+)#(\\w+)#([\\w\\s]+)#(A|D|W|R)#([\\w\\s;]*)");
                 Match matchResult = regexObj.Match(line);
                 if (matchResult.Success)
                 {
