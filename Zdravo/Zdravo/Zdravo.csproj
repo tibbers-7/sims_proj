@@ -12,37 +12,68 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="acceptGreen.png" />
+    <None Remove="deleteWhite.png" />
     <None Remove="DoctorView\accept.png" />
     <None Remove="DoctorView\cancel.png" />
     <None Remove="DoctorView\delete.png" />
     <None Remove="DoctorView\drug.png" />
     <None Remove="DoctorView\edit.png" />
     <None Remove="DoctorView\report.png" />
+    <None Remove="drugWhite.png" />
+    <None Remove="editWhite.png" />
     <None Remove="images\accept.png" />
+    <None Remove="images\acceptGreen.png" />
     <None Remove="images\addNew.png" />
+    <None Remove="images\arrow.png" />
     <None Remove="images\calendar.png" />
     <None Remove="images\cancel.png" />
     <None Remove="images\cart.png" />
     <None Remove="images\close.png" />
     <None Remove="images\delete.png" />
+    <None Remove="images\deleteWhite.png" />
     <None Remove="images\doctor.png" />
     <None Remove="images\drug.png" />
+    <None Remove="images\drugWhite.png" />
     <None Remove="images\edit.png" />
+    <None Remove="images\editWhite.png" />
     <None Remove="images\key.png" />
     <None Remove="images\list.png" />
     <None Remove="images\logout.png" />
     <None Remove="images\meetings.png" />
+    <None Remove="images\newApptWhite.png" />
+    <None Remove="images\referral.png" />
+    <None Remove="images\referralWhite.png" />
+    <None Remove="images\rejectDrugWhite.png" />
     <None Remove="images\report.png" />
+    <None Remove="images\reportWhite.png" />
+    <None Remove="images\requestsWhite.png" />
     <None Remove="images\search.png" />
+    <None Remove="images\searchGreen.png" />
+    <None Remove="images\searchGrey.png" />
     <None Remove="images\user.png" />
+    <None Remove="images\vacationWhite.png" />
+    <None Remove="newApptWhite.png" />
     <None Remove="referral.png" />
+    <None Remove="referralWhite.png" />
+    <None Remove="rejectDrugWhite.png" />
+    <None Remove="reportWhite.png" />
+    <None Remove="requestsWhite.png" />
+    <None Remove="searchGreen.png" />
+    <None Remove="vacationWhite.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="acceptGreen.png" />
+    <Resource Include="deleteWhite.png" />
+    <Resource Include="drugWhite.png" />
+    <Resource Include="editWhite.png" />
     <Resource Include="images\accept.png" />
+    <Resource Include="images\acceptGreen.png" />
     <Resource Include="images\addNew.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="images\arrow.png" />
     <Resource Include="images\calendar.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -54,11 +85,14 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="images\delete.png" />
+    <Resource Include="images\deleteWhite.png" />
     <Resource Include="images\doctor.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="images\drug.png" />
+    <Resource Include="images\drugWhite.png" />
     <Resource Include="images\edit.png" />
+    <Resource Include="images\editWhite.png" />
     <Resource Include="images\key.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -69,14 +103,32 @@
     <Resource Include="images\meetings.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="images\newApptWhite.png" />
+    <Resource Include="images\referral.png" />
+    <Resource Include="images\referralWhite.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\rejectDrugWhite.png" />
     <Resource Include="images\report.png" />
+    <Resource Include="images\reportWhite.png" />
+    <Resource Include="images\requestsWhite.png" />
     <Resource Include="images\search.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="images\searchGreen.png" />
+    <Resource Include="images\searchGrey.png" />
     <Resource Include="images\user.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="images\vacationWhite.png" />
+    <Resource Include="newApptWhite.png" />
     <Resource Include="referral.png" />
+    <Resource Include="referralWhite.png" />
+    <Resource Include="rejectDrugWhite.png" />
+    <Resource Include="reportWhite.png" />
+    <Resource Include="requestsWhite.png" />
+    <Resource Include="searchGreen.png" />
+    <Resource Include="vacationWhite.png" />
   </ItemGroup>
 
 </Project>

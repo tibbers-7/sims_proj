@@ -115,5 +115,35 @@ namespace Zdravo
         {
             viewModel.ResetTable();
         }
+
+        private void Update_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Report_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Prescription_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RejectDrug_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

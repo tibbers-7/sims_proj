@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo" xmlns:viewmodel="clr-namespace:Zdravo.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:DoctorHomeViewModel}"
         mc:Ignorable="d"  Loaded="Window_Loaded"
-        Title="DoctorHome" Height="564" Width="1042" FontSize="17" FontFamily="Yu Gothic" >
+        Title="DoctorHome" Height="580" Width="1042" d:DesignHeight="580" d:DesignWidth="1042" FontSize="13" FontFamily="Yu Gothic" >
+
     <Window.Resources>
+
+
         <ControlTemplate x:Key="validationTemplate">
             <Grid Height="Auto" Width="Auto">
                 <Grid.RowDefinitions>
@@ -25,177 +28,247 @@
     </Window.Resources>
     <Grid>
 
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="85*"/>
             <ColumnDefinition Width="624*"/>
             <ColumnDefinition Width="91*"/>
         </Grid.ColumnDefinitions>
-        <TabControl Grid.ColumnSpan="3">
-            <TabItem Header="Pregledi" FontFamily="Yu Gothic">
+        <Rectangle Fill="#FF514A4F" Grid.ColumnSpan="2" Margin="0,0,777,0"></Rectangle>
 
-                <Grid Background="#FF373F47" Height="514" Margin="0,0,-4,0">
+        <TabControl TabStripPlacement="Left" Grid.ColumnSpan="3" HorizontalAlignment="Left" BorderBrush="{x:Null}" FontSize="20">
+            <TabControl.Resources>
+                <Style x:Key="TabItemStyle" TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="Black"/>
+                                        <Setter Property="Background" Value="#FFEFF1F7"/>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="Height" Value="30"></Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header="Pregledi" FontFamily="Yu Gothic"  BorderBrush="{x:Null}" Background="{x:Null}" >
+
+                <Grid Background="#FFF0F7F4" Margin="0,0,-4,8" Width="925">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="31*"/>
                         <ColumnDefinition Width="270*"/>
                         <ColumnDefinition Width="493*"/>
                     </Grid.ColumnDefinitions>
-                    <GroupBox Header="Opcije" Margin="10,10,15,310" Grid.ColumnSpan="2" Background="#FFAAABBC" Foreground="White">
-                        <Grid Margin="0,0,127,0">
-                            <Label Content="Nov pregled" Margin="221,99,-103,10" RenderTransformOrigin="1.211,0.422">
-                                <Label.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform ScaleX="1"/>
-                                        <SkewTransform/>
-                                        <RotateTransform/>
-                                        <TranslateTransform X="-210.821"/>
-                                    </TransformGroup>
-                                </Label.RenderTransform>
-                            </Label>
-                            <Button  Margin="22,13,115,63" Click="NewAppointment_Click" BorderBrush="{x:Null}" Foreground="{x:Null}">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="/images/addNew.png"/>
-                                </Button.Background>
-                            </Button>
-                            <Button  Margin="242,13,-116,63" BorderBrush="{x:Null}">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="/images/list.png"/>
-                                </Button.Background>
-                            </Button>
-                            <Button  Margin="137,13,0,63" Click="Referral_Click" BorderBrush="{x:Null}" Foreground="{x:Null}">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="/referral.png"/>
-                                </Button.Background>
-                            </Button>
-                            <Label Content="Uput" Margin="369,99,-243,10" RenderTransformOrigin="1.211,0.422">
-                                <Label.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform ScaleX="1"/>
-                                        <SkewTransform/>
-                                        <RotateTransform/>
-                                        <TranslateTransform X="-210.821"/>
-                                    </TransformGroup>
-                                </Label.RenderTransform>
-                            </Label>
+                    <Border BorderBrush="#70ABAF" Background="#FF70ABAF" BorderThickness="1" CornerRadius="8" Margin="18,117,236,325" Grid.ColumnSpan="2">
+                        <Button  Margin="17,9,17,21" Click="NewAppointment_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="53.66120906801" Height="52">
+                            <Button.Background>
+                                <ImageBrush ImageSource="images/newApptWhite.png"/>
+                            </Button.Background>
+                        </Button>
+                    </Border>
+                    <Border BorderBrush="#70ABAF" Background="White" BorderThickness="3" CornerRadius="8,8,0,0" Margin="97,66,30,434" Grid.Column="1" Height="45"/>
+                    <Border BorderBrush="#70ABAF" Background="White" BorderThickness="3" CornerRadius="8,8,0,0" Margin="174,67,219,434" Grid.Column="2" Height="45"/>
 
-                        </Grid>
-
-                    </GroupBox>
-                    <GroupBox Header="Odabir vremena" Margin="5,209,15,67" Grid.ColumnSpan="2" Background="#FF6C91C2" Foreground="White">
+                    <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="18,335,238,112" Grid.ColumnSpan="2">
+                        <Button  Margin="15,9,15,23" BorderBrush="{x:Null}" Grid.Column="1" RenderTransformOrigin="0.5,0.5" Height="52" Click="Button_Click">
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleY="1"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Button.RenderTransform>
+                            <Button.Background>
+                                <ImageBrush ImageSource="/images/requestsWhite.png"/>
+                            </Button.Background>
+                        </Button>
+                    </Border>
+                    <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="42,10,193,354"/>
+                    <Label Content="Nov Pregled" Margin="42,161,547,213" Grid.ColumnSpan="2"/>
+                    <GroupBox Header="Obavljeni pregledi" Margin="167,67,43,-1" Grid.Column="2" Foreground="#FF2D2D2D" FontSize="18">
                         <Grid>
-                            <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}" x:Name="hour_tb"  Margin="111,88,197,81">
-                                <Binding Path="Hours" UpdateSourceTrigger="PropertyChanged">
-                                    <Binding.ValidationRules>
-                                        <local:NumericValidation ValidationStep="RawProposedValue"/>
-                                        <local:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="0" Max="24"/>
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </TextBox>
-                            <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" x:Name="minutes_tb"  Margin="202,89,108,84">
-                                <Binding Path="Minutes" UpdateSourceTrigger="PropertyChanged">
-                                    <Binding.ValidationRules>
-                                        <local:NumericValidation ValidationStep="RawProposedValue"/>
-                                        <local:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="0" Max="60"/>
+                            <Border BorderBrush="#70ABAF" BorderThickness="4" CornerRadius="0,8,8,8">
+                            </Border>
 
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </TextBox>
-                            <TextBox x:Name="date_tb" Margin="72,2,72,157" Validation.ErrorTemplate="{StaticResource validationTemplate}">
-                                <Binding Path="Date" UpdateSourceTrigger="PropertyChanged">
-                                    <Binding.ValidationRules>
-                                        <local:DateValidation ValidationStep="RawProposedValue"/>
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </TextBox>
-                            <Label Content="^" HorizontalAlignment="Left" Margin="128,57,0,0" VerticalAlignment="Top"/>
-                            <Label Content="^" HorizontalAlignment="Left" Margin="117,128,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="27" Width="29">
-                                <Label.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform Angle="180.355"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </Label.RenderTransform>
-                            </Label>
-                            <Label Content="^" HorizontalAlignment="Left" Margin="218,57,0,0" VerticalAlignment="Top"/>
-                            <Label Content="^" HorizontalAlignment="Left" Margin="213,121,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="35" Width="29">
-                                <Label.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform Angle="180.355"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </Label.RenderTransform>
-                            </Label>
-                            <Label Content=":" FontSize="10pt" HorizontalAlignment="Left" Margin="181,89,0,66" RenderTransformOrigin="25.685,0.599" Width="32"/>
-                            <Button Content="Prikaži" Margin="187,154,10,10" Click="ShowButton_Click"/>
-                            <Button Content="Resetuj" Margin="10,154,187,10" Click="ResetButton_Click"/>
+                            <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="55,10,207,340">
+                                <Grid>
+                                    <Button x:Name="ReportBtn" Content="" Height="45" Click="Report_Click" BorderBrush="{x:Null}" Margin="23,10,18,27">
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="images/reportWhite.png"/>
+                                        </Button.Background>
+                                    </Button>
+                                    <Label x:Name="reportLabel" Content="Izveštaj" FontSize="15" FontWeight="Normal" Height="34" Width="79" Foreground="White" Margin="10,48,-1,0"/>
 
+                                </Grid>
+                            </Border>
+                            <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="207,10,55,331" Width="89.8853904282116">
+                                <Grid>
+                                    <Button x:Name="PrescriptionBtn" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Height="45" Width="46" Click="Prescription_Click" Margin="0,10,0,0" BorderBrush="{x:Null}">
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="/images/drugWhite.png"/>
+                                        </Button.Background>
+                                    </Button>
+                                    <Label x:Name="prescLabel" Content="Recept&#xA;" Margin="17,48,10,0" FontSize="15" FontWeight="Normal" Foreground="White"/>
 
-                        </Grid>
-                    </GroupBox>
+                                </Grid>
+                            </Border>
 
-                    <DataGrid ColumnWidth="*" x:Name="AppointmentTable"
-                              IsReadOnly ="True"  SelectionMode="Single"
-                              ItemsSource="{Binding Appointments, UpdateSourceTrigger=PropertyChanged}"
-                              AutoGenerateColumns="False"
-                              Margin="353,27,0,67" Grid.Column="1" HorizontalAlignment="Left" Width="617" Background="#FFDCE1DE" Grid.ColumnSpan="2" >
-                        <DataGrid.CellStyle>
-                            <Style TargetType="{x:Type DataGridCell}">
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding HasPassed}" Value="true">
-                                        <Setter Property="Background" Value="LightGray"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </DataGrid.CellStyle>
-
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Width="2" Binding="{Binding Id}" MaxWidth="0"/>
-                            <DataGridTextColumn Header="JMBG" Binding="{Binding Patient}"/>
-                            <DataGridTextColumn Header="Prostorija" Binding="{Binding Room}"  />
-                            <DataGridTextColumn Header="Datum" Width="1*" Binding="{Binding Date}" />
-                            <DataGridTextColumn Header="Vreme" Binding="{Binding Time}"/>
-                            <DataGridTextColumn Header="Trajanje" Binding="{Binding Duration}" />
-                            <DataGridTextColumn Header="Hitno" Binding="{Binding EmergencyChar}" >
-                                <DataGridTextColumn.ElementStyle>
-                                    <Style TargetType="{x:Type TextBlock}">
+                            <DataGrid ColumnWidth="*" x:Name="AppointmentTable"
+                        IsReadOnly ="True"  SelectionMode="Single"
+                        ItemsSource="{Binding Appointments, UpdateSourceTrigger=PropertyChanged}"
+                        AutoGenerateColumns="False"
+                        Margin="0,108,0,25" HorizontalAlignment="Center" Width="332" Background="#FFDCE1DE" >
+                                <DataGrid.Resources>
+                                    <Style TargetType="{x:Type DataGridRow}">
+                                        <EventSetter Event="Control.MouseDoubleClick" Handler="AppointmentRow_DoubleClick"/>
+                                    </Style>
+                                </DataGrid.Resources>
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
                                         <Style.Triggers>
-                                            <Trigger Property="Text" Value="DA">
-                                                <Setter Property="Background" Value="Red"/>
-                                                <Setter Property="Foreground" Value="White"/>
-                                            </Trigger>
+                                            <DataTrigger Binding="{Binding HasPassed}" Value="true">
+                                                <Setter Property="Background" Value="LightGray"/>
+                                            </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
-                                </DataGridTextColumn.ElementStyle>
-                            </DataGridTextColumn>
-                        </DataGrid.Columns>
-                        <DataGrid.Resources>
-                            <Style TargetType="DataGridRow">
-                                <EventSetter Event="MouseDoubleClick" Handler="AppointmentRow_DoubleClick"/>
-                            </Style>
-                        </DataGrid.Resources>
-                    </DataGrid>
-                    <Label Content="Nov Pregled" Margin="42,161,547,213" Grid.ColumnSpan="2"/>
-                    <Label Grid.Column="1" Content="Zahtevi" HorizontalAlignment="Left" Margin="239,137,0,0" VerticalAlignment="Top"/>
+                                </DataGrid.CellStyle>
+
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID" Width="2" Binding="{Binding Id}" MaxWidth="0"/>
+                                    <DataGridTextColumn Header="Soba" Binding="{Binding Room}"  />
+                                    <DataGridTextColumn Header="Datum" Width="1*" Binding="{Binding Date}" />
+                                    <DataGridTextColumn Header="Vreme" Binding="{Binding Time}"/>
+                                    <DataGridTextColumn Header="Hitno" Binding="{Binding EmergencyChar}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <Trigger Property="Text" Value="DA">
+                                                        <Setter Property="Background" Value="#FFAB1930"/>
+                                                        <Setter Property="Foreground" Value="White"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Predstojeći pregledi" Margin="90,66,438,0" Grid.Column="1" Grid.ColumnSpan="2" Foreground="#FF2D2D2D" BorderBrush="{x:Null}" FontSize="18">
+                        <Grid>
+                            <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="0,8,8,8"></Border>
+                            <Border BorderBrush="#70ABAF" Background="#FF70ABAF" BorderThickness="1" CornerRadius="8" Margin="54,10,205,341" Width="89.8853904282116">
+                                <Grid>
+                                    <Button x:Name="UpdateBtn" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Height="45" Width="48" Click="Update_Click" Margin="0,10,0,0" BorderBrush="{x:Null}">
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="/images/editWhite.png"/>
+                                        </Button.Background>
+                                    </Button>
+                                    <Label x:Name="updateLabel" Content="Izmena" Margin="10,50,-18,-11" FontSize="15" FontWeight="Normal" Foreground="White"/>
+
+                                </Grid>
+                            </Border>
+
+                            <DataGrid ColumnWidth="*" x:Name="UpcomingTable"
+                        IsReadOnly ="True"  SelectionMode="Single"
+                        ItemsSource="{Binding Appointments, UpdateSourceTrigger=PropertyChanged}"
+                        AutoGenerateColumns="False"
+                        Margin="0,107,0,0" HorizontalAlignment="Center" Width="306" Background="#FFDCE1DE" Height="313" VerticalAlignment="Top" >
+                                <DataGrid.Resources>
+                                    <Style TargetType="{x:Type DataGridRow}">
+                                        <EventSetter Event="Control.MouseDoubleClick" Handler="AppointmentRow_DoubleClick"/>
+                                    </Style>
+                                </DataGrid.Resources>
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding HasPassed}" Value="true">
+                                                <Setter Property="Background" Value="LightGray"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGrid.CellStyle>
+
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID" Width="2" Binding="{Binding Id}" MaxWidth="0"/>
+                                    <DataGridTextColumn Header="Soba" Binding="{Binding Room}"  />
+                                    <DataGridTextColumn Header="Datum" Width="1*" Binding="{Binding Date}" />
+                                    <DataGridTextColumn Header="Vreme" Binding="{Binding Time}"/>
+                                    <DataGridTextColumn Header="Hitno" Binding="{Binding EmergencyChar}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <Trigger Property="Text" Value="DA">
+                                                        <Setter Property="Background" Value="#FFAB1930"/>
+                                                        <Setter Property="Foreground" Value="White"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="205,10,54,337" Width="89.8853904282116">
+                                <Grid>
+                                    <Button Content="" HorizontalAlignment="Center"  VerticalAlignment="Top" Height="45" Width="53" Click="Delete_Click" Margin="0,10,0,0" BorderBrush="{x:Null}">
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="images/deleteWhite.png"/>
+                                        </Button.Background>
+                                    </Button>
+                                    <Label x:Name="deleteLabel" Content="Obriši" Margin="17,48,-23,2" FontSize="15" FontWeight="Normal" Foreground="White"/>
+                                </Grid>
+                            </Border>
+                            <Label x:Name="newApptLabel" Content="Nov pregled" Margin="-112,85,366,312" FontSize="15" FontWeight="Normal" Foreground="White"/>
+
+                        </Grid>
+                    </GroupBox>
+
+                    <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="16,225,238,215" Grid.ColumnSpan="2">
+                        <Button  Margin="9,-1,10,18" Click="Referral_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="53.66120906801" Height="52">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/images/referralWhite.png"/>
+                            </Button.Background>
+                        </Button>
+                    </Border>
+                    <Label x:Name="newReferralLabel" Content="Nov uput" Margin="26,280,230,212" FontSize="15" FontWeight="Normal" Foreground="White" Grid.ColumnSpan="2"/>
+                    <Label x:Name="requestsLabel" Content="Zahtevi" Margin="31,389,225,103" FontSize="15" FontWeight="Normal" Foreground="White" Grid.ColumnSpan="2"/>
+                    <Border BorderBrush="#FF70ABAF" Background="White" BorderThickness="3" CornerRadius="8" Margin="217,4,253,489" Grid.Column="1" Grid.ColumnSpan="2">
+                        <Grid>
+                            <Button Margin="369,5,10,5" BorderBrush="{x:Null}">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/searchGreen.png"/>
+                                </Button.Background>
+                            </Button>
+                            <TextBox HorizontalAlignment="Left" Margin="8,0,0,0" TextWrapping="Wrap" Text="{Binding SearchString}" VerticalAlignment="Center" Width="347" BorderBrush="#FF70ABAF"/>
+                        </Grid>
+                    </Border>
 
                 </Grid>
 
             </TabItem>
-            <TabItem Header="Kartoni">
+            <TabItem Header="Kartoni" Background="{x:Null}" BorderBrush="{x:Null}">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
-            <TabItem Header="Prostorije">
+            <TabItem Header="Prostorije" Background="{x:Null}" BorderBrush="{x:Null}">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
-            <TabItem Header="Lekovi">
-                <Grid Background="#FF373F47">
+            <TabItem Header="Lekovi" Background="{x:Null}" BorderBrush="{x:Null}" Margin="-2,-2,-1,-2">
+                <Grid Background="#FFF0F7F4" Width="910">
+                    <Border BorderBrush="#70ABAF"  BorderThickness="3" CornerRadius="8" Margin="121,61,38,10"/>
                     <DataGrid ColumnWidth="*" x:Name="DrugsTable"
                     IsReadOnly ="True"  SelectionMode="Single"
                     ItemsSource="{Binding Drugs, UpdateSourceTrigger=PropertyChanged}"
                     AutoGenerateColumns="False"
-                    Margin="34,10,0,74" HorizontalAlignment="Left" Width="962" Background="#FFDCE1DE" FontWeight="Normal" >
+                    Margin="137,89,0,46" HorizontalAlignment="Left" Width="717" Background="#FFDCE1DE" FontWeight="Normal" >
                         <DataGrid.Resources>
                             <Style TargetType="{x:Type DataGridRow}">
                                 <EventSetter Event="Control.MouseDoubleClick" Handler="DrugRow_DoubleClick"/>
@@ -212,8 +285,12 @@
                                     <Style TargetType="{x:Type TextBlock}">
                                         <Style.Triggers>
                                             <Trigger Property="Text" Value="ODOBRENO">
-                                                <Setter Property="Background" Value="Green"/>
-                                                <Setter Property="Foreground" Value="White"/>
+                                                <Setter Property="Background">
+                                                    <Setter.Value>
+                                                        <ImageBrush ImageSource="images/acceptGreen.png" Stretch="Uniform"/>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="Foreground" Value="{x:Null}"/>
                                             </Trigger>
                                             <Trigger Property="Text" Value="NA ČEKANJU">
                                                 <Setter Property="Background" Value="DarkGray"/>
@@ -229,44 +306,77 @@
                             </DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <Border Background="#FF70ABAF" BorderThickness="1" CornerRadius="8" Margin="18,121,789,332">
+                        <Grid>
+                            <Button  Margin="17,9,17,21" Click="RejectDrug_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="53.66120906801" Height="52">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="images/rejectDrugWhite.png"/>
+                                </Button.Background>
+                            </Button>
+                            <Label Content="Prijavi lek" Margin="-4,56,-6,-56" Foreground="White"/>
+                        </Grid>
+                    </Border>
+                    <Border BorderBrush="#FF70ABAF" Background="White" BorderThickness="3" CornerRadius="8" Margin="253,4,238,497">
+                        <Grid>
+                            <Button Margin="369,5,10,5" BorderBrush="{x:Null}">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/searchGreen.png"/>
+                                </Button.Background>
+                            </Button>
+                            <TextBox HorizontalAlignment="Left" Margin="8,0,0,0" TextWrapping="Wrap" Text="{Binding SearchString}" VerticalAlignment="Center" Width="347" BorderBrush="#FF70ABAF"/>
+                        </Grid>
+                    </Border>
                 </Grid>
             </TabItem>
-            <TabItem Header="Slobodni dani">
+            <TabItem Header="Slobodni dani" Background="{x:Null}" BorderBrush="{x:Null}">
                 <Grid Background="#FFE5E5E5">
 
-                    <Rectangle Stroke="Black" Fill="#FF373F47"/>
-                    <Rectangle HorizontalAlignment="Left" Height="417" Margin="17,17,0,0" Stroke="Black" VerticalAlignment="Top" Width="990" Fill="#FF8B8982" RenderTransformOrigin="-1.283,0.708"/>
+                    <Rectangle Stroke="Black" Fill="#FFF0F7F4"/>
 
-                    <GroupBox Header="Odaberite tip" Margin="116,17,90,362" Background="#FF373F47" Foreground="White" FontWeight="Normal">
+                    <GroupBox Header="Odaberite tip" Margin="292,0,10,430" Background="#FF99E1D9" Foreground="#FF2D2D2D" FontWeight="Normal">
                         <Grid>
-                            <RadioButton x:Name="vacationRadio" Content="Godišnji odmor" HorizontalAlignment="Left" Margin="117,0,0,-12" Height="80" VerticalAlignment="Bottom" FontSize="30" Foreground="White"/>
-                            <RadioButton x:Name="sickLeaveRadio" Content="Bolovanje" HorizontalAlignment="Left" Margin="518,15,0,-12" FontSize="30" Foreground="White"/>
+                            <RadioButton x:Name="vacationRadio" Content="Godišnji odmor" HorizontalAlignment="Left" Margin="33,0,0,-12" Height="80" VerticalAlignment="Bottom" FontSize="30" Foreground="#FF2D2D2D"/>
+                            <RadioButton x:Name="sickLeaveRadio" Content="Bolovanje" HorizontalAlignment="Left" Margin="363,21,0,-18" FontSize="30" Foreground="#FF2D2D2D"/>
                         </Grid>
                     </GroupBox>
 
-                    <GroupBox Header="Odaberite vremenski period" Margin="53,170,453,176" Background="#FF6C91C2" Foreground="White">
+                    <GroupBox Header="Odaberite vremenski period" Margin="292,128,10,268" Background="#FF99E1D9" Foreground="#FF2D2D2D">
                         <Grid>
+                            <TextBox x:Name="startDate_tb" Margin="25,39,316,37" Validation.ErrorTemplate="{StaticResource validationTemplate}" RenderTransformOrigin="0.5,0.5">
+                                <TextBox.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="-1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </TextBox.RenderTransform>
+                                <Binding Path="StartDate" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
+                                        <local:DateValidation ValidationStep="RawProposedValue"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox>
+                            <TextBox x:Name="endDate_tb" Margin="316,37,25,35" Validation.ErrorTemplate="{StaticResource validationTemplate}" RenderTransformOrigin="0.5,0.5">
+                                <TextBox.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="-1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </TextBox.RenderTransform>
+                                <Binding Path="EndDate" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
+                                        <local:DateValidation ValidationStep="RawProposedValue"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox>
+
                         </Grid>
                     </GroupBox>
-                    <Grid>
-                        <TextBox x:Name="startDate_tb" Margin="79,238,749,216" Validation.ErrorTemplate="{StaticResource validationTemplate}">
-                            <Binding Path="StartDate" UpdateSourceTrigger="PropertyChanged">
-                                <Binding.ValidationRules>
-                                    <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
-                                    <local:DateValidation ValidationStep="RawProposedValue"/>
-                                </Binding.ValidationRules>
-                            </Binding>
-                        </TextBox>
-                        <TextBox x:Name="endDate_tb" Margin="344,239,472,217" Validation.ErrorTemplate="{StaticResource validationTemplate}">
-                            <Binding Path="EndDate" UpdateSourceTrigger="PropertyChanged">
-                                <Binding.ValidationRules>
-                                    <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
-                                    <local:DateValidation ValidationStep="RawProposedValue"/>
-                                </Binding.ValidationRules>
-                            </Binding>
-                        </TextBox>
-
-                    </Grid>
 
                     <Button x:Name="Schedule" Content="" Margin="498,350,453,75" Click="VacationButton_Click" BorderBrush="{x:Null}">
                         <Button.Background>
@@ -274,11 +384,11 @@
                         </Button.Background>
                     </Button>
                     <Label Content="-" Margin="292,202,678,208" Foreground="White" FontSize="60"/>
-                    <GroupBox Header="Detalji" Margin="604,167,52,173" Background="#FF6C91C2" Foreground="White">
+                    <GroupBox Header="Detalji" Margin="297,279,10,136" Background="#FF99E1D9" Foreground="#FF2D2D2D">
                         <Grid>
-                            <CheckBox x:Name="emergency_Check"  Content="HITNO" Margin="106,67,34,14" Foreground="White" FontSize="30"/>
-                            <Label Content="Razlog:" HorizontalAlignment="Left" Margin="10,22,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.446,0.057" Foreground="White" FontSize="20"/>
-                            <TextBox x:Name="reason_tb" HorizontalAlignment="Left" Margin="99,20,0,69" TextWrapping="Wrap" Width="209">
+                            <CheckBox x:Name="emergency_Check"  Content="HITNO" Margin="412,32,-272,10" Foreground="#FF2D2D2D" FontSize="30"/>
+                            <Label Content="Razlog:" HorizontalAlignment="Left" Margin="10,22,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.446,0.057" Foreground="#FF2D2D2D" FontSize="20"/>
+                            <TextBox x:Name="reason_tb" HorizontalAlignment="Left" Margin="104,21,0,39" TextWrapping="Wrap" Width="241">
                                 <Binding Path="Reason" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
                                         <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
@@ -287,17 +397,39 @@
                             </TextBox>
                         </Grid>
                     </GroupBox>
+                    <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="547,443,259,31" Width="89.8853904282116" Height="83.96">
+                        <Grid>
+                            <Button x:Name="scheduleVacationBtn" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Height="46" Width="42" Click="VacationButton_Click" BorderBrush="{x:Null}" Margin="0,10,0,0">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/images/vacationWhite.png"/>
+                                </Button.Background>
+                            </Button>
+                            <Label x:Name="vacationLabel" Content="Zakaži" Margin="17,48,10,0" FontSize="15" FontWeight="Normal" Foreground="White"/>
+
+                        </Grid>
+                    </Border>
+                    <GroupBox Header="Lista Vaših odsustva" Margin="0,10,609,0">
+                        <DataGrid ItemsSource="{Binding PreviousVacations}" AutoGenerateColumns="False" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding Id}" MaxWidth="0"/>
+                                <DataGridTextColumn Header="Period" Binding="{Binding Period}"  />
+                                <DataGridTextColumn Header="Status" Width="1*" Binding="{Binding Status}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
                 </Grid>
             </TabItem>
+
+            <Canvas/>
         </TabControl>
 
-        <StatusBar Grid.ColumnSpan="2" Margin="0,508,534,0">
+        <StatusBar Grid.ColumnSpan="2" Margin="0,515,783,0">
             <TextBlock x:FieldModifier="private" x:Name="myDateTime"/>
         </StatusBar>
 
 
 
-        <Button Grid.Column="1" Content="Log out" HorizontalAlignment="Left" Margin="727,492,0,0" VerticalAlignment="Top" Height="36" Width="176" Click="LogoutButton_Click" Grid.ColumnSpan="2"/>
+        <Button Content="Log out" HorizontalAlignment="Left" Margin="10,467,0,0" VerticalAlignment="Top" Height="36" Width="111" Click="LogoutButton_Click" Grid.ColumnSpan="2"/>
 
 
     </Grid>
