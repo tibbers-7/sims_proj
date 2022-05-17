@@ -8,7 +8,34 @@
         Title="DoctorHome" Height="580" Width="1042" d:DesignHeight="580" d:DesignWidth="1042" FontSize="13" FontFamily="Yu Gothic" >
 
     <Window.Resources>
-
+        <UserControl x:Key="userControl">
+            <UserControl.Resources>
+                <!-- This style is used for buttons, to remove the WPF default 'animated' mouse over effect -->
+                <Style x:Key="MyButtonStyle" TargetType="Button">
+                    <Setter Property="OverridesDefaultStyle" Value="True"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Name="border" 
+                        BorderThickness="1"
+                        Padding="4,2" 
+                        BorderBrush="DarkGray" 
+                        CornerRadius="3" 
+                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="Black" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </UserControl.Resources>
+        </UserControl>
 
         <ControlTemplate x:Key="validationTemplate">
             <Grid Height="Auto" Width="Auto">
@@ -77,7 +104,7 @@
                     <Border BorderBrush="#70ABAF" Background="White" BorderThickness="3" CornerRadius="8,8,0,0" Margin="174,67,219,434" Grid.Column="2" Height="45"/>
 
                     <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="18,335,238,112" Grid.ColumnSpan="2">
-                        <Button  Margin="15,9,15,23" BorderBrush="{x:Null}" Grid.Column="1" RenderTransformOrigin="0.5,0.5" Height="52" Click="Button_Click">
+                        <Button  Margin="15,9,15,23" BorderBrush="{x:Null}" Grid.Column="1" RenderTransformOrigin="0.5,0.5" Height="52" >
                             <Button.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="1"/>
@@ -121,26 +148,16 @@
                                 </Grid>
                             </Border>
 
-                            <DataGrid ColumnWidth="*" x:Name="AppointmentTable"
+                            <DataGrid ColumnWidth="*" x:Name="PassedTable"
                         IsReadOnly ="True"  SelectionMode="Single"
-                        ItemsSource="{Binding Appointments, UpdateSourceTrigger=PropertyChanged}"
+                        ItemsSource="{Binding PassedAppointments, UpdateSourceTrigger=PropertyChanged}"
                         AutoGenerateColumns="False"
-                        Margin="0,108,0,25" HorizontalAlignment="Center" Width="332" Background="#FFDCE1DE" >
+                        Margin="0,108,0,25" HorizontalAlignment="Center" Width="332" Background="#FFDCE1DE" FontSize="13" >
                                 <DataGrid.Resources>
                                     <Style TargetType="{x:Type DataGridRow}">
                                         <EventSetter Event="Control.MouseDoubleClick" Handler="AppointmentRow_DoubleClick"/>
                                     </Style>
                                 </DataGrid.Resources>
-                                <DataGrid.CellStyle>
-                                    <Style TargetType="{x:Type DataGridCell}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding HasPassed}" Value="true">
-                                                <Setter Property="Background" Value="LightGray"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </DataGrid.CellStyle>
-
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID" Width="2" Binding="{Binding Id}" MaxWidth="0"/>
                                     <DataGridTextColumn Header="Soba" Binding="{Binding Room}"  />
@@ -151,8 +168,20 @@
                                             <Style TargetType="{x:Type TextBlock}">
                                                 <Style.Triggers>
                                                     <Trigger Property="Text" Value="DA">
-                                                        <Setter Property="Background" Value="#FFAB1930"/>
-                                                        <Setter Property="Foreground" Value="White"/>
+                                                        <Setter Property="Background">
+                                                            <Setter.Value>
+                                                                <ImageBrush ImageSource="/alert.png" Stretch="Uniform"/>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                        <Setter Property="Foreground" Value="{x:Null}"/>
+                                                    </Trigger>
+                                                    <Trigger Property="Text" Value="NE">
+                                                        <Setter Property="Background">
+                                                            <Setter.Value>
+                                                                <ImageBrush ImageSource="/x_grey.png" Stretch="Uniform"/>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                        <Setter Property="Foreground" Value="{x:Null}"/>
                                                     </Trigger>
                                                 </Style.Triggers>
                                             </Style>
@@ -167,7 +196,7 @@
                             <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="0,8,8,8"></Border>
                             <Border BorderBrush="#70ABAF" Background="#FF70ABAF" BorderThickness="1" CornerRadius="8" Margin="54,10,205,341" Width="89.8853904282116">
                                 <Grid>
-                                    <Button x:Name="UpdateBtn" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Height="45" Width="48" Click="Update_Click" Margin="0,10,0,0" BorderBrush="{x:Null}">
+                                    <Button  x:Name="UpdateBtn" Content=""  HorizontalAlignment="Center" VerticalAlignment="Top" Height="45" Width="48" Click="Update_Click" Margin="0,10,0,0" BorderBrush="{x:Null}" >
                                         <Button.Background>
                                             <ImageBrush ImageSource="/images/editWhite.png"/>
                                         </Button.Background>
@@ -179,23 +208,14 @@
 
                             <DataGrid ColumnWidth="*" x:Name="UpcomingTable"
                         IsReadOnly ="True"  SelectionMode="Single"
-                        ItemsSource="{Binding Appointments, UpdateSourceTrigger=PropertyChanged}"
+                        ItemsSource="{Binding UpcomingAppointments, UpdateSourceTrigger=PropertyChanged}"
                         AutoGenerateColumns="False"
-                        Margin="0,107,0,0" HorizontalAlignment="Center" Width="306" Background="#FFDCE1DE" Height="313" VerticalAlignment="Top" >
+                        Margin="0,107,0,0" HorizontalAlignment="Center" Width="306" Background="#FFDCE1DE" Height="313" VerticalAlignment="Top" FontSize="13" >
                                 <DataGrid.Resources>
                                     <Style TargetType="{x:Type DataGridRow}">
                                         <EventSetter Event="Control.MouseDoubleClick" Handler="AppointmentRow_DoubleClick"/>
                                     </Style>
                                 </DataGrid.Resources>
-                                <DataGrid.CellStyle>
-                                    <Style TargetType="{x:Type DataGridCell}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding HasPassed}" Value="true">
-                                                <Setter Property="Background" Value="LightGray"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </DataGrid.CellStyle>
 
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID" Width="2" Binding="{Binding Id}" MaxWidth="0"/>
@@ -207,8 +227,20 @@
                                             <Style TargetType="{x:Type TextBlock}">
                                                 <Style.Triggers>
                                                     <Trigger Property="Text" Value="DA">
-                                                        <Setter Property="Background" Value="#FFAB1930"/>
-                                                        <Setter Property="Foreground" Value="White"/>
+                                                        <Setter Property="Background">
+                                                            <Setter.Value>
+                                                                <ImageBrush ImageSource="/alert.png" Stretch="Uniform"/>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                        <Setter Property="Foreground" Value="{x:Null}"/>
+                                                    </Trigger>
+                                                    <Trigger Property="Text" Value="NE">
+                                                        <Setter Property="Background">
+                                                            <Setter.Value>
+                                                                <ImageBrush ImageSource="/x_grey.png" Stretch="Uniform"/>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                        <Setter Property="Foreground" Value="{x:Null}"/>
                                                     </Trigger>
                                                 </Style.Triggers>
                                             </Style>
@@ -243,7 +275,7 @@
                     <Label x:Name="requestsLabel" Content="Zahtevi" Margin="31,389,225,103" FontSize="15" FontWeight="Normal" Foreground="White" Grid.ColumnSpan="2"/>
                     <Border BorderBrush="#FF70ABAF" Background="White" BorderThickness="3" CornerRadius="8" Margin="217,4,253,489" Grid.Column="1" Grid.ColumnSpan="2">
                         <Grid>
-                            <Button Margin="369,5,10,5" BorderBrush="{x:Null}">
+                            <Button Margin="369,5,17,5" BorderBrush="{x:Null}">
                                 <Button.Background>
                                     <ImageBrush ImageSource="/searchGreen.png"/>
                                 </Button.Background>
@@ -292,13 +324,22 @@
                                                 </Setter>
                                                 <Setter Property="Foreground" Value="{x:Null}"/>
                                             </Trigger>
+
                                             <Trigger Property="Text" Value="NA ČEKANJU">
-                                                <Setter Property="Background" Value="DarkGray"/>
-                                                <Setter Property="Foreground" Value="Black"/>
+                                                <Setter Property="Background">
+                                                    <Setter.Value>
+                                                        <ImageBrush ImageSource="/waitGrey.png"/>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="Foreground" Value="{x:Null}"/>
                                             </Trigger>
                                             <Trigger Property="Text" Value="PRIJAVLJENO">
-                                                <Setter Property="Background" Value="Orange"/>
-                                                <Setter Property="Foreground" Value="White"/>
+                                                <Setter Property="Background">
+                                                    <Setter.Value>
+                                                        <ImageBrush ImageSource="/reported.png" Stretch="Uniform"/>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="Foreground" Value="{x:Null}"/>
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
@@ -306,7 +347,7 @@
                             </DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Border Background="#FF70ABAF" BorderThickness="1" CornerRadius="8" Margin="18,121,789,332">
+                    <Border Background="#FF70ABAF" BorderThickness="1" CornerRadius="8" Margin="18,121,794,322">
                         <Grid>
                             <Button  Margin="17,9,17,21" Click="RejectDrug_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="53.66120906801" Height="52">
                                 <Button.Background>
@@ -318,7 +359,7 @@
                     </Border>
                     <Border BorderBrush="#FF70ABAF" Background="White" BorderThickness="3" CornerRadius="8" Margin="253,4,238,497">
                         <Grid>
-                            <Button Margin="369,5,10,5" BorderBrush="{x:Null}">
+                            <Button Margin="369,5,18,5" BorderBrush="{x:Null}">
                                 <Button.Background>
                                     <ImageBrush ImageSource="/searchGreen.png"/>
                                 </Button.Background>
@@ -335,17 +376,19 @@
 
                     <GroupBox Header="Odaberite tip" Margin="292,0,10,430" Background="#FF99E1D9" Foreground="#FF2D2D2D" FontWeight="Normal">
                         <Grid>
-                            <RadioButton x:Name="vacationRadio" Content="Godišnji odmor" HorizontalAlignment="Left" Margin="33,0,0,-12" Height="80" VerticalAlignment="Bottom" FontSize="30" Foreground="#FF2D2D2D"/>
-                            <RadioButton x:Name="sickLeaveRadio" Content="Bolovanje" HorizontalAlignment="Left" Margin="363,21,0,-18" FontSize="30" Foreground="#FF2D2D2D"/>
+                            <RadioButton x:Name="vacationRadio" Content="Godišnji odmor" HorizontalAlignment="Left" Margin="33,0,0,-19" Height="80" VerticalAlignment="Bottom" FontSize="30" Foreground="#FF2D2D2D"/>
+                            <RadioButton x:Name="sickLeaveRadio" Content="Bolovanje" HorizontalAlignment="Left" Margin="363,3,0,0" FontSize="30" Foreground="#FF2D2D2D"/>
                         </Grid>
                     </GroupBox>
 
                     <GroupBox Header="Odaberite vremenski period" Margin="292,128,10,268" Background="#FF99E1D9" Foreground="#FF2D2D2D">
                         <Grid>
-                            <TextBox x:Name="startDate_tb" Margin="25,39,316,37" Validation.ErrorTemplate="{StaticResource validationTemplate}" RenderTransformOrigin="0.5,0.5">
+                            <Label Content="__" HorizontalAlignment="Center" Margin="0,19,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.446,0.057" Foreground="#FF2D2D2D" FontSize="20"/>
+
+                            <TextBox x:Name="startDate_tb" Margin="24,36,317,36" Validation.ErrorTemplate="{StaticResource validationTemplate}" RenderTransformOrigin="0.5,0.5">
                                 <TextBox.RenderTransform>
                                     <TransformGroup>
-                                        <ScaleTransform ScaleY="-1"/>
+                                        <ScaleTransform ScaleY="1"/>
                                         <SkewTransform/>
                                         <RotateTransform/>
                                         <TranslateTransform/>
@@ -358,10 +401,10 @@
                                     </Binding.ValidationRules>
                                 </Binding>
                             </TextBox>
-                            <TextBox x:Name="endDate_tb" Margin="316,37,25,35" Validation.ErrorTemplate="{StaticResource validationTemplate}" RenderTransformOrigin="0.5,0.5">
+                            <TextBox x:Name="endDate_tb" Margin="316,36,25,36" Validation.ErrorTemplate="{StaticResource validationTemplate}" RenderTransformOrigin="0.5,0.5">
                                 <TextBox.RenderTransform>
                                     <TransformGroup>
-                                        <ScaleTransform ScaleY="-1"/>
+                                        <ScaleTransform ScaleY="1"/>
                                         <SkewTransform/>
                                         <RotateTransform/>
                                         <TranslateTransform/>
@@ -388,7 +431,7 @@
                         <Grid>
                             <CheckBox x:Name="emergency_Check"  Content="HITNO" Margin="412,32,-272,10" Foreground="#FF2D2D2D" FontSize="30"/>
                             <Label Content="Razlog:" HorizontalAlignment="Left" Margin="10,22,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.446,0.057" Foreground="#FF2D2D2D" FontSize="20"/>
-                            <TextBox x:Name="reason_tb" HorizontalAlignment="Left" Margin="104,21,0,39" TextWrapping="Wrap" Width="241">
+                            <TextBox x:Name="reason_tb" HorizontalAlignment="Left" Margin="104,30,0,30" TextWrapping="Wrap" Width="241">
                                 <Binding Path="Reason" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
                                         <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
@@ -397,7 +440,7 @@
                             </TextBox>
                         </Grid>
                     </GroupBox>
-                    <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="547,443,259,31" Width="89.8853904282116" Height="83.96">
+                    <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="547,443,241,10">
                         <Grid>
                             <Button x:Name="scheduleVacationBtn" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Height="46" Width="42" Click="VacationButton_Click" BorderBrush="{x:Null}" Margin="0,10,0,0">
                                 <Button.Background>
@@ -409,11 +452,51 @@
                         </Grid>
                     </Border>
                     <GroupBox Header="Lista Vaših odsustva" Margin="0,10,609,0">
-                        <DataGrid ItemsSource="{Binding PreviousVacations}" AutoGenerateColumns="False" IsReadOnly="True">
+                        <DataGrid ItemsSource="{Binding Vacations}" AutoGenerateColumns="False" IsReadOnly="True" FontSize="13">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" MaxWidth="0"/>
                                 <DataGridTextColumn Header="Period" Binding="{Binding Period}"  />
-                                <DataGridTextColumn Header="Status" Width="1*" Binding="{Binding Status}" />
+                                <DataGridTextColumn Header="Status" Width="1*" Binding="{Binding Status}" >
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <Trigger Property="Text" Value="passed">
+                                                    <Setter Property="Background">
+                                                        <Setter.Value>
+                                                            <ImageBrush ImageSource="/historyGrey.png" Stretch="Uniform"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="Foreground" Value="{x:Null}"/>
+                                                </Trigger>
+                                                <Trigger Property="Text" Value="waiting">
+                                                    <Setter Property="Background">
+                                                        <Setter.Value>
+                                                            <ImageBrush ImageSource="/waitGrey.png" Stretch="Uniform"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="Foreground" Value="{x:Null}"/>
+                                                </Trigger>
+                                                <Trigger Property="Text" Value="accepted">
+                                                    <Setter Property="Background">
+                                                        <Setter.Value>
+                                                            <ImageBrush ImageSource="/acceptGreen.png" Stretch="Uniform"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="Foreground" Value="{x:Null}"/>
+                                                </Trigger>
+                                                <Trigger Property="Text" Value="denied">
+                                                    <Setter Property="Background">
+                                                        <Setter.Value>
+                                                            <ImageBrush ImageSource="/close.png" Stretch="Uniform"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="Foreground" Value="{x:Null}"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                            
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </GroupBox>

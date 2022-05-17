@@ -13,6 +13,7 @@ namespace Repository
         private VacationFileHandler fileHandler=new VacationFileHandler();
         private DoctorRepository doctorRepository;
         private List<Vacation> vacations;
+        private List<VacationString> vacationsString;
 
         public VacationRepository(DoctorRepository doctorRepository)
         {
@@ -24,6 +25,12 @@ namespace Repository
         public void GetVacations()
         {
             vacations = fileHandler.Read();
+            vacationsString = new List<VacationString>();
+            foreach (Vacation vacation in vacations)
+            {
+                VacationString vacString=vacation.ToString();
+                vacationsString.Add(vacString);
+            }
             RemoveOldLogs();
         }
 
@@ -42,6 +49,16 @@ namespace Repository
             vacation.Id = vacations.Last().Id+1;
             fileHandler.Write(vacation);
             GetVacations();
+        }
+
+        internal List<VacationString> GetDoctorVacationStrings(int doctorId)
+        {
+            List<VacationString> vacStrings = new List<VacationString>();
+            foreach(VacationString vacationString in vacationsString)
+            {
+                if(vacationString.DoctorId==doctorId) vacStrings.Add(vacationString);
+            }
+            return vacStrings;
         }
 
         internal bool CheckSpecialization(Doctor d, Vacation newVacation)

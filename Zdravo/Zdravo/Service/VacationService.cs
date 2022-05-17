@@ -1,6 +1,7 @@
 ﻿using Model;
 using Repository;
 using System;
+using System.Collections.Generic;
 
 namespace Service
 {
@@ -26,6 +27,11 @@ namespace Service
             }
             repo.AddVacation(vacation);
             return 0;
+        }
+
+        internal List<VacationString> GetDoctorVacationStrings(int doctorId)
+        {
+            return repo.GetDoctorVacationStrings(doctorId);
         }
 
         private bool CheckIsInPast(DateOnly startDate)

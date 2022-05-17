@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <None Remove="acceptGreen.png" />
+    <None Remove="alert.png" />
+    <None Remove="close.png" />
     <None Remove="deleteWhite.png" />
     <None Remove="DoctorView\accept.png" />
     <None Remove="DoctorView\cancel.png" />
@@ -22,6 +24,7 @@
     <None Remove="DoctorView\report.png" />
     <None Remove="drugWhite.png" />
     <None Remove="editWhite.png" />
+    <None Remove="historyGrey.png" />
     <None Remove="images\accept.png" />
     <None Remove="images\acceptGreen.png" />
     <None Remove="images\addNew.png" />
@@ -57,17 +60,23 @@
     <None Remove="referral.png" />
     <None Remove="referralWhite.png" />
     <None Remove="rejectDrugWhite.png" />
+    <None Remove="reported.png" />
     <None Remove="reportWhite.png" />
     <None Remove="requestsWhite.png" />
     <None Remove="searchGreen.png" />
     <None Remove="vacationWhite.png" />
+    <None Remove="waitGrey.png" />
+    <None Remove="x_grey.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="acceptGreen.png" />
+    <Resource Include="alert.png" />
+    <Resource Include="close.png" />
     <Resource Include="deleteWhite.png" />
     <Resource Include="drugWhite.png" />
     <Resource Include="editWhite.png" />
+    <Resource Include="historyGrey.png" />
     <Resource Include="images\accept.png" />
     <Resource Include="images\acceptGreen.png" />
     <Resource Include="images\addNew.png">
@@ -125,10 +134,13 @@
     <Resource Include="referral.png" />
     <Resource Include="referralWhite.png" />
     <Resource Include="rejectDrugWhite.png" />
+    <Resource Include="reported.png" />
     <Resource Include="reportWhite.png" />
     <Resource Include="requestsWhite.png" />
     <Resource Include="searchGreen.png" />
     <Resource Include="vacationWhite.png" />
+    <Resource Include="waitGrey.png" />
+    <Resource Include="x_grey.png" />
   </ItemGroup>
 
 </Project>

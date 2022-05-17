@@ -48,30 +48,6 @@
         <Label Content="Sala:" HorizontalAlignment="Left" Margin="23,208,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.293,0.522"/>
         <CheckBox IsChecked="{Binding Emergency}" x:Name="emergency_cb" Content="Hitno" HorizontalAlignment="Left" Margin="84,259,0,0" VerticalAlignment="Top" Grid.Column="1" FontSize="20"/>
         <Button x:Name="patientButton" Content="Pregled Pacijenta" HorizontalAlignment="Left" Margin="154,36,0,0" VerticalAlignment="Top" Height="29" Width="119" Click="Patient_Click" Grid.Column="1" FontSize="12" Background="#FF373F47" Foreground="White"/>
-
-        <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
-            
-        
-                 x:Name="hour_tb"  Margin="182,145,131,285" Grid.Column="1">
-            <Binding Path="Hour" UpdateSourceTrigger="PropertyChanged">
-                <Binding.ValidationRules>
-                    <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
-                    <local:NumericValidation ValidationStep="RawProposedValue"/>
-                    <local:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="0" Max="24"/>
-                </Binding.ValidationRules>
-            </Binding>
-        </TextBox>
-        <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"
-                 x:Name="minutes_tb"  Margin="273,146,42,285" Grid.Column="1">
-            <Binding Path="Minutes" UpdateSourceTrigger="PropertyChanged">
-                <Binding.ValidationRules>
-                    <local:NumericValidation ValidationStep="RawProposedValue"/>
-                    <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
-                    <local:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="0" Max="60"/>
-
-                </Binding.ValidationRules>
-            </Binding>
-        </TextBox>
         <Label Content="^" HorizontalAlignment="Left" Margin="199,114,0,0" VerticalAlignment="Top" Grid.Column="1" Visibility="Hidden"/>
         <Label Content="^" HorizontalAlignment="Left" Margin="200,193,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Visibility="Hidden">
             <Label.RenderTransform>
@@ -127,30 +103,32 @@
 
 
         </GroupBox>
-        <GroupBox Header="Vreme" Margin="124,101,10,218" Grid.Column="1" Background="#FFC3C9E9"/>
-        <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
-            
-        
-            x:Name="hour_tb_Copy"  Margin="161,134,90,229" Grid.Column="1">
-            <Binding Path="Hour" UpdateSourceTrigger="LostFocus">
-                <Binding.ValidationRules>
-                    <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
-                    <local:NumericValidation ValidationStep="RawProposedValue"/>
-                    <local:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="0" Max="24"/>
-                </Binding.ValidationRules>
-            </Binding>
-        </TextBox>
-        <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"
-            x:Name="minutes_tb_Copy"  Margin="228,134,24,229" Grid.Column="1">
-            <Binding Path="Minutes" UpdateSourceTrigger="LostFocus">
-                <Binding.ValidationRules>
-                    <local:NumericValidation ValidationStep="RawProposedValue"/>
-                    <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
-                    <local:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="0" Max="60"/>
+        <GroupBox Header="Vreme" Margin="124,101,10,218" Grid.Column="1" Background="#FFC3C9E9">
+            <Grid>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}"
+                 x:Name="minutes_tb"  Margin="97,6,10,6" Height="59">
+                    <Binding Path="Minutes" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <local:NumericValidation ValidationStep="RawProposedValue"/>
+                            <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
+                            <local:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="0" Max="60"/>
 
-                </Binding.ValidationRules>
-            </Binding>
-        </TextBox>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
+                <TextBox  Validation.ErrorTemplate="{StaticResource validationTemplate}"
+            x:Name="hour_tb"  Margin="25,6,81,7">
+                    <Binding Path="Hour" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
+                            <local:NumericValidation ValidationStep="RawProposedValue"/>
+                            <local:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="0" Max="24"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
+            </Grid>
+        </GroupBox>
+
         <Label Content=":" FontSize="10pt" HorizontalAlignment="Left" Margin="214,137,0,229" RenderTransformOrigin="25.685,0.599" Grid.Column="1" Width="39"/>
 
 

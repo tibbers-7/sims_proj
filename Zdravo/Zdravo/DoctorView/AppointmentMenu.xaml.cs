@@ -49,7 +49,7 @@ namespace Zdravo
         }
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            NewAppointment updateAppointment = new NewAppointment(callerWindow,id,doctorId);
+            NewAppointment updateAppointment = new NewAppointment(callerWindow,id,doctorId,true);
             updateAppointment.Show();
             this.Close();
         }

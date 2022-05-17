@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Zdravo.ViewModel;
 using System.Windows.Threading;
+using Zdravo.DoctorWindows;
 
 namespace Zdravo
 {
@@ -31,7 +32,7 @@ namespace Zdravo
         public DoctorHome(int doctorId)
         {
             InitializeComponent();
-            viewModel = new DoctorHomeViewModel(AppointmentTable,doctorId);
+            viewModel = new DoctorHomeViewModel(doctorId);
             DataContext = viewModel;
             
         }
@@ -54,8 +55,8 @@ namespace Zdravo
 
         private void AppointmentRow_DoubleClick(object sender, RoutedEventArgs e)
         {
-            object item = AppointmentTable.SelectedItem;
-            viewModel.MenuShow(int.Parse((AppointmentTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text));
+            object item = UpcomingTable.SelectedItem;
+            viewModel.ShowAppointment(int.Parse((UpcomingTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text));
         }
         private void DrugRow_DoubleClick(object sender, RoutedEventArgs e)
         {
@@ -113,25 +114,32 @@ namespace Zdravo
 
         private void ResetButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.ResetTable();
+            viewModel.RefreshAppointments();
         }
 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-
+            object item = UpcomingTable.SelectedItem;
+            if (item != null)
+            {
+                int id = int.Parse((UpcomingTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text);
+                viewModel.UpdateAppointment(id);
+            }
+            else MessageBox.Show("Niste odabrali pregled!");
         }
 
         private void Report_Click(object sender, RoutedEventArgs e)
         {
-
+            object item = PassedTable.SelectedItem;
+            if (item!=null)
+            {
+                int id = int.Parse((PassedTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text);
+                viewModel.ReportShow(id);
+            }
+            else MessageBox.Show("Niste odabrali pregled!");
         }
 
         private void Prescription_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -143,7 +151,13 @@ namespace Zdravo
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-
+            object item = UpcomingTable.SelectedItem;
+            if (item != null)
+            {
+                int id = int.Parse((UpcomingTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text);
+                viewModel.DeleteAppt(id);
+            }
+            else MessageBox.Show("Niste odabrali pregled!");
         }
     }
 }

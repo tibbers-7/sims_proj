@@ -32,9 +32,9 @@ namespace Controller
             
         }
 
-        public List<Appointment> GetAppointmentsForDoctor(int doctorId)
+        public List<Appointment> GetUpcomingAppointmentsForDoctor(int doctorId)
         {
-            return service.GetAppointmentsForDoctor(doctorId);
+            return service.GetAppointmentsForDoctor(true,doctorId);
         }
         
         public int CreateAppointment(int patientId, int doctor, int roomId, int hours, int minutes, int duration, string date, bool emergency)
@@ -43,7 +43,7 @@ namespace Controller
             if (p == null) return 1;
 
             TimeOnly _time = new TimeOnly(hours, minutes);
-            DateOnly _date = DateOnly.Parse(date);
+            DateOnly _date = ParseDate(date);
             DateTime datetime = _date.ToDateTime(_time);
            // int cmp = DateTime.Compare(datetime, DateTime.Now);
          //   if (cmp < 0) return 2;   // Cannot make appointment in the past
@@ -55,6 +55,11 @@ namespace Controller
             return 0;
 
 
+        }
+
+        internal List<Appointment> GetPassedAppointmentsForDoctor(int doctorId)
+        {
+            return service.GetAppointmentsForDoctor(false,doctorId);
         }
 
         internal ObservableCollection<string> GetAllSpetializations()

@@ -53,14 +53,20 @@ namespace Repository
 
         }
 
-        internal List<Appointment> GetAppointmentsForDoctor(int doctorId)
+        internal List<Appointment> GetAppointmentsForDoctor(bool isUpcoming,int doctorId)
         {
             doctorAppts = new List<Appointment>();
             foreach(Appointment appt in appointments)
             {
                 if (appt.Doctor == doctorId)
-                { if(appt.Status==Zdravo.Status.accepted)
-                    doctorAppts.Add(appt);
+
+                { DateTime apptDateTime = appt.Date.ToDateTime(appt.Time);
+                    int cmp = DateTime.Compare(apptDateTime,DateTime.Now);
+                    if ((cmp >= 0 && isUpcoming) | (cmp<0 && !isUpcoming))
+                    {
+                        if (appt.Status == Zdravo.Status.accepted)
+                            doctorAppts.Add(appt);
+                    }
                 }
                
             }

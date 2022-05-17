@@ -29,9 +29,9 @@ namespace Service
             patientRepo=pRepo;
         }
 
-        internal List<Appointment> GetAppointmentsForDoctor(int doctorId)
+        internal List<Appointment> GetAppointmentsForDoctor(bool isUpcoming,int doctorId)
         {
-            return appointmentRepo.GetAppointmentsForDoctor(doctorId);
+            return appointmentRepo.GetAppointmentsForDoctor(isUpcoming,doctorId);
         }
 
         internal List<Appointment> GetAll()
@@ -87,7 +87,6 @@ namespace Service
             }
             return true;
         }
-
         internal ObservableCollection<Appointment> SearchTable(int doctorId,DateOnly date, int hours, int minutes)
         {
             return appointmentRepo.SearchTable(doctorId,date, hours, minutes);

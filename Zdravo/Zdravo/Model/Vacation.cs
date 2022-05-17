@@ -8,6 +8,17 @@ using Zdravo;
 
 namespace Model
 {
+    public class VacationString
+    {
+        private int id;
+        public int Id { get { return id; } set { id = value; } }
+        private int doctorId;
+        public int DoctorId { get { return doctorId; } set { doctorId = value; } }
+        private string period;
+        public string Period { get { return period; } set { period = value; } }
+        private VacationStatus status;
+        public VacationStatus Status { get { return status; } set { status = value; } }
+    }
     public class Vacation
     {
         private int id;
@@ -67,6 +78,32 @@ namespace Model
             if (emergency) _emergency = 'Y'; else _emergency = 'N';
             string res = '#' + id.ToString()+ '#' + doctorId.ToString() + "#" + startDate.ToString() + "#" + endDate.ToString() + "#"+ reason.ToString()+ "#" + _emergency + "#" + _status;
             return res;
+        }
+
+        public VacationString ToString()
+        {
+            VacationString vacString = new VacationString();
+            vacString.Period =startDate.ToString("dd/MM/yyyy") + " - " + endDate.ToString("dd/MM/yyyy");
+            vacString.Id=id;
+            vacString.DoctorId = doctorId;
+            int cmp = DateTime.Compare(endDate.ToDateTime(TimeOnly.Parse("00:00 AM")),DateTime.Now);
+            if (cmp < 0) vacString.Status = Zdravo.VacationStatus.passed;
+            else
+            {
+                switch (status)
+                {
+                    case Zdravo.Status.accepted:
+                        vacString.Status = Zdravo.VacationStatus.accepted;
+                        break;
+                    case Zdravo.Status.denied:
+                        vacString.Status=Zdravo.VacationStatus.denied;
+                        break;
+                    default:
+                        vacString.Status = Zdravo.VacationStatus.waiting;
+                        break;
+                }
+            }
+            return vacString;
         }
 
 

@@ -30,7 +30,7 @@ namespace Zdravo
         private DoctorHomeViewModel callerWindow;
         private int apptId;
 
-        public NewAppointment(DoctorHomeViewModel callerWindow, int apptId,int doctorId)
+        public NewAppointment(DoctorHomeViewModel callerWindow, int apptId,int doctorId,bool isEditable)
         {
             
             InitializeComponent();
@@ -42,6 +42,16 @@ namespace Zdravo
             else
             {
                 patientId_tb.IsReadOnly = true;
+            }
+
+            if (!isEditable)
+            {
+                patientId_tb.IsReadOnly = true;
+                date_tb.IsReadOnly=true;
+                hour_tb.IsReadOnly = true;
+                minutes_tb.IsReadOnly = true;
+                rooms_cb.IsReadOnly = true;
+                duration_tb.IsReadOnly = true;
             }
             this.callerWindow = callerWindow;
             this.apptId = apptId;
