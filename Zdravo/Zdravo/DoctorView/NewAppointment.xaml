@@ -33,7 +33,7 @@
             <ColumnDefinition Width="111*"/>
             <ColumnDefinition Width="364*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Margin="0,0,0,96" Fill="#FFF0F7F4" Grid.ColumnSpan="2"  />
+        <Rectangle Fill="#FFF0F7F4" Grid.ColumnSpan="2"  />
         <Border BorderBrush="#70ABAF" Background="White" BorderThickness="3" CornerRadius="8,8,0,0" Margin="6,6,7,370" Height="45"/>
 
         <GroupBox Header="Pacijent" Margin="10,6,0,317" Grid.ColumnSpan="2"   />
@@ -73,16 +73,28 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Button x:Name="Schedule" Content="" Margin="39,330,217,17" Click="ScheduleButton_Click" Grid.Column="1" BorderBrush="{x:Null}">
-            <Button.Background>
-                <ImageBrush ImageSource="/Resources/acceptWhite.png"/>
-            </Button.Background>
-        </Button>
-        <Button Content="" Margin="117,330,142,17" Click="CancelButton_Click" Grid.Column="1" BorderBrush="{x:Null}">
-            <Button.Background>
-                <ImageBrush ImageSource="/Resources/cancelWhite.png"/>
-            </Button.Background>
-        </Button>
+        <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="17,310,219,10" Grid.Column="1">
+            <Grid>
+                <Button x:Name="Schedule" Content="" Margin="20,10,20,29" Click="ScheduleButton_Click" BorderBrush="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Resources/acceptWhite.png"/>
+                    </Button.Background>
+                </Button>
+                <Label Content="Prihvati" Foreground="White" Margin="10,50,-10,-50"/>
+            </Grid>
+        </Border>
+
+
+        <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="127,310,106,10" Grid.Column="1">
+            <Grid>
+                <Label Content="Otkaži" Foreground="White" Margin="21,50,-21,-50"/>
+                <Button Content="" Margin="21,12,19,28" Click="CancelButton_Click" BorderBrush="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Resources/cancelWhite.png"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </Border>
         <Border BorderBrush="#70ABAF" Background="White" BorderThickness="3" CornerRadius="8,8,0,0" Margin="6,106,10,270" Height="45"/>
         <Border BorderBrush="#FF70ABAF" Background="White" BorderThickness="4" CornerRadius="0,8,8,8" Grid.ColumnSpan="2" Margin="6,132,248,207"/>
 
@@ -152,6 +164,7 @@
         <GroupBox Header="Sala" Margin="56,211,166,102" Grid.ColumnSpan="2" BorderBrush="{x:Null}">
             <ComboBox x:Name="rooms_cb" SelectedItem="{Binding RoomId}" ItemsSource="{Binding Rooms}" Margin="25,0,28,0" VerticalAlignment="Center" RenderTransformOrigin="4.783,1.026"/>
         </GroupBox>
+
 
 
     </Grid>

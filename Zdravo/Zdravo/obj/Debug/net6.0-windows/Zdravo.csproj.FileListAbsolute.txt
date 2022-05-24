@@ -5,7 +5,6 @@ C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Zdravo.pdb
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo.csproj.AssemblyReference.cache
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorHome.g.cs
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\AppointmentMenu.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\ChoosePatient.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\DrugReportWindow.g.cs
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\DrugWindow.g.cs
@@ -40,7 +39,6 @@ C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Generat
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo_MarkupCompile.cache
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo_MarkupCompile.lref
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorHome.baml
-C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\AppointmentMenu.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\ChoosePatient.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\DrugReportWindow.baml
 C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\DoctorView\DrugWindow.baml
