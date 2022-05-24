@@ -1,20 +1,12 @@
-﻿using Controller;
+﻿using Zdravo.Controller;
 using Model;
-using Service;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using Zdravo.DoctorView;
 using Zdravo.DoctorWindows;
 using System.Windows;
+using Controller;
 
 namespace Zdravo.ViewModel
 {
@@ -74,17 +66,11 @@ namespace Zdravo.ViewModel
                 patientId = appt.Patient;
                 roomId = appt.Room;  
                 duration = appt.Duration;
-
-                Regex regexObj = new Regex("(\\d+)/(\\d+)/(\\d{4})");
-                Match matchResult = regexObj.Match(appt.Date.ToString());
-                month=int.Parse(matchResult.Groups[1].Value);
-                day=int.Parse(matchResult.Groups[2].Value);
-                year=int.Parse(matchResult.Groups[3].Value);
                 date = appt.Date.ToString("dd/MM/yyyy");
 
 
-                regexObj = new Regex("(\\d+):(\\d{2})");
-                matchResult = regexObj.Match(appt.Time.ToString());
+                Regex regexObj = new Regex("(\\d+):(\\d{2})");
+                Match matchResult = regexObj.Match(appt.Time.ToString());
                 hour=int.Parse(matchResult.Groups[1].Value);
                 minutes=int.Parse(matchResult.Groups[2].Value);
                 emergency = appt.Emergency;
@@ -108,11 +94,8 @@ namespace Zdravo.ViewModel
 
         public int CreateAppointment()
         { 
-                if (id == 0)
-                {
-                    return apptController.CreateAppointment(patientId,doctorId, roomId, hour, minutes, duration,date,emergency);
-                }
-                else return apptController.UpdateAppointment(id, patientId,doctorId, roomId, hour, minutes, duration,date,emergency);
+            if (id == 0) return apptController.CreateAppointment(patientId,doctorId, roomId, hour, minutes, duration,date,emergency);
+            else return apptController.UpdateAppointment(id, patientId,doctorId, roomId, hour, minutes, duration,date,emergency);
 
          }
 

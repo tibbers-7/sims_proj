@@ -3,7 +3,7 @@ using Service;
 using System;
 using System.Collections.Generic;
 
-namespace Controller
+namespace Zdravo.Controller
 {
     public class VacationController
     {

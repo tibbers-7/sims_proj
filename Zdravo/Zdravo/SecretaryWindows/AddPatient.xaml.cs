@@ -15,6 +15,7 @@ using Service;
 using Repository;
 using Controller;
 using Zdravo.ViewModel;
+using Zdravo.Controller;
 
 namespace Zdravo
 {

@@ -8,20 +8,20 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Zdravo.Repository;
 
-namespace Service
+namespace Zdravo.Service
 {
    public class AppointmentService
    {
       private AppointmentRepository appointmentRepo;
       private PatientRepository patientRepo;
       private DrugRepository drugRepo;
-        private ReportRepository reportRepo;
-        private PrescriptionRepository prescriptionRepo;
+      private ReportRepository reportRepo;
+      private PrescriptionRepository prescriptionRepo;
       
         public AppointmentService(AppointmentRepository aRepo, DrugRepository dRepo, PrescriptionRepository prescRepo,ReportRepository rRepo, PatientRepository pRepo)
         {
-            
             appointmentRepo= aRepo;
             prescriptionRepo = prescRepo;
             drugRepo=dRepo;
@@ -39,17 +39,22 @@ namespace Service
             return appointmentRepo.GetAll();
         }
         public List<Appointment> GetByDoctorID(int idDoctor)
-      {
+        {
             List<Appointment> result= new List<Appointment>();
-         foreach (Appointment appt in appointmentRepo.GetAll())
+            foreach (Appointment appt in appointmentRepo.GetAll())
             {
                 if (appt.Doctor==idDoctor) result.Add(appt);
             }
 
-         return result;
-      }
-      
-      public List<Appointment> GetByRoomID(int idRoom)
+            return result;
+        }
+
+        internal ObservableCollection<AppointmentRecord> GetAllRecords()
+        {
+            return appointmentRepo.GetAllRecords();
+        }
+
+        public List<Appointment> GetByRoomID(int idRoom)
       {
             List<Appointment> result = new List<Appointment>();
             foreach (Appointment appt in appointmentRepo.GetAll())
@@ -63,7 +68,7 @@ namespace Service
         
 
         public List<Appointment> GetByPatientID(int idPatient)
-      {
+        {
             List<Appointment> result = new List<Appointment>();
             foreach (Appointment appt in appointmentRepo.GetAll())
             {
@@ -78,15 +83,18 @@ namespace Service
             Appointment appointment = appointmentRepo.GetByID(appointmentId);
             Patient patient = patientRepo.GetById(appointment.Patient);
             if (patient.Allergens == null) return true;
-            foreach (string ingredient in drug.Ingredients)
+
+            foreach (Allergen allergen in patient.Allergens)
             {
-                foreach (Allergen allergen in patient.Allergens)
+                if (allergen.Name.ToLower().Equals(drug.Name.ToLower())) return false;
+                foreach (string ingredient in drug.Ingredients)
                 {
                     if (allergen.Name.ToLower().Equals(ingredient.ToLower())) return false;
                 }
             }
             return true;
         }
+
         internal ObservableCollection<Appointment> SearchTable(int doctorId,DateOnly date, int hours, int minutes)
         {
             return appointmentRepo.SearchTable(doctorId,date, hours, minutes);
@@ -98,7 +106,6 @@ namespace Service
         {
             appointmentRepo.CreateAppointment(appt);
         }
-
 
         internal Appointment GetAppointment(int id)
         {

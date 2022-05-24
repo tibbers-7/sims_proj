@@ -3,10 +3,12 @@
 // Created: Monday, March 28, 2022 2:54:34 PM
 // Purpose: Definition of Class Appointment
 
+using Controller;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Zdravo;
+using Zdravo.Controller;
 
 namespace Model
 {
@@ -18,6 +20,7 @@ namespace Model
         public TimeOnly Time { get { return time; } set { time = value; } }
         private DateOnly date;
         public DateOnly Date { get { return date; } set { date = value; } }
+        public string DateString { get { return date.ToString("dd/MM/yyyy"); } set { date = AppointmentController.ParseDate(value); } }
         private int duration;
         public int Duration { get { return duration; } set { duration = value; } }
         private int doctor;
@@ -75,6 +78,7 @@ namespace Model
 
         }
 
+       
         internal string ToCSV()
         {
             //1,3253,38G,2022/01/01,13:00,30,32

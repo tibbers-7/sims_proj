@@ -12,7 +12,7 @@ using System.Windows.Controls;
 using Zdravo;
 using System.Collections.ObjectModel;
 
-namespace Controller
+namespace Zdravo.Controller
 {
     public class PatientController
    {
@@ -88,6 +88,10 @@ namespace Controller
             return service.GetReports(patientId);
         }
 
-
+        internal void AddReport(Report report, Appointment appt)
+        {
+            Patient p = GetById(appt.Patient);
+            p.AddReport(report);
+        }
     }
 }

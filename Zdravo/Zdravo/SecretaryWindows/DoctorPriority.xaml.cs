@@ -5,6 +5,9 @@ using System.Collections.ObjectModel;
 using Model;
 using Repository;
 using Controller;
+using Zdravo.Controller;
+using Zdravo.Repository;
+
 namespace Zdravo.PatientView
 {
     /// <summary>
@@ -15,7 +18,6 @@ namespace Zdravo.PatientView
         private AppointmentController appointmentController;
         private AppointmentManagement appointmentManagementWindow;
         private  DoctorRepository doctorRepository = new DoctorRepository();
-        private AppointmentRepository appointmentRepository = new AppointmentRepository();
         public DoctorPriority(AppointmentManagement parentWindow)
         {
             var app = Application.Current as App;
@@ -27,7 +29,7 @@ namespace Zdravo.PatientView
                 comboBoxDoctors.Items.Add(doctor.Id+"-"+doctor.Name + " " + doctor.LastName+","+doctor.Specialization);
             }
             comboBoxDoctors.SelectedIndex = 0;
-            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(appointmentRepository.GetAll());
+            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(appointmentController.GetAll());
             datePicker.SelectedDate = DateTime.Now;
             String selectedDate=datePicker.SelectedDate.ToString();
             String dateStringForParsing = selectedDate.Split(" ")[0];
@@ -63,7 +65,7 @@ namespace Zdravo.PatientView
         private void datePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             busySlots.Items.Clear();
-            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(appointmentRepository.GetAll());
+            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(appointmentController.GetAll());
             String selectedDate = datePicker.SelectedDate.ToString();
             String dateForParsing = selectedDate.Split(" ")[0];
             DateOnly dateonly = DateOnly.Parse(dateForParsing);

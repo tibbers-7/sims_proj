@@ -2,20 +2,24 @@ using System;
 using Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Zdravo;
+using Zdravo.Repository;
 using Repository;
+using Zdravo;
+using System.Windows;
+using Zdravo.Controller;
 
 namespace Service
 {
    public class RoomService
    {
       private Repository.RoomRepository roomRepo;
-        private Repository.AppointmentRepository appointmentRepo;
+        private AppointmentController appointmentController;
         private BasicRenovationRepository bRenovationRepo;
 
         public RoomService() {
+            var app=Application.Current as App;
             roomRepo = new Repository.RoomRepository();
-            appointmentRepo = new Repository.AppointmentRepository();
+            appointmentController = app.appointmentController;
             bRenovationRepo = new BasicRenovationRepository();
         }
       
@@ -64,7 +68,7 @@ namespace Service
             bool available = true;
             int cmp;
             DateTime dateTimeNew = date.ToDateTime(time);
-            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(appointmentRepo.GetAll());
+            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(appointmentController.GetAll());
             foreach (Appointment appointment in appointments) {
                 if (appointment.Room == roomId) {
                     DateTime dateTimeAppt = appointment.Date.ToDateTime(appointment.Time);
@@ -99,7 +103,7 @@ namespace Service
         {
             bool available = true;
             //int cmp;
-            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(appointmentRepo.GetAll());
+            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(appointmentController.GetAll());
             foreach (Appointment appointment in appointments)
             {
                 if (appointment.Room == roomId)

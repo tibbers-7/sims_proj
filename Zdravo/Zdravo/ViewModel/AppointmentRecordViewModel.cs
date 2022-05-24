@@ -2,6 +2,10 @@
 using Model;
 using System.ComponentModel;
 using Repository;
+using Zdravo.Repository;
+using System.Windows;
+using Zdravo.Controller;
+
 namespace Zdravo.ViewModel
 {
     public class AppointmentRecordViewModel
@@ -10,7 +14,7 @@ namespace Zdravo.ViewModel
         // private AllergenService service;
         //     private Patient patient;
         //    private AllergenRepository repo;
-        private AppointmentRepository repo;
+        private AppointmentController controller;
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<AppointmentRecord> Records
         {
@@ -22,28 +26,30 @@ namespace Zdravo.ViewModel
             {
                 if (records == value)
                     return;
-                records = repo.GetAllRecords();
+                records = controller.GetAllRecords();
                 NotifyPropertyChanged("Records");
             }
         }
         public AppointmentRecordViewModel()
         {
             //  service = new AllergenService();
-            repo = new AppointmentRepository();
+            var app = Application.Current as App;
+            controller = app.appointmentController;
             //   repo=new AllergenRepository();
-            records=repo.GetAllRecords();
+            records = controller.GetAllRecords();
         }
         public AppointmentRecordViewModel(ObservableCollection<AppointmentRecord> rec)
         {
             //  service = new AllergenService();
 
             //   repo=new AllergenRepository();
-            repo = new AppointmentRepository();
+            var app = Application.Current as App;
+            controller = app.appointmentController;
             records = rec;
         }
         public void Refresh()
         {
-            records = repo.GetAllRecords();
+            records = controller.GetAllRecords();
         }
         protected void NotifyPropertyChanged(string propertyName)
         {

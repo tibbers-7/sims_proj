@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Model;
 using System.Windows;
 using System.Windows.Controls;
+using Zdravo.Controller;
 
 namespace Zdravo.ViewModel
 {

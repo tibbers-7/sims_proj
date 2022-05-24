@@ -5,13 +5,14 @@
 
 using FileHandler;
 using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Controller;
+using Zdravo.Controller;
 
-namespace Repository
+namespace Zdravo.Repository
 {
     public class AppointmentRepository
    {
@@ -19,11 +20,14 @@ namespace Repository
         private PatientController patientController;
         private List<Appointment> appointments;
         private List<Appointment> doctorAppts;
-        private int idCount;
+        private DoctorRepository doctorRepository;
+        private PatientRepository patientRepository;
 
-        public AppointmentRepository()
+        public AppointmentRepository(DoctorRepository doctorRepository,PatientRepository patientRepository)
         {
             appointments = fileHandler.Read();
+            this.patientRepository = patientRepository;
+            this.doctorRepository=doctorRepository;
         }
 
         public List<Appointment> GetAll()
@@ -34,14 +38,12 @@ namespace Repository
       }
         public ObservableCollection<AppointmentRecord> GetAllRecords()
         {
-            PatientRepository prepo = new PatientRepository();
-            DoctorRepository drepo = new DoctorRepository();
             appointments = fileHandler.Read();
             ObservableCollection < AppointmentRecord > records = new ObservableCollection<AppointmentRecord>();
             foreach(Appointment a in appointments)
             {
-                Patient p = prepo.GetById(a.Patient);
-                Doctor d = drepo.getById(a.Doctor);
+                Patient p = patientRepository.GetById(a.Patient);
+                Doctor d = doctorRepository.getById(a.Doctor);
                 if (p!=null && d != null)
                 {
                     AppointmentRecord record = new AppointmentRecord(a.Id, p.Ime, p.Prezime, d.Name, d.LastName, d.Specialization, a.Date, a.Time,p.Id.ToString());
@@ -59,8 +61,8 @@ namespace Repository
             foreach(Appointment appt in appointments)
             {
                 if (appt.Doctor == doctorId)
-
-                { DateTime apptDateTime = appt.Date.ToDateTime(appt.Time);
+                { 
+                    DateTime apptDateTime = appt.Date.ToDateTime(appt.Time);
                     int cmp = DateTime.Compare(apptDateTime,DateTime.Now);
                     if ((cmp >= 0 && isUpcoming) | (cmp<0 && !isUpcoming))
                     {
@@ -92,7 +94,6 @@ namespace Repository
             Appointment appt= GetByID(idAppointment);
             if (appt == null) return false;
 
-            patientController = new PatientController();
             if (patientController.GetById(appt.Patient) == null) return false;
             patientController.GetById(appt.Patient).RemoveAppt(appt);
                 

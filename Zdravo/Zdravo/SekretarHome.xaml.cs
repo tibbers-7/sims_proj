@@ -15,6 +15,8 @@ using Service;
 using Controller;
 using Zdravo.ViewModel;
 using Zdravo.PatientView;
+using Zdravo.Controller;
+
 namespace Zdravo
 {
     /// <summary>

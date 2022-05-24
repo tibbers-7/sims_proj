@@ -9,3 +9,4 @@
 9,roko,1,7
 10,rokoNovi,2,7
 0,nova porudzbina,10,7
+0,a,2,7

@@ -96,7 +96,7 @@
                     <Border BorderBrush="#70ABAF" Background="#FF70ABAF" BorderThickness="1" CornerRadius="8" Margin="18,117,236,325" Grid.ColumnSpan="2">
                         <Button  Margin="17,9,17,21" Click="NewAppointment_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="53.66120906801" Height="52">
                             <Button.Background>
-                                <ImageBrush ImageSource="images/newApptWhite.png"/>
+                                <ImageBrush ImageSource="Resources/newApptWhite.png"/>
                             </Button.Background>
                         </Button>
                     </Border>
@@ -114,7 +114,7 @@
                                 </TransformGroup>
                             </Button.RenderTransform>
                             <Button.Background>
-                                <ImageBrush ImageSource="/images/requestsWhite.png"/>
+                                <ImageBrush ImageSource="/Resources/requestsWhite.png"/>
                             </Button.Background>
                         </Button>
                     </Border>
@@ -129,7 +129,7 @@
                                 <Grid>
                                     <Button x:Name="ReportBtn" Content="" Height="45" Click="Report_Click" BorderBrush="{x:Null}" Margin="23,10,18,27">
                                         <Button.Background>
-                                            <ImageBrush ImageSource="images/reportWhite.png"/>
+                                            <ImageBrush ImageSource="/Resources/reportWhite.png"/>
                                         </Button.Background>
                                     </Button>
                                     <Label x:Name="reportLabel" Content="Izveštaj" FontSize="15" FontWeight="Normal" Height="34" Width="79" Foreground="White" Margin="10,48,-1,0"/>
@@ -140,7 +140,7 @@
                                 <Grid>
                                     <Button x:Name="PrescriptionBtn" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Height="45" Width="46" Click="Prescription_Click" Margin="0,10,0,0" BorderBrush="{x:Null}">
                                         <Button.Background>
-                                            <ImageBrush ImageSource="/images/drugWhite.png"/>
+                                            <ImageBrush ImageSource="/Resources/drugWhite.png"/>
                                         </Button.Background>
                                     </Button>
                                     <Label x:Name="prescLabel" Content="Recept&#xA;" Margin="17,48,10,0" FontSize="15" FontWeight="Normal" Foreground="White"/>
@@ -161,7 +161,7 @@
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID" Width="2" Binding="{Binding Id}" MaxWidth="0"/>
                                     <DataGridTextColumn Header="Soba" Binding="{Binding Room}"  />
-                                    <DataGridTextColumn Header="Datum" Width="1*" Binding="{Binding Date}" />
+                                    <DataGridTextColumn Header="Datum" Width="1*" Binding="{Binding DateString}" />
                                     <DataGridTextColumn Header="Vreme" Binding="{Binding Time}"/>
                                     <DataGridTextColumn Header="Hitno" Binding="{Binding EmergencyChar}" >
                                         <DataGridTextColumn.ElementStyle>
@@ -170,7 +170,7 @@
                                                     <Trigger Property="Text" Value="DA">
                                                         <Setter Property="Background">
                                                             <Setter.Value>
-                                                                <ImageBrush ImageSource="/alert.png" Stretch="Uniform"/>
+                                                                <ImageBrush ImageSource="C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\Resources\alert.png" Stretch="Uniform"/>
                                                             </Setter.Value>
                                                         </Setter>
                                                         <Setter Property="Foreground" Value="{x:Null}"/>
@@ -178,7 +178,7 @@
                                                     <Trigger Property="Text" Value="NE">
                                                         <Setter Property="Background">
                                                             <Setter.Value>
-                                                                <ImageBrush ImageSource="/x_grey.png" Stretch="Uniform"/>
+                                                                <ImageBrush ImageSource="/Resources/x_grey.png" Stretch="Uniform"/>
                                                             </Setter.Value>
                                                         </Setter>
                                                         <Setter Property="Foreground" Value="{x:Null}"/>
@@ -198,7 +198,7 @@
                                 <Grid>
                                     <Button  x:Name="UpdateBtn" Content=""  HorizontalAlignment="Center" VerticalAlignment="Top" Height="45" Width="48" Click="Update_Click" Margin="0,10,0,0" BorderBrush="{x:Null}" >
                                         <Button.Background>
-                                            <ImageBrush ImageSource="/images/editWhite.png"/>
+                                            <ImageBrush ImageSource="/Resources/editWhite.png"/>
                                         </Button.Background>
                                     </Button>
                                     <Label x:Name="updateLabel" Content="Izmena" Margin="10,50,-18,-11" FontSize="15" FontWeight="Normal" Foreground="White"/>
@@ -220,7 +220,7 @@
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID" Width="2" Binding="{Binding Id}" MaxWidth="0"/>
                                     <DataGridTextColumn Header="Soba" Binding="{Binding Room}"  />
-                                    <DataGridTextColumn Header="Datum" Width="1*" Binding="{Binding Date}" />
+                                    <DataGridTextColumn Header="Datum" Width="1*" Binding="{Binding DateString}" />
                                     <DataGridTextColumn Header="Vreme" Binding="{Binding Time}"/>
                                     <DataGridTextColumn Header="Hitno" Binding="{Binding EmergencyChar}" >
                                         <DataGridTextColumn.ElementStyle>
@@ -229,7 +229,7 @@
                                                     <Trigger Property="Text" Value="DA">
                                                         <Setter Property="Background">
                                                             <Setter.Value>
-                                                                <ImageBrush ImageSource="/alert.png" Stretch="Uniform"/>
+                                                                <ImageBrush ImageSource="C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\Resources\alert.png" Stretch="Uniform"/>
                                                             </Setter.Value>
                                                         </Setter>
                                                         <Setter Property="Foreground" Value="{x:Null}"/>
@@ -237,7 +237,7 @@
                                                     <Trigger Property="Text" Value="NE">
                                                         <Setter Property="Background">
                                                             <Setter.Value>
-                                                                <ImageBrush ImageSource="/x_grey.png" Stretch="Uniform"/>
+                                                                <ImageBrush ImageSource="/Resources/x_grey.png" Stretch="Uniform"/>
                                                             </Setter.Value>
                                                         </Setter>
                                                         <Setter Property="Foreground" Value="{x:Null}"/>
@@ -253,7 +253,7 @@
                                 <Grid>
                                     <Button Content="" HorizontalAlignment="Center"  VerticalAlignment="Top" Height="45" Width="53" Click="Delete_Click" Margin="0,10,0,0" BorderBrush="{x:Null}">
                                         <Button.Background>
-                                            <ImageBrush ImageSource="images/deleteWhite.png"/>
+                                            <ImageBrush ImageSource="Resources/deleteWhite.png"/>
                                         </Button.Background>
                                     </Button>
                                     <Label x:Name="deleteLabel" Content="Obriši" Margin="17,48,-23,2" FontSize="15" FontWeight="Normal" Foreground="White"/>
@@ -267,17 +267,17 @@
                     <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="16,225,238,215" Grid.ColumnSpan="2">
                         <Button  Margin="9,-1,10,18" Click="Referral_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="53.66120906801" Height="52">
                             <Button.Background>
-                                <ImageBrush ImageSource="/images/referralWhite.png"/>
+                                <ImageBrush ImageSource="/Resources/referralWhite.png"/>
                             </Button.Background>
                         </Button>
                     </Border>
-                    <Label x:Name="newReferralLabel" Content="Nov uput" Margin="26,280,230,212" FontSize="15" FontWeight="Normal" Foreground="White" Grid.ColumnSpan="2"/>
+                    <Label x:Name="newReferralLabel" Content="Nov uput" Margin="26,287,230,205" FontSize="15" FontWeight="Normal" Foreground="White" Grid.ColumnSpan="2"/>
                     <Label x:Name="requestsLabel" Content="Zahtevi" Margin="31,389,225,103" FontSize="15" FontWeight="Normal" Foreground="White" Grid.ColumnSpan="2"/>
                     <Border BorderBrush="#FF70ABAF" Background="White" BorderThickness="3" CornerRadius="8" Margin="217,4,253,489" Grid.Column="1" Grid.ColumnSpan="2">
                         <Grid>
                             <Button Margin="369,5,17,5" BorderBrush="{x:Null}">
                                 <Button.Background>
-                                    <ImageBrush ImageSource="/searchGreen.png"/>
+                                    <ImageBrush ImageSource="Resources/searchGreen.png"/>
                                 </Button.Background>
                             </Button>
                             <TextBox HorizontalAlignment="Left" Margin="8,0,0,0" TextWrapping="Wrap" Text="{Binding SearchString}" VerticalAlignment="Center" Width="347" BorderBrush="#FF70ABAF"/>
@@ -319,7 +319,7 @@
                                             <Trigger Property="Text" Value="ODOBRENO">
                                                 <Setter Property="Background">
                                                     <Setter.Value>
-                                                        <ImageBrush ImageSource="images/acceptGreen.png" Stretch="Uniform"/>
+                                                        <ImageBrush ImageSource="/Resources/acceptGreen.png" Stretch="Uniform"/>
                                                     </Setter.Value>
                                                 </Setter>
                                                 <Setter Property="Foreground" Value="{x:Null}"/>
@@ -328,7 +328,7 @@
                                             <Trigger Property="Text" Value="NA ČEKANJU">
                                                 <Setter Property="Background">
                                                     <Setter.Value>
-                                                        <ImageBrush ImageSource="/waitGrey.png"/>
+                                                        <ImageBrush ImageSource="Resources/waitGrey.png"/>
                                                     </Setter.Value>
                                                 </Setter>
                                                 <Setter Property="Foreground" Value="{x:Null}"/>
@@ -336,7 +336,7 @@
                                             <Trigger Property="Text" Value="PRIJAVLJENO">
                                                 <Setter Property="Background">
                                                     <Setter.Value>
-                                                        <ImageBrush ImageSource="/reported.png" Stretch="Uniform"/>
+                                                        <ImageBrush ImageSource="Resources/reported.png" Stretch="Uniform"/>
                                                     </Setter.Value>
                                                 </Setter>
                                                 <Setter Property="Foreground" Value="{x:Null}"/>
@@ -351,7 +351,7 @@
                         <Grid>
                             <Button  Margin="17,9,17,21" Click="RejectDrug_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="53.66120906801" Height="52">
                                 <Button.Background>
-                                    <ImageBrush ImageSource="images/rejectDrugWhite.png"/>
+                                    <ImageBrush ImageSource="Resources/rejectDrugWhite.png"/>
                                 </Button.Background>
                             </Button>
                             <Label Content="Prijavi lek" Margin="-4,56,-6,-56" Foreground="White"/>
@@ -361,7 +361,7 @@
                         <Grid>
                             <Button Margin="369,5,18,5" BorderBrush="{x:Null}">
                                 <Button.Background>
-                                    <ImageBrush ImageSource="/searchGreen.png"/>
+                                    <ImageBrush ImageSource="Resources/searchGreen.png"/>
                                 </Button.Background>
                             </Button>
                             <TextBox HorizontalAlignment="Left" Margin="8,0,0,0" TextWrapping="Wrap" Text="{Binding SearchString}" VerticalAlignment="Center" Width="347" BorderBrush="#FF70ABAF"/>
@@ -423,7 +423,7 @@
 
                     <Button x:Name="Schedule" Content="" Margin="498,350,453,75" Click="VacationButton_Click" BorderBrush="{x:Null}">
                         <Button.Background>
-                            <ImageBrush ImageSource="/images/accept.png"/>
+                            <ImageBrush ImageSource="/Resources/accept.png"/>
                         </Button.Background>
                     </Button>
                     <Label Content="-" Margin="292,202,678,208" Foreground="White" FontSize="60"/>
@@ -444,7 +444,7 @@
                         <Grid>
                             <Button x:Name="scheduleVacationBtn" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Height="46" Width="42" Click="VacationButton_Click" BorderBrush="{x:Null}" Margin="0,10,0,0">
                                 <Button.Background>
-                                    <ImageBrush ImageSource="/images/vacationWhite.png"/>
+                                    <ImageBrush ImageSource="/Resources/vacationWhite.png"/>
                                 </Button.Background>
                             </Button>
                             <Label x:Name="vacationLabel" Content="Zakaži" Margin="17,48,10,0" FontSize="15" FontWeight="Normal" Foreground="White"/>
@@ -463,7 +463,7 @@
                                                 <Trigger Property="Text" Value="passed">
                                                     <Setter Property="Background">
                                                         <Setter.Value>
-                                                            <ImageBrush ImageSource="/historyGrey.png" Stretch="Uniform"/>
+                                                            <ImageBrush ImageSource="/Resources/historyGrey.png" Stretch="Uniform"/>
                                                         </Setter.Value>
                                                     </Setter>
                                                     <Setter Property="Foreground" Value="{x:Null}"/>
@@ -471,7 +471,7 @@
                                                 <Trigger Property="Text" Value="waiting">
                                                     <Setter Property="Background">
                                                         <Setter.Value>
-                                                            <ImageBrush ImageSource="/waitGrey.png" Stretch="Uniform"/>
+                                                            <ImageBrush ImageSource="Resources/waitGrey.png" Stretch="Uniform"/>
                                                         </Setter.Value>
                                                     </Setter>
                                                     <Setter Property="Foreground" Value="{x:Null}"/>
@@ -479,7 +479,7 @@
                                                 <Trigger Property="Text" Value="accepted">
                                                     <Setter Property="Background">
                                                         <Setter.Value>
-                                                            <ImageBrush ImageSource="/acceptGreen.png" Stretch="Uniform"/>
+                                                            <ImageBrush ImageSource="/Resources/acceptGreen.png" Stretch="Uniform"/>
                                                         </Setter.Value>
                                                     </Setter>
                                                     <Setter Property="Foreground" Value="{x:Null}"/>
@@ -487,7 +487,7 @@
                                                 <Trigger Property="Text" Value="denied">
                                                     <Setter Property="Background">
                                                         <Setter.Value>
-                                                            <ImageBrush ImageSource="/close.png" Stretch="Uniform"/>
+                                                            <ImageBrush ImageSource="/Resources/close.png" Stretch="Uniform"/>
                                                         </Setter.Value>
                                                     </Setter>
                                                     <Setter Property="Foreground" Value="{x:Null}"/>

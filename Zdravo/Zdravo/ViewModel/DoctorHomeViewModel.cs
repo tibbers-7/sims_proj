@@ -101,8 +101,14 @@ namespace Zdravo.ViewModel
                 NotifyPropertyChanged("Drugs");
             }
         }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
 
-        
+
 
         public DoctorHomeViewModel(int doctorId)
         {
@@ -138,6 +144,8 @@ namespace Zdravo.ViewModel
         public void RefreshAppointments()
         {
             UpcomingAppointments = new ObservableCollection<Appointment>(apController.GetPassedAppointmentsForDoctor(doctorId));
+            passedAppointments = new ObservableCollection<Appointment>(apController.GetPassedAppointmentsForDoctor(doctorId));
+            
         }
 
         public void RefreshDrugs()
@@ -171,12 +179,7 @@ namespace Zdravo.ViewModel
             return vacationController.ScheduleVacation(doctorId,startDate,endDate,reason, emergency);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
+        
 
         internal void ReportShow(int id)
         {
@@ -187,14 +190,9 @@ namespace Zdravo.ViewModel
         internal void DeleteAppt(int id)
         {
             bool success = apController.DeleteAppointment(id);
-            if (success)
-            {
-                RefreshAppointments();
-            }
-            else
-            {
-                MessageBox.Show("Can't delete", "Error");
-            }
+            if (success) RefreshAppointments();
+            else MessageBox.Show("Nepoznata greška: Ne može se obrisati!", "Greška");
+            
         }
     }
 }

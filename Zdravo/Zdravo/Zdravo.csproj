@@ -11,136 +11,140 @@
     <Optimize>False</Optimize>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
   <ItemGroup>
-    <None Remove="acceptGreen.png" />
-    <None Remove="alert.png" />
-    <None Remove="close.png" />
-    <None Remove="deleteWhite.png" />
-    <None Remove="DoctorView\accept.png" />
-    <None Remove="DoctorView\cancel.png" />
-    <None Remove="DoctorView\delete.png" />
-    <None Remove="DoctorView\drug.png" />
-    <None Remove="DoctorView\edit.png" />
-    <None Remove="DoctorView\report.png" />
-    <None Remove="drugWhite.png" />
-    <None Remove="editWhite.png" />
-    <None Remove="historyGrey.png" />
-    <None Remove="images\accept.png" />
-    <None Remove="images\acceptGreen.png" />
-    <None Remove="images\addNew.png" />
-    <None Remove="images\arrow.png" />
-    <None Remove="images\calendar.png" />
-    <None Remove="images\cancel.png" />
-    <None Remove="images\cart.png" />
-    <None Remove="images\close.png" />
-    <None Remove="images\delete.png" />
-    <None Remove="images\deleteWhite.png" />
-    <None Remove="images\doctor.png" />
-    <None Remove="images\drug.png" />
-    <None Remove="images\drugWhite.png" />
-    <None Remove="images\edit.png" />
-    <None Remove="images\editWhite.png" />
-    <None Remove="images\key.png" />
-    <None Remove="images\list.png" />
-    <None Remove="images\logout.png" />
-    <None Remove="images\meetings.png" />
-    <None Remove="images\newApptWhite.png" />
-    <None Remove="images\referral.png" />
-    <None Remove="images\referralWhite.png" />
-    <None Remove="images\rejectDrugWhite.png" />
-    <None Remove="images\report.png" />
-    <None Remove="images\reportWhite.png" />
-    <None Remove="images\requestsWhite.png" />
-    <None Remove="images\search.png" />
-    <None Remove="images\searchGreen.png" />
-    <None Remove="images\searchGrey.png" />
-    <None Remove="images\user.png" />
-    <None Remove="images\vacationWhite.png" />
-    <None Remove="newApptWhite.png" />
-    <None Remove="referral.png" />
-    <None Remove="referralWhite.png" />
-    <None Remove="rejectDrugWhite.png" />
-    <None Remove="reported.png" />
-    <None Remove="reportWhite.png" />
-    <None Remove="requestsWhite.png" />
-    <None Remove="searchGreen.png" />
-    <None Remove="vacationWhite.png" />
-    <None Remove="waitGrey.png" />
-    <None Remove="x_grey.png" />
+    <Compile Remove="AssemblyInfo.cs" />
+  </ItemGroup>
+
+
+
+  <ItemGroup>
+    <Resource Include="Resources\accept.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\acceptGreen.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\addNew.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\alert.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\arrow.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\calendar.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\cancel.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\cart.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\close.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\delete.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\deleteWhite.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\doctor.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\drug.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\drugWhite.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\edit.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\editWhite.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\historyGrey.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\key.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\list.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\logout.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\meetings.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\newApptWhite.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\referral.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\referralWhite.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\rejectDrugWhite.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\report.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\reported.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\reportWhite.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\requestsWhite.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\search.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\searchGreen.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\searchGrey.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\user.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\vacationWhite.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\x_grey.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+	  <Resource Include="Resources\waitGrey.png">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="acceptGreen.png" />
-    <Resource Include="alert.png" />
-    <Resource Include="close.png" />
-    <Resource Include="deleteWhite.png" />
-    <Resource Include="drugWhite.png" />
-    <Resource Include="editWhite.png" />
-    <Resource Include="historyGrey.png" />
-    <Resource Include="images\accept.png" />
-    <Resource Include="images\acceptGreen.png" />
-    <Resource Include="images\addNew.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\arrow.png" />
-    <Resource Include="images\calendar.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\cancel.png" />
-    <Resource Include="images\cart.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\close.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\delete.png" />
-    <Resource Include="images\deleteWhite.png" />
-    <Resource Include="images\doctor.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\drug.png" />
-    <Resource Include="images\drugWhite.png" />
-    <Resource Include="images\edit.png" />
-    <Resource Include="images\editWhite.png" />
-    <Resource Include="images\key.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\list.png" />
-    <Resource Include="images\logout.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\meetings.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\newApptWhite.png" />
-    <Resource Include="images\referral.png" />
-    <Resource Include="images\referralWhite.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\rejectDrugWhite.png" />
-    <Resource Include="images\report.png" />
-    <Resource Include="images\reportWhite.png" />
-    <Resource Include="images\requestsWhite.png" />
-    <Resource Include="images\search.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\searchGreen.png" />
-    <Resource Include="images\searchGrey.png" />
-    <Resource Include="images\user.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\vacationWhite.png" />
-    <Resource Include="newApptWhite.png" />
-    <Resource Include="referral.png" />
-    <Resource Include="referralWhite.png" />
-    <Resource Include="rejectDrugWhite.png" />
-    <Resource Include="reported.png" />
-    <Resource Include="reportWhite.png" />
-    <Resource Include="requestsWhite.png" />
-    <Resource Include="searchGreen.png" />
-    <Resource Include="vacationWhite.png" />
-    <Resource Include="waitGrey.png" />
-    <Resource Include="x_grey.png" />
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
