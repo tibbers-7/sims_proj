@@ -24,13 +24,14 @@
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type Rectangle}" BasedOn="{StaticResource rectangleStyle}"></Style>
     </Window.Resources>
-    <Grid Background="#FFF0F7F4">
+    <Grid Background="#FFCBD8D2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="84*"/>
             <ColumnDefinition Width="181*"/>
         </Grid.ColumnDefinitions>
-        <Border BorderBrush="#70ABAF" Background="White" BorderThickness="3" CornerRadius="8,8,0,0" Margin="10,5,337,603" Grid.ColumnSpan="2" Height="57"/>
-        <GroupBox Header="Osnovne Informacije" Margin="17,10,0,310"  Grid.ColumnSpan="2" Background="{x:Null}"/>
+        <Border BorderBrush="#70ABAF" Background="White" BorderThickness="3" CornerRadius="8,8,0,0" Margin="10,5,337,603" Grid.ColumnSpan="2" Height="57">
+            <Label Content="Osnovne Informacije" FontSize="20"/>
+        </Border>
         <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="0,8,8,8" Grid.ColumnSpan="2" Margin="10,44,227,340" Background="#FFF0F7F4"></Border>
 
         <Label Content="" Margin="106,29,237,527" Grid.ColumnSpan="2"/>
@@ -67,7 +68,7 @@
 
 
 
-        <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="0,8,8,8" Grid.ColumnSpan="2" Margin="10,350,19,96"/>
+        <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="8,8,8,8" Grid.ColumnSpan="2" Margin="10,350,19,96" Background="#FFF0F7F4"/>
 
         <Border BorderBrush="#70ABAF" Background="White" BorderThickness="3" CornerRadius="8,8,0,0" Margin="28,368,44,233"/>
         <Label Content="Alergeni" Margin="34,367,34,219" FontSize="20"/>

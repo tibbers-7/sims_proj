@@ -148,6 +148,12 @@ namespace Zdravo.ViewModel
             
         }
 
+        internal void ReportDrug(int drugId)
+        {
+            DrugReportWindow drugReportWindow = new DrugReportWindow(this, drugId);
+            drugReportWindow.Show();
+        }
+
         public void RefreshDrugs()
         {
             Drugs = new ObservableCollection<Drug>(drugController.GetValidDrugs());

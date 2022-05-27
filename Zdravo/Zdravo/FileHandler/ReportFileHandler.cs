@@ -12,15 +12,12 @@ namespace FileHandler
         
         public List<Report> Read()
         {
-
-
+            //|1|43243|F22|8/10/2021|Polomljena noga
+            Regex regexObj = new Regex("#(\\d+)#(\\d+)#(\\w+)#(\\d+/\\d+/\\d+)#([\\w\\s]+)#([\\w\\s]+)");
             List<Report> list = new List<Report>();
 
             foreach (string line in File.ReadLines(filePath))
             {
-                //|1|43243|F22|8/10/2021|Polomljena noga
-
-                Regex regexObj = new Regex("#(\\d+)#(\\d+)#(\\w+)#(\\d+/\\d+/\\d+)#([\\w\\s]+)#([\\w\\s]+)");
                 Match matchResult = regexObj.Match(line);
                 if (matchResult.Success)
                 {

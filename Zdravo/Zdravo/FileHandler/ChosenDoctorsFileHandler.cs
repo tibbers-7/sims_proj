@@ -16,13 +16,12 @@ namespace Zdravo.FileHandler
         public List<ChosenDoctors> Read()
         {
 
-
+            //                          INT id,INT patientId,INT room,DATEONLY date,TIMEONLY time,INT duration,INT doctorId,INT scheduledDoctorId,CHAR type,CHAR emergency,CHAR status
+            Regex regexObj = new Regex("(\\d+),{(\\d+,\\d+,\\d+,\\d+,\\d+,\\d+,\\d+)}");
             List<ChosenDoctors> list = new List<ChosenDoctors>();
 
             foreach (string line in File.ReadLines(filePath))
             {
-                //                          INT id,INT patientId,INT room,DATEONLY date,TIMEONLY time,INT duration,INT doctorId,INT scheduledDoctorId,CHAR type,CHAR emergency,CHAR status
-                Regex regexObj = new Regex("(\\d+),{(\\d+,\\d+,\\d+,\\d+,\\d+,\\d+,\\d+)}");
                 Match matchResult = regexObj.Match(line);
                 if (matchResult.Success)
                 {

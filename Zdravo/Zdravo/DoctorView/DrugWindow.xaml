@@ -5,23 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo.DoctorView" xmlns:viewmodel="clr-namespace:Zdravo.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:DrugViewModel}"
         mc:Ignorable="d"
-        Title="DrugWindow" Height="431" Width="400" FontFamily="Yu Gothic">
+        Title="DrugWindow" Height="460" Width="403" FontFamily="Yu Gothic">
 
-    <Grid Background="#FFDADADA">
-        <Rectangle Fill="#FF6C91C2" Margin="0,0,0,92" Stroke="Black"></Rectangle>
-        <TextBox HorizontalAlignment="Center" Margin="0,19,0,0" TextWrapping="Wrap" Text="{Binding Name}" IsReadOnly="True" VerticalAlignment="Top" Width="352" Height="44" TextAlignment="Center" BorderBrush="Black" Background="#FF373F47" Foreground="White" FontSize="20" FontWeight="SemiBold"/>
-        <ListBox ItemsSource="{Binding Ingredients}" Margin="24,112,233,106"/>
-        <TextBox HorizontalAlignment="Left" Margin="204,180,0,0" TextWrapping="Wrap" Text="{Binding Type}" IsReadOnly="True" VerticalAlignment="Top" Width="170" Height="28" TextAlignment="Center"/>
-        <TextBox HorizontalAlignment="Left" Margin="204,106,0,0" TextWrapping="Wrap" Text="{Binding Status}" IsReadOnly="True" VerticalAlignment="Top" Width="170" Height="27" TextAlignment="Center"/>
-        <Label Content="Status" HorizontalAlignment="Left" Margin="266,77,0,0" VerticalAlignment="Top"/>
-        <Label Content="Tip leka" HorizontalAlignment="Left" Margin="266,154,0,0" VerticalAlignment="Top" Width="88" Height="40"/>
-        <Button x:Name="denyButton" Content="Prijavi lek" HorizontalAlignment="Left" Margin="216,240,0,0" VerticalAlignment="Top" Height="31" Width="146" Click="DenyButton_Click"/>
-        <Button Content="" Click="CancelButton_Click" BorderBrush="{x:Null}" Margin="172,349,172,10">
-            <Button.Background>
-                <ImageBrush ImageSource="/images/cancel.png"/>
-            </Button.Background>
-        </Button>
-        <Label Content="Sastojci" HorizontalAlignment="Left" Margin="56,84,0,0" VerticalAlignment="Top"/>
+    <Grid Background="#FFCBD8D2">
+        <Border BorderBrush="#70ABAF" Background="White" BorderThickness="3" CornerRadius="8,8,0,0" Margin="217,63,92,300">
+            <Label Content="Sastojci" FontSize="15" Margin="0,-5,-40,-23"/>
+        </Border>
+        <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="8,8,8,8" Margin="217,94,10,75" Background="#FFF0F7F4">
+            <ListBox ItemsSource="{Binding Ingredients}" Width="143" Margin="12,17,12,17"/>
+        </Border>
+
+        <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="8,8,8,8" Margin="12,68,198,10" Background="#FFF0F7F4">
+            <Grid>
+                <TextBox HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Status}" IsReadOnly="True" VerticalAlignment="Top" Width="103" Height="27" TextAlignment="Center" Margin="57,6,0,0"/>
+                <Label Content="Status" HorizontalAlignment="Left" Margin="6,6,0,0" VerticalAlignment="Top"/>
+                <Label Content="Tip leka" HorizontalAlignment="Left" Margin="3,44,0,0" VerticalAlignment="Top" Width="88" Height="40"/>
+                <TextBox  Margin="57,44,6,0" TextWrapping="Wrap" Text="{Binding Type}" IsReadOnly="True" VerticalAlignment="Top" Height="28" TextAlignment="Center"/>
+                <Label Content="Opis:" HorizontalAlignment="Left" Margin="64,77,0,0" VerticalAlignment="Top" Width="88" Height="40"/>
+                <TextBox Text="{Binding Description}" TextAlignment="Justify" Margin="10,105,10,19" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap"  IsReadOnly="True"/>
+            </Grid>
+        </Border>
+
+        <TextBox HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="{Binding Name}" IsReadOnly="True" VerticalAlignment="Top" Width="352" Height="44" TextAlignment="Center" BorderBrush="{x:Null}" Background="#FF70ABAF" Foreground="White" FontSize="20" FontWeight="SemiBold"/>
+        <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="270,350,63,10">
+            <Grid>
+                <Button Content="" Margin="4,0,3,18" Foreground="Black" BorderBrush="{x:Null}" Click="CancelButton_Click" RenderTransformOrigin="0.142,0.458">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Resources/acceptWhite.png"/>
+                    </Button.Background>
+                </Button>
+                <Label Content="Prihvati" Foreground="White" Margin="0,37,-4,-37"/>
+            </Grid>
+        </Border>
+
+
 
     </Grid>
 </Window>

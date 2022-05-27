@@ -12,12 +12,12 @@ namespace FileHandler
 
         public List<Drug> Read()
         {
+            // id # naziv # tip # status # sastojci
+            Regex regexObj = new Regex("#(\\d+)#(\\w+)#([\\w\\s]+)#(A|D|W|R)#([\\w\\s;]*)#([\\w\\s.,;\"()-]*)");
             List<Drug> list = new List<Drug>();
 
             foreach (string line in File.ReadLines(filePath))
             {
-                // id # naziv # tip # status # sastojci
-                Regex regexObj = new Regex("#(\\d+)#(\\w+)#([\\w\\s]+)#(A|D|W|R)#([\\w\\s;]*)");
                 Match matchResult = regexObj.Match(line);
                 if (matchResult.Success)
                 {

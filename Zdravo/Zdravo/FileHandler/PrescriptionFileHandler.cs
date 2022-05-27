@@ -9,15 +9,17 @@ namespace FileHandler
     internal class PrescriptionFileHandler
     {
         private static readonly string filePath = "data/prescriptions.csv";
-        List<Prescription> list = new List<Prescription>();
+        
         public List<Prescription> Read()
         {
+            //|1|43243|F22|8/10/2021|Polomljena noga
+            Regex regexObj = new Regex("#(\\d+)#(\\d+)#(\\w+)#(\\d+/\\d+/\\d+)");
+            List<Prescription> list = new List<Prescription>();
+
             foreach (string line in File.ReadLines(filePath))
             {
                 if (line.Equals("")) break;
-                //|1|43243|F22|8/10/2021|Polomljena noga
-
-                Regex regexObj = new Regex("#(\\d+)#(\\d+)#(\\w+)#(\\d+/\\d+/\\d+)");
+                
                 Match matchResult = regexObj.Match(line);
                 if (matchResult.Success)
                 {

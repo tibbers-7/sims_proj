@@ -8,23 +8,24 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
+using Zdravo.FileHandler;
 
 namespace FileHandler
 {
-    public class AppointmentFileHandler
+    public class AppointmentFileHandler 
    {
       private static readonly string filePath= "data/appointments.csv";
 
         public List<Appointment> Read()
       {
 
-
+            //                          INT id,INT patientId,INT room,DATEONLY date,TIMEONLY time,INT duration,INT doctorId,INT scheduledDoctorId,CHAR type,CHAR emergency,CHAR status
+            Regex regexObj = new Regex("(\\d+),(\\d+),(\\d*),(\\d*/\\d*/\\d*),(\\d*:\\d*),(\\d+),(\\d*),(\\d+),(O|A),(Y|N),(A|D|W)");
             List<Appointment> list = new List<Appointment>();
 
             foreach (string line in File.ReadLines(filePath))
             {
-                //                          INT id,INT patientId,INT room,DATEONLY date,TIMEONLY time,INT duration,INT doctorId,INT scheduledDoctorId,CHAR type,CHAR emergency,CHAR status
-                Regex regexObj = new Regex("(\\d+),(\\d+),(\\d*),(\\d*/\\d*/\\d*),(\\d*:\\d*),(\\d+),(\\d*),(\\d+),(O|A),(Y|N),(A|D|W)");
+                
                     Match matchResult = regexObj.Match(line);
                     if (matchResult.Success)
                     {

@@ -146,7 +146,14 @@ namespace Zdravo
 
         private void RejectDrug_Click(object sender, RoutedEventArgs e)
         {
-
+            object item = DrugsTable.SelectedItem;
+            if (item != null)
+            {
+                int id = int.Parse((DrugsTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text);
+                viewModel.ReportDrug(id);
+            }
+            else MessageBox.Show("Niste odabrali pregled!");
+            
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)

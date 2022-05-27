@@ -19,12 +19,12 @@
         </TextBox>
         <Button Content="" Margin="193,310,106,8" Click="CancelButton_Click" BorderBrush="{x:Null}">
             <Button.Background>
-                <ImageBrush ImageSource="/images/cancel.png"/>
+                <ImageBrush ImageSource="/Resources/cancel.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="Schedule" Content="" Margin="119,310,180,8" Click="AcceptButton_Click" BorderBrush="{x:Null}">
             <Button.Background>
-                <ImageBrush ImageSource="/images/accept.png"/>
+                <ImageBrush ImageSource="/Resources/accept.png"/>
             </Button.Background>
         </Button>
 

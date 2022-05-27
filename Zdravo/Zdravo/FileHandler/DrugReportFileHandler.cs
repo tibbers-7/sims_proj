@@ -14,12 +14,12 @@ namespace Zdravo.FileHandler
         private static readonly string filePath = "data/drugReports.csv";
         public List<DrugReport> Read()
         {
+            // id # drugId # reason
+            Regex regexObj = new Regex("#(\\d+)#(\\d+)#([\\w\\s]*)");
             List<DrugReport> list = new List<DrugReport>();
 
             foreach (string line in File.ReadLines(filePath))
             {
-                // id # drugId # reason
-                Regex regexObj = new Regex("#(\\d+)#(\\d+)#([\\w\\s]*)");
                 Match matchResult = regexObj.Match(line);
                 if (matchResult.Success)
                 {

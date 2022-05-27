@@ -15,11 +15,11 @@ namespace FileHandler
 
         public List<Vacation> Read()
         {
+            Regex regexObj = new Regex("#(\\d+)#(\\d+)#(\\d+/\\d+/\\d+)#(\\d+/\\d+/\\d+)#([\\w\\s]+)#(\\w{1})#(\\w{1})");
             List<Vacation> list = new List<Vacation>();
 
             foreach (string line in File.ReadLines(filePath))
             {
-                Regex regexObj = new Regex("#(\\d+)#(\\d+)#(\\d+/\\d+/\\d+)#(\\d+/\\d+/\\d+)#([\\w\\s]+)#(\\w{1})#(\\w{1})");
                 Match matchResult = regexObj.Match(line);
                 if (matchResult.Success)
                 {
