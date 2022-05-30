@@ -98,7 +98,10 @@ namespace Model
             string ingredientsString = "";
             foreach (string ingredient in ingredients)
             {
-                ingredientsString = ingredientsString + ingredient + ";";
+                if (ingredient != null)
+                {
+                    ingredientsString = ingredientsString + ingredient + ";";
+                }
 
             }
             string res = "#" + id.ToString() + "#" + name+ "#" + type + "#" + statusChar + "#"+ingredientsString+"#"+description;

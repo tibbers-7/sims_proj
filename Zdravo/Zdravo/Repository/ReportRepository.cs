@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using FileHandler;
 using Model;
-using FileHandler;
+using Zdravo.FileHandler;
 
 namespace Repository
 {
@@ -12,7 +12,18 @@ namespace Repository
 
         public ReportRepository()
         {
-            reports = fileHandler.Read();
+            InitReports();
+        }
+
+        private void InitReports()
+        {
+            List<object> reportList = fileHandler.Read();
+            reports=new List<Report>();
+            foreach (object reportObj in reportList)
+            {
+                Report report = (Report)reportObj;
+                reports.Add(report);
+            }
         }
 
         public List<Report> GetReports()
@@ -29,16 +40,36 @@ namespace Repository
             return null;
         }
 
-        public void AddReport(Report report)
+        public void AddNew(Report report)
         {
             report.Id = reports.Count + 1;
-            fileHandler.Write(report,0);
+            int listCount = reports.Count;
+            string[] newLines = new string[listCount + 1];
+            for (int i = 0; i < listCount; i++)
+            {
+                newLines[i] = reports[i].ToCSV();
+            }
+            newLines[listCount] = report.ToCSV();
+            fileHandler.Write(newLines);
+            InitReports();
         }
 
-        internal void UpdateReport(Report report)
+        internal void Update(Report newReport)
         {
-            fileHandler.Write(report, 1);
-            reports = fileHandler.Read();
+            int listCount = reports.Count;
+            string[] newLines = new string[listCount];
+            int i = 0;
+            foreach (Report report in reports)
+            {
+                if (newReport.Id != report.Id)
+                {
+                    newLines[i] = report.ToCSV();
+                    i++;
+                }
+                else newLines[i] = newReport.ToCSV();
+            }
+            fileHandler.Write(newLines);
+            InitReports();
         }
     }
 }

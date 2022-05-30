@@ -104,7 +104,7 @@ namespace Zdravo.Service
 
         public void CreateAppointment(Appointment appt)
         {
-            appointmentRepo.CreateAppointment(appt);
+            appointmentRepo.AddNew(appt);
         }
 
         internal Appointment GetAppointment(int id)
@@ -114,12 +114,12 @@ namespace Zdravo.Service
 
         public bool DeleteAppointment(int id)
       {
-         return appointmentRepo.DeleteAppointment(id);
+         return appointmentRepo.Delete(id);
       }
 
         internal void UpdateAppointment(Appointment appt)
         {
-            appointmentRepo.UpdateAppointment(appt);
+            appointmentRepo.Update(appt);
 
         }
 
@@ -127,7 +127,7 @@ namespace Zdravo.Service
         internal Report UpdateReport(int patientId,int reportId, DateOnly date, string diagnosis, string reportString, string anamnesis)
         {
             Report rpt=new Report() { PatientId=patientId, Id=reportId, ReportString= reportString, Diagnosis=diagnosis,Date=date, Anamnesis=anamnesis };
-            reportRepo.UpdateReport(rpt); //updating in file
+            reportRepo.Update(rpt); //updating in file
             patientRepo.UpdateReport(rpt,patientId); //updating in patient list
             return rpt;
         }
@@ -136,7 +136,7 @@ namespace Zdravo.Service
 
         internal void AddReport(Report rpt)
         {
-            reportRepo.AddReport(rpt);
+            reportRepo.AddNew(rpt);
         }
 
         internal Report GetReportById(int id)
@@ -147,7 +147,7 @@ namespace Zdravo.Service
         internal void AddPrescription(Prescription p,int drugId)
         {
             p.DrugId = drugId;
-            prescriptionRepo.AddPrescription(p);
+            prescriptionRepo.AddNew(p);
         }
 
         

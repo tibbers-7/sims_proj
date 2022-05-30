@@ -11,7 +11,7 @@
         <Border BorderBrush="#70ABAF" Background="White" BorderThickness="3" CornerRadius="8,8,0,0" Margin="217,63,92,300">
             <Label Content="Sastojci" FontSize="15" Margin="0,-5,-40,-23"/>
         </Border>
-        <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="8,8,8,8" Margin="217,94,10,75" Background="#FFF0F7F4">
+        <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="0,8,8,8" Margin="217,94,10,75" Background="#FFF0F7F4">
             <ListBox ItemsSource="{Binding Ingredients}" Width="143" Margin="12,17,12,17"/>
         </Border>
 

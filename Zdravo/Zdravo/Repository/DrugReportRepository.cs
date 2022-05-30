@@ -16,7 +16,18 @@ namespace Zdravo.Repository
         public DrugReportRepository()
         {
             fileHandler = new DrugReportFileHandler();
-            drugReports = fileHandler.Read();
+            InitDrugReports();
+        }
+
+        private void InitDrugReports()
+        {
+            List<object> drugReportsList = fileHandler.Read();
+            drugReports = new List<DrugReport>();
+            foreach (object drugReportObj in drugReportsList)
+            {
+                DrugReport drugReport = (DrugReport) drugReportObj;
+                drugReports.Add(drugReport);
+            }
         }
 
         public List<DrugReport> GetAll()
@@ -32,11 +43,18 @@ namespace Zdravo.Repository
             return null;
         }
 
-        public void CreateDrugReport(DrugReport drugReport)
+        public void AddNew(DrugReport drugReport)
         {
             drugReport.Id = drugReports.Last().Id + 1;
-            fileHandler.Write(drugReport, 0);
-            drugReports = fileHandler.Read();
+            int listCount = drugReports.Count;
+            string[] newLines = new string[listCount + 1];
+            for (int i = 0; i < listCount; i++)
+            {
+                newLines[i] = drugReports[i].ToCSV();
+            }
+            newLines[listCount] = drugReport.ToCSV();
+            fileHandler.Write(newLines);
+            InitDrugReports();
         }
     }
 }

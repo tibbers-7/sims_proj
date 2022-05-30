@@ -155,7 +155,7 @@
                         Margin="0,108,0,25" HorizontalAlignment="Center" Width="332" Background="#FFDCE1DE" FontSize="13" >
                                 <DataGrid.Resources>
                                     <Style TargetType="{x:Type DataGridRow}">
-                                        <EventSetter Event="Control.MouseDoubleClick" Handler="AppointmentRow_DoubleClick"/>
+                                        <EventSetter Event="Control.MouseDoubleClick" Handler="PassedRow_DoubleClick"/>
                                     </Style>
                                 </DataGrid.Resources>
                                 <DataGrid.Columns>
@@ -163,30 +163,7 @@
                                     <DataGridTextColumn Header="Soba" Binding="{Binding Room}"  />
                                     <DataGridTextColumn Header="Datum" Width="1*" Binding="{Binding DateString}" />
                                     <DataGridTextColumn Header="Vreme" Binding="{Binding Time}"/>
-                                    <DataGridTextColumn Header="Hitno" Binding="{Binding EmergencyChar}" >
-                                        <DataGridTextColumn.ElementStyle>
-                                            <Style TargetType="{x:Type TextBlock}">
-                                                <Style.Triggers>
-                                                    <Trigger Property="Text" Value="DA">
-                                                        <Setter Property="Background">
-                                                            <Setter.Value>
-                                                                <ImageBrush ImageSource="C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\Resources\alert.png" Stretch="Uniform"/>
-                                                            </Setter.Value>
-                                                        </Setter>
-                                                        <Setter Property="Foreground" Value="{x:Null}"/>
-                                                    </Trigger>
-                                                    <Trigger Property="Text" Value="NE">
-                                                        <Setter Property="Background">
-                                                            <Setter.Value>
-                                                                <ImageBrush ImageSource="/Resources/x_grey.png" Stretch="Uniform"/>
-                                                            </Setter.Value>
-                                                        </Setter>
-                                                        <Setter Property="Foreground" Value="{x:Null}"/>
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </DataGridTextColumn.ElementStyle>
-                                    </DataGridTextColumn>
+                                    
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Grid>
@@ -210,10 +187,10 @@
                         IsReadOnly ="True"  SelectionMode="Single"
                         ItemsSource="{Binding UpcomingAppointments, UpdateSourceTrigger=PropertyChanged}"
                         AutoGenerateColumns="False"
-                        Margin="0,107,0,0" HorizontalAlignment="Center" Width="306" Background="#FFDCE1DE" Height="313" VerticalAlignment="Top" FontSize="13" >
+                        Margin="0,107,0,0" HorizontalAlignment="Center" Width="306" Background="#FFDCE1DE" Height="302" VerticalAlignment="Top" FontSize="13" >
                                 <DataGrid.Resources>
                                     <Style TargetType="{x:Type DataGridRow}">
-                                        <EventSetter Event="Control.MouseDoubleClick" Handler="AppointmentRow_DoubleClick"/>
+                                        <EventSetter Event="Control.MouseDoubleClick" Handler="UpcomingRow_DoubleClick"/>
                                     </Style>
                                 </DataGrid.Resources>
 
@@ -354,7 +331,7 @@
                                     <ImageBrush ImageSource="Resources/rejectDrugWhite.png"/>
                                 </Button.Background>
                             </Button>
-                            <Label Content="Prijavi lek" Margin="-4,56,-6,-56" Foreground="White"/>
+                            <Label Content="Prijavi lek" Margin="-4,56,-6,-56" Foreground="White" FontSize="15"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="#FF70ABAF" Background="White" BorderThickness="3" CornerRadius="8" Margin="253,4,238,497">
@@ -493,7 +470,7 @@
                                                     <Setter Property="Foreground" Value="{x:Null}"/>
                                                 </Trigger>
                                             </Style.Triggers>
-                                            
+
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>

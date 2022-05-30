@@ -9,16 +9,18 @@ using System.Threading.Tasks;
 
 namespace Zdravo.FileHandler
 {
-    internal class ChosenDoctorsFileHandler
+    internal class ChosenDoctorsFileHandler : FileHandlerInterface
     {
         private static readonly string filePath = "data/chosenDoctors.csv";
+        private static readonly string regexString = "(\\d+),{(\\d+,\\d+,\\d+,\\d+,\\d+,\\d+,\\d+)}";
+        //                                              INT id,INT patientId,INT room,DATEONLY date,TIMEONLY time,INT duration,INT doctorId,INT scheduledDoctorId,CHAR type,CHAR emergency,CHAR status
 
-        public List<ChosenDoctors> Read()
+
+        public List<object> Read()
         {
 
-            //                          INT id,INT patientId,INT room,DATEONLY date,TIMEONLY time,INT duration,INT doctorId,INT scheduledDoctorId,CHAR type,CHAR emergency,CHAR status
-            Regex regexObj = new Regex("(\\d+),{(\\d+,\\d+,\\d+,\\d+,\\d+,\\d+,\\d+)}");
-            List<ChosenDoctors> list = new List<ChosenDoctors>();
+            Regex regexObj = new Regex(regexString);
+            List<object> list = new List<object>();
 
             foreach (string line in File.ReadLines(filePath))
             {
@@ -37,5 +39,12 @@ namespace Zdravo.FileHandler
             }
             return list;
         }
+
+        public void Write(string[] newLines)
+        {
+            throw new NotImplementedException();
+        }
+
+        
     }
 }

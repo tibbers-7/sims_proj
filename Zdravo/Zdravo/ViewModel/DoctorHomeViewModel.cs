@@ -135,7 +135,7 @@ namespace Zdravo.ViewModel
             referralWindow.Show();
         }
 
-        internal void ShowAppointment(int id)
+        internal void AppointmentShow(int id)
         {
             NewAppointment updateAppointment = new NewAppointment(this, id, doctorId,false);
             updateAppointment.Show();
@@ -157,6 +157,16 @@ namespace Zdravo.ViewModel
         public void RefreshDrugs()
         {
             Drugs = new ObservableCollection<Drug>(drugController.GetValidDrugs());
+        }
+
+        public void RefreshVacations()
+        {
+            Vacations = new ObservableCollection<VacationString>(vacationController.GetDoctorVacationStrings(doctorId));
+        }
+        internal void PrescriptionShow(int id)
+        {
+            PrescriptionWindow prescriptionWindow = new PrescriptionWindow(id);
+            prescriptionWindow.Show();
         }
 
         public void NewAppointment()
@@ -182,7 +192,9 @@ namespace Zdravo.ViewModel
 
         internal int ScheduleVacation(bool emergency)
         {
-            return vacationController.ScheduleVacation(doctorId,startDate,endDate,reason, emergency);
+            int error=vacationController.ScheduleVacation(doctorId,startDate,endDate,reason, emergency);
+            RefreshVacations();
+            return error;
         }
 
         

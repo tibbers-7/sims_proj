@@ -36,15 +36,15 @@ namespace Zdravo.Service
             return drugRepo.GetById(drugId);
         }
 
-        internal void ChangeStatus(bool isAccepted, int drugId)
+        internal bool ChangeStatus(bool isAccepted, int drugId)
         {
-            drugRepo.ChangeStatus(isAccepted, drugId);
+            return drugRepo.ChangeStatus(isAccepted, drugId);
         }
 
         internal void CreateDrugReport(int drugId, string reason)
         {
             DrugReport report=new DrugReport() { DrugId = drugId, Reason=reason };
-            reportRepo.CreateDrugReport(report);
+            reportRepo.AddNew(report);
         }
     }
 }

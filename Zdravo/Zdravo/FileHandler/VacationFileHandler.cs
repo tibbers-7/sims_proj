@@ -7,25 +7,26 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Model;
 
-namespace FileHandler
+namespace Zdravo.FileHandler
 {
-    internal class VacationFileHandler
+    internal class VacationFileHandler : FileHandlerInterface
     {
         private static readonly string filePath = "data/vacations.csv";
+        private static readonly string regexString = "#(\\d+)#(\\d+)#(\\d+/\\d+/\\d+)#(\\d+/\\d+/\\d+)#([\\w\\s]+)#(\\w{1})#(\\w{1})";
 
-        public List<Vacation> Read()
+        public List<object> Read()
         {
-            Regex regexObj = new Regex("#(\\d+)#(\\d+)#(\\d+/\\d+/\\d+)#(\\d+/\\d+/\\d+)#([\\w\\s]+)#(\\w{1})#(\\w{1})");
-            List<Vacation> list = new List<Vacation>();
+            Regex regexObj = new Regex(regexString);
+            List<object> list = new List<object>();
 
             foreach (string line in File.ReadLines(filePath))
             {
                 Match matchResult = regexObj.Match(line);
                 if (matchResult.Success)
                 {
-                    Vacation v = new Vacation();
-                    v.FromCSV(matchResult.Groups);
-                    list.Add(v);
+                    Vacation vacation = new Vacation();
+                    vacation.FromCSV(matchResult.Groups);
+                    list.Add(vacation);
                 }
                 else
                 {
@@ -35,31 +36,16 @@ namespace FileHandler
                 }
 
             }
-
-
-
+            
             return list;
 
 
         }
 
-        public void Write(Vacation vacation)
+        public void Write(string[] newLines)
         {
-            string[] lines = System.IO.File.ReadAllLines(filePath);
-            List<Vacation> list = Read();
-            string[] newLines = new string[lines.Length];
-
-            newLines = new string[lines.Length + 1];
-            for (int i = 0; i < lines.Length; i++)
-            {
-                newLines[i] = lines[i];
-            }
-            newLines[lines.Length] = vacation.ToCSV();
-
             System.IO.File.WriteAllText(filePath, "");
             System.IO.File.WriteAllLines(filePath, newLines);
-
         }
-
     }
 }

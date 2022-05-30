@@ -25,7 +25,7 @@ namespace Service
                 if (!Check48h(startDate)) return 3; //Greska: nije 48h ranije
                 if (!CheckSpecialization(doctorId, vacation)) return 4; //Greska; Ima vise od dva doktora iste spec koji su zakazali 
             }
-            repo.AddVacation(vacation);
+            repo.AddNew(vacation);
             return 0;
         }
 

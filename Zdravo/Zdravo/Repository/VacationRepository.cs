@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FileHandler;
+using Zdravo.FileHandler;
 using Model;
 
 namespace Repository
@@ -18,19 +18,23 @@ namespace Repository
         public VacationRepository(DoctorRepository doctorRepository)
         {
             this.doctorRepository = doctorRepository;
-            GetVacations();
-            RemoveOldLogs();
+            InitVacations();
         }
 
-        public void GetVacations()
+        public void InitVacations()
         {
-            vacations = fileHandler.Read();
+            List<object> vacationList = fileHandler.Read();
+
             vacationsString = new List<VacationString>();
-            foreach (Vacation vacation in vacations)
+            vacations = new List<Vacation>();
+            foreach (object vacationObj in vacationList)
             {
-                VacationString vacString=vacation.ToString();
+                Vacation vacation=(Vacation)vacationObj;
+                VacationString vacString = vacation.ToString();
                 vacationsString.Add(vacString);
+                vacations.Add(vacation);
             }
+            
             RemoveOldLogs();
         }
 
@@ -43,12 +47,20 @@ namespace Repository
             return null;
         }
 
-        public void AddVacation(Vacation vacation)
+        public void AddNew(Vacation vacation)
         {
-            vacations = fileHandler.Read();
+            
             vacation.Id = vacations.Last().Id+1;
-            fileHandler.Write(vacation);
-            GetVacations();
+
+            int listCount = vacations.Count;
+            string[] newLines = new string[listCount + 1];
+            for (int i = 0; i < listCount; i++)
+            {
+                newLines[i] = vacations[i].ToCSV();
+            }
+            newLines[listCount] = vacation.ToCSV();
+            fileHandler.Write(newLines);
+            InitVacations();
         }
 
         internal List<VacationString> GetDoctorVacationStrings(int doctorId)

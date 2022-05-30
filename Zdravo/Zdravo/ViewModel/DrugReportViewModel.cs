@@ -28,10 +28,10 @@ namespace Zdravo.ViewModel
             name= d.Name;
         }
 
-        internal void CreateDrugReport()
+        internal bool CreateDrugReport()
         {
             drugController.CreateDrugReport(drugId, reason);
-            drugController.ChangeStatus(false, drugId);
+            return drugController.ChangeStatus(false, drugId);
         }
     }
 }

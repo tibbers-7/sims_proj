@@ -53,10 +53,16 @@ namespace Zdravo
 
 
 
-        private void AppointmentRow_DoubleClick(object sender, RoutedEventArgs e)
+        private void UpcomingRow_DoubleClick(object sender, RoutedEventArgs e)
         {
             object item = UpcomingTable.SelectedItem;
-            viewModel.ShowAppointment(int.Parse((UpcomingTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text));
+            viewModel.AppointmentShow(int.Parse((UpcomingTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text));
+        }
+
+        private void PassedRow_DoubleClick(object sender, RoutedEventArgs e)
+        {
+            object item = PassedTable.SelectedItem;
+            viewModel.AppointmentShow(int.Parse((PassedTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text));
         }
         private void DrugRow_DoubleClick(object sender, RoutedEventArgs e)
         {
@@ -141,7 +147,13 @@ namespace Zdravo
 
         private void Prescription_Click(object sender, RoutedEventArgs e)
         {
-
+            object item = PassedTable.SelectedItem;
+            if (item != null)
+            {
+                int id = int.Parse((PassedTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text);
+                viewModel.PrescriptionShow(id);
+            }
+            else MessageBox.Show("Niste odabrali pregled!");
         }
 
         private void RejectDrug_Click(object sender, RoutedEventArgs e)

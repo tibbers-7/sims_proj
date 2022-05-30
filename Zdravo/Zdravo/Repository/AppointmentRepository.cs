@@ -25,20 +25,31 @@ namespace Zdravo.Repository
 
         public AppointmentRepository(DoctorRepository doctorRepository,PatientRepository patientRepository)
         {
-            appointments = fileHandler.Read();
+            InitList();
             this.patientRepository = patientRepository;
             this.doctorRepository=doctorRepository;
         }
 
+        private void InitList()
+        {
+            List<object> apptList= fileHandler.Read();
+            appointments = new List<Appointment>();
+            foreach (object appt in apptList)
+            {
+                Appointment appointment = (Appointment) appt;
+                appointments.Add(appointment);
+            }
+        }
+
         public List<Appointment> GetAll()
       {
-            appointments = fileHandler.Read();
+            InitList();
             return appointments;
          
       }
         public ObservableCollection<AppointmentRecord> GetAllRecords()
         {
-            appointments = fileHandler.Read();
+            InitList();
             ObservableCollection < AppointmentRecord > records = new ObservableCollection<AppointmentRecord>();
             foreach(Appointment a in appointments)
             {
@@ -76,7 +87,7 @@ namespace Zdravo.Repository
         }
         public Appointment GetByID(int idAppointment)
       {
-            appointments=fileHandler.Read();
+            InitList();
             foreach (Appointment appointment in appointments)
             {
                 if (appointment.Id == idAppointment)
@@ -88,19 +99,7 @@ namespace Zdravo.Repository
             return null;
       }
       
-      public bool DeleteAppointment(int idAppointment)
-      {
-
-            Appointment appt= GetByID(idAppointment);
-            if (appt == null) return false;
-
-            if (patientController.GetById(appt.Patient) == null) return false;
-            patientController.GetById(appt.Patient).RemoveAppt(appt);
-                
-                fileHandler.Write(appt, 2);
-                appointments = fileHandler.Read();
-                return true;
-        }
+      
 
         internal ObservableCollection<Appointment> SearchTable(int doctorId,DateOnly date, int hours, int minutes)
         {
@@ -128,19 +127,65 @@ namespace Zdravo.Repository
             return list;
         }
 
-        public void CreateAppointment(Appointment appointment)
+        public void AddNew(Appointment appointment)
       {
-            appointment.Id = appointments.Last().Id + 1;
-            fileHandler.Write(appointment,0);
-            appointments = fileHandler.Read();
-      }
-
-        internal void UpdateAppointment(Appointment appt)
-        {
-            fileHandler.Write(appt,1);
-            appointments = fileHandler.Read();
+            int listCount = appointments.Count;
+            string[] newLines = new string[listCount + 1];
+            for (int i = 0; i < listCount; i++)
+            {
+                newLines[i] = appointments[i].ToCSV();
+            }
+            newLines[listCount] = appointment.ToCSV();
+            fileHandler.Write(newLines);
+            InitList();
         }
 
-        
+        internal void Update(Appointment newAppt)
+        {
+            int listCount = appointments.Count;
+            string[] newLines = new string[listCount];
+            int i = 0;
+            foreach (Appointment appt in appointments)
+            {
+                if (appt.Id != newAppt.Id)
+                {
+                    newLines[i] = appt.ToCSV();
+                    i++;
+                }
+                else newLines[i] = newAppt.ToCSV();
+            }
+            fileHandler.Write(newLines);
+            InitList();
+        }
+
+        public bool Delete(int idAppointment)
+        {
+
+            Appointment appointment = GetByID(idAppointment);
+            if (appointment == null) return false;
+
+            if (patientController.GetById(appointment.Patient) == null) return false;
+            patientController.GetById(appointment.Patient).RemoveAppt(appointment);
+
+            int listCount = appointments.Count;
+            string[] newLines = new string[listCount];
+
+            newLines = new string[listCount - 1];
+            int i = 0;
+            foreach (Appointment newApt in appointments)
+            {
+                if (newApt.Id != appointment.Id)
+                {
+                    newLines[i] = newApt.ToCSV();
+                    i++;
+                }
+            }
+
+            fileHandler.Write(newLines);
+            InitList();
+            return true;
+        }
+
+
     }
 }
