@@ -2,6 +2,7 @@
 using Repository;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +46,10 @@ namespace Zdravo.Service
         {
             DrugReport report=new DrugReport() { DrugId = drugId, Reason=reason };
             reportRepo.AddNew(report);
+        }
+
+        public List<DrugReport> GetAllReports() {
+            return reportRepo.GetAll();
         }
     }
 }
