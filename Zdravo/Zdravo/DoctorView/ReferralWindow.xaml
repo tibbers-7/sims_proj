@@ -49,13 +49,13 @@
         </Grid>
 
         <Border BorderBrush="#70ABAF" Background="White" BorderThickness="3" CornerRadius="8,8,0,0" Margin="10,169,273,189" Height="57" Grid.RowSpan="2">
-            <Label Content="Tip uputa" FontSize="20" Margin="0,0,-35,0"/>
+            <Label Content="Tip uputa" FontSize="18" Margin="0,0,-35,0"/>
         </Border>
         <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="0,8,8,8" Margin="10,204,10,136" Background="#FFF0F7F4" Grid.RowSpan="2"/>
 
         <Grid Margin="10,211,-10,96" Grid.RowSpan="2">
-            <RadioButton x:Name="surgery_rb" IsChecked="{Binding Surgery}" Content="Operacija" HorizontalAlignment="Left" Margin="37,9,0,0" VerticalAlignment="Top" FontSize="20"/>
-            <RadioButton x:Name="appt_tb" IsChecked="{Binding Appt}" Content="Pregled" HorizontalAlignment="Left" Margin="234,9,0,0" VerticalAlignment="Top" FontSize="20"/>
+            <RadioButton x:Name="surgery_rb" IsChecked="{Binding Surgery}" Content="Operacija" HorizontalAlignment="Left" Margin="37,9,0,0" VerticalAlignment="Top" FontSize="18"/>
+            <RadioButton x:Name="appt_tb" IsChecked="{Binding Appt}" Content="Pregled" HorizontalAlignment="Left" Margin="234,9,0,0" VerticalAlignment="Top" FontSize="18"/>
         </Grid>
         <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="229,113,91,10" Grid.Row="1">
             <Grid>

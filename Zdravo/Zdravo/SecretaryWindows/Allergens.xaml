@@ -33,7 +33,7 @@
                         <DataTemplate>
                             <Button Click="RemoveClick">
                                 <Button.Background>
-                                    <ImageBrush ImageSource="/images/delete.png"/>
+                                    <ImageBrush ImageSource="/Resources/delete.png"/>
                                 </Button.Background>
                             </Button>
                         </DataTemplate>

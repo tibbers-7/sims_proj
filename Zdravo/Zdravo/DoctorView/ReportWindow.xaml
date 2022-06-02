@@ -24,57 +24,72 @@
         </ControlTemplate>
 
     </Window.Resources>
-    <Grid Background="#FFDADADA">
-        <Rectangle HorizontalAlignment="Center" Height="305" Stroke="Black" VerticalAlignment="Top" Width="533" Fill="#FF6C91C2"/>
+    <Grid Background="#FFD4DDD9">
 
-        <Button Content="" Margin="144,329,264,10" BorderBrush="{x:Null}" Click="AcceptButton_Click" >
-            <Button.Background>
-                <ImageBrush ImageSource="/images/accept.png"/>
-            </Button.Background>
-        </Button>
-        <Button Content="" Margin="261,329,150,10" Click="CancelButton_Click" BorderBrush="{x:Null}">
-            <Button.Background>
-                <ImageBrush ImageSource="/images/cancel.png"/>
-            </Button.Background>
-        </Button>
 
-        <GroupBox Header="" Margin="22,0,22,321" Background="#FFC3C9E9">
-            <Grid>
-                <TextBox x:Name="date_tb" Margin="22,22,264,0" Validation.ErrorTemplate="{StaticResource validationTemplate}">
-                    <Binding Path="Date" UpdateSourceTrigger="LostFocus">
-                        <Binding.ValidationRules>
-                            <Zdravo:DateValidation ValidationStep="RawProposedValue"/>
-                            <Zdravo:RequiredFieldValidation ValidationStep="RawProposedValue"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox>
-                <Label Content="Datum:" HorizontalAlignment="Left" Margin="49,-5,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.046,0.543"/>
-                <Label Content="Dijagnoza:" HorizontalAlignment="Left" Margin="291,-5,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="diagnosis_tb" Validation.ErrorTemplate="{StaticResource validationTemplate}" HorizontalAlignment="Left" Margin="278,22,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="104">
-                    <Binding Path="Diagnosis" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-                            <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox>
+        <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="8,8,8,8" Margin="10,5,10,333" Background="#FFF0F7F4"/>
 
-            </Grid>
-        </GroupBox>
-        <TextBox x:Name="reportString_tb" Validation.ErrorTemplate="{StaticResource validationTemplate}"  HorizontalAlignment="Left" Margin="22,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="224" Background="#FFDEDEDE" Height="174">
-            <Binding Path="ReportString" UpdateSourceTrigger="PropertyChanged">
-                <Binding.ValidationRules>
-                    <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
-                </Binding.ValidationRules>
-            </Binding>
-        </TextBox>
-        <Label Content="Izveštaj:" HorizontalAlignment="Left" Margin="22,89,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="anamnesis_tb" Validation.ErrorTemplate="{StaticResource validationTemplate}"  HorizontalAlignment="Left" Margin="267,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="202" Background="#FFDEDEDE" Height="174">
-            <Binding Path="Anamnesis" UpdateSourceTrigger="PropertyChanged">
-                <Binding.ValidationRules>
-                    <Zdravo:RequiredFieldValidation ValidationStep="RawProposedValue"/>
-                </Binding.ValidationRules>
-            </Binding>
-        </TextBox>
-        <Label Content="Anamneza:" HorizontalAlignment="Left" Margin="269,89,0,0" VerticalAlignment="Top"/>
+        <Grid>
+            <TextBox x:Name="date_tb" Margin="94,27,234,348" Validation.ErrorTemplate="{StaticResource validationTemplate}">
+                <Binding Path="Date" UpdateSourceTrigger="LostFocus">
+                    <Binding.ValidationRules>
+                        <Zdravo:DateValidation ValidationStep="RawProposedValue"/>
+                        <Zdravo:RequiredFieldValidation ValidationStep="RawProposedValue"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+            <Label Content="Datum:" HorizontalAlignment="Left" Margin="32,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.046,0.543"/>
+            <Label Content="Dijagnoza:" HorizontalAlignment="Left" Margin="279,22,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="diagnosis_tb" Validation.ErrorTemplate="{StaticResource validationTemplate}" HorizontalAlignment="Left" Margin="357,26,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="86" Height="28">
+                <Binding Path="Diagnosis" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <local:RequiredFieldValidation ValidationStep="RawProposedValue"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+            <Border BorderBrush="#70ABAF" Background="White" BorderThickness="3" CornerRadius="8,8,0,0" Margin="10,90,371,192"/>
+            <Border BorderBrush="#70ABAF" Background="White" BorderThickness="3" CornerRadius="8,8,0,0" Margin="246,90,102,183"/>
+            <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="151,321,259,10">
+                <Grid>
+                    <Label Content="Prihvati" Foreground="White" Margin="5,36,-8,-35"/>
+                    <Button x:Name="Accept" Content="" Margin="8,3,10,22" Click="AcceptButton_Click" BorderBrush="{x:Null}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Resources/acceptWhite.png"/>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+            </Border>
+            <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="254,321,157,11">
+                <Grid>
+                    <Label Content="Otkaži" Foreground="White" Margin="5,36,-11,-49"/>
+                    <Button Content="" Margin="8,3,7,20"  BorderBrush="{x:Null}" Click="CancelButton_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Resources/cancelWhite.png"/>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+            </Border>
+
+        </Grid>
+        <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="0,8,8,8" Margin="10,121,245,82" Background="#FFF0F7F4">
+            <TextBox x:Name="reportString_tb" Validation.ErrorTemplate="{StaticResource validationTemplate}"  HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="196" Background="White" Height="171">
+                <Binding Path="ReportString" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <Zdravo:RequiredFieldValidation ValidationStep="RawProposedValue"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+        </Border>
+        <Label Content="Izveštaj" HorizontalAlignment="Left" Margin="18,89,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Anamneza" HorizontalAlignment="Left" Margin="260,89,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="0,8,8,8" Margin="245,121,10,82" Background="#FFF0F7F4">
+            <TextBox x:Name="anamnesis_tb" Validation.ErrorTemplate="{StaticResource validationTemplate}"  HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="192" Background="White" Height="174">
+                <Binding Path="Anamnesis" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <Zdravo:RequiredFieldValidation ValidationStep="RawProposedValue"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+        </Border>
     </Grid>
 </Window>

@@ -26,7 +26,7 @@
                         <DataTemplate>
                             <Button Click="CancelAppointment">
                                 <Button.Background>
-                                    <ImageBrush ImageSource="/images/close.png"/>
+                                    <ImageBrush ImageSource="/Resources/close.png"/>
                                 </Button.Background>
                             </Button>
                         </DataTemplate>
@@ -38,7 +38,7 @@
                         <DataTemplate>
                             <Button Click="EditAppointment">
                                 <Button.Background>
-                                    <ImageBrush ImageSource="/images/edit.png"/>
+                                    <ImageBrush ImageSource="/Resources/edit.png"/>
                                 </Button.Background>
                             </Button>
                         </DataTemplate>
@@ -49,7 +49,7 @@
         <TextBox Name="searchTb" HorizontalAlignment="Left" Margin="106,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" Height="23"/>
         <Button Content="" HorizontalAlignment="Left" Margin="222,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.601,0.083" Width="27" Height="27" Click="SearchButtonClick">
             <Button.Background>
-                <ImageBrush ImageSource="/images/search.png"/>
+                <ImageBrush ImageSource="/Resources/search.png"/>
             </Button.Background>
         </Button>
         <TextBlock HorizontalAlignment="Left" Margin="38,30,0,0" TextWrapping="Wrap" Text="JMBG:" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" RenderTransformOrigin="0.41,1.134"/>
@@ -57,7 +57,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="306,32,0,0" TextWrapping="Wrap" Text="New:" FontSize="14" VerticalAlignment="Top" Width="174"/>
         <Button Content=""  HorizontalAlignment="Left" Margin="353,28,0,0" VerticalAlignment="Top" Width="27" Height="27" Click="newAppointmentClick">
             <Button.Background>
-                <ImageBrush ImageSource="/images/addNew.png"/>
+                <ImageBrush ImageSource="/Resources/addNew.png"/>
             </Button.Background>
         </Button>
         <Button Content="Emergency appointment" HorizontalAlignment="Left" Margin="62,454,0,0" Grid.Row="1" VerticalAlignment="Top" Height="33" Width="141" Click="EmergencyAppointmentClick"/>

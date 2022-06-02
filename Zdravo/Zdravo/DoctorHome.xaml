@@ -125,7 +125,7 @@
                             <Border BorderBrush="#70ABAF" BorderThickness="4" CornerRadius="0,8,8,8">
                             </Border>
 
-                            <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="55,10,207,340">
+                            <Border BorderBrush="#70ABAF" Background="#70ABAF" BorderThickness="1" CornerRadius="8" Margin="55,10,207,331">
                                 <Grid>
                                     <Button x:Name="ReportBtn" Content="" Height="45" Click="Report_Click" BorderBrush="{x:Null}" Margin="23,10,18,27">
                                         <Button.Background>
@@ -159,10 +159,11 @@
                                     </Style>
                                 </DataGrid.Resources>
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="ID" Width="2" Binding="{Binding Id}" MaxWidth="0"/>
-                                    <DataGridTextColumn Header="Soba" Binding="{Binding Room}"  />
-                                    <DataGridTextColumn Header="Datum" Width="1*" Binding="{Binding DateString}" />
-                                    <DataGridTextColumn Header="Vreme" Binding="{Binding Time}"/>
+                                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" MaxWidth="0"/>
+                                    <DataGridTextColumn Header="Pacijent" Width="1.5*" Binding="{Binding Patient}"  />
+                                    <DataGridTextColumn Header="Soba" Width="1*" Binding="{Binding Room}"  />
+                                    <DataGridTextColumn Header="Datum" Width="2*" Binding="{Binding DateString}" />
+                                    <DataGridTextColumn Header="Vreme" Width="1.5*" Binding="{Binding Time}"/>
                                     
                                 </DataGrid.Columns>
                             </DataGrid>
@@ -171,7 +172,7 @@
                     <GroupBox Header="Predstojeći pregledi" Margin="90,66,438,0" Grid.Column="1" Grid.ColumnSpan="2" Foreground="#FF2D2D2D" BorderBrush="{x:Null}" FontSize="18">
                         <Grid>
                             <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="0,8,8,8"></Border>
-                            <Border BorderBrush="#70ABAF" Background="#FF70ABAF" BorderThickness="1" CornerRadius="8" Margin="54,10,205,341" Width="89.8853904282116">
+                            <Border BorderBrush="#70ABAF" Background="#FF70ABAF" BorderThickness="1" CornerRadius="8" Margin="54,10,205,337" Width="89.8853904282116">
                                 <Grid>
                                     <Button  x:Name="UpdateBtn" Content=""  HorizontalAlignment="Center" VerticalAlignment="Top" Height="45" Width="48" Click="Update_Click" Margin="0,10,0,0" BorderBrush="{x:Null}" >
                                         <Button.Background>
@@ -195,11 +196,12 @@
                                 </DataGrid.Resources>
 
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="ID" Width="2" Binding="{Binding Id}" MaxWidth="0"/>
-                                    <DataGridTextColumn Header="Soba" Binding="{Binding Room}"  />
-                                    <DataGridTextColumn Header="Datum" Width="1*" Binding="{Binding DateString}" />
-                                    <DataGridTextColumn Header="Vreme" Binding="{Binding Time}"/>
-                                    <DataGridTextColumn Header="Hitno" Binding="{Binding EmergencyChar}" >
+                                    <DataGridTextColumn Header="ID"  Binding="{Binding Id}" MaxWidth="0"/>
+                                    <DataGridTextColumn Header="Pacijent" Width="1.5*" Binding="{Binding Patient}"  />
+                                    <DataGridTextColumn Header="Soba" Width="1*" Binding="{Binding Room}"  />
+                                    <DataGridTextColumn Header="Datum" Width="2*" Binding="{Binding DateString}" />
+                                    <DataGridTextColumn Header="Vreme" Width="1.5*" Binding="{Binding Time}"/>
+                                    <DataGridTextColumn Header="Hitno" Width="1*" Binding="{Binding EmergencyChar}" >
                                         <DataGridTextColumn.ElementStyle>
                                             <Style TargetType="{x:Type TextBlock}">
                                                 <Style.Triggers>
@@ -236,7 +238,7 @@
                                     <Label x:Name="deleteLabel" Content="Obriši" Margin="17,48,-23,2" FontSize="15" FontWeight="Normal" Foreground="White"/>
                                 </Grid>
                             </Border>
-                            <Label x:Name="newApptLabel" Content="Nov pregled" Margin="-112,85,366,312" FontSize="15" FontWeight="Normal" Foreground="White"/>
+                            <Label x:Name="newApptLabel" Content="Nov pregled" Margin="-112,81,366,315" FontSize="15" FontWeight="Normal" Foreground="White"/>
 
                         </Grid>
                     </GroupBox>
@@ -250,9 +252,9 @@
                     </Border>
                     <Label x:Name="newReferralLabel" Content="Nov uput" Margin="26,287,230,205" FontSize="15" FontWeight="Normal" Foreground="White" Grid.ColumnSpan="2"/>
                     <Label x:Name="requestsLabel" Content="Zahtevi" Margin="31,389,225,103" FontSize="15" FontWeight="Normal" Foreground="White" Grid.ColumnSpan="2"/>
-                    <Border BorderBrush="#FF70ABAF" Background="White" BorderThickness="3" CornerRadius="8" Margin="217,4,253,489" Grid.Column="1" Grid.ColumnSpan="2">
+                    <Border BorderBrush="#FF70ABAF" Background="White" BorderThickness="3" CornerRadius="8" Margin="217,4,260,489" Grid.Column="1" Grid.ColumnSpan="2">
                         <Grid>
-                            <Button Margin="369,5,17,5" BorderBrush="{x:Null}">
+                            <Button Margin="364,5,10,5" BorderBrush="{x:Null}" Width="18.8853904282121">
                                 <Button.Background>
                                     <ImageBrush ImageSource="Resources/searchGreen.png"/>
                                 </Button.Background>
@@ -326,15 +328,15 @@
                     </DataGrid>
                     <Border Background="#FF70ABAF" BorderThickness="1" CornerRadius="8" Margin="18,121,794,322">
                         <Grid>
-                            <Button  Margin="17,9,17,21" Click="RejectDrug_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="53.66120906801" Height="52">
+                            <Button  Margin="23,9,17,21" Click="RejectDrug_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="53.66120906801" Height="52">
                                 <Button.Background>
                                     <ImageBrush ImageSource="Resources/rejectDrugWhite.png"/>
                                 </Button.Background>
                             </Button>
-                            <Label Content="Prijavi lek" Margin="-4,56,-6,-56" Foreground="White" FontSize="15"/>
+                            <Label Content="Prijavi lek" Margin="10,60,-20,-77" Foreground="White" FontSize="15"/>
                         </Grid>
                     </Border>
-                    <Border BorderBrush="#FF70ABAF" Background="White" BorderThickness="3" CornerRadius="8" Margin="253,4,238,497">
+                    <Border BorderBrush="#FF70ABAF" Background="White" BorderThickness="3" CornerRadius="8" Margin="244,4,238,497" Width="411.885390428212">
                         <Grid>
                             <Button Margin="369,5,18,5" BorderBrush="{x:Null}">
                                 <Button.Background>

@@ -38,24 +38,24 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Border>
-        <Border BorderBrush="#70ABAF" Background="#FF70ABAF" BorderThickness="1" CornerRadius="8" Margin="168,290,65,13">
+        <Border BorderBrush="#70ABAF" Background="#FF70ABAF" BorderThickness="1" CornerRadius="8" Margin="168,281,65,13">
             <Grid>
-                <Button Content="" Margin="7,0,10,10" Click="CancelButton_Click" BorderBrush="{x:Null}">
+                <Button Content="" Margin="7,0,10,21" Click="CancelButton_Click" BorderBrush="{x:Null}">
                     <Button.Background>
                         <ImageBrush ImageSource="/Resources/cancelWhite.png"/>
                     </Button.Background>
                 </Button>
-                <Label Content="Otkaži" Foreground="White" Margin="7,28,-7,-28"/>
+                <Label Content="Otkaži" Foreground="White" Margin="5,35,-7,-39"/>
             </Grid>
         </Border>
-        <Border BorderBrush="#70ABAF" Background="#FF70ABAF" BorderThickness="1" CornerRadius="8" Margin="90,290,143,13">
+        <Border BorderBrush="#70ABAF" Background="#FF70ABAF" BorderThickness="1" CornerRadius="8" Margin="90,281,143,13">
             <Grid>
-                <Button x:Name="Schedule" Content="" Margin="7,0,7,9" Click="AcceptButton_Click" BorderBrush="{x:Null}">
+                <Button x:Name="Schedule" Content="" Margin="7,0,7,20" Click="AcceptButton_Click" BorderBrush="{x:Null}">
                     <Button.Background>
                         <ImageBrush ImageSource="/Resources/acceptWhite.png"/>
                     </Button.Background>
                 </Button>
-                <Label Content="Prihvati" Foreground="White" Margin="7,28,-7,-28"/>
+                <Label Content="Prihvati" Foreground="White" Margin="2,35,0,-40"/>
             </Grid>
         </Border>
 
