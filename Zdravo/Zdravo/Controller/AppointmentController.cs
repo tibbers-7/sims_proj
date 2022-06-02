@@ -10,11 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
-using Zdravo;
-using Zdravo.Controller;
-using static System.Net.Mime.MediaTypeNames;
+using Zdravo.Service;
 
-namespace Controller
+namespace Zdravo.Controller
 {
    public class AppointmentController
    {
@@ -32,18 +30,23 @@ namespace Controller
             
         }
 
-        public List<Appointment> GetAppointmentsForDoctor(int doctorId)
+        public List<Appointment> GetUpcomingAppointmentsForDoctor(int doctorId)
         {
-            return service.GetAppointmentsForDoctor(doctorId);
+            return service.GetAppointmentsForDoctor(true,doctorId);
         }
-        
+
+        internal ObservableCollection<AppointmentRecord> GetAllRecords()
+        {
+            return service.GetAllRecords();
+        }
+
         public int CreateAppointment(int patientId, int doctor, int roomId, int hours, int minutes, int duration, string date, bool emergency)
         {
             Patient p = patientController.GetById(patientId);
             if (p == null) return 1;
 
             TimeOnly _time = new TimeOnly(hours, minutes);
-            DateOnly _date = DateOnly.Parse(date);
+            DateOnly _date = ParseDate(date);
             DateTime datetime = _date.ToDateTime(_time);
            // int cmp = DateTime.Compare(datetime, DateTime.Now);
          //   if (cmp < 0) return 2;   // Cannot make appointment in the past
@@ -57,17 +60,24 @@ namespace Controller
 
         }
 
+        internal List<Appointment> GetPassedAppointmentsForDoctor(int doctorId)
+        {
+            return service.GetAppointmentsForDoctor(false,doctorId);
+        }
+
         internal ObservableCollection<string> GetAllSpetializations()
         {
             DoctorRepository doctorRepository = new DoctorRepository();
             return new ObservableCollection<string>(doctorRepository.GetAllSpetializations());
         }
 
-        internal int CreateReferral(int patientId, int doctorId, string doctorSpecialty, bool isAppt, bool emergency)
+        // 1-patient doesn't exist
+        // 2-doctor specialization
+        internal int CreateReferral(int patientId, int doctorId, string doctorSpec, bool isAppt, bool emergency)
         {
             Patient p = patientController.GetById(patientId);
             if (p == null) return 1;
-            Doctor d = patientController.GetChosenDoctor(doctorSpecialty,patientId);
+            Doctor d = patientController.GetChosenDoctor(doctorSpec, patientId);
             if (d == null) return 2;
             char type;
             if (isAppt) type = 'A'; else type = 'O';
@@ -103,16 +113,15 @@ namespace Controller
             return service.SearchTable(doctorId,_date, hours, minutes);
         }
 
-        //should update in the patient's list too
+        // 1-patient doesn't exist
+        // 2-specified time is in past
         public int UpdateAppointment(int id, int patientId,int doctorId, int roomId, int hours, int minutes, int duration,string date, bool emergency)
         {
             Patient p = patientController.GetById(patientId);
             if (p == null) return 1;
             TimeOnly _time = new TimeOnly(hours, minutes);
             DateOnly _date = ParseDate(date);
-            DateTime datetime = _date.ToDateTime(_time);
-            int cmp = DateTime.Compare(datetime, DateTime.Now);
-            if (cmp < 0) return 3;   // Cannot make appointment in the past
+            if (!IsInPast(_date,_time)) return 2;
 
             
             Appointment appt = new Appointment() { Id = id, Date = _date, Time = _time, Doctor = doctorId, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency, DoctorSchedules=doctorId, Type='A', Status = Status.accepted };
@@ -120,17 +129,22 @@ namespace Controller
             return 0;
         }
 
-
-        //link report to patient
-        internal void CreateReport(int apptId,string date, string diagnosis, string report,string anamnesis)
+        public static bool IsInPast(DateOnly date, TimeOnly time)
         {
-            Appointment appt=service.GetAppointment(apptId);
-            Report rpt = new Report() { Date = ParseDate(date), PatientId = appt.Patient, ReportString = report, Diagnosis = diagnosis, Anamnesis=anamnesis };
+            DateTime datetime = date.ToDateTime(time);
+            int cmp = DateTime.Compare(datetime, DateTime.Now);
+            if (cmp < 0) return false;
+            return true;
+        }
 
-            // Change to controller later
-            Patient p = patientController.GetById(appt.Patient);
-            p.AddReport(rpt);
-            service.AddReport(rpt);
+
+
+        internal void CreateReport(int apptId,string date, string diagnosis, string _report,string anamnesis)
+        {
+            Appointment appt=GetAppointment(apptId);
+            Report report = new Report() { Date = ParseDate(date), PatientId = appt.Patient, ReportString = _report, Diagnosis = diagnosis, Anamnesis=anamnesis };
+            service.AddReport(report);
+            patientController.AddReport(report,appt);
         }
 
         internal void UpdateReport(int patientId,int reportId, string date, string diagnosis, string reportString,string anamnesis)

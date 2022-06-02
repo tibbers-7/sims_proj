@@ -21,6 +21,8 @@ namespace Zdravo.ViewModel
         public string Type { get { return type; } set { type = value; } }
         private string status;
         public string Status { get { return status; } set { status = value; } }
+        private string description;
+        public string Description { get { return description; } set { description = value; } }
         private ObservableCollection<string> ingredients;
         public ObservableCollection<string> Ingredients { get { return ingredients; } set { ingredients = value; } }
 
@@ -39,21 +41,14 @@ namespace Zdravo.ViewModel
             name=drug.Name.ToUpper();
             type=drug.Type;
             status = drug.StatusString;
-            
-
+            description = drug.Description;
+        
         }
+        
 
-        internal void DenyDrug()
+        internal bool AcceptDrug()
         {
-            DrugReportWindow drugReportWindow = new DrugReportWindow(callerWindow,drugId);
-            drugReportWindow.Show();
-            
-            
-        }
-
-        internal void AcceptDrug()
-        {
-            drugController.ChangeStatus(true,drugId);
+            return drugController.ChangeStatus(true,drugId);
         }
     }
 }

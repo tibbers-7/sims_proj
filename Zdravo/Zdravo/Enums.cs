@@ -48,4 +48,12 @@ namespace Zdravo
         waiting,
         reported
     }
+
+    public enum VacationStatus
+    {
+        passed,
+        accepted,
+        denied,
+        waiting
+    }
 }

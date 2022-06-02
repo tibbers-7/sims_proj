@@ -9,17 +9,18 @@ using Zdravo.Model;
 
 namespace Zdravo.FileHandler
 {
-    internal class DrugReportFileHandler
+    internal class DrugReportFileHandler : FileHandlerInterface
     {
         private static readonly string filePath = "data/drugReports.csv";
-        public List<DrugReport> Read()
+        private static readonly string regexString = "#(\\d+)#(\\d+)#([\\w\\s]*)";
+        public List<object> Read()
         {
-            List<DrugReport> list = new List<DrugReport>();
+            // id # drugId # reason
+            Regex regexObj = new Regex(regexString);
+            List<object> list = new List<object>();
 
             foreach (string line in File.ReadLines(filePath))
             {
-                // id # drugId # reason
-                Regex regexObj = new Regex("#(\\d+)#(\\d+)#([\\w\\s]*)");
                 Match matchResult = regexObj.Match(line);
                 if (matchResult.Success)
                 {
@@ -38,56 +39,8 @@ namespace Zdravo.FileHandler
             return list;
         }
 
-        public void Write(DrugReport drugReport, int j)
+        public void Write(string[] newLines)
         {
-            string[] lines = System.IO.File.ReadAllLines(filePath);
-            List<DrugReport> list = Read();
-            string[] newLines = new string[lines.Length];
-
-            switch (j)
-            {
-                //add new
-                case 0:
-                    {
-                        newLines = new string[lines.Length + 1];
-                        for (int i = 0; i < lines.Length; i++)
-                        {
-                            newLines[i] = lines[i];
-                        }
-                        newLines[lines.Length] = drugReport.ToCSV();
-
-                        break;
-                    }
-                //update
-                case 1:
-                    {
-                        int i = 0;
-                        foreach (DrugReport newDrugReport in list)
-                        {
-                            if (newDrugReport.Id == drugReport.Id) newLines[i] = drugReport.ToCSV();
-                            else newLines[i] = newDrugReport.ToCSV();
-                            i++;
-                        }
-                        break;
-                    }
-
-                //delete
-                case 2:
-                    {
-                        newLines = new string[lines.Length - 1];
-                        int i = 0;
-                        foreach (DrugReport newDrugReport in list)
-                        {
-                            if (newDrugReport.Id != drugReport.Id)
-                            {
-                                newLines[i] = newDrugReport.ToCSV();
-                                i++;
-                            }
-                        }
-                        break;
-                    }
-            }
-
             System.IO.File.WriteAllText(filePath, "");
             System.IO.File.WriteAllLines(filePath, newLines);
 

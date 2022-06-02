@@ -13,6 +13,8 @@ namespace Model
         public string Type { get { return type; } set { type = value; } }
         private Zdravo.Status status;
         public Zdravo.Status Status { get { return status; } set { status = value;} }
+        private string description;
+        public string Description { get { return description; } set { description = value; } }
         public string StatusString
         {
             get {
@@ -71,6 +73,7 @@ namespace Model
             {
                 ingredients.Add(ingredient);
             }
+            description=csvValues[6].Value;
         }
 
         internal string ToCSV()
@@ -95,10 +98,13 @@ namespace Model
             string ingredientsString = "";
             foreach (string ingredient in ingredients)
             {
-                ingredientsString = ingredientsString + ingredient + ";";
+                if (ingredient != null)
+                {
+                    ingredientsString = ingredientsString + ingredient + ";";
+                }
 
             }
-            string res = "#" + id.ToString() + "#" + name+ "#" + type + "#" + statusChar + "#"+ingredientsString;
+            string res = "#" + id.ToString() + "#" + name+ "#" + type + "#" + statusChar + "#"+ingredientsString+"#"+description;
             
             return res;
 

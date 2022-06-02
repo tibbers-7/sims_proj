@@ -4,20 +4,24 @@ using System.IO;
 using System.Text.RegularExpressions;
 using Model;
 
-namespace FileHandler
+namespace Zdravo.FileHandler
 {
-    internal class PrescriptionFileHandler
+    internal class PrescriptionFileHandler : FileHandlerInterface
     {
         private static readonly string filePath = "data/prescriptions.csv";
-        List<Prescription> list = new List<Prescription>();
-        public List<Prescription> Read()
+        private static readonly string regexString = "#(\\d+)#(\\d+)#(\\w+)#(\\d+/\\d+/\\d+)";
+        //|1|43243|F22|8/10/2021|Polomljena noga
+
+        public List<object> Read()
         {
+           
+            Regex regexObj = new Regex(regexString);
+            List<object> list = new List<object>();
+
             foreach (string line in File.ReadLines(filePath))
             {
                 if (line.Equals("")) break;
-                //|1|43243|F22|8/10/2021|Polomljena noga
-
-                Regex regexObj = new Regex("#(\\d+)#(\\d+)#(\\w+)#(\\d+/\\d+/\\d+)");
+                
                 Match matchResult = regexObj.Match(line);
                 if (matchResult.Success)
                 {
@@ -34,46 +38,9 @@ namespace FileHandler
             return list;
         }
 
-        public void Write(Prescription prescription, int j)
+        public void Write(string[] newLines)
         {
-            string[] lines = System.IO.File.ReadAllLines(filePath);
-            List<Prescription> list = Read();
-            string[] newLines = new string[lines.Length];
-
-            switch (j)
-            {
-                //add new
-                case 1:
-                    {
-                        newLines = new string[lines.Length + 1];
-                        for (int i = 0; i < lines.Length; i++)
-                        {
-                            newLines[i] = lines[i];
-                        }
-                        newLines[lines.Length] = prescription.ToCSV();
-
-                        break;
-                    }
-
-                //delete
-                case 2:
-                    {
-                        newLines = new string[lines.Length - 1];
-                        int i = 0;
-                        foreach (Prescription newPrescription in list)
-                        {
-                            {
-                                newLines[i] = newPrescription.ToCSV();
-                                i++;
-                            }
-                        }
-                        break;
-                    }
-                default:
-                    return;
-              
-            }
-
+           
             System.IO.File.WriteAllText(filePath, "");
             System.IO.File.WriteAllLines(filePath, newLines);
 

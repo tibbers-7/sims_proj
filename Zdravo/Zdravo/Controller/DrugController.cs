@@ -36,9 +36,9 @@ namespace Zdravo.Controller
             return service.GetById(drugId);
         }
 
-        internal void ChangeStatus(bool isAccepted, int drugId)
+        internal bool ChangeStatus(bool isAccepted, int drugId)
         {
-            service.ChangeStatus(isAccepted, drugId);
+            return service.ChangeStatus(isAccepted, drugId);
         }
 
         internal void CreateDrugReport(int drugId, string reason)

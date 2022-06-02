@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FileHandler;
+using Zdravo.FileHandler;
 using Model;
 
 namespace Repository
@@ -13,17 +13,28 @@ namespace Repository
         private VacationFileHandler fileHandler=new VacationFileHandler();
         private DoctorRepository doctorRepository;
         private List<Vacation> vacations;
+        private List<VacationString> vacationsString;
 
         public VacationRepository(DoctorRepository doctorRepository)
         {
             this.doctorRepository = doctorRepository;
-            GetVacations();
-            RemoveOldLogs();
+            InitVacations();
         }
 
-        public void GetVacations()
+        public void InitVacations()
         {
-            vacations = fileHandler.Read();
+            List<object> vacationList = fileHandler.Read();
+
+            vacationsString = new List<VacationString>();
+            vacations = new List<Vacation>();
+            foreach (object vacationObj in vacationList)
+            {
+                Vacation vacation=(Vacation)vacationObj;
+                VacationString vacString = vacation.ToString();
+                vacationsString.Add(vacString);
+                vacations.Add(vacation);
+            }
+            
             RemoveOldLogs();
         }
 
@@ -36,12 +47,30 @@ namespace Repository
             return null;
         }
 
-        public void AddVacation(Vacation vacation)
+        public void AddNew(Vacation vacation)
         {
-            vacations = fileHandler.Read();
+            
             vacation.Id = vacations.Last().Id+1;
-            fileHandler.Write(vacation);
-            GetVacations();
+
+            int listCount = vacations.Count;
+            string[] newLines = new string[listCount + 1];
+            for (int i = 0; i < listCount; i++)
+            {
+                newLines[i] = vacations[i].ToCSV();
+            }
+            newLines[listCount] = vacation.ToCSV();
+            fileHandler.Write(newLines);
+            InitVacations();
+        }
+
+        internal List<VacationString> GetDoctorVacationStrings(int doctorId)
+        {
+            List<VacationString> vacStrings = new List<VacationString>();
+            foreach(VacationString vacationString in vacationsString)
+            {
+                if(vacationString.DoctorId==doctorId) vacStrings.Add(vacationString);
+            }
+            return vacStrings;
         }
 
         internal bool CheckSpecialization(Doctor d, Vacation newVacation)

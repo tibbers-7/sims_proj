@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using FileHandler;
+using Zdravo.FileHandler;
 using Model;
 
-namespace Repository
+namespace Zdravo.Repository
 {
     public class DrugRepository
     {
@@ -13,7 +13,70 @@ namespace Repository
 
         public DrugRepository()
         {
-            drugs = fileHandler.Read();
+            initDrugs();
+        }
+
+        private void initDrugs()
+        {
+            List<object> drugList=fileHandler.Read();
+            drugs = new List<Drug>();
+            foreach (object drugObj in drugList)
+            {
+                Drug drug = (Drug)drugObj;
+                drugs.Add(drug);
+            }
+        }
+
+        public void AddNew(Drug drug)
+        {
+            List<Drug> list = drugs;
+            int listCount = list.Count;
+            string[] newLines = new string[listCount + 1];
+            for (int i = 0; i < listCount; i++)
+            {
+                newLines[i] = list[i].ToCSV();
+            }
+            newLines[listCount] = drug.ToCSV();
+        }
+
+        public void Update(Drug newDrug)
+        {
+            int listCount = drugs.Count;
+            string[] newLines = new string[listCount];
+            int i = 0;
+            foreach (Drug drug in drugs)
+            {
+                if (drug.Id != newDrug.Id)
+                {
+                    newLines[i] = drug.ToCSV();
+                    
+                }
+                else newLines[i] = newDrug.ToCSV();
+                i++;
+            }
+            fileHandler.Write(newLines);
+            initDrugs();
+        }
+
+        public bool Delete(Drug newDrug)
+        {
+            int listCount = drugs.Count;
+            string[] newLines = new string[listCount];
+
+            newLines = new string[listCount - 1];
+            int i = 0;
+            foreach (Drug drug in drugs)
+            {
+                if (drug.Id != newDrug.Id)
+                {
+                    newLines[i] = drug.ToCSV();
+                    i++;
+                }
+            }
+
+            fileHandler.Write(newLines);
+            initDrugs();
+            return true;
         }
 
         public List<Drug> GetAllDrugs()
@@ -40,7 +103,7 @@ namespace Repository
             return null;
         }
 
-        internal void ChangeStatus(bool isAccepted, int drugId)
+        internal bool ChangeStatus(bool isAccepted, int drugId)
         {
             Drug selectedDrug=null;
             foreach (Drug drug in drugs)
@@ -53,7 +116,9 @@ namespace Repository
                     break;
                 }
             }
-            fileHandler.Write(selectedDrug, 1);
+            if (selectedDrug == null) return false;
+            Update(selectedDrug);
+            return true;
         }
 
         internal Drug GetByName(string selectedDrug)

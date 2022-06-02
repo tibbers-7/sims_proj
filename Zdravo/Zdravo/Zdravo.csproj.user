@@ -78,6 +78,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="DoctorView\ChoosePatient.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -109,9 +114,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DoctorHome.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="DoctorView\AppointmentMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DoctorView\ReportWindow.xaml">

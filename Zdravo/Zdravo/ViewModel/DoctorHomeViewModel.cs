@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Zdravo.Controller;
 using Zdravo.DoctorView;
+using Zdravo.DoctorWindows;
 
 namespace Zdravo.ViewModel
 {
@@ -15,9 +16,10 @@ namespace Zdravo.ViewModel
         AppointmentController apController;
         VacationController vacationController;
         DrugController drugController;
-        private ObservableCollection<Appointment> appointments;
+        private ObservableCollection<Appointment> upcomingAppointments;
+        private ObservableCollection<Appointment> passedAppointments;
+        private ObservableCollection<VacationString> vacations;
         private ObservableCollection<Drug> drugs;
-        private DataGrid table;
         private int doctorId;
         private string date;
         public string Date { get { return date; } set { date = value; } }
@@ -38,20 +40,52 @@ namespace Zdravo.ViewModel
         public bool Emergency { get { return emergency; } set { emergency = value; } }
 
 
-        public ObservableCollection<Appointment> Appointments
+        public ObservableCollection<Appointment> UpcomingAppointments
         {
             get
             {
-                return appointments;
+                return upcomingAppointments;
             }
             set
             {
-                if (appointments == value)
+                if (upcomingAppointments == value)
                     return;
-                appointments = new ObservableCollection<Appointment>(apController.GetAppointmentsForDoctor(doctorId));
-                NotifyPropertyChanged("Appointments");
+                upcomingAppointments = new ObservableCollection<Appointment>(apController.GetPassedAppointmentsForDoctor(doctorId));
+                NotifyPropertyChanged("UpcomingAppointments");
             }
         }
+
+        public ObservableCollection<Appointment> PassedAppointments
+        {
+            get
+            {
+                return passedAppointments;
+            }
+            set
+            {
+                if (passedAppointments == value)
+                    return;
+                passedAppointments = new ObservableCollection<Appointment>(apController.GetPassedAppointmentsForDoctor(doctorId));
+                NotifyPropertyChanged("PassedAppointments");
+            }
+        }
+
+        public ObservableCollection<VacationString> Vacations
+        {
+            get
+            {
+                return vacations;
+            }
+            set
+            {
+                if (vacations == value)
+                    return;
+                vacations = new ObservableCollection<VacationString>(vacationController.GetDoctorVacationStrings(doctorId));
+                NotifyPropertyChanged("Vacations");
+            }
+        }
+
+
 
         public ObservableCollection<Drug> Drugs
         {
@@ -67,43 +101,57 @@ namespace Zdravo.ViewModel
                 NotifyPropertyChanged("Drugs");
             }
         }
-
-        internal void DrugShow(int drugId)
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void NotifyPropertyChanged(string propertyName)
         {
-            DrugWindow drugWindow = new DrugWindow(this,drugId);
-            drugWindow.Show();
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public DoctorHomeViewModel(DataGrid table,int doctorId)
+
+
+        public DoctorHomeViewModel(int doctorId)
         {
             var app = Application.Current as App;
             apController = app.appointmentController;
             drugController = app.drugController;
             vacationController=app.vacationController;
-            this.table = table;
             this.doctorId=doctorId;
-            appointments = new ObservableCollection<Appointment>(apController.GetAppointmentsForDoctor(doctorId));
+            upcomingAppointments = new ObservableCollection<Appointment>(apController.GetUpcomingAppointmentsForDoctor(doctorId));
+            passedAppointments = new ObservableCollection<Appointment>(apController.GetPassedAppointmentsForDoctor(doctorId));
             drugs=new ObservableCollection<Drug>(drugController.GetValidDrugs());
+            vacations= new ObservableCollection<VacationString>(vacationController.GetDoctorVacationStrings(doctorId));
             
         }
 
+        internal void DrugShow(int drugId)
+        {
+            DrugWindow drugWindow = new DrugWindow(this, drugId);
+            drugWindow.Show();
+        }
         internal void ShowReferral()
         {
             ReferralWindow referralWindow = new ReferralWindow(doctorId);
             referralWindow.Show();
         }
 
-        public void MenuShow(int rowId)
+        internal void AppointmentShow(int id)
         {
-            AppointmentMenu menu = new AppointmentMenu(rowId, this,doctorId);
-            menu.Show();
-            
+            NewAppointment updateAppointment = new NewAppointment(this, id, doctorId,false);
+            updateAppointment.Show();
         }
+
         public void RefreshAppointments()
         {
+            UpcomingAppointments = new ObservableCollection<Appointment>(apController.GetPassedAppointmentsForDoctor(doctorId));
+            passedAppointments = new ObservableCollection<Appointment>(apController.GetPassedAppointmentsForDoctor(doctorId));
             
-            Appointments = new ObservableCollection<Appointment>(apController.GetAll());
-            table.ItemsSource = Appointments;
+        }
+
+        internal void ReportDrug(int drugId)
+        {
+            DrugReportWindow drugReportWindow = new DrugReportWindow(this, drugId);
+            drugReportWindow.Show();
         }
 
         public void RefreshDrugs()
@@ -111,9 +159,19 @@ namespace Zdravo.ViewModel
             Drugs = new ObservableCollection<Drug>(drugController.GetValidDrugs());
         }
 
+        public void RefreshVacations()
+        {
+            Vacations = new ObservableCollection<VacationString>(vacationController.GetDoctorVacationStrings(doctorId));
+        }
+        internal void PrescriptionShow(int id)
+        {
+            PrescriptionWindow prescriptionWindow = new PrescriptionWindow(id);
+            prescriptionWindow.Show();
+        }
+
         public void NewAppointment()
         {
-             NewAppointment newAppointment = new NewAppointment(this,0,doctorId);
+             NewAppointment newAppointment = new NewAppointment(this,0,doctorId,true);
             newAppointment.Show();
         }
 
@@ -121,25 +179,38 @@ namespace Zdravo.ViewModel
 
         internal void SearchTable()
         {
-            appointments=apController.SearchTable(doctorId,Date,Hours,Minutes);
+            upcomingAppointments=apController.SearchTable(doctorId,Date,Hours,Minutes);
+
             NotifyPropertyChanged("Appointments");
         }
 
-        internal void ResetTable()
+        internal void UpdateAppointment(int id)
         {
-            Appointments = new ObservableCollection<Appointment>(apController.GetAppointmentsForDoctor(doctorId));
+            NewAppointment updateAppointment = new NewAppointment(this, id, doctorId,true);
+            updateAppointment.Show();
         }
 
         internal int ScheduleVacation(bool emergency)
         {
-            return vacationController.ScheduleVacation(doctorId,startDate,endDate,reason, emergency);
+            int error=vacationController.ScheduleVacation(doctorId,startDate,endDate,reason, emergency);
+            RefreshVacations();
+            return error;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void NotifyPropertyChanged(string propertyName)
+        
+
+        internal void ReportShow(int id)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            ReportWindow reportWindow = new ReportWindow(id, 0, 0, null);
+            reportWindow.Show();
+        }
+
+        internal void DeleteAppt(int id)
+        {
+            bool success = apController.DeleteAppointment(id);
+            if (success) RefreshAppointments();
+            else MessageBox.Show("Nepoznata greška: Ne može se obrisati!", "Greška");
+            
         }
     }
 }

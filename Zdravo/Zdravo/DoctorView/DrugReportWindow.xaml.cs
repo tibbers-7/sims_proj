@@ -40,6 +40,7 @@ namespace Zdravo.DoctorView
             {
                 viewModel.CreateDrugReport();
                 callerWindow.RefreshDrugs();
+                MessageBox.Show("Uspešno ste prijavili lek!", "Obaveštenje");
                 this.Close();
             }
             

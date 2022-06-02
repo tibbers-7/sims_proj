@@ -5,6 +5,7 @@ using Controller;
 using Model;
 using Zdravo.SecretaryWindows;
 using Repository;
+using Zdravo.Controller;
 
 namespace Zdravo.PatientView
 {

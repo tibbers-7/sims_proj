@@ -16,6 +16,8 @@ using System.Collections.ObjectModel;
 using Model;
 using Controller;
 using Zdravo.PatientView;
+using Zdravo.Controller;
+
 namespace Zdravo.SecretaryWindows
 {
     /// <summary>

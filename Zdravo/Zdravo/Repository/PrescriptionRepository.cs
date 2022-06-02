@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FileHandler;
 using Model;
-using FileHandler;
+using Zdravo.FileHandler;
 
 namespace Repository
 {
@@ -17,12 +17,31 @@ namespace Repository
 
         public PrescriptionRepository()
         {
-            prescriptions = fileHandler.Read();
+            InitPrescription();
         }
-        public void AddPrescription(Prescription prescription)
+
+        private void InitPrescription()
+        {
+            List<object> list = fileHandler.Read();
+            prescriptions = new List<Prescription>();
+            foreach (object prescObj in list)
+            {
+                Prescription presc=(Prescription) prescObj;
+                prescriptions.Add(presc);
+            }
+        }
+        public void AddNew(Prescription prescription)
         {
             prescription.Id=prescriptions.Count+1;
-            fileHandler.Write(prescription, 1);
+            int listCount = prescriptions.Count;
+            string[] newLines = new string[listCount + 1];
+            for (int i = 0; i < listCount; i++)
+            {
+                newLines[i] = prescriptions[i].ToCSV();
+            }
+            newLines[listCount] = prescription.ToCSV();
+            fileHandler.Write(newLines);
+            InitPrescription();
         }
 
     }

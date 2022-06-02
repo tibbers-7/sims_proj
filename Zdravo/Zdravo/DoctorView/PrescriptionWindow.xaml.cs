@@ -57,6 +57,7 @@ namespace Zdravo.DoctorWindows
                 {
                     this.Close();
                     viewModel.AddPrescription(chosenDrug);
+                    MessageBox.Show("Uspešno unet recept!", "Obaveštenje");
                 }
                 else
                 {

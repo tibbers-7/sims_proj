@@ -16,6 +16,7 @@ namespace Repository
    {
       private ObservableCollection<Patient> patients;
         private ReportRepository reportRepo;
+        private List<ChosenDoctors> chosenDoctors;
 
         public PatientRepository()
         {
@@ -27,14 +28,25 @@ namespace Repository
 
         internal void BindDoctors()
         {
-            ChosenDoctorsFileHandler chosenDoctorsFileHandler = new ChosenDoctorsFileHandler();
-            List<ChosenDoctors> chosenDoctors = chosenDoctorsFileHandler.Read();
+            initChosenDoctors();
             foreach (Patient patient in patients) {
                 foreach (ChosenDoctors chosenDoctor in chosenDoctors)
                 {
                     if (chosenDoctor.PatientId == patient.Id) patient.ChosenDoctors = chosenDoctor.ChosenDoctorIds;
 
                 }
+            }
+        }
+
+        private void initChosenDoctors()
+        {
+            ChosenDoctorsFileHandler chosenDoctorsFileHandler = new ChosenDoctorsFileHandler();
+            List<object> list = chosenDoctorsFileHandler.Read();
+            chosenDoctors = new List<ChosenDoctors>();
+            foreach(object doctorObj in list)
+            {
+                ChosenDoctors doctors = (ChosenDoctors)doctorObj;
+                chosenDoctors.Add(doctors);
             }
         }
 

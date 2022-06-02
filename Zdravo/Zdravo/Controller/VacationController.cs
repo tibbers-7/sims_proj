@@ -1,7 +1,9 @@
-﻿using Service;
+﻿using Model;
+using Service;
 using System;
+using System.Collections.Generic;
 
-namespace Controller
+namespace Zdravo.Controller
 {
     public class VacationController
     {
@@ -17,6 +19,11 @@ namespace Controller
             DateOnly _startDate = AppointmentController.ParseDate(startDate);
             DateOnly _endDate = AppointmentController.ParseDate(endDate);
             return service.ScheduleVacation(doctorId,_startDate, _endDate, reason,emergency);
+        }
+
+        internal List<VacationString> GetDoctorVacationStrings(int doctorId)
+        {
+            return service.GetDoctorVacationStrings(doctorId);
         }
     }
 }

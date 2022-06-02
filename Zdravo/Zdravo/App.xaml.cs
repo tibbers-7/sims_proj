@@ -12,6 +12,7 @@ using Zdravo.Controller;
 using Zdravo.Repository;
 using Zdravo.Service;
 
+
 namespace Zdravo
 {
     /// <summary>
@@ -29,7 +30,7 @@ namespace Zdravo
         public DrugController drugController;
         public App()
         {
-            var appointmentRepository = new AppointmentRepository();
+            
             var allergenRepository = new AllergenRepository();
             var basicRenovationRepository=new BasicRenovationRepository();
             var doctorRepository = new DoctorRepository();
@@ -39,6 +40,7 @@ namespace Zdravo
             var patientRepository=new PatientRepository();
             var prescriptionRepository = new PrescriptionRepository();
             var relocationRepository = new RelocationRepository();
+            var appointmentRepository = new AppointmentRepository(doctorRepository,patientRepository);
             var vacationRepository = new VacationRepository(doctorRepository);
             var drugReportRepository = new DrugReportRepository();
 
