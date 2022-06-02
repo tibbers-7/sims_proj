@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Zdravo.Model;
 using Zdravo.Service;
 
 namespace Zdravo.Controller
@@ -44,6 +45,11 @@ namespace Zdravo.Controller
         internal void CreateDrugReport(int drugId, string reason)
         {
             service.CreateDrugReport(drugId, reason);
+        }
+
+        public List<DrugReport> GetAllReports()
+        {
+            return service.GetAllReports();
         }
     }
 }
