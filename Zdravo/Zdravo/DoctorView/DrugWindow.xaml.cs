@@ -21,12 +21,20 @@ namespace Zdravo.DoctorView
     public partial class DrugWindow : Window
     {
         private DrugViewModel viewModel;
-        public DrugWindow(DoctorHomeViewModel callerWindow,int drugId)
+        public DrugWindow(DoctorHomeViewModel callerWindow,int drugId, bool isEditable)
         {
             viewModel = new DrugViewModel(callerWindow,drugId);
             this.DataContext = viewModel;
             InitializeComponent();
-            
+
+            if (isEditable)
+            {
+                nameTb.IsReadOnly = false;
+                statusTb.IsReadOnly = false;
+                typeTb.IsReadOnly = false;
+                descriptionTb.IsReadOnly = false;
+            }
+
         }
 
 

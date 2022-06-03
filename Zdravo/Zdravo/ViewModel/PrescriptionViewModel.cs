@@ -41,7 +41,7 @@ namespace Zdravo.ViewModel
 
         internal void ShowDrug(int drugId)
         {
-            DrugWindow drugWindow = new DrugWindow(null, drugId);
+            DrugWindow drugWindow = new DrugWindow(null, drugId, false);
             drugWindow.Show();
         }
     }

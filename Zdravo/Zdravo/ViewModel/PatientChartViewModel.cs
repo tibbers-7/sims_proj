@@ -124,7 +124,7 @@ namespace Zdravo.ViewModel
             {
                 if (drugId==drug.Id)
                 {
-                    DrugWindow drugWindow = new DrugWindow(null, drugId);
+                    DrugWindow drugWindow = new DrugWindow(null, drugId, false);
                     drugWindow.Show();
 
                 }

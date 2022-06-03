@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Zdravo.DoctorView;
+using Zdravo.Model;
 using Zdravo.ViewModel;
 
 namespace Zdravo.managerView
@@ -30,7 +32,9 @@ namespace Zdravo.managerView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            DrugReport selectedDrugReport = (DrugReport)dataGridDrugReports.SelectedItem;
+            DrugWindow drugWindow = new DrugWindow(null, selectedDrugReport.Id, true);
+            drugWindow.Show();
         }
     }
 }

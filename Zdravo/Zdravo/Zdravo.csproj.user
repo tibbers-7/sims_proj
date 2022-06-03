@@ -19,6 +19,9 @@
     <Compile Update="DoctorView\PatientChart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="managerView\AddDrug.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="managerView\AddEquipment.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -96,6 +99,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DoctorView\PatientChart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="managerView\AddDrug.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="managerView\AddEquipment.xaml">
