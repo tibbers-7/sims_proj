@@ -9,11 +9,11 @@ namespace Zdravo.FileHandler
     internal class DrugFileHandler : FileHandlerInterface
     {
         private static readonly string filePath = "data/drugs.csv";
-        private static readonly string regexString = "#(\\d+)#(\\w+)#([\\w\\s]+)#(A|D|W|R)#([\\w\\s;]*)#([\\w\\s.,;\"()-]*)";
+        private static readonly string regexString = "#(\\d+)#(\\w+)#([\\w\\s]+)#(A|D|W|R)#([\\w\\s;]*)#([\\w\\s.,;\"()-]*)#(\\d+)";
 
         public List<object> Read()
         {
-            // id # naziv # tip # status # sastojci
+            // id # naziv # tip # status # sastojci #opis # id alternativnog leka
             Regex regexObj = new Regex(regexString);
             List<object> list = new List<object>();
 

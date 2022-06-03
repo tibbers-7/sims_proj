@@ -22,6 +22,11 @@ namespace Zdravo.Service
             this.reportRepo = reportRepo;
         }
 
+        public void AddNew(Drug newDrug)
+        {
+            drugRepo.AddNew(newDrug);
+        }
+
         internal List<Drug> GetValidDrugs()
         {
             return drugRepo.GetValidDrugs();
@@ -37,6 +42,11 @@ namespace Zdravo.Service
             return drugRepo.GetById(drugId);
         }
 
+        public Drug GetByName(string selectedDrug)
+        {
+            return drugRepo.GetByName(selectedDrug);
+        }
+
         internal bool ChangeStatus(bool isAccepted, int drugId)
         {
             return drugRepo.ChangeStatus(isAccepted, drugId);
@@ -50,6 +60,11 @@ namespace Zdravo.Service
 
         public List<DrugReport> GetAllReports() {
             return reportRepo.GetAll();
+        }
+
+        public List<string> GetAllDrugNames()
+        {
+            return drugRepo.GetAllDrugNames();
         }
     }
 }

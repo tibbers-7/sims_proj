@@ -126,7 +126,7 @@ namespace Zdravo.ViewModel
 
         internal void DrugShow(int drugId)
         {
-            DrugWindow drugWindow = new DrugWindow(this, drugId);
+            DrugWindow drugWindow = new DrugWindow(this, drugId, false);
             drugWindow.Show();
         }
         internal void ShowReferral()
