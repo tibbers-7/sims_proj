@@ -70,6 +70,9 @@
     <Compile Update="SecretaryWindows\EmergencyAppointmentWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="SecretaryWindows\MeetingsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="SecretaryWindows\OrdersWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -156,6 +159,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SecretaryWindows\EmergencyAppointmentWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SecretaryWindows\MeetingsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SecretaryWindows\OrdersWindow.xaml">
