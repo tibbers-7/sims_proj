@@ -230,5 +230,11 @@ namespace Zdravo
             DrugReportsReview drugReportsReview = new DrugReportsReview();
             drugReportsReview.Show();
         }
+
+        private void Button_Click_12(object sender, RoutedEventArgs e)
+        {
+            AddDrug addDrug = new AddDrug();
+            addDrug.Show();
+        }
     }
 }

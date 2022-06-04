@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Branka Kljajic\peta kt sims\sims_proj\Zdravo\Zdravo\App.xaml
 32-1316755386
 
-1362007535611
+140-719360951
 194-1951243044
 DoctorHome.xaml;DoctorView\ChoosePatient.xaml;DoctorView\DrugReportWindow.xaml;DoctorView\DrugWindow.xaml;DoctorView\NewAppointment.xaml;DoctorView\PatientChart.xaml;DoctorView\PrescriptionWindow.xaml;DoctorView\ReferralWindow.xaml;DoctorView\ReportWindow.xaml;MainWindow.xaml;ManagerHome.xaml;managerView\AddDrug.xaml;managerView\AddEquipment.xaml;managerView\BasicRenovation.xaml;managerView\ComplexRenovation.xaml;managerView\DrugReportsReview.xaml;managerView\Equipment.xaml;managerView\EquipmentRelocation.xaml;managerView\EquipmentReview.xaml;managerView\MergedRoomsInfo.xaml;managerView\SplitedRoomsInfo.xaml;SecretaryHome.xaml;SecretaryWindows\AddPatient.xaml;SecretaryWindows\AllergenDescription.xaml;SecretaryWindows\Allergens.xaml;SecretaryWindows\AppointmentManagement.xaml;SecretaryWindows\DoctorPriority.xaml;SecretaryWindows\EditAppointmentDate.xaml;SecretaryWindows\EmergencyAppointmentWindow.xaml;SecretaryWindows\OrdersWindow.xaml;SecretaryWindows\UpdatePatient.xaml;SekretarHome.xaml;
 
-True
+False
 

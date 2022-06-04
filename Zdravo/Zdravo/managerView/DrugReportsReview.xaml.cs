@@ -33,8 +33,8 @@ namespace Zdravo.managerView
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             DrugReport selectedDrugReport = (DrugReport)dataGridDrugReports.SelectedItem;
-            DrugWindow drugWindow = new DrugWindow(null, selectedDrugReport.Id, true);
-            drugWindow.Show();
+            AddDrug addDrug = new AddDrug(selectedDrugReport.DrugId, selectedDrugReport.Id);
+            addDrug.Show();
         }
     }
 }
