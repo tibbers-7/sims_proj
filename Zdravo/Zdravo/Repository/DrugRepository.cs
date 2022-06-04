@@ -37,6 +37,7 @@ namespace Zdravo.Repository
                 newLines[i] = list[i].ToCSV();
             }
             newLines[listCount] = drug.ToCSV();
+            fileHandler.Write(newLines);
         }
 
         public void Update(Drug newDrug)
@@ -133,6 +134,7 @@ namespace Zdravo.Repository
         internal List<Drug> GetValidDrugs()
         {
             List<Drug> validDrugs=new List<Drug>();
+            initDrugs();
             foreach(Drug drug in drugs)
             {
                 if (drug.Status!=Zdravo.Status.denied) validDrugs.Add(drug);

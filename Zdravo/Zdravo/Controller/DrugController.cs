@@ -26,6 +26,12 @@ namespace Zdravo.Controller
             service.AddNew(newDrug);
         }
 
+        public void Update(int id, string drugName, Status status, string type, string description, List<string> ingredients, int alternativeDrugId)
+        {
+            Drug newDrug = new Drug(id, drugName, status, type, description, ingredients, alternativeDrugId);
+            service.Update(newDrug);
+        }
+
         internal List<Drug> GetValidDrugs()
         {
             return service.GetValidDrugs();
@@ -66,6 +72,11 @@ namespace Zdravo.Controller
         public List<string> GetAllDrugNames()
         {
             return service.GetAllDrugNames();
+        }
+
+        public void DeleteReport(int id)
+        {
+            service.DeleteReport(id);
         }
     }
 }

@@ -14,22 +14,6 @@ namespace Repository
             fileHandler = new FileHandler.RoomFileHandler();
             rooms = new ObservableCollection<Room>();
             rooms = fileHandler.Read();
-            /*var room1 = new Room() { id = 1, floor = 1, type = RoomType.operatingRoom };
-            var eq1 = new StaticEquipment {id = 1, name = "sto", amount = 1, roomId = 1};
-            var eq2 = new StaticEquipment { id = 2, name = "stolica", amount = 1, roomId = 1 };
-            room1.AddEquipment(eq1);
-            room1.AddEquipment(eq2);
-
-            rooms.Add(room1);
-
-            var room2 = new Room() { id = 2, floor = 1, type = RoomType.operatingRoom };
-            var eq3 = new StaticEquipment { id = 3, name = "hanzaplast", amount = 1, roomId = 2 };
-            var eq4 = new StaticEquipment { id = 2, name = "bensedin", amount = 1, roomId = 2 };
-            room2.AddEquipment(eq3);
-            room2.AddEquipment(eq4);
-
-            rooms.Add(room2);*/
-
         }
       
       public void Create(Room newRoom)
@@ -93,7 +77,6 @@ namespace Repository
                 if (room.id == id)
                 {
                     room.type = type;
-                    //return;
                 }
             }
             fileHandler.Write(rooms);
@@ -106,7 +89,6 @@ namespace Repository
                 if (room.id == id)
                 {
                     room.equipmentIds = equipmentIds;
-                    //return;
                 }
             }
             fileHandler.Write(rooms);

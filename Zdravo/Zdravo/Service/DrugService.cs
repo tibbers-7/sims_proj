@@ -27,6 +27,11 @@ namespace Zdravo.Service
             drugRepo.AddNew(newDrug);
         }
 
+        public void Update(Drug newDrug)
+        {
+            drugRepo.Update(newDrug);
+        }
+
         internal List<Drug> GetValidDrugs()
         {
             return drugRepo.GetValidDrugs();
@@ -65,6 +70,11 @@ namespace Zdravo.Service
         public List<string> GetAllDrugNames()
         {
             return drugRepo.GetAllDrugNames();
+        }
+
+        public void DeleteReport(int id)
+        {
+            reportRepo.Delete(id);
         }
     }
 }
