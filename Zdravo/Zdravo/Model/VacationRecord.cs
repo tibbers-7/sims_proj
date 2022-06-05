@@ -11,11 +11,8 @@ namespace Model
         private int id;
         public int Id => id;
 
-        private string doctorFirstName;
-        public string DoctorFirstName => doctorFirstName;
-
-        private string doctorLastName;
-        public string DoctorLastName => doctorLastName;
+        private string doctorName;
+        public string DoctorName => doctorName;
 
         private string doctorSpecialization;
         public string DoctorSpecialization => doctorSpecialization;
@@ -27,11 +24,10 @@ namespace Model
 
         public string Reason => reason;
 
-        public VacationRecord(int id,string doctorFirstName,string doctorLastName,string doctorSpecialization,string period,string reason)
+        public VacationRecord(int id,string doctorName,string doctorSpecialization,string period,string reason)
         {
             this.id = id;
-            this.doctorFirstName=doctorFirstName;
-            this.doctorLastName=doctorLastName;
+            this.doctorName = doctorName;
             this.doctorSpecialization=doctorSpecialization;
             this.period=period;
             this.reason=reason;

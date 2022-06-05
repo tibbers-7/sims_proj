@@ -2,7 +2,7 @@
 using Repository;
 using System;
 using System.Collections.Generic;
-
+using System.Collections.ObjectModel;
 namespace Service
 {
     public class VacationService
@@ -28,7 +28,14 @@ namespace Service
             repo.AddNew(vacation);
             return 0;
         }
-
+        internal void processVacation(int id,int option)
+        {
+            repo.processVacation(id,option);
+        }
+        internal ObservableCollection<VacationRecord> getPendingVacationRecords()
+        {
+            return repo.getPendingVacationRecords();
+        }
         internal List<VacationString> GetDoctorVacationStrings(int doctorId)
         {
             return repo.GetDoctorVacationStrings(doctorId);

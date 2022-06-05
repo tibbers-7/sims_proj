@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Zdravo.FileHandler;
 using Model;
+using System.Collections.ObjectModel;
 
 namespace Repository
 {
@@ -46,7 +47,22 @@ namespace Repository
             }
             return null;
         }
-
+        public ObservableCollection<VacationRecord> getPendingVacationRecords()
+        {
+            ObservableCollection<VacationRecord> records= new ObservableCollection<VacationRecord>();
+            foreach(Vacation vacation in vacations)
+            {
+                if (vacation.Status == Zdravo.Status.waiting)
+                {
+                    DoctorRepository doctorRepository = new DoctorRepository();
+                    Doctor doctor = doctorRepository.getById(vacation.DoctorId);
+                    //startDate.ToString("dd/MM/yyyy") + " - " + endDate.ToString("dd/MM/yyyy");
+                    string period = vacation.StartDate.ToString("dd/MM/yyyy") + "-" + vacation.EndDate.ToString("dd/MM/yyyy");
+                    records.Add(new VacationRecord(vacation.Id, doctor.Name+" "+doctor.LastName, doctor.Specialization,period,vacation.Reason));
+                }
+            }
+            return records;
+        }
         public void AddNew(Vacation vacation)
         {
             
@@ -89,7 +105,25 @@ namespace Repository
             if (counter > 1) return false;
             return true;
         }
-
+        internal void processVacation(int id,int option)
+        {
+            foreach (Vacation vacation in vacations)
+            {
+                if (vacation.Id == id)
+                {
+                    if (option == 1) vacation.Status = Zdravo.Status.accepted;
+                    else vacation.Status = Zdravo.Status.denied;
+                }
+            }
+            int listCount = vacations.Count;
+            string[] newLines = new string[listCount];
+            for (int i = 0; i < listCount; i++)
+            {
+                newLines[i] = vacations[i].ToCSV();
+            }
+            fileHandler.Write(newLines);
+            InitVacations();
+        }
         internal static bool FindVacationConflicts(Vacation newVacation, Vacation oldVacation)
         {
             DateTime newStartDate = newVacation.StartDate.ToDateTime(TimeOnly.Parse("00:00 AM"));

@@ -2,6 +2,7 @@
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Zdravo.Controller
 {
@@ -20,10 +21,17 @@ namespace Zdravo.Controller
             DateOnly _endDate = AppointmentController.ParseDate(endDate);
             return service.ScheduleVacation(doctorId,_startDate, _endDate, reason,emergency);
         }
-
+        internal void processVacation(int id,int option)
+        {
+            service.processVacation(id,option);
+        }
         internal List<VacationString> GetDoctorVacationStrings(int doctorId)
         {
             return service.GetDoctorVacationStrings(doctorId);
+        }
+        internal ObservableCollection<VacationRecord> getPendingVacationRecords()
+        {
+            return service.getPendingVacationRecords();
         }
     }
 }
