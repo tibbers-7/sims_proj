@@ -60,5 +60,10 @@ namespace Zdravo
             meetingsWindow.Show();
             this.Close();
         }
+
+        private void VacationsClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
