@@ -8,6 +8,39 @@
         Title="VacationsWindow" Height="750" Width="430" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBlock HorizontalAlignment="Center" Margin="0,32,0,0" TextWrapping="Wrap" Text="Vacation requests" VerticalAlignment="Top" FontSize="36"/>
+        <DataGrid Name="table" ColumnWidth="*" IsReadOnly ="True"  SelectionMode="Single"
+                              ItemsSource="{Binding VacationRecords, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Margin="10,114,10,334">
+            <DataGrid.Columns>
+                <DataGridTextColumn  Width="0.3*" Header="ID" Binding="{Binding Id}" />
+                <DataGridTextColumn  Header="Doctor"  Binding="{Binding DoctorName}"/>
+                <DataGridTextColumn  Width="1*" Header="Specialization" Binding="{Binding DoctorSpecialization}" />
+                <DataGridTextColumn  Width="1.5*" Header="Period" Binding="{Binding Period}"/>
+                <DataGridTemplateColumn Width="0.2*">
+                    <DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate>
+                            <Button Click="ReasonClick">...</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button HorizontalAlignment="Left" Margin="84,415,0,0" VerticalAlignment="Top" Height="60" Width="66" Click="approveVacationClick">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resources/acceptGreen.png"/>
+            </Button.Background>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="289,415,0,0" VerticalAlignment="Top" Height="60" Width="66" Click="denyVacationClick">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resources/close.png"/>
+            </Button.Background>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="79,475,0,0" TextWrapping="Wrap" Text="Approve" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="296,475,0,0" TextWrapping="Wrap" Text="Deny" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="errorLabel" Content="" Foreground="Red" HorizontalAlignment="Left" Margin="117,373,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="successLabel" Content="" Foreground="Green" HorizontalAlignment="Left" Margin="117,373,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="267,656,0,0" VerticalAlignment="Top" Height="32" Width="103" Click="BackClick"/>
+        <TextBox HorizontalAlignment="Center" Margin="0,539,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="82"/>
+        <TextBlock HorizontalAlignment="Left" Margin="32,507,0,0" TextWrapping="Wrap" Text="Reason" VerticalAlignment="Top" FontSize="20"/>
 
     </Grid>
 </Window>

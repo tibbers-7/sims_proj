@@ -63,7 +63,8 @@ namespace Zdravo
 
         private void VacationsClick(object sender, RoutedEventArgs e)
         {
-
+            VacationsWindow vacationsWindow = new VacationsWindow();
+            vacationsWindow.Show();
         }
     }
 }
