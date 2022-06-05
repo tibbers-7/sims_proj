@@ -1,0 +1,13 @@
+﻿<Window x:Class="Zdravo.SecretaryWindows.VacationsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zdravo.SecretaryWindows"
+        mc:Ignorable="d"
+        Title="VacationsWindow" Height="750" Width="430" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock HorizontalAlignment="Center" Margin="0,32,0,0" TextWrapping="Wrap" Text="Vacation requests" VerticalAlignment="Top" FontSize="36"/>
+
+    </Grid>
+</Window>
