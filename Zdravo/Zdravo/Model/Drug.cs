@@ -15,6 +15,9 @@ namespace Model
         public Zdravo.Status Status { get { return status; } set { status = value;} }
         private string description;
         public string Description { get { return description; } set { description = value; } }
+        private bool isAllergic;
+        public bool IsAllergic { get { return isAllergic; } set { isAllergic = value; } }
+        public List<string> AllergenConflicts;
         public string StatusString
         {
             get {

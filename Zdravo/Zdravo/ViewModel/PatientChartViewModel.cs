@@ -12,7 +12,6 @@ namespace Zdravo.ViewModel
 {
     public class PatientChartViewModel
     {
-        private int appId;
         private PatientController patientController = new PatientController();
         private AppointmentController appointmentController;
         private int idPatient;
@@ -37,6 +36,88 @@ namespace Zdravo.ViewModel
         private ObservableCollection<Report> reports;
         private ObservableCollection<Prescription> prescriptions;
         private DrugController drugController;
+        
+
+        public PatientChartViewModel(int patientId)
+        {
+            var app = Application.Current as App;
+            appointmentController = app.appointmentController;
+            drugController = app.drugController;
+
+            Patient p=patientController.GetById(patientId);
+            if (p == null)
+            {
+                MessageBox.Show("Pacijent ne postoji u bazi!", "Interna greška");
+                return;
+            }
+            InitFields(p);
+                
+        }
+        private void InitFields(Patient p)
+        {
+
+            idPatient = p.Id;
+            firstName = p.Ime;
+            lastName = p.Prezime;
+            allergens = p.GetAllergens();
+            reports = patientController.GetReports(idPatient);
+            prescriptions = patientController.GetPrescriptions(idPatient);
+            birthDate = p.DatumRodjenja.ToString("dd/MM/yyyy");
+            address = p.Adresa;
+            if (p.pol == Zdravo.Gender.male)
+            {
+                gender = 'm';
+            }
+            else gender = 'f';
+            switch (p.Status)
+            {
+                case Zdravo.MarriageStatus.married:
+                    marriageStatus = 'm';
+                    break;
+                case Zdravo.MarriageStatus.widow:
+                    marriageStatus = 'w';
+                    break;
+                case Zdravo.MarriageStatus.divorced:
+                    marriageStatus = 'd';
+                    break;
+                case Zdravo.MarriageStatus.single:
+                    marriageStatus = 's';
+                    break;
+            }
+        }
+        internal void ShowReport(int reportId)
+        {
+            foreach (Report r in reports)
+            {
+                if (r.Id == reportId)
+                {
+                    ReportWindow reportWindow = new ReportWindow(0, reportId, 1, this);
+                    reportWindow.Show();
+                }
+                
+            }
+
+            RefreshTables();
+        }
+        internal void ShowDrug(int drugId)
+        {
+            Drug drug=drugController.GetById(drugId);
+            if (drug == null)
+            {
+                MessageBox.Show("Lek ne postoji u bazi!", "Interna greška");
+                return;
+            }
+            DrugWindow drugWindow = new DrugWindow(null, drugId);
+            drugWindow.Show();
+        }
+
+        public void RefreshTables()
+        {
+            Reports = new ObservableCollection<Report>(patientController.GetReports(IdPatient));
+            Prescriptions = new ObservableCollection<Prescription>( patientController.GetPrescriptions(IdPatient));
+            
+        }
+
         public ObservableCollection<Report> Reports
         {
             get { return reports; }
@@ -62,81 +143,6 @@ namespace Zdravo.ViewModel
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-
-
-
-        public PatientChartViewModel(int apptId,int patientId)
-        {
-            var app = Application.Current as App;
-            appointmentController = app.appointmentController;
-            drugController = app.drugController;
-            Patient p;
-            if (apptId != 0)
-            {
-                Appointment appt = appointmentController.GetAppointment(apptId);
-                p = patientController.GetById(appt.Patient);
-                if (p == null) return;
-            }
-            else 
-            {
-                p=patientController.GetById(patientId);
-                if (p == null) return;
-            }
-
-                idPatient = p.Id;
-                firstName = p.Ime;
-                lastName = p.Prezime;
-                allergens = p.GetAllergens();
-                reports = patientController.GetReports(idPatient);
-                prescriptions = patientController.GetPrescriptions(idPatient);
-            birthDate = p.DatumRodjenja.ToString("dd/MM/yyyy");
-                address = p.Adresa;
-                if (p.pol == Zdravo.Gender.male)
-                {
-                    gender = 'm';
-                }
-                else gender = 'f';
-                switch (p.Status)
-                {
-                    case Zdravo.MarriageStatus.married:
-                        marriageStatus = 'm';
-                        break;
-                    case Zdravo.MarriageStatus.widow:
-                        marriageStatus = 'w';
-                        break;
-                    case Zdravo.MarriageStatus.divorced:
-                        marriageStatus = 'd';
-                        break;
-                    case Zdravo.MarriageStatus.single:
-                        marriageStatus = 's';
-                        break;
-                }
-                
-            }
-        
-
-        internal void ShowDrug(int drugId)
-        {
-            List<Drug> drugs = drugController.GetAllDrugs();
-            foreach (Drug drug in drugs)
-            {
-                if (drugId==drug.Id)
-                {
-                    DrugWindow drugWindow = new DrugWindow(null, drugId);
-                    drugWindow.Show();
-
-                }
-            }
-
-        }
-
-        public void RefreshReports()
-        {
-            reports = patientController.GetReports(IdPatient);
-            prescriptions = patientController.GetPrescriptions(IdPatient);
-            //table.ItemsSource = Reports;
         }
     }
 

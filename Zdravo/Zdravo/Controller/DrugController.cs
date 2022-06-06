@@ -28,7 +28,7 @@ namespace Zdravo.Controller
 
         internal List<Drug> GetAllDrugs()
         {
-            return service.GetAllDrugs();
+            return service.GetAll();
         }
 
         internal Drug GetById(int drugId)
@@ -36,7 +36,7 @@ namespace Zdravo.Controller
             return service.GetById(drugId);
         }
 
-        internal bool ChangeStatus(bool isAccepted, int drugId)
+        internal int ChangeStatus(bool isAccepted, int drugId)
         {
             return service.ChangeStatus(isAccepted, drugId);
         }
@@ -44,6 +44,16 @@ namespace Zdravo.Controller
         internal void CreateDrugReport(int drugId, string reason)
         {
             service.CreateDrugReport(drugId, reason);
+        }
+
+        internal ObservableCollection<Drug> SetAllergies(ObservableCollection<Drug> drugs, Patient patient)
+        {
+            return service.SetAllergies(drugs, patient);
+        }
+
+        internal bool GetAllergenConflicts(int drugId, ObservableCollection<Drug> drugs)
+        {
+            return service.GetAllergenConflicts(drugId, drugs);
         }
     }
 }

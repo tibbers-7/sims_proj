@@ -7,7 +7,6 @@ using FileHandler;
 using Model;
 using System;
 using System.Collections.ObjectModel;
-using FileHandler;
 using System.Collections.Generic;
 
 namespace Repository
@@ -59,6 +58,13 @@ namespace Repository
                 if(!spetializations.Contains(doctor.Specialization)) spetializations.Add(doctor.Specialization);
             }
             return spetializations;
+        }
+
+        public string GetDoctorInfo(int doctorId)
+        {
+            Doctor doctor = getById(doctorId);
+            string res = doctor.Name + " " + doctor.LastName + ", " + doctor.Specialization;
+            return res;
         }
     }
 }

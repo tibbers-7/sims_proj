@@ -33,14 +33,19 @@ namespace Zdravo.ViewModel
             appointmentController = app.appointmentController;
             this.apptId = apptId;
             this.reportId = reportId;
-            if(reportId != 0)
+            InitFields();
+        }
+
+        private void InitFields()
+        {
+            if (reportId != 0)
             {
                 Report r = appointmentController.GetReport(reportId);
                 date = r.Date.ToString("dd/MM/yyyy");
-                diagnosis =r.Diagnosis;
+                diagnosis = r.Diagnosis;
                 reportString = r.ReportString;
-                patientId=r.PatientId;
-                anamnesis=r.Anamnesis;
+                patientId = r.PatientId;
+                anamnesis = r.Anamnesis;
             }
             else
             {
@@ -50,16 +55,18 @@ namespace Zdravo.ViewModel
 
         internal void AcceptClick(int operation)
         {
+            int errorCode=0;
             switch (operation)
             {
                 //Add report
                 case 0:
-                    appointmentController.CreateReport(apptId, date, diagnosis, reportString,anamnesis);
+                    errorCode=appointmentController.CreateReport(apptId, date, diagnosis, reportString,anamnesis);
                     break;
                 case 1: 
-                    appointmentController.UpdateReport(patientId,reportId, date, diagnosis, reportString,anamnesis);
+                    errorCode=appointmentController.UpdateReport(patientId,reportId, date, diagnosis, reportString,anamnesis);
                     break;
             }
+            if (errorCode == -1) MessageBox.Show("Neuspešan upis u fajl!", "Interna greška");
             
         }
     }

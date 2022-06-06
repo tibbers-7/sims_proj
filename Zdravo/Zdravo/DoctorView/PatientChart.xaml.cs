@@ -1,33 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Zdravo.ViewModel;
 
 namespace Zdravo.DoctorWindows
 {
-    /// <summary>
-    /// Interaction logic for PatientChart.xaml
-    /// </summary>
     public partial class PatientChart : Window
     {
-        private int apptId;
         private PatientChartViewModel viewModel;
-        public PatientChart(int apptId,int patientId)
+        private int errorCode;
+
+        public PatientChart(int patientId)
         {
-            this.apptId = apptId;
-            viewModel = new PatientChartViewModel(apptId, patientId);
+            viewModel = new PatientChartViewModel(patientId);
             this.DataContext = viewModel;
             InitializeComponent();
+            InitFields();
+        }
+
+        private void InitFields()
+        {
             if (viewModel.Gender == 'm')
             {
                 male.IsChecked = true;
@@ -76,13 +67,13 @@ namespace Zdravo.DoctorWindows
         private void ReportRow_DoubleClick(object sender, RoutedEventArgs e)
         {
             object item = reportTable.SelectedItem;
-            viewModel.ShowDrug(int.Parse((reportTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text));
+            viewModel.ShowReport(int.Parse((reportTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text));
         }
 
         private void DrugRow_DoubleClick(object sender, RoutedEventArgs e)
         {
             object item = prescTable.SelectedItem;
-            viewModel.ShowDrug(int.Parse((prescTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text));
+            viewModel.ShowDrug(int.Parse((prescTable.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text));
         }
 
     }

@@ -9,6 +9,6 @@ namespace Zdravo.FileHandler
     internal interface FileHandlerInterface
     {
         public List<object> Read();
-        public void Write(string[] newLines);
+        public int Write(string[] newLines);
     }
 }

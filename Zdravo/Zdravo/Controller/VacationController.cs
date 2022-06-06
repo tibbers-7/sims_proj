@@ -16,14 +16,24 @@ namespace Zdravo.Controller
 
         internal int ScheduleVacation(int doctorId,string startDate, string endDate, string reason,bool emergency)
         {
-            DateOnly _startDate = AppointmentController.ParseDate(startDate);
-            DateOnly _endDate = AppointmentController.ParseDate(endDate);
+            DateOnly _startDate = Tools.ParseDate(startDate);
+            DateOnly _endDate = Tools.ParseDate(endDate);
             return service.ScheduleVacation(doctorId,_startDate, _endDate, reason,emergency);
         }
 
         internal List<VacationString> GetDoctorVacationStrings(int doctorId)
         {
             return service.GetDoctorVacationStrings(doctorId);
+        }
+
+        internal Vacation GetById(int vacationId)
+        {
+            return service.GetById(vacationId);
+        }
+
+        internal string GetDoctorInfo(int doctorId)
+        {
+            return service.GetDoctorInfo(doctorId);
         }
     }
 }

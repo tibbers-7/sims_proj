@@ -39,7 +39,7 @@ namespace Zdravo.PatientView
         private void EditAppointment(object sender, RoutedEventArgs e)
         {
             AppointmentRecord selectedRecord = (AppointmentRecord)table.SelectedValue;
-            Appointment appointment = appointmentController.GetAppointment(selectedRecord.Id);
+            Appointment appointment = appointmentController.GetById(selectedRecord.Id);
             EditAppointmentDate editAppointmentDateWindow = new EditAppointmentDate(this, appointment);
             editAppointmentDateWindow.Show();
 

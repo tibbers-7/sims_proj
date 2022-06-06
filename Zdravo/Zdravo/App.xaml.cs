@@ -41,24 +41,24 @@ namespace Zdravo
             var prescriptionRepository = new PrescriptionRepository();
             var relocationRepository = new RelocationRepository();
             var appointmentRepository = new AppointmentRepository(doctorRepository,patientRepository);
-            var vacationRepository = new VacationRepository(doctorRepository);
+            var vacationRepository = new VacationRepository();
             var drugReportRepository = new DrugReportRepository();
 
 
-
+            var patientService = new PatientService();
             var drugService = new DrugService(drugRepository,drugReportRepository);
-            var appointmentService = new AppointmentService(appointmentRepository,drugRepository,prescriptionRepository,reportRepository,patientRepository);
+            var appointmentService = new AppointmentService(appointmentRepository, drugRepository, prescriptionRepository, reportRepository,patientService);
             var vacationService = new VacationService(vacationRepository,doctorRepository);
             var allergenService = new AllergenService();
             var basicRenovationService = new BasicRenovationService();
             var equipmentService = new EquipmentService();
-            var patientService=new PatientService();
             var roomService = new RoomService();
             var timeService = new TimeService();
+            var reportPrescriptionService = new ReportPrescriptionService(reportRepository,patientRepository,prescriptionRepository);
 
             drugController = new DrugController(drugService);
             patientController = new PatientController();
-            appointmentController = new AppointmentController(appointmentService,patientController,doctorRepository,drugController);
+            appointmentController = new AppointmentController(appointmentService,patientController,doctorRepository,drugController,reportPrescriptionService);
             allergenController = new AllergenController();
             basicRenovationController = new BasicRenovationController();
             equipmentController = new EquipmentController();

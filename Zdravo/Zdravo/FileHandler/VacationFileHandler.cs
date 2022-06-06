@@ -12,8 +12,8 @@ namespace Zdravo.FileHandler
     internal class VacationFileHandler : FileHandlerInterface
     {
         private static readonly string filePath = "data/vacations.csv";
-        private static readonly string regexString = "#(\\d+)#(\\d+)#(\\d+/\\d+/\\d+)#(\\d+/\\d+/\\d+)#([\\w\\s]+)#(\\w{1})#(\\w{1})";
-
+        private static readonly string regexString = "#(\\d+)#(\\d+)#(\\d+/\\d+/\\d+)#(\\d+/\\d+/\\d+)#([\\w\\s.,;\"()-]*)#(\\w{1})#(\\w{1})#(\\d+/\\d+/\\d+)#([\\w\\s.,;\"()-]*)";
+                                                    // id    # dr   #  startDate     # endDate        #  reason           # emergency# status# requestDate   # deniedReason
         public List<object> Read()
         {
             Regex regexObj = new Regex(regexString);
@@ -42,10 +42,15 @@ namespace Zdravo.FileHandler
 
         }
 
-        public void Write(string[] newLines)
+        public int Write(string[] newLines)
         {
-            System.IO.File.WriteAllText(filePath, "");
-            System.IO.File.WriteAllLines(filePath, newLines);
+            try
+            {
+                System.IO.File.WriteAllText(filePath, "");
+                System.IO.File.WriteAllLines(filePath, newLines);
+                return 0;
+            }
+            catch { return -1; }
         }
     }
 }

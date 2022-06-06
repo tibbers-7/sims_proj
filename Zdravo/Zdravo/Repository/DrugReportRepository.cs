@@ -8,10 +8,10 @@ using Zdravo.Model;
 
 namespace Zdravo.Repository
 {
-    public class DrugReportRepository
+    public class DrugReportRepository 
     {
         private List<DrugReport> drugReports;
-        private DrugReportFileHandler fileHandler;
+        private readonly DrugReportFileHandler fileHandler;
 
         public DrugReportRepository()
         {

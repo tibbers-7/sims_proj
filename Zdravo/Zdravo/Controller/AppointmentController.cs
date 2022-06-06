@@ -20,14 +20,22 @@ namespace Zdravo.Controller
        private PatientController patientController;
         private DoctorRepository doctorRepository;
         private DrugController drugController;
+        private ReportPrescriptionService reportPrescriptionService;
 
-      public AppointmentController(AppointmentService _service,PatientController patientController, DoctorRepository doctorRepository, DrugController drugController)
+        public AppointmentController(AppointmentService _service,PatientController patientController, DoctorRepository doctorRepository, DrugController drugController, ReportPrescriptionService reportPrescriptionService)
         {
             service = _service;
             this.patientController = patientController;
             this.doctorRepository = doctorRepository;
             this.drugController = drugController;
+            this.reportPrescriptionService = reportPrescriptionService;
             
+        }
+
+        internal ObservableCollection<Drug> SetAllergies(ObservableCollection<Drug> drugs,int appointmentId)
+        {
+            Patient patient = patientController.GetById(GetById(appointmentId).Patient);
+            return drugController.SetAllergies(drugs, patient);
         }
 
         public List<Appointment> GetUpcomingAppointmentsForDoctor(int doctorId)
@@ -40,24 +48,15 @@ namespace Zdravo.Controller
             return service.GetAllRecords();
         }
 
+        internal string GetDoctorInfo(int doctorId)
+        {
+            return doctorRepository.GetDoctorInfo(doctorId);
+        }
+
         public int CreateAppointment(int patientId, int doctor, int roomId, int hours, int minutes, int duration, string date, bool emergency)
         {
-            Patient p = patientController.GetById(patientId);
-            if (p == null) return 1;
-
-            TimeOnly _time = new TimeOnly(hours, minutes);
-            DateOnly _date = ParseDate(date);
-            DateTime datetime = _date.ToDateTime(_time);
-           // int cmp = DateTime.Compare(datetime, DateTime.Now);
-         //   if (cmp < 0) return 2;   // Cannot make appointment in the past
-
-            Appointment appt = new Appointment() { Date = _date, Time = _time, Doctor = doctor, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency, Status = Status.accepted, DoctorSchedules = doctor, Type = 'A' };
-            service.CreateAppointment(appt);
-            
-
-            return 0;
-
-
+            Appointment appt = new Appointment() { Date = Tools.ParseDate(date), Time = new TimeOnly(hours, minutes), Doctor = doctor, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency, Status = Status.accepted, DoctorSchedules = doctor, Type = 'A' };
+            return service.CreateAppointment(appt,patientId,null);
         }
 
         internal List<Appointment> GetPassedAppointmentsForDoctor(int doctorId)
@@ -71,137 +70,65 @@ namespace Zdravo.Controller
             return new ObservableCollection<string>(doctorRepository.GetAllSpetializations());
         }
 
-        // 1-patient doesn't exist
-        // 2-doctor specialization
         internal int CreateReferral(int patientId, int doctorId, string doctorSpec, bool isAppt, bool emergency)
         {
-            Patient p = patientController.GetById(patientId);
-            if (p == null) return 1;
-            Doctor d = patientController.GetChosenDoctor(doctorSpec, patientId);
-            if (d == null) return 2;
             char type;
             if (isAppt) type = 'A'; else type = 'O';
-
-
-            Appointment appointment = new Appointment() { Patient = patientId, Emergency = emergency, Status = Status.waiting, Type = type, DoctorSchedules = doctorId, Doctor=d.Id};
-            service.CreateAppointment(appointment);
-
-            return 0;
+            Appointment appointment = new Appointment() { Patient = patientId, Emergency = emergency, Status = Status.waiting, Type=type, DoctorSchedules = doctorId};
+            return service.CreateAppointment(appointment,patientId,doctorSpec);
         }
 
-        
-
-        internal void AddPrescription(int patient, int drugId, DateTime now)
+        internal int AddPrescription(int patient, int drugId, DateTime now)
         {
             Prescription presc = new Prescription() { Date = DateOnly.FromDateTime(now), PatientId = patient };
-            service.AddPrescription(presc,drugId);
+            return reportPrescriptionService.AddPrescription(presc,drugId);
         }
 
-        public bool DeleteAppointment(int id)
+        public int DeleteAppointment(int id)
         {
             return service.DeleteAppointment(id);
         }
 
-        internal bool CheckAllergies(int appointmentId, int drugId)
+        internal bool CheckAllergies(int drugId,ObservableCollection<Drug> drugs)
         {
-            Drug drug=drugController.GetById(drugId);
-            return service.CheckAllergies(appointmentId, drug);
+            return drugController.GetAllergenConflicts(drugId, drugs);
         }
-        internal ObservableCollection<Appointment> SearchTable(int doctorId,string date, int hours, int minutes)
-        {
-            DateOnly _date = ParseDate(date);
-            return service.SearchTable(doctorId,_date, hours, minutes);
-        }
-
-        // 1-patient doesn't exist
-        // 2-specified time is in past
+        
         public int UpdateAppointment(int id, int patientId,int doctorId, int roomId, int hours, int minutes, int duration,string date, bool emergency)
         {
-            Patient p = patientController.GetById(patientId);
-            if (p == null) return 1;
-            TimeOnly _time = new TimeOnly(hours, minutes);
-            DateOnly _date = ParseDate(date);
-            if (!IsInPast(_date,_time)) return 2;
-
-            
-            Appointment appt = new Appointment() { Id = id, Date = _date, Time = _time, Doctor = doctorId, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency, DoctorSchedules=doctorId, Type='A', Status = Status.accepted };
-            service.UpdateAppointment(appt);
-            return 0;
+            Appointment appt = new Appointment() { Id = id, Date = Tools.ParseDate(date), Time = new TimeOnly(hours, minutes), Doctor = doctorId, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency, DoctorSchedules=doctorId, Type='A', Status = Status.accepted };
+            return service.UpdateAppointment(appt);
         }
 
-        public static bool IsInPast(DateOnly date, TimeOnly time)
+        internal int CreateReport(int apptId,string date, string diagnosis, string _report,string anamnesis)
         {
-            DateTime datetime = date.ToDateTime(time);
-            int cmp = DateTime.Compare(datetime, DateTime.Now);
-            if (cmp < 0) return false;
-            return true;
+            Appointment appt=GetById(apptId);
+            Report report = new Report() { Date = Tools.ParseDate(date), PatientId = appt.Patient, ReportString = _report, Diagnosis = diagnosis, Anamnesis=anamnesis };
+            return reportPrescriptionService.CreateReport(appt,report);
         }
 
-
-
-        internal void CreateReport(int apptId,string date, string diagnosis, string _report,string anamnesis)
+        internal int UpdateReport(int patientId,int reportId, string date, string diagnosis, string reportString,string anamnesis)
         {
-            Appointment appt=GetAppointment(apptId);
-            Report report = new Report() { Date = ParseDate(date), PatientId = appt.Patient, ReportString = _report, Diagnosis = diagnosis, Anamnesis=anamnesis };
-            service.AddReport(report);
-            patientController.AddReport(report,appt);
+            return reportPrescriptionService.UpdateReport(patientId,reportId, Tools.ParseDate(date), diagnosis, reportString,anamnesis);
         }
-
-        internal void UpdateReport(int patientId,int reportId, string date, string diagnosis, string reportString,string anamnesis)
-        {
-            service.UpdateReport(patientId,reportId, ParseDate(date), diagnosis, reportString,anamnesis);
-        }
-
-        
-
-
-      public List<Appointment> GetAll()
+        public List<Appointment> GetAll()
         {
           return service.GetAll();
-      }
-
-        public string GetDoctorInfo(int doctorId)
-        {
-            Doctor doctor=doctorRepository.getById(doctorId);
-            string res = doctor.Name + " " + doctor.LastName + ", " + doctor.Specialization;
-            return res;
         }
-       
 
-        public Appointment GetAppointment(int id)
+        public Appointment GetById(int id)
         {
-            return service.GetAppointment(id);
+            return service.GetById(id);
         }
 
         public bool IsReportAvailable(int id)
         {
-            Appointment appt = GetAppointment(id);
-            DateTime datetime = appt.Date.ToDateTime(appt.Time);
-            if (DateTime.Compare(DateTime.Now, datetime) > 0) return true;
-            return false;
+            return reportPrescriptionService.IsReportAvailable(GetById(id));
         }
 
         public Report GetReport(int id)
         {
-            return service.GetReportById(id);
+            return reportPrescriptionService.GetReportById(id);
         }
-
-        public static DateOnly ParseDate(string s)
-        {
-            
-            DateOnly date=new DateOnly();
-            if (s == null) return date;
-            Regex regexObj = new Regex("(\\d+)/(\\d+)/(\\d+)");
-            Match matchResult = regexObj.Match(s);
-            if (matchResult.Success)
-            {
-                date = new DateOnly(int.Parse(matchResult.Groups[3].Value), int.Parse(matchResult.Groups[2].Value), int.Parse(matchResult.Groups[1].Value));
-                return date;
-            }
-            else return date;
-            
-        }
-        
-        
     }
 }

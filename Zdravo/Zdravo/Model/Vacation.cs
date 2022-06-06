@@ -18,6 +18,8 @@ namespace Model
         public string Period { get { return period; } set { period = value; } }
         private VacationStatus status;
         public VacationStatus Status { get { return status; } set { status = value; } }
+        private string statusString;
+        public string StatusString { get { return statusString; } set { statusString = value; } }
     }
     public class Vacation
     {
@@ -35,6 +37,9 @@ namespace Model
         public string Reason { get { return reason; } set { reason = value; } }
         private bool emergency;
         public bool Emergency { get { return emergency; } set { emergency = value; } }
+        private string deniedReason;
+        private DateOnly requestDate;
+        public DateOnly RequestDate { get { return requestDate; } set { requestDate = value; } }
         
         public void FromCSV(GroupCollection csvValues)
         {
@@ -56,12 +61,12 @@ namespace Model
                     status = Status.waiting;
                     break;
             }
+            requestDate=DateOnly.Parse(csvValues[8].Value);
+            deniedReason=csvValues[9].Value;
         }
 
         internal string ToCSV()
         {
-            //#doctorId#startDate#endDate#accepted
-            //#1#2022/01/01#2022/02/02#Y
             char _status,_emergency;
             switch (status)
             {
@@ -76,33 +81,39 @@ namespace Model
                     break;
             }
             if (emergency) _emergency = 'Y'; else _emergency = 'N';
-            string res = '#' + id.ToString()+ '#' + doctorId.ToString() + "#" + startDate.ToString() + "#" + endDate.ToString() + "#"+ reason.ToString()+ "#" + _emergency + "#" + _status;
+            string res = '#' + id.ToString()+ '#' + doctorId.ToString() + "#" + startDate.ToString() + "#" + endDate.ToString() + "#"+ reason.ToString()+ "#" + _emergency + "#" + _status + "#" + requestDate.ToString() + "#" + deniedReason;
             return res;
         }
-
-        public VacationString ToString()
+        
+        internal VacationString ToString()
         {
             VacationString vacString = new VacationString();
             vacString.Period =startDate.ToString("dd/MM/yyyy") + " - " + endDate.ToString("dd/MM/yyyy");
             vacString.Id=id;
             vacString.DoctorId = doctorId;
-            int cmp = DateTime.Compare(endDate.ToDateTime(TimeOnly.Parse("00:00 AM")),DateTime.Now);
-            if (cmp < 0) vacString.Status = Zdravo.VacationStatus.passed;
-            else
-            {
+            
                 switch (status)
                 {
                     case Zdravo.Status.accepted:
                         vacString.Status = Zdravo.VacationStatus.accepted;
+                        vacString.StatusString = "ODOBRENO";
                         break;
                     case Zdravo.Status.denied:
-                        vacString.Status=Zdravo.VacationStatus.denied;
+                        vacString.Status = Zdravo.VacationStatus.denied;
+                        vacString.StatusString = "ODBIJENO;\n" + deniedReason;
                         break;
                     default:
                         vacString.Status = Zdravo.VacationStatus.waiting;
+                        vacString.StatusString = "NA ČEKANJU";
                         break;
                 }
+            int cmp = DateTime.Compare(endDate.ToDateTime(TimeOnly.Parse("00:00 AM")), DateTime.Now);
+            if (cmp < 0)
+            {
+                vacString.Status = Zdravo.VacationStatus.passed;
             }
+
+
             return vacString;
         }
 

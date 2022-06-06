@@ -23,7 +23,8 @@ namespace Zdravo.DoctorWindows
     {
         private PrescriptionViewModel viewModel;
         private int chosenDrug;
-        
+        private int errorCode;
+
         public PrescriptionWindow(int id)
         {
             InitializeComponent();
@@ -40,7 +41,8 @@ namespace Zdravo.DoctorWindows
         private void Row_DoubleClick(object sender, RoutedEventArgs e)
         {
             object item = drugTable.SelectedItem;
-            viewModel.ShowDrug(int.Parse((drugTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text));
+            errorCode=viewModel.ShowDrug(int.Parse((drugTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text));
+            if (errorCode == -1) MessageBox.Show("Lek ne postoji u bazi!", "Interna greška");
         }
 
         private void AcceptButton_Click(object sender, RoutedEventArgs e)
@@ -53,16 +55,8 @@ namespace Zdravo.DoctorWindows
             else
             {
                 chosenDrug = int.Parse((drugTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text);
-                if (viewModel.CheckAllergies(chosenDrug))
-                {
-                    this.Close();
-                    viewModel.AddPrescription(chosenDrug);
-                    MessageBox.Show("Uspešno unet recept!", "Obaveštenje");
-                }
-                else
-                {
-                    MessageBox.Show("Pacijent je alergičan na lek! Molimo Vas da odaberete drugi lek.", "Upozorenje");
-                }
+                if (viewModel.CheckAllergies(chosenDrug) == 0) this.Close();
+                
             }
             
             

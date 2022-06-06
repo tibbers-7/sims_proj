@@ -10,10 +10,10 @@ namespace Zdravo.FileHandler
     {
         private static readonly string filePath = "data/drugs.csv";
         private static readonly string regexString = "#(\\d+)#(\\w+)#([\\w\\s]+)#(A|D|W|R)#([\\w\\s;]*)#([\\w\\s.,;\"()-]*)";
-
+                                                      // id  # ime  #    tip    #  status #  sastojci  #   opis
         public List<object> Read()
         {
-            // id # naziv # tip # status # sastojci
+            
             Regex regexObj = new Regex(regexString);
             List<object> list = new List<object>();
 
@@ -37,10 +37,14 @@ namespace Zdravo.FileHandler
             return list;
         }
 
-        public void Write(string[] newLines)
+        public int Write(string[] newLines)
         {
-            System.IO.File.WriteAllText(filePath, "");
-            System.IO.File.WriteAllLines(filePath, newLines);
+            try
+            {
+                System.IO.File.WriteAllText(filePath, "");
+                System.IO.File.WriteAllLines(filePath, newLines);
+                return 0;
+            } catch { return -1; }
         }
     }
 }

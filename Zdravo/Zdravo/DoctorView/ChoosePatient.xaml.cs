@@ -19,11 +19,6 @@ using Zdravo.ViewModel;
 
 namespace Zdravo.DoctorView
 {
-    /// <summary>
-    /// Interaction logic for ChoosePatient.xaml
-    /// </summary>
-    /// 
-    
     public partial class ChoosePatient : Window
     {
         private ChoosePatientViewModel viewModel=new ChoosePatientViewModel();
