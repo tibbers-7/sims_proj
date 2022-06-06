@@ -25,11 +25,15 @@
 
     </Window.Resources>
     <Grid Background="#FFD4DDD9">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="480*"/>
+        </Grid.ColumnDefinitions>
 
 
-        <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="8,8,8,8" Margin="10,5,10,333" Background="#FFF0F7F4"/>
+        <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="8,8,8,8" Margin="10,5,10,333" Background="#FFF0F7F4" Grid.ColumnSpan="2"/>
 
-        <Grid>
+        <Grid Grid.ColumnSpan="2">
             <TextBox x:Name="date_tb" Margin="94,27,234,348" Validation.ErrorTemplate="{StaticResource validationTemplate}">
                 <Binding Path="Date" UpdateSourceTrigger="LostFocus">
                     <Binding.ValidationRules>
@@ -71,7 +75,7 @@
             </Border>
 
         </Grid>
-        <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="0,8,8,8" Margin="10,121,245,82" Background="#FFF0F7F4">
+        <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="0,8,8,8" Margin="10,121,245,82" Background="#FFF0F7F4" Grid.ColumnSpan="2">
             <TextBox x:Name="reportString_tb" Validation.ErrorTemplate="{StaticResource validationTemplate}"  HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="196" Background="White" Height="171">
                 <Binding Path="ReportString" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -80,9 +84,9 @@
                 </Binding>
             </TextBox>
         </Border>
-        <Label Content="Izveštaj" HorizontalAlignment="Left" Margin="18,89,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Label Content="Anamneza" HorizontalAlignment="Left" Margin="260,89,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="0,8,8,8" Margin="245,121,10,82" Background="#FFF0F7F4">
+        <Label Content="Izveštaj" HorizontalAlignment="Left" Margin="7,89,0,0" VerticalAlignment="Top" FontSize="18" Grid.Column="1"/>
+        <Label Content="Anamneza" HorizontalAlignment="Left" Margin="249,89,0,0" VerticalAlignment="Top" FontSize="18" Grid.Column="1"/>
+        <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="0,8,8,8" Margin="234,121,10,82" Background="#FFF0F7F4" Grid.Column="1">
             <TextBox x:Name="anamnesis_tb" Validation.ErrorTemplate="{StaticResource validationTemplate}"  HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="192" Background="White" Height="174">
                 <Binding Path="Anamnesis" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>

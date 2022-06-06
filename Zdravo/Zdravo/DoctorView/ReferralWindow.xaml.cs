@@ -16,9 +16,6 @@ using Zdravo.ViewModel;
 
 namespace Zdravo.DoctorView
 {
-    /// <summary>
-    /// Interaction logic for ReferralWindow.xaml
-    /// </summary>
     public partial class ReferralWindow : Window
     {
         private ReferralViewModel viewModel;
@@ -32,25 +29,9 @@ namespace Zdravo.DoctorView
 
         private void ScheduleButton_Click(object sender, RoutedEventArgs e)
         {
-            int errorCode;
-            if (surgery_rb.IsChecked == false && appt_tb.IsChecked == false) errorCode = 3;
-            else errorCode=viewModel.ScheduleReferral();
-            switch (errorCode)
-            {
-                case 0:
-                    MessageBox.Show("Uspešno kreiran uput","Obaveštenje");
-                    this.Close();
-                    break;
-                case 1:
-                    MessageBox.Show("Pacijent ne postoji!","Greška");
-                    break;
-                case 2:
-                    MessageBox.Show("Trenutno ne postoji lekar te specijalizacije u sistemu!","Greška");
-                    break;
-                case 3:
-                    MessageBox.Show("Niste uneli sve neophodne informacije!", "Greška");
-                    break;
-            }
+            if (surgery_rb.IsChecked == false && appt_tb.IsChecked == false) MessageBox.Show("Niste uneli sve neophodne informacije!", "Greška"); 
+            else if(viewModel.ScheduleReferral()==0) this.Close();
+
         }
 
         private void PatientButton_Click(object sender, RoutedEventArgs e)

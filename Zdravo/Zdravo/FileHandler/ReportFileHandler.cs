@@ -10,7 +10,7 @@ namespace Zdravo.FileHandler
     {
         private static readonly string filePath = "data/reports.csv";
         private static readonly string regexString = "#(\\d+)#(\\d+)#(\\w+)#(\\d+/\\d+/\\d+)#([\\w\\s]+)#([\\w\\s]+)";
-        //|1|43243|F22|8/10/2021|Polomljena noga
+                                                    //#  id  # jmbg # sifra#  datum         # dijagnoza # anamneza
 
         public List<object> Read()
         {
@@ -37,10 +37,14 @@ namespace Zdravo.FileHandler
             return list;
         }
 
-        public void Write(string[] newLines)
+        public int Write(string[] newLines)
         {
-            System.IO.File.WriteAllText(filePath, "");
-            System.IO.File.WriteAllLines(filePath, newLines);
+            try
+            {
+                System.IO.File.WriteAllText(filePath, "");
+                System.IO.File.WriteAllLines(filePath, newLines);
+                return 0;
+            } catch { return -1; }
 
 
         }

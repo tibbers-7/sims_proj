@@ -13,14 +13,15 @@ namespace Repository
     public class PrescriptionRepository
     {
         public List<Prescription> prescriptions;
-        private PrescriptionFileHandler fileHandler=new PrescriptionFileHandler();
+        private readonly PrescriptionFileHandler fileHandler=new PrescriptionFileHandler();
+        private int errorCode;
 
         public PrescriptionRepository()
         {
-            InitPrescription();
+            InitPrescriptions();
         }
 
-        private void InitPrescription()
+        private void InitPrescriptions()
         {
             List<object> list = fileHandler.Read();
             prescriptions = new List<Prescription>();
@@ -30,9 +31,9 @@ namespace Repository
                 prescriptions.Add(presc);
             }
         }
-        public void AddNew(Prescription prescription)
+        public int AddNew(Prescription prescription)
         {
-            prescription.Id=prescriptions.Count+1;
+            prescription.Id=prescriptions.Last().Id+1;
             int listCount = prescriptions.Count;
             string[] newLines = new string[listCount + 1];
             for (int i = 0; i < listCount; i++)
@@ -40,8 +41,9 @@ namespace Repository
                 newLines[i] = prescriptions[i].ToCSV();
             }
             newLines[listCount] = prescription.ToCSV();
-            fileHandler.Write(newLines);
-            InitPrescription();
+            errorCode=fileHandler.Write(newLines);
+            InitPrescriptions();
+            return errorCode;
         }
 
     }

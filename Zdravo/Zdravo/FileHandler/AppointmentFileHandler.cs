@@ -43,10 +43,14 @@ namespace FileHandler
             return list;
         }
 
-        public void Write(string[] newLines)
+        public int Write(string[] newLines)
         {
-            System.IO.File.WriteAllText(filePath, "");
-            System.IO.File.WriteAllLines(filePath, newLines);
+            try
+            {
+                System.IO.File.WriteAllText(filePath, "");
+                System.IO.File.WriteAllLines(filePath, newLines);
+                return 0;
+            } catch { return -1; }
         }
     }
 }

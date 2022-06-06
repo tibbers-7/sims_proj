@@ -9,6 +9,7 @@ using FileHandler;
 using System.Collections.ObjectModel;
 using Zdravo.FileHandler;
 using System.Collections.Generic;
+using System;
 
 namespace Repository
 {
@@ -28,7 +29,7 @@ namespace Repository
 
         internal void BindDoctors()
         {
-            initChosenDoctors();
+            InitChosenDoctors();
             foreach (Patient patient in patients) {
                 foreach (ChosenDoctors chosenDoctor in chosenDoctors)
                 {
@@ -38,7 +39,7 @@ namespace Repository
             }
         }
 
-        private void initChosenDoctors()
+        private void InitChosenDoctors()
         {
             ChosenDoctorsFileHandler chosenDoctorsFileHandler = new ChosenDoctorsFileHandler();
             List<object> list = chosenDoctorsFileHandler.Read();
@@ -95,18 +96,25 @@ namespace Repository
             {
                 if (p.Id == patientId)
                 {
-                    p.Reports.Remove(reportRepo.GetReportById(reportId));
+                    p.Reports.Remove(reportRepo.GetById(reportId));
                 }
             }
         }
-        internal void UpdateReport(Report rpt,int patientId)
+
+        internal void AddReport(int patientId, Report report)
         {
-            foreach(Patient p in patients)
+            Patient patient = GetById(patientId);
+            patient.AddReport(report);
+        }
+
+        internal void UpdateReport(Report report,int patientId)
+        {
+            foreach(Patient patient in patients)
             {
-                if (p.Id == patientId)
+                if (patient.Id == patientId)
                 {
-                    p.Reports.Remove(reportRepo.GetReportById(rpt.Id));
-                    p.Reports.Add(rpt);
+                    patient.Reports.Remove(reportRepo.GetById(report.Id));
+                    patient.Reports.Add(report);
                 }
             }
         }

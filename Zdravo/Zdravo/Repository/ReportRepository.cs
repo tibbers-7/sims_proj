@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using FileHandler;
 using Model;
 using Zdravo.FileHandler;
@@ -7,8 +8,8 @@ namespace Repository
 {
     public class ReportRepository
     {
-        private ReportFileHandler fileHandler=new ReportFileHandler();
-        public List<Report> reports;
+        private readonly ReportFileHandler fileHandler=new ReportFileHandler();
+        private List<Report> reports;
 
         public ReportRepository()
         {
@@ -31,7 +32,7 @@ namespace Repository
             return reports;
         }
 
-        public Report GetReportById(int id)
+        public Report GetById(int id)
         {
             foreach (Report report in reports)
             {
@@ -40,9 +41,9 @@ namespace Repository
             return null;
         }
 
-        public void AddNew(Report report)
+        public int AddNew(Report report)
         {
-            report.Id = reports.Count + 1;
+            report.Id = reports.Last().Id + 1;
             int listCount = reports.Count;
             string[] newLines = new string[listCount + 1];
             for (int i = 0; i < listCount; i++)
@@ -50,11 +51,12 @@ namespace Repository
                 newLines[i] = reports[i].ToCSV();
             }
             newLines[listCount] = report.ToCSV();
-            fileHandler.Write(newLines);
+            int errorCode=fileHandler.Write(newLines);
             InitReports();
+            return errorCode;
         }
 
-        internal void Update(Report newReport)
+        internal int Update(Report newReport)
         {
             int listCount = reports.Count;
             string[] newLines = new string[listCount];
@@ -64,12 +66,14 @@ namespace Repository
                 if (newReport.Id != report.Id)
                 {
                     newLines[i] = report.ToCSV();
-                    i++;
+                    
                 }
                 else newLines[i] = newReport.ToCSV();
+                i++;
             }
-            fileHandler.Write(newLines);
+            int errorCode=fileHandler.Write(newLines);
             InitReports();
+            return errorCode;
         }
     }
 }

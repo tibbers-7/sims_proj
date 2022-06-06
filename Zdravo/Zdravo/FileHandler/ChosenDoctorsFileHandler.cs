@@ -40,7 +40,7 @@ namespace Zdravo.FileHandler
             return list;
         }
 
-        public void Write(string[] newLines)
+        public int Write(string[] newLines)
         {
             throw new NotImplementedException();
         }

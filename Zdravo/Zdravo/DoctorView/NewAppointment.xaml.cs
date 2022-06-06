@@ -7,12 +7,18 @@ namespace Zdravo
         private NewAppointmentViewModel viewModel;
         private DoctorHomeViewModel callerWindow;
         private int apptId;
+        
 
         public NewAppointment(DoctorHomeViewModel callerWindow, int apptId,int doctorId,bool isEditable)
         {
             
             InitializeComponent();
-            if (apptId == 0) patientButton.Content = "Izaberi pacijenta";
+            viewModel = new NewAppointmentViewModel(apptId, doctorId);
+            if (apptId == 0)
+            {
+                patientButton.Content = "Izaberi pacijenta";
+                viewModel.operationMessage = "dodat";
+            }
             else patientId_tb.IsReadOnly = true;
             
             if (!isEditable)
@@ -27,30 +33,17 @@ namespace Zdravo
 
             this.callerWindow = callerWindow;
             this.apptId = apptId;
-            viewModel = new NewAppointmentViewModel(apptId, doctorId);
+            
             DataContext = viewModel;   
         }
         
         private void ScheduleButton_Click(object sender, RoutedEventArgs e)
         {
-            if (rooms_cb.SelectedIndex==-1 | duration_tb.Text.Equals("0") | date_tb.Text.Equals(""))
+            if (rooms_cb.SelectedIndex == -1 | duration_tb.Text.Equals("0") | date_tb.Text.Equals("")) MessageBox.Show("Nisu unete svi potrebne informacije.", "Greška");
+            else if (viewModel.AppointmentManagement() == 0)
             {
-                MessageBox.Show("Nisu unete svi potrebne informacije.", "Greška");
-                return;
-            } 
-            int errorCode=viewModel.CreateAppointment();
-            switch (errorCode)
-            {
-                case 0:
-                    callerWindow.RefreshAppointments();
-                    this.Close();
-                    break;
-                case 1:
-                    MessageBox.Show("Pacijent sa tim JMBG ne postoji.", "Greška");
-                    break;
-                case 2:
-                    MessageBox.Show("Vreme koje ste odabrali za zakazivanje termina je prošlo.", "Greška");
-                    break;
+                callerWindow.RefreshAppointments();
+                this.Close();
             }
 
         }

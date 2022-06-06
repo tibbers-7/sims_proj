@@ -22,24 +22,19 @@ namespace Zdravo.Service
             this.reportRepo = reportRepo;
         }
 
-        public void AddNew(Drug newDrug)
-        {
-            drugRepo.AddNew(newDrug);
-        }
-
-        public void Update(Drug newDrug)
-        {
-            drugRepo.Update(newDrug);
-        }
-
         internal List<Drug> GetValidDrugs()
         {
-            return drugRepo.GetValidDrugs();
+            List<Drug> validDrugs = new List<Drug>();
+            foreach (Drug drug in drugRepo.GetAll())
+            {
+                if (drug.Status != Zdravo.Status.denied) validDrugs.Add(drug);
+            }
+            return validDrugs;
         }
 
-        internal List<Drug> GetAllDrugs()
+        internal List<Drug> GetAll()
         {
-            return drugRepo.GetAllDrugs();
+            return drugRepo.GetAll();
         }
 
         internal Drug GetById(int drugId)
@@ -47,14 +42,19 @@ namespace Zdravo.Service
             return drugRepo.GetById(drugId);
         }
 
-        public Drug GetByName(string selectedDrug)
+        internal List<DrugReport> GetAllReports()
         {
-            return drugRepo.GetByName(selectedDrug);
+            return reportRepo.GetAll();
         }
 
-        internal bool ChangeStatus(bool isAccepted, int drugId)
+        internal int ChangeStatus(bool isAccepted, int drugId)
         {
-            return drugRepo.ChangeStatus(isAccepted, drugId);
+            Drug drug = GetById(drugId);
+            if (drug == null) return 1;
+            if (isAccepted) drug.Status = Zdravo.Status.accepted;
+            else drug.Status = Zdravo.Status.reported;
+
+            return drugRepo.ChangeStatus(drug);
         }
 
         internal void CreateDrugReport(int drugId, string reason)
@@ -63,18 +63,84 @@ namespace Zdravo.Service
             reportRepo.AddNew(report);
         }
 
-        public List<DrugReport> GetAllReports() {
-            return reportRepo.GetAll();
+        internal Drug GetByName(string selectedDrug)
+        {
+            return drugRepo.GetByName(selectedDrug);
         }
 
-        public List<string> GetAllDrugNames()
+        internal List<string> GetAllDrugNames()
         {
             return drugRepo.GetAllDrugNames();
         }
 
-        public void DeleteReport(int id)
+        internal ObservableCollection<Drug> SetAllergies(ObservableCollection<Drug> drugs, Patient patient)
+        {
+            if (patient.Allergens == null) return drugs;
+            ObservableCollection<Drug> drugsUpdated = new ObservableCollection<Drug>();
+            
+
+            foreach (Drug drug in drugs)
+            {
+                drug.AllergenConflicts = new List<string>();
+                drugsUpdated.Add(CompareDrugToAllergens(drug, patient));
+            }
+
+            return drugsUpdated;
+        }
+
+        internal void Update(Drug newDrug)
+        {
+            drugRepo.Update(newDrug);
+        }
+
+        internal void DeleteReport(int id)
         {
             reportRepo.Delete(id);
         }
+
+        internal void AddNew(Drug newDrug)
+        {
+            drugRepo.AddNew(newDrug);
+        }
+
+        private Drug CompareDrugToAllergens(Drug drug, Patient patient)
+        {
+            foreach (Allergen allergen in patient.Allergens)
+            {
+                drug=SetAllergicStatus(drug, allergen);
+            }
+            return drug;
+        }
+
+        private Drug SetAllergicStatus(Drug drug, Allergen allergen)
+        {
+            if (allergen.Name.ToLower().Equals(drug.Name.ToLower()))
+            {
+                drug.IsAllergic = true;
+                drug.AllergenConflicts.Add(drug.Name);
+            }
+            else
+            {
+                foreach (string ingredient in drug.Ingredients)
+                {
+                    if (allergen.Name.ToLower().Equals(ingredient.ToLower()))
+                    {
+                        drug.IsAllergic = true;
+                        drug.AllergenConflicts.Add(ingredient);
+                    }
+                }
+            }
+            return drug;
+        }
+
+        internal bool GetAllergenConflicts(int drugId, ObservableCollection<Drug> drugs)
+        {
+            foreach (Drug drugUpdated in drugs)
+            {
+                if (drugUpdated.Id == drugId) return drugUpdated.IsAllergic;
+            }
+            return false;
+        }
+
     }
 }

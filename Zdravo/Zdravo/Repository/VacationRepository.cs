@@ -11,14 +11,13 @@ namespace Repository
 {
     public class VacationRepository
     {
-        private VacationFileHandler fileHandler=new VacationFileHandler();
-        private DoctorRepository doctorRepository;
+        private readonly VacationFileHandler fileHandler=new VacationFileHandler();
         private List<Vacation> vacations;
-        private List<VacationString> vacationsString;
+        private List<VacationString> vacationStrings;
+        private int errorCode;
 
-        public VacationRepository(DoctorRepository doctorRepository)
+        public VacationRepository()
         {
-            this.doctorRepository = doctorRepository;
             InitVacations();
         }
 
@@ -26,20 +25,19 @@ namespace Repository
         {
             List<object> vacationList = fileHandler.Read();
 
-            vacationsString = new List<VacationString>();
+            vacationStrings = new List<VacationString>();
             vacations = new List<Vacation>();
             foreach (object vacationObj in vacationList)
             {
                 Vacation vacation=(Vacation)vacationObj;
                 VacationString vacString = vacation.ToString();
-                vacationsString.Add(vacString);
+                vacationStrings.Add(vacString);
                 vacations.Add(vacation);
             }
             
-            RemoveOldLogs();
         }
 
-        public Vacation GetVacationById(int id)
+        public Vacation GetById(int id)
         {
             foreach (Vacation vacation in vacations)
             {
@@ -47,23 +45,8 @@ namespace Repository
             }
             return null;
         }
-        public ObservableCollection<VacationRecord> getPendingVacationRecords()
-        {
-            ObservableCollection<VacationRecord> records= new ObservableCollection<VacationRecord>();
-            foreach(Vacation vacation in vacations)
-            {
-                if (vacation.Status == Zdravo.Status.waiting)
-                {
-                    DoctorRepository doctorRepository = new DoctorRepository();
-                    Doctor doctor = doctorRepository.getById(vacation.DoctorId);
-                    //startDate.ToString("dd/MM/yyyy") + " - " + endDate.ToString("dd/MM/yyyy");
-                    string period = vacation.StartDate.ToString("dd/MM/yyyy") + "-" + vacation.EndDate.ToString("dd/MM/yyyy");
-                    records.Add(new VacationRecord(vacation.Id, doctor.Name+" "+doctor.LastName, doctor.Specialization,period,vacation.Reason));
-                }
-            }
-            return records;
-        }
-        public void AddNew(Vacation vacation)
+
+        public int AddNew(Vacation vacation)
         {
             
             vacation.Id = vacations.Last().Id+1;
@@ -75,37 +58,12 @@ namespace Repository
                 newLines[i] = vacations[i].ToCSV();
             }
             newLines[listCount] = vacation.ToCSV();
-            fileHandler.Write(newLines);
+            errorCode= fileHandler.Write(newLines);
             InitVacations();
+            return errorCode;
         }
 
-        internal List<VacationString> GetDoctorVacationStrings(int doctorId)
-        {
-            List<VacationString> vacStrings = new List<VacationString>();
-            foreach(VacationString vacationString in vacationsString)
-            {
-                if(vacationString.DoctorId==doctorId) vacStrings.Add(vacationString);
-            }
-            return vacStrings;
-        }
-
-        internal bool CheckSpecialization(Doctor d, Vacation newVacation)
-        {
-            int counter = 0;
-            foreach(Vacation oldVacation in vacations)
-            {
-                    Doctor doctor = doctorRepository.getById(oldVacation.DoctorId);
-                    if (doctor.Specialization.Equals(d.Specialization) && doctor.Id != d.Id && oldVacation.Status!=Zdravo.Status.denied)
-                    {
-                        if (FindVacationConflicts(newVacation, oldVacation)) counter++;
-                    }
-                
-            }
-
-            if (counter > 1) return false;
-            return true;
-        }
-        internal void processVacation(int id,int option)
+        internal void processVacation(int id, int option)
         {
             foreach (Vacation vacation in vacations)
             {
@@ -124,26 +82,41 @@ namespace Repository
             fileHandler.Write(newLines);
             InitVacations();
         }
-        internal static bool FindVacationConflicts(Vacation newVacation, Vacation oldVacation)
+
+        internal ObservableCollection<VacationRecord> getPendingVacationRecords()
         {
-            DateTime newStartDate = newVacation.StartDate.ToDateTime(TimeOnly.Parse("00:00 AM"));
-            DateTime newEndDate = newVacation.EndDate.ToDateTime(TimeOnly.Parse("00:00 AM"));
-            DateTime oldStartDate = oldVacation.StartDate.ToDateTime(TimeOnly.Parse("00:00 AM"));
-            DateTime oldEndDate = oldVacation.EndDate.ToDateTime(TimeOnly.Parse("00:00 AM"));
-
-            int newEndOldStart = DateTime.Compare(oldStartDate, newEndDate); 
-            int newStartOldEnd = DateTime.Compare(newStartDate, oldEndDate); 
-            int newStartOldStart = DateTime.Compare(newStartDate, oldStartDate); 
-            int newEndOldEnd = DateTime.Compare(newEndDate, oldEndDate);
-
-            if (newStartOldStart == 0) return true; // old and new start at the same date
-            if (newStartOldStart >= 0 && newStartOldEnd <= 0) return true; //new starts after old starts and old ends after new starts 
-            if (newStartOldStart <= 0 && newEndOldStart <= 0) return true; //old starts after new starts, old ends after new ends
-            if (newStartOldStart<=0 && newEndOldEnd>=0) return true; //old date is inside new date
-            if (newStartOldStart>=0 && newEndOldEnd<=0) return true; //old date encapsulates new date
-
-            return false;
+            ObservableCollection<VacationRecord> records = new ObservableCollection<VacationRecord>();
+            foreach (Vacation vacation in vacations)
+            {
+                if (vacation.Status == Zdravo.Status.waiting)
+                {
+                    DoctorRepository doctorRepository = new DoctorRepository();
+                    Doctor doctor = doctorRepository.getById(vacation.DoctorId);
+                    //startDate.ToString("dd/MM/yyyy") + " - " + endDate.ToString("dd/MM/yyyy");
+                    string period = vacation.StartDate.ToString("dd/MM/yyyy") + "-" + vacation.EndDate.ToString("dd/MM/yyyy");
+                    records.Add(new VacationRecord(vacation.Id, doctor.Name + " " + doctor.LastName, doctor.Specialization, period, vacation.Reason));
+                }
+            }
+            return records;
         }
+
+        internal List<VacationString> GetDoctorVacationStrings(int doctorId)
+        {
+            List<VacationString> vacStrings = new List<VacationString>();
+            foreach(VacationString vacationString in vacationStrings)
+            {
+                if(vacationString.DoctorId==doctorId) vacStrings.Add(vacationString);
+            }
+            return vacStrings;
+        }
+
+        internal List<Vacation> GetAll()
+        {
+            InitVacations();
+            return vacations;
+        }
+
+        
 
         internal void RemoveOldLogs()
         {

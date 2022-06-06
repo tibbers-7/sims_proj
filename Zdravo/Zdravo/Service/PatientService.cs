@@ -25,7 +25,7 @@ namespace Service
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
             doctorRepository = new DoctorRepository();
 
-            foreach (Report report in reportRepository.reports)
+            foreach (Report report in reportRepository.GetReports())
             {
                 if(p.GetById(report.PatientId)!=null) p.GetById(report.PatientId).AddReport(report);
             }
@@ -89,6 +89,7 @@ namespace Service
 
             return doctor;
         }
+
     }
 
         

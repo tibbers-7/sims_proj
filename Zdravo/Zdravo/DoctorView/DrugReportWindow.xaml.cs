@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using Zdravo.ViewModel;
 
 namespace Zdravo.DoctorView
@@ -22,6 +10,8 @@ namespace Zdravo.DoctorView
     {
         private DrugReportViewModel viewModel;
         private DoctorHomeViewModel callerWindow;
+        private int errorCode;
+
         public DrugReportWindow(DoctorHomeViewModel callerWindow,int drugId)
         {
             viewModel = new DrugReportViewModel(drugId);
@@ -38,10 +28,12 @@ namespace Zdravo.DoctorView
             }
             else
             {
-                viewModel.CreateDrugReport();
-                callerWindow.RefreshDrugs();
-                MessageBox.Show("Uspešno ste prijavili lek!", "Obaveštenje");
-                this.Close();
+                errorCode = viewModel.CreateDrugReport();
+                if (errorCode == 0)
+                {
+                    callerWindow.RefreshDrugs();
+                    this.Close();
+                }
             }
             
         }

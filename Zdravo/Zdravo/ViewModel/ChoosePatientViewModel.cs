@@ -1,11 +1,5 @@
-﻿using Controller;
-using Model;
-using System;
-using System.Collections.Generic;
+﻿using Model;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Zdravo.Controller;
 using Zdravo.DoctorWindows;
 
@@ -24,7 +18,7 @@ namespace Zdravo.ViewModel
 
         internal void ShowPatient(int id)
         {
-            PatientChart chart = new PatientChart(0, id);
+            PatientChart chart = new PatientChart(id);
             chart.Show();
         }
     }

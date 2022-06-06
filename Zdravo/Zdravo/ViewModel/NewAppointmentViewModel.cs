@@ -49,9 +49,10 @@ namespace Zdravo.ViewModel
 
         private Appointment appt;
         private int id;
+        internal string operationMessage = "izmenjen";
 
         private AppointmentController apptController;
-
+        private int errorCode;
 
         public NewAppointmentViewModel(int id,int doctorId)
         {
@@ -59,30 +60,31 @@ namespace Zdravo.ViewModel
             apptController = app.appointmentController;
             this.id = id;
             this.doctorId = doctorId;
-            // overriding the default empty window with specific appointment details
-            if (id != 0)
-            {
-                appt = apptController.GetAppointment(id);
-                patientId = appt.Patient;
-                roomId = appt.Room;  
-                duration = appt.Duration;
-                date = appt.Date.ToString("dd/MM/yyyy");
+
+            if (id != 0) InitFields();
+            
+        }
+
+        private void InitFields()
+        {
+            appt = apptController.GetById(id);
+            patientId = appt.Patient;
+            roomId = appt.Room;
+            duration = appt.Duration;
+            date = appt.Date.ToString("dd/MM/yyyy");
 
 
-                Regex regexObj = new Regex("(\\d+):(\\d{2})");
-                Match matchResult = regexObj.Match(appt.Time.ToString());
-                hour=int.Parse(matchResult.Groups[1].Value);
-                minutes=int.Parse(matchResult.Groups[2].Value);
-                emergency = appt.Emergency;
-
-                
-            }
+            Regex regexObj = new Regex("(\\d+):(\\d{2})");
+            Match matchResult = regexObj.Match(appt.Time.ToString());
+            hour = int.Parse(matchResult.Groups[1].Value);
+            minutes = int.Parse(matchResult.Groups[2].Value);
+            emergency = appt.Emergency;
         }
 
         internal void ShowChart(int id)
         {
-            Appointment appt= apptController.GetAppointment(id);
-            PatientChart chartWindow = new PatientChart(0, appt.Patient);
+            Appointment appt= apptController.GetById(id);
+            PatientChart chartWindow = new PatientChart(appt.Patient);
             chartWindow.Show();
         }
 
@@ -92,12 +94,28 @@ namespace Zdravo.ViewModel
             patientWindow.Show();
         }
 
-        public int CreateAppointment()
+        public int AppointmentManagement()
         { 
-            if (id == 0) return apptController.CreateAppointment(patientId,doctorId, roomId, hour, minutes, duration,date,emergency);
-            else return apptController.UpdateAppointment(id, patientId,doctorId, roomId, hour, minutes, duration,date,emergency);
+            
+            if (id == 0) errorCode=apptController.CreateAppointment(patientId,doctorId, roomId, hour, minutes, duration,date,emergency);
+            else errorCode= apptController.UpdateAppointment(id, patientId,doctorId, roomId, hour, minutes, duration,date,emergency);
+            switch (errorCode)
+            {
+                case 0:
+                    
+                    string message = "Uspešno " + operationMessage + " pregled.";
+                    MessageBox.Show(message, "Obaveštenje");
+                    break;
+                case 1:
+                    MessageBox.Show("Pacijent sa tim JMBG ne postoji.", "Greška");
+                    break;
+                case 2:
+                    MessageBox.Show("Vreme koje ste odabrali za zakazivanje termina je prošlo.", "Greška");
+                    break;
+            }
+            return errorCode;
 
-         }
+        }
 
         public void UpdatePatient(int patientId)
         {

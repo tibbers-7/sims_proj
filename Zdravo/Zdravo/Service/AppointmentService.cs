@@ -1,10 +1,7 @@
-// File:    AppointmentService.cs
-// Author:  Anja
-// Created: Monday, March 28, 2022 3:47:00 PM
-// Purpose: Definition of Class AppointmentService
 
 using Model;
 using Repository;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,141 +12,95 @@ namespace Zdravo.Service
    public class AppointmentService
    {
       private AppointmentRepository appointmentRepo;
-      private PatientRepository patientRepo;
+      private PatientService patientService;
       private DrugRepository drugRepo;
       private ReportRepository reportRepo;
       private PrescriptionRepository prescriptionRepo;
-      
-        public AppointmentService(AppointmentRepository aRepo, DrugRepository dRepo, PrescriptionRepository prescRepo,ReportRepository rRepo, PatientRepository pRepo)
+        private List<Appointment> doctorsAppointments;
+
+        public AppointmentService(AppointmentRepository aRepo, DrugRepository dRepo, PrescriptionRepository prescRepo,ReportRepository rRepo, PatientService pService)
         {
             appointmentRepo= aRepo;
             prescriptionRepo = prescRepo;
             drugRepo=dRepo;
             reportRepo=rRepo;
-            patientRepo=pRepo;
+            patientService=pService;
         }
 
         internal List<Appointment> GetAppointmentsForDoctor(bool isUpcoming,int doctorId)
         {
-            return appointmentRepo.GetAppointmentsForDoctor(isUpcoming,doctorId);
+            doctorsAppointments = new List<Appointment>();
+            foreach (Appointment appt in appointmentRepo.GetAll())
+            {
+                if (appt.Doctor == doctorId)
+                {
+                    DateTime apptDateTime = appt.Date.ToDateTime(appt.Time);
+                    int cmp = DateTime.Compare(apptDateTime, DateTime.Now);
+                    if ((cmp >= 0 && isUpcoming) | (cmp < 0 && !isUpcoming))
+                    {
+                        if (appt.Status == Zdravo.Status.accepted)
+                            doctorsAppointments.Add(appt);
+                    }
+                }
+            }
+            return doctorsAppointments;
         }
 
         internal List<Appointment> GetAll()
         {
             return appointmentRepo.GetAll();
         }
-        public List<Appointment> GetByDoctorID(int idDoctor)
-        {
-            List<Appointment> result= new List<Appointment>();
-            foreach (Appointment appt in appointmentRepo.GetAll())
-            {
-                if (appt.Doctor==idDoctor) result.Add(appt);
-            }
 
-            return result;
-        }
+    
 
         internal ObservableCollection<AppointmentRecord> GetAllRecords()
         {
             return appointmentRepo.GetAllRecords();
         }
 
-        public List<Appointment> GetByRoomID(int idRoom)
-      {
-            List<Appointment> result = new List<Appointment>();
-            foreach (Appointment appt in appointmentRepo.GetAll())
+
+        public int CreateAppointment(Appointment appt,int patientId,string doctorSpec)
+        {
+            Patient p = patientService.GetById(patientId);
+            if (p == null) return 1;
+
+            if (Tools.IsInPast(appt.Date, appt.Time)) return 2;
+
+            if (doctorSpec!=null)
             {
-                if (appt.Room.Equals(idRoom)) result.Add(appt);
+                Doctor d = patientService.GetChosenDoctor(doctorSpec, patientId);
+                if (d == null) return 2;
+                appt.Doctor = d.Id;
             }
 
-            return result;
+            return appointmentRepo.AddNew(appt);
         }
 
-        
-
-        public List<Appointment> GetByPatientID(int idPatient)
-        {
-            List<Appointment> result = new List<Appointment>();
-            foreach (Appointment appt in appointmentRepo.GetAll())
-            {
-                if (appt.Patient == idPatient) result.Add(appt);
-            }
-
-            return result;
-        }
-
-        internal bool CheckAllergies(int appointmentId, Drug drug)
-        {
-            Appointment appointment = appointmentRepo.GetByID(appointmentId);
-            Patient patient = patientRepo.GetById(appointment.Patient);
-            if (patient.Allergens == null) return true;
-
-            foreach (Allergen allergen in patient.Allergens)
-            {
-                if (allergen.Name.ToLower().Equals(drug.Name.ToLower())) return false;
-                foreach (string ingredient in drug.Ingredients)
-                {
-                    if (allergen.Name.ToLower().Equals(ingredient.ToLower())) return false;
-                }
-            }
-            return true;
-        }
-
-        internal ObservableCollection<Appointment> SearchTable(int doctorId,DateOnly date, int hours, int minutes)
-        {
-            return appointmentRepo.SearchTable(doctorId,date, hours, minutes);
-        }
-
-        
-
-        public void CreateAppointment(Appointment appt)
-        {
-            appointmentRepo.AddNew(appt);
-        }
-
-        internal Appointment GetAppointment(int id)
+        internal Appointment GetById(int id)
         {
             return appointmentRepo.GetByID(id);
         }
 
-        public bool DeleteAppointment(int id)
+        public int DeleteAppointment(int id)
       {
-         return appointmentRepo.Delete(id);
+            Appointment appointment = GetById(id);
+            if (appointment == null) return 1;
+
+            if (patientService.GetById(appointment.Patient) == null) return 2;
+            patientService.GetById(appointment.Patient).RemoveAppt(appointment);
+            return appointmentRepo.Delete(id);
       }
 
-        internal void UpdateAppointment(Appointment appt)
+        internal int UpdateAppointment(Appointment appt)
         {
-            appointmentRepo.Update(appt);
+            Patient p = patientService.GetById(appt.Patient);
+            if (p == null) return 1;
+            if (Tools.IsInPast(appt.Date,appt.Time)) return 2;
+
+
+            return appointmentRepo.Update(appt);
 
         }
-
-
-        internal Report UpdateReport(int patientId,int reportId, DateOnly date, string diagnosis, string reportString, string anamnesis)
-        {
-            Report rpt=new Report() { PatientId=patientId, Id=reportId, ReportString= reportString, Diagnosis=diagnosis,Date=date, Anamnesis=anamnesis };
-            reportRepo.Update(rpt); //updating in file
-            patientRepo.UpdateReport(rpt,patientId); //updating in patient list
-            return rpt;
-        }
-
-        
-
-        internal void AddReport(Report rpt)
-        {
-            reportRepo.AddNew(rpt);
-        }
-
-        internal Report GetReportById(int id)
-        {
-            return reportRepo.GetReportById(id);
-        }
-
-        internal void AddPrescription(Prescription p,int drugId)
-        {
-            p.DrugId = drugId;
-            prescriptionRepo.AddNew(p);
-        }
-
         
     }
 }

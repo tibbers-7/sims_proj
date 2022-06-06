@@ -18,6 +18,7 @@ namespace Zdravo.ViewModel
         private string reason;
         public string Reason { get { return reason; } set { reason = value; } }
         private DrugController drugController;
+        private int errorCode;
 
         public DrugReportViewModel(int drugId)
         {
@@ -28,10 +29,23 @@ namespace Zdravo.ViewModel
             name= d.Name;
         }
 
-        internal bool CreateDrugReport()
+        internal int CreateDrugReport()
         {
             drugController.CreateDrugReport(drugId, reason);
-            return drugController.ChangeStatus(false, drugId);
+            errorCode= drugController.ChangeStatus(false, drugId);
+            switch (errorCode)
+            {
+                case 0:
+                    MessageBox.Show("Uspešno ste prijavili lek!", "Obaveštenje");
+                    break;
+                case 1:
+                    MessageBox.Show("Lek ne postoji u bazi!", "Interna greška");
+                    break;
+                case -1:
+                    MessageBox.Show("Neuspešan upis u datoteku!", "Interna greška");
+                    break;
+            }
+            return errorCode;
         }
     }
 }

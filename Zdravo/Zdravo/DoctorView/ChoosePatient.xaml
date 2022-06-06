@@ -7,7 +7,11 @@
          xmlns:viewmodel="clr-namespace:Zdravo.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ChoosePatientViewModel}"
         mc:Ignorable="d"
         Title="ChoosePatient" Height="391" Width="306" FontFamily="Yu Gothic" Background="#FFF0F7F4">
+    
+    
     <Grid  Margin="0,10,0,-6">
+        
+        
         <Border BorderBrush="#70ABAF" Background="#FF70ABAF" BorderThickness="1" CornerRadius="8" Margin="159,286,86,18">
             <Grid>
                 <Button Content="" Margin="7,0,10,10" Click="CancelButton_Click" BorderBrush="{x:Null}">
@@ -18,6 +22,8 @@
                 <Label Content="Otkaži" Foreground="White" Margin="7,28,-7,-28"/>
             </Grid>
         </Border>
+        
+        
         <Border BorderBrush="#FF70ABAF" BorderThickness="4" CornerRadius="8,8,8,8" Margin="10,0,10,85">
         <DataGrid x:Name="patientTable" ItemsSource="{Binding Patients, UpdateSourceTrigger=PropertyChanged}" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" IsReadOnly ="True" SelectionMode="Single" ColumnWidth="*" Background="{x:Null}" Margin="6,6,6,6" GridLinesVisibility="Horizontal" BorderBrush="{x:Null}">
             <DataGrid.Resources>
@@ -32,6 +38,8 @@
             </DataGrid.Columns>
         </DataGrid>
         </Border>
+        
+        
         <Border BorderBrush="#70ABAF" Background="#FF70ABAF" BorderThickness="1" CornerRadius="8" Margin="81,286,162,18">
             <Grid>
                 <Button x:Name="Schedule" Content="" Margin="7,0,7,9" Click="AcceptButton_Click" BorderBrush="{x:Null}">

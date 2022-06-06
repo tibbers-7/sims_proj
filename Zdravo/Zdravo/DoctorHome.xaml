@@ -208,7 +208,7 @@
                                                     <Trigger Property="Text" Value="DA">
                                                         <Setter Property="Background">
                                                             <Setter.Value>
-                                                                <ImageBrush ImageSource="Resources\alert.png" Stretch="Uniform"/>
+                                                                <ImageBrush ImageSource="C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\Resources\alert.png" Stretch="Uniform"/>
                                                             </Setter.Value>
                                                         </Setter>
                                                         <Setter Property="Foreground" Value="{x:Null}"/>
@@ -259,7 +259,7 @@
                                     <ImageBrush ImageSource="Resources/searchGreen.png"/>
                                 </Button.Background>
                             </Button>
-                            <TextBox HorizontalAlignment="Left" Margin="8,0,0,0" TextWrapping="Wrap" Text="{Binding SearchString}" VerticalAlignment="Center" Width="347" BorderBrush="#FF70ABAF"/>
+                            <TextBox HorizontalAlignment="Left" Margin="8,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Width="347" BorderBrush="#FF70ABAF"/>
                         </Grid>
                     </Border>
 
@@ -343,7 +343,7 @@
                                     <ImageBrush ImageSource="Resources/searchGreen.png"/>
                                 </Button.Background>
                             </Button>
-                            <TextBox HorizontalAlignment="Left" Margin="8,0,0,0" TextWrapping="Wrap" Text="{Binding SearchString}" VerticalAlignment="Center" Width="347" BorderBrush="#FF70ABAF"/>
+                            <TextBox HorizontalAlignment="Left" Margin="8,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Width="347" BorderBrush="#FF70ABAF"/>
                         </Grid>
                     </Border>
                 </Grid>
@@ -431,7 +431,12 @@
                         </Grid>
                     </Border>
                     <GroupBox Header="Lista Vaših odsustva" Margin="0,10,609,0">
-                        <DataGrid ItemsSource="{Binding Vacations}" AutoGenerateColumns="False" IsReadOnly="True" FontSize="13">
+                        <DataGrid x:Name="VacationTable" ItemsSource="{Binding Vacations}" AutoGenerateColumns="False" IsReadOnly="True" FontSize="13">
+                            <DataGrid.Resources>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <EventSetter Event="Control.MouseDoubleClick" Handler="VacationRow_DoubleClick"/>
+                                </Style>
+                            </DataGrid.Resources>
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" MaxWidth="0"/>
                                 <DataGridTextColumn Header="Period" Binding="{Binding Period}"  />

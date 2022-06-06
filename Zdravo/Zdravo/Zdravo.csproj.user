@@ -19,16 +19,13 @@
     <Compile Update="DoctorView\PatientChart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="managerView\AddDrug.xaml.cs">
+    <Compile Update="DoctorView\VacationWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="managerView\AddEquipment.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="managerView\BasicRenovation.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="managerView\DrugReportsReview.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="managerView\Equipment.xaml.cs">
@@ -70,12 +67,6 @@
     <Compile Update="SecretaryWindows\EmergencyAppointmentWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="SecretaryWindows\MeetingsWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="SecretaryWindows\Notification.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="SecretaryWindows\OrdersWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -83,9 +74,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="SecretaryHome.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="SecretaryWindows\VacationsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="SekretarHome.xaml.cs">
@@ -110,16 +98,13 @@
     <Page Update="DoctorView\PatientChart.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="managerView\AddDrug.xaml">
+    <Page Update="DoctorView\VacationWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="managerView\AddEquipment.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="managerView\BasicRenovation.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="managerView\DrugReportsReview.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="managerView\Equipment.xaml">
@@ -167,12 +152,6 @@
     <Page Update="SecretaryWindows\EmergencyAppointmentWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="SecretaryWindows\MeetingsWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="SecretaryWindows\Notification.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="SecretaryWindows\OrdersWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -180,9 +159,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SecretaryHome.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="SecretaryWindows\VacationsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SekretarHome.xaml">

@@ -7,6 +7,7 @@
         xmlns:Zdravo="clr-namespace:Zdravo" xmlns:viewmodel="clr-namespace:Zdravo.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ReferralViewModel}" x:Class="Zdravo.DoctorView.ReferralWindow"
         mc:Ignorable="d"
         Title="ReferralWindow" Height="431" Width="400" FontFamily="Yu Gothic">
+    
     <Window.Resources>
         <ControlTemplate x:Key="validationTemplate">
             <Grid Height="Auto" Width="Auto">
@@ -22,8 +23,9 @@
                 <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
             </Grid>
         </ControlTemplate>
-
     </Window.Resources>
+    
+    
     <Grid Background="#FFCBD8D2">
         <Grid.RowDefinitions>
             <RowDefinition Height="219*"/>

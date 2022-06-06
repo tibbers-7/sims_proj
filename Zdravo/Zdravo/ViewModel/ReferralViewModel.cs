@@ -32,7 +32,7 @@ namespace Zdravo.ViewModel
         public string CurrentDoctor { get { return currentDoctor; } set { currentDoctor = value; } }
         
         private AppointmentController apptController;
-       
+        private int errorCode;
 
         public ReferralViewModel(int doctorId)
         {
@@ -52,13 +52,29 @@ namespace Zdravo.ViewModel
 
         internal int ScheduleReferral()
         {
-            return apptController.CreateReferral(patientId,doctorId, doctorSpecialization, appt,emergency);
-            
+            errorCode= apptController.CreateReferral(patientId,doctorId, doctorSpecialization, appt,emergency);
+            switch (errorCode)
+            {
+                case 0:
+                    MessageBox.Show("Uspešno kreiran uput", "Obaveštenje");
+                    break;
+                case 1:
+                    MessageBox.Show("Pacijent ne postoji!", "Greška");
+                    break;
+                case 2:
+                    MessageBox.Show("Trenutno ne postoji lekar te specijalizacije u sistemu!", "Greška");
+                    break;
+                case 3:
+                    MessageBox.Show("Niste uneli sve neophodne informacije!", "Greška");
+                    break;
+            }
+            return errorCode;
+
         }
 
         internal void ShowChart()
         {
-            PatientChart chartWindow = new PatientChart(0, patientId);
+            PatientChart chartWindow = new PatientChart(patientId);
             chartWindow.Show();
         }
 

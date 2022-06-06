@@ -16,15 +16,14 @@ namespace Zdravo.Repository
 {
     public class AppointmentRepository
    {
-      public AppointmentFileHandler fileHandler=new AppointmentFileHandler();
-        private PatientController patientController;
+        private readonly AppointmentFileHandler fileHandler=new AppointmentFileHandler();
         private List<Appointment> appointments;
-        private List<Appointment> doctorAppts;
         private DoctorRepository doctorRepository;
         private PatientRepository patientRepository;
-
+        private int errorCode;
         public AppointmentRepository(DoctorRepository doctorRepository,PatientRepository patientRepository)
         {
+            
             InitList();
             this.patientRepository = patientRepository;
             this.doctorRepository=doctorRepository;
@@ -32,8 +31,9 @@ namespace Zdravo.Repository
 
         private void InitList()
         {
-            List<object> apptList= fileHandler.Read();
             appointments = new List<Appointment>();
+            List<object> apptList= fileHandler.Read();
+            
             foreach (object appt in apptList)
             {
                 Appointment appointment = (Appointment) appt;
@@ -42,93 +42,48 @@ namespace Zdravo.Repository
         }
 
         public List<Appointment> GetAll()
-      {
+        {
             InitList();
             return appointments;
          
-      }
+        }
+
+        //Darko
         public ObservableCollection<AppointmentRecord> GetAllRecords()
         {
             InitList();
-            ObservableCollection < AppointmentRecord > records = new ObservableCollection<AppointmentRecord>();
-            foreach(Appointment a in appointments)
+            ObservableCollection<AppointmentRecord> records = new ObservableCollection<AppointmentRecord>();
+            foreach (Appointment appointment in appointments)
             {
-                Patient p = patientRepository.GetById(a.Patient);
-                Doctor d = doctorRepository.getById(a.Doctor);
-                if (p!=null && d != null)
+                Patient patient = patientRepository.GetById(appointment.Patient);
+                Doctor doctor = doctorRepository.getById(appointment.Doctor);
+                if (patient != null && doctor != null)
                 {
-                    AppointmentRecord record = new AppointmentRecord(a.Id, p.Ime, p.Prezime, d.Name, d.LastName, d.Specialization, a.Date, a.Time,p.Id.ToString());
+                    AppointmentRecord record = new AppointmentRecord(appointment.Id, patient.Ime, patient.Prezime, doctor.Name, doctor.LastName, doctor.Specialization, appointment.Date, appointment.Time, patient.Id.ToString());
                     records.Add(record);
                 }
-                
+
             }
             return records;
-
         }
 
-        internal List<Appointment> GetAppointmentsForDoctor(bool isUpcoming,int doctorId)
+        public Appointment GetByID(int id)
         {
-            doctorAppts = new List<Appointment>();
-            foreach(Appointment appt in appointments)
-            {
-                if (appt.Doctor == doctorId)
-                { 
-                    DateTime apptDateTime = appt.Date.ToDateTime(appt.Time);
-                    int cmp = DateTime.Compare(apptDateTime,DateTime.Now);
-                    if ((cmp >= 0 && isUpcoming) | (cmp<0 && !isUpcoming))
-                    {
-                        if (appt.Status == Zdravo.Status.accepted)
-                            doctorAppts.Add(appt);
-                    }
-                }
-               
-            }
-            return doctorAppts;
-        }
-        public Appointment GetByID(int idAppointment)
-      {
             InitList();
             foreach (Appointment appointment in appointments)
             {
-                if (appointment.Id == idAppointment)
+                if (appointment.Id == id)
                 {
                     return appointment; 
                 }
             }
 
             return null;
-      }
-      
-      
-
-        internal ObservableCollection<Appointment> SearchTable(int doctorId,DateOnly date, int hours, int minutes)
-        {
-            ObservableCollection<Appointment> list=new ObservableCollection<Appointment>();
-            DateOnly _date;
-            TimeOnly _time=new TimeOnly(hours,minutes);
-            int cmp = DateTime.Compare(new DateTime(), date.ToDateTime(TimeOnly.Parse("12:00 AM")));
-            if (cmp==0) _date = DateOnly.FromDateTime(DateTime.Now); else _date = date;
-            DateTime datetime = _date.ToDateTime(_time);
-            
-            foreach(Appointment appointment in appointments)
-            {
-                if (appointment.Status == Zdravo.Status.accepted)
-                {
-                    if (appointment.Doctor == doctorId)
-                    {
-                        DateTime apptDatetime = appointment.Date.ToDateTime(appointment.Time);
-                        int cmp2 = DateTime.Compare(apptDatetime, datetime);
-                        if (cmp2 > 0) list.Add(appointment);   // Show appointments after the specified date and time
-                    }
-
-                }
-            }
-
-            return list;
         }
-
-        public void AddNew(Appointment appointment)
-      {
+      
+        public int AddNew(Appointment appointment)
+        {
+            appointment.Id = appointments.Last().Id + 1;
             int listCount = appointments.Count;
             string[] newLines = new string[listCount + 1];
             for (int i = 0; i < listCount; i++)
@@ -136,54 +91,42 @@ namespace Zdravo.Repository
                 newLines[i] = appointments[i].ToCSV();
             }
             newLines[listCount] = appointment.ToCSV();
-            fileHandler.Write(newLines);
+            errorCode=fileHandler.Write(newLines);
             InitList();
+            return errorCode;
         }
 
-        internal void Update(Appointment newAppt)
+        internal int Update(Appointment newAppt)
         {
             int listCount = appointments.Count;
             string[] newLines = new string[listCount];
             int i = 0;
             foreach (Appointment appt in appointments)
             {
-                if (appt.Id != newAppt.Id)
-                {
-                    newLines[i] = appt.ToCSV();
-                    i++;
-                }
+                if (appt.Id != newAppt.Id)  newLines[i] = appt.ToCSV();
                 else newLines[i] = newAppt.ToCSV();
+                i++;
             }
-            fileHandler.Write(newLines);
+            errorCode=fileHandler.Write(newLines);
             InitList();
+            return errorCode;
         }
 
-        public bool Delete(int idAppointment)
+        public int Delete(int idAppointment)
         {
 
-            Appointment appointment = GetByID(idAppointment);
-            if (appointment == null) return false;
-
-            if (patientController.GetById(appointment.Patient) == null) return false;
-            patientController.GetById(appointment.Patient).RemoveAppt(appointment);
-
             int listCount = appointments.Count;
-            string[] newLines = new string[listCount];
-
-            newLines = new string[listCount - 1];
+            string[] newLines = new string[listCount - 1];
             int i = 0;
             foreach (Appointment newApt in appointments)
             {
-                if (newApt.Id != appointment.Id)
-                {
-                    newLines[i] = newApt.ToCSV();
-                    i++;
-                }
+                if (newApt.Id != idAppointment)  newLines[i] = newApt.ToCSV();
+                i++;
             }
 
-            fileHandler.Write(newLines);
+            errorCode=fileHandler.Write(newLines);
             InitList();
-            return true;
+            return errorCode;
         }
 
 

@@ -88,10 +88,5 @@ namespace Zdravo.Controller
             return service.GetReports(patientId);
         }
 
-        internal void AddReport(Report report, Appointment appt)
-        {
-            Patient p = GetById(appt.Patient);
-            p.AddReport(report);
-        }
     }
 }

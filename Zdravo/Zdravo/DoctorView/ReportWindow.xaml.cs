@@ -46,7 +46,7 @@ namespace Zdravo.DoctorWindows
         private void AcceptButton_Click(object sender, RoutedEventArgs e)
         {
                 viewModel.AcceptClick(operation);
-                if (callerWindow != null) callerWindow.RefreshReports();
+                if (callerWindow != null) callerWindow.RefreshTables();
                 this.Close();
         }
     }

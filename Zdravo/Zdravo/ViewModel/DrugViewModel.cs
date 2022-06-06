@@ -46,9 +46,5 @@ namespace Zdravo.ViewModel
         }
         
 
-        internal bool AcceptDrug()
-        {
-            return drugController.ChangeStatus(true,drugId);
-        }
     }
 }

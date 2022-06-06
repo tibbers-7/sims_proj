@@ -8,15 +8,15 @@ namespace Zdravo.Repository
     public class DrugRepository
     {
         private List<Drug> drugs;
-        public List<Drug> Drugs { get { return drugs; } set { drugs = value; } }
-        private DrugFileHandler fileHandler=new DrugFileHandler();
+        private readonly DrugFileHandler fileHandler=new DrugFileHandler();
+        private int errorCode;
 
         public DrugRepository()
         {
-            initDrugs();
+            InitDrugs();
         }
 
-        private void initDrugs()
+        private void InitDrugs()
         {
             List<object> drugList=fileHandler.Read();
             drugs = new List<Drug>();
@@ -27,7 +27,7 @@ namespace Zdravo.Repository
             }
         }
 
-        public void AddNew(Drug drug)
+        public int AddNew(Drug drug)
         {
             List<Drug> list = drugs;
             int listCount = list.Count;
@@ -37,29 +37,28 @@ namespace Zdravo.Repository
                 newLines[i] = list[i].ToCSV();
             }
             newLines[listCount] = drug.ToCSV();
-            fileHandler.Write(newLines);
+            errorCode=fileHandler.Write(newLines);
+            InitDrugs();
+            return errorCode;
         }
 
-        public void Update(Drug newDrug)
+        public int Update(Drug newDrug)
         {
             int listCount = drugs.Count;
             string[] newLines = new string[listCount];
             int i = 0;
             foreach (Drug drug in drugs)
             {
-                if (drug.Id != newDrug.Id)
-                {
-                    newLines[i] = drug.ToCSV();
-                    
-                }
+                if (drug.Id != newDrug.Id) newLines[i] = drug.ToCSV();
                 else newLines[i] = newDrug.ToCSV();
                 i++;
             }
-            fileHandler.Write(newLines);
-            initDrugs();
+            errorCode=fileHandler.Write(newLines);
+            InitDrugs();
+            return errorCode;
         }
 
-        public bool Delete(Drug newDrug)
+        public int Delete(Drug newDrug)
         {
             int listCount = drugs.Count;
             string[] newLines = new string[listCount];
@@ -68,58 +67,13 @@ namespace Zdravo.Repository
             int i = 0;
             foreach (Drug drug in drugs)
             {
-                if (drug.Id != newDrug.Id)
-                {
-                    newLines[i] = drug.ToCSV();
-                    i++;
-                }
+                if (drug.Id != newDrug.Id) newLines[i] = drug.ToCSV();
+                i++;
             }
 
-            fileHandler.Write(newLines);
-            initDrugs();
-            return true;
-        }
-
-        public List<Drug> GetAllDrugs()
-        {
-            return drugs;
-        }
-
-        internal List<string> GetAllDrugNames()
-        {
-            List<string> names = new List<string>();
-            foreach(Drug drug in drugs)
-            {
-                names.Add(drug.Name);
-            }
-            return names;
-        }
-
-        internal Drug GetById(int drugId)
-        {
-            foreach(Drug drug in drugs)
-            {
-                if (drug.Id == drugId) return drug;
-            }
-            return null;
-        }
-
-        internal bool ChangeStatus(bool isAccepted, int drugId)
-        {
-            Drug selectedDrug=null;
-            foreach (Drug drug in drugs)
-            {
-                if (drug.Id == drugId)
-                {
-                    if (isAccepted) drug.Status = Zdravo.Status.accepted;
-                    else drug.Status = Zdravo.Status.reported;
-                    selectedDrug = drug;
-                    break;
-                }
-            }
-            if (selectedDrug == null) return false;
-            Update(selectedDrug);
-            return true;
+            errorCode=fileHandler.Write(newLines);
+            InitDrugs();
+            return errorCode;
         }
 
         internal Drug GetByName(string selectedDrug)
@@ -131,15 +85,35 @@ namespace Zdravo.Repository
             return null;
         }
 
-        internal List<Drug> GetValidDrugs()
+        internal List<string> GetAllDrugNames()
         {
-            List<Drug> validDrugs=new List<Drug>();
-            initDrugs();
+            List<string> names = new List<string>();
+            foreach (Drug drug in drugs)
+            {
+                names.Add(drug.Name);
+            }
+            return names;
+        }
+
+        public List<Drug> GetAll()
+        {
+            return drugs;
+        }
+
+
+        internal Drug GetById(int drugId)
+        {
             foreach(Drug drug in drugs)
             {
-                if (drug.Status!=Zdravo.Status.denied) validDrugs.Add(drug);
+                if (drug.Id == drugId) return drug;
             }
-            return validDrugs;
+            return null;
         }
+
+        internal int ChangeStatus(Drug drug)
+        {
+            return Update(drug);
+        }
+
     }
 }
