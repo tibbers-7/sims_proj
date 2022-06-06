@@ -1,0 +1,29 @@
+﻿<Window x:Class="Zdravo.SecretaryWindows.AddParticipantWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zdravo.SecretaryWindows"
+        mc:Ignorable="d"
+        Title="AddParticipantWindow" Height="750" Width="430" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="1">
+            <DataGrid Name="table" ColumnWidth="*" IsReadOnly ="True"  SelectionMode="Single"
+                              ItemsSource="{Binding userssss, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Margin="32,47,32,366">
+                <DataGrid.Columns>
+                    <DataGridTextColumn  Header="Name" Width="0.6*" Binding="{Binding Name}" />
+                    <DataGridTextColumn  Header="Occupation" Width="0.5*" Binding="{Binding Occupation}" />
+                    <DataGridTemplateColumn Width="0.2*">
+                        <DataGridTemplateColumn.CellTemplate >
+                            <DataTemplate>
+                                <Button Click="AddParticipant">ADD</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+        <Button Content="Back" HorizontalAlignment="Center" Margin="0,504,0,0" VerticalAlignment="Top" Height="30" Width="160" Click="BackClick"/>
+
+    </Grid>
+</Window>

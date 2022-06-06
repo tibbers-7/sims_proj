@@ -186,3 +186,5 @@ D:\Preuzimanja\repo2\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\refint\Zdr
 D:\Preuzimanja\repo2\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo.pdb
 D:\Preuzimanja\repo2\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo.genruntimeconfig.cache
 D:\Preuzimanja\repo2\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\ref\Zdravo.dll
+D:\Preuzimanja\repo2\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\AddParticipantWindow.g.cs
+D:\Preuzimanja\repo2\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\AddParticipantWindow.baml

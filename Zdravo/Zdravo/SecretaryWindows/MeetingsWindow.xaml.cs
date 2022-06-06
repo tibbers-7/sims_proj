@@ -30,7 +30,10 @@ namespace Zdravo.SecretaryWindows
 
         private void MoreClick(object sender, RoutedEventArgs e)
         {
-            
+            Meeting selected = (Meeting)table.SelectedValue;
+            AddParticipantWindow addParticipantWindow = new AddParticipantWindow(selected.Id);
+            addParticipantWindow.Show();
+            this.Close();
         }
 
         private void table_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -38,11 +41,17 @@ namespace Zdravo.SecretaryWindows
             participantsTextBox.Text = "";
             Meeting selected = (Meeting)table.SelectedValue;
             int i = 1;
-            foreach(string user in selected.Users)
+            if (selected != null)
             {
-                string newLine = Environment.NewLine;
-                participantsTextBox.Text =participantsTextBox.Text+ i.ToString() + ". " + user+ newLine;
-                i++;
+                foreach (string user in selected.Users)
+                {
+                    if (user != "")
+                    {
+                        string newLine = Environment.NewLine;
+                        participantsTextBox.Text = participantsTextBox.Text + i.ToString() + ". " + user + newLine;
+                        i++;
+                    }
+                }
             }
         }
 
@@ -55,6 +64,22 @@ namespace Zdravo.SecretaryWindows
             Meeting newMeeting = new Meeting(id, desc, date.Split(" ")[0], time, null);
             MeetingsFileHandler fileHandler = new MeetingsFileHandler();
             fileHandler.addNewMeeting(newMeeting);
+            refreshTableData();
+        }
+        private void refreshTableData()
+        {
+            MeetingsViewModel viewModel = new MeetingsViewModel();
+            this.DataContext = null; 
+            this.DataContext = viewModel;
+        }
+
+
+
+        private void BackClick(object sender, RoutedEventArgs e)
+        {
+            SecretaryHome secretaryHome = new SecretaryHome();
+            secretaryHome.Show();
+            this.Close();
         }
     }
 }
