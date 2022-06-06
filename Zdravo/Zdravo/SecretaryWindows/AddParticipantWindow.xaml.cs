@@ -59,7 +59,17 @@ namespace Zdravo.SecretaryWindows
         {
             MeetingsFileHandler meetingsFileHandler = new MeetingsFileHandler();
             Participant participant = (Participant)table.SelectedValue;
-            meetingsFileHandler.addParticipant(participant, meetingId);
+            if (participant != null)
+            {
+                meetingsFileHandler.addParticipant(participant, meetingId);
+                successLabel.Content=participant.Name+ " successfully added to meeting";
+                errorLabel.Content = "";
+            }
+            else
+            {
+                successLabel.Content = "";
+                errorLabel.Content = "No user selected";
+            }
         }
     }
 }
