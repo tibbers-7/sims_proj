@@ -1,0 +1,26 @@
+﻿<Window x:Class="Zdravo.managerView.DrugReportsReview"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zdravo.managerView"
+        mc:Ignorable="d"
+        Title="DrugReportsReview" Height="450" Width="800">
+    <Grid>
+        <DataGrid ColumnWidth="*" x:Name="dataGridDrugReports" ItemsSource="{Binding Reports}" IsReadOnly="True" 
+                  SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="206,124,0,124" Width="355">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Id leka" Binding="{Binding DrugId}" />
+                <DataGridTextColumn Header="Razlog" Binding="{Binding Reason}" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="Button_Click">Ispravi</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

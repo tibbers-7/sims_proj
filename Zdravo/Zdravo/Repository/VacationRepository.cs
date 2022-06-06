@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Zdravo.FileHandler;
 using Model;
+using System.Collections.ObjectModel;
 
 namespace Repository
 {
@@ -44,8 +45,23 @@ namespace Repository
             }
             return null;
         }
-
-        public int AddNew(Vacation vacation)
+        public ObservableCollection<VacationRecord> getPendingVacationRecords()
+        {
+            ObservableCollection<VacationRecord> records= new ObservableCollection<VacationRecord>();
+            foreach(Vacation vacation in vacations)
+            {
+                if (vacation.Status == Zdravo.Status.waiting)
+                {
+                    DoctorRepository doctorRepository = new DoctorRepository();
+                    Doctor doctor = doctorRepository.getById(vacation.DoctorId);
+                    //startDate.ToString("dd/MM/yyyy") + " - " + endDate.ToString("dd/MM/yyyy");
+                    string period = vacation.StartDate.ToString("dd/MM/yyyy") + "-" + vacation.EndDate.ToString("dd/MM/yyyy");
+                    records.Add(new VacationRecord(vacation.Id, doctor.Name+" "+doctor.LastName, doctor.Specialization,period,vacation.Reason));
+                }
+            }
+            return records;
+        }
+        public void AddNew(Vacation vacation)
         {
             
             vacation.Id = vacations.Last().Id+1;
@@ -77,8 +93,45 @@ namespace Repository
             InitVacations();
             return vacations;
         }
+        internal void processVacation(int id,int option)
+        {
+            foreach (Vacation vacation in vacations)
+            {
+                if (vacation.Id == id)
+                {
+                    if (option == 1) vacation.Status = Zdravo.Status.accepted;
+                    else vacation.Status = Zdravo.Status.denied;
+                }
+            }
+            int listCount = vacations.Count;
+            string[] newLines = new string[listCount];
+            for (int i = 0; i < listCount; i++)
+            {
+                newLines[i] = vacations[i].ToCSV();
+            }
+            fileHandler.Write(newLines);
+            InitVacations();
+        }
+        internal static bool FindVacationConflicts(Vacation newVacation, Vacation oldVacation)
+        {
+            DateTime newStartDate = newVacation.StartDate.ToDateTime(TimeOnly.Parse("00:00 AM"));
+            DateTime newEndDate = newVacation.EndDate.ToDateTime(TimeOnly.Parse("00:00 AM"));
+            DateTime oldStartDate = oldVacation.StartDate.ToDateTime(TimeOnly.Parse("00:00 AM"));
+            DateTime oldEndDate = oldVacation.EndDate.ToDateTime(TimeOnly.Parse("00:00 AM"));
 
-        
+            int newEndOldStart = DateTime.Compare(oldStartDate, newEndDate); 
+            int newStartOldEnd = DateTime.Compare(newStartDate, oldEndDate); 
+            int newStartOldStart = DateTime.Compare(newStartDate, oldStartDate); 
+            int newEndOldEnd = DateTime.Compare(newEndDate, oldEndDate);
+
+            if (newStartOldStart == 0) return true; // old and new start at the same date
+            if (newStartOldStart >= 0 && newStartOldEnd <= 0) return true; //new starts after old starts and old ends after new starts 
+            if (newStartOldStart <= 0 && newEndOldStart <= 0) return true; //old starts after new starts, old ends after new ends
+            if (newStartOldStart<=0 && newEndOldEnd>=0) return true; //old date is inside new date
+            if (newStartOldStart>=0 && newEndOldEnd<=0) return true; //old date encapsulates new date
+
+            return false;
+        }
 
         internal void RemoveOldLogs()
         {

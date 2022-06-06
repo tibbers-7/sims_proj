@@ -53,5 +53,18 @@ namespace Zdravo
             ordersWindow.Show();
             this.Close();
         }
+
+        private void MeetingsClick(object sender, RoutedEventArgs e)
+        {
+            MeetingsWindow meetingsWindow=new MeetingsWindow();
+            meetingsWindow.Show();
+            this.Close();
+        }
+
+        private void VacationsClick(object sender, RoutedEventArgs e)
+        {
+            VacationsWindow vacationsWindow = new VacationsWindow();
+            vacationsWindow.Show();
+        }
     }
 }

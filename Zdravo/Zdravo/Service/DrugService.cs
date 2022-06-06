@@ -22,6 +22,16 @@ namespace Zdravo.Service
             this.reportRepo = reportRepo;
         }
 
+        public void AddNew(Drug newDrug)
+        {
+            drugRepo.AddNew(newDrug);
+        }
+
+        public void Update(Drug newDrug)
+        {
+            drugRepo.Update(newDrug);
+        }
+
         internal List<Drug> GetValidDrugs()
         {
             List<Drug> validDrugs = new List<Drug>();

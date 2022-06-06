@@ -69,7 +69,7 @@ namespace Zdravo.managerView {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Zdravo;component/managerview/basicrenovation.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Zdravo;V1.0.0.0;component/managerview/basicrenovation.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\managerView\BasicRenovation.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

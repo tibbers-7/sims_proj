@@ -208,7 +208,7 @@
                                                     <Trigger Property="Text" Value="DA">
                                                         <Setter Property="Background">
                                                             <Setter.Value>
-                                                                <ImageBrush ImageSource="C:\Users\Anja\Documents\sims_proj\Zdravo\Zdravo\Resources\alert.png" Stretch="Uniform"/>
+                                                                <ImageBrush ImageSource="Resources\alert.png" Stretch="Uniform"/>
                                                             </Setter.Value>
                                                         </Setter>
                                                         <Setter Property="Foreground" Value="{x:Null}"/>

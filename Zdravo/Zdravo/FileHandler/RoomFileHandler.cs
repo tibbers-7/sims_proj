@@ -12,8 +12,7 @@ namespace FileHandler
 
         public RoomFileHandler()
         {
-           // filePath = "data/rooms.txt";
-            
+         
         }
       public ObservableCollection<Room> Read()
       {

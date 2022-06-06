@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Zdravo.Model;
 using Zdravo.Service;
 
 namespace Zdravo.Controller
@@ -17,6 +18,18 @@ namespace Zdravo.Controller
         public DrugController(DrugService service)
         {
             this.service = service;
+        }
+
+        public void AddNew(int id, string drugName, Status status, string type, string description, List<string> ingredients, int alternativeDrugId)
+        {
+            Drug newDrug = new Drug(id, drugName, status, type, description, ingredients, alternativeDrugId);
+            service.AddNew(newDrug);
+        }
+
+        public void Update(int id, string drugName, Status status, string type, string description, List<string> ingredients, int alternativeDrugId)
+        {
+            Drug newDrug = new Drug(id, drugName, status, type, description, ingredients, alternativeDrugId);
+            service.Update(newDrug);
         }
 
         internal List<Drug> GetValidDrugs()

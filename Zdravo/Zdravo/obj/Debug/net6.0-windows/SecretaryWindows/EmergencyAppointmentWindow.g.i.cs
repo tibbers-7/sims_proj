@@ -85,7 +85,7 @@ namespace Zdravo.SecretaryWindows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Zdravo;component/secretarywindows/emergencyappointmentwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Zdravo;V1.0.0.0;component/secretarywindows/emergencyappointmentwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\SecretaryWindows\EmergencyAppointmentWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
