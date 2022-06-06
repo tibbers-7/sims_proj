@@ -11,7 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using ViewModel;
+using Model;
+using FileHandler;
 namespace Zdravo.SecretaryWindows
 {
     /// <summary>
@@ -22,6 +24,37 @@ namespace Zdravo.SecretaryWindows
         public MeetingsWindow()
         {
             InitializeComponent();
+            MeetingsViewModel viewModel=new MeetingsViewModel();
+            this.DataContext = viewModel;
+        }
+
+        private void MoreClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void table_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            participantsTextBox.Text = "";
+            Meeting selected = (Meeting)table.SelectedValue;
+            int i = 1;
+            foreach(string user in selected.Users)
+            {
+                string newLine = Environment.NewLine;
+                participantsTextBox.Text =participantsTextBox.Text+ i.ToString() + ". " + user+ newLine;
+                i++;
+            }
+        }
+
+        private void CreateMeetingClick(object sender, RoutedEventArgs e)
+        {
+            int id =int.Parse(tbId.Text);
+            string desc = tbDesc.Text;
+            string time = tbTime.Text;
+            string date = datePicker.SelectedDate.ToString();
+            Meeting newMeeting = new Meeting(id, desc, date.Split(" ")[0], time, null);
+            MeetingsFileHandler fileHandler = new MeetingsFileHandler();
+            fileHandler.addNewMeeting(newMeeting);
         }
     }
 }
