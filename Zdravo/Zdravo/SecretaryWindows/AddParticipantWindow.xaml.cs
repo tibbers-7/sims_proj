@@ -36,6 +36,8 @@ namespace Zdravo.SecretaryWindows
             {
                 users.Add(new Participant(doctor.Name + " " + doctor.LastName, doctor.Specialization));
             }
+            users.Add(new Participant("Darko Filipovic", "Sekretar"));
+            users.Add(new Participant("Branka Kljajic", "Upravnik"));
             table.ItemsSource = users;
         }
         protected virtual void OnPropertyChanged(string name)
