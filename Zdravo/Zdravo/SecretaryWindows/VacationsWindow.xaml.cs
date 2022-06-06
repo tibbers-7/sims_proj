@@ -77,6 +77,8 @@ namespace Zdravo.SecretaryWindows
         }
         private void BackClick(object sender, RoutedEventArgs e)
         {
+            SecretaryHome secretaryHome = new SecretaryHome();
+            secretaryHome.Show();
             this.Close();
         }
     }

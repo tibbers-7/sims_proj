@@ -12,16 +12,21 @@ namespace Model
         private int id;
         public int Id => id;
 
+        private string description;
+
+        public string Description=> description;
+
         private DateOnly date;
         public DateOnly Date => date;
 
-        private TimeOnly time;
-        public TimeOnly Time => time;
+        private string time;
 
-        private ObservableCollection<User> users;
-        public ObservableCollection<User> Users => users;
+        private string Time => time;
 
-        public Meeting(int id,DateOnly date,TimeOnly time,List<int> userIds)
+        private ObservableCollection<String> users;
+        public ObservableCollection<String> Users => users;
+
+        public Meeting(int id,string description,DateOnly date,string time, ObservableCollection<String> users)
         {
             this.id = id;
             this.date = date;
