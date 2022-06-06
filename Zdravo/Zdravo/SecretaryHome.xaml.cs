@@ -53,5 +53,12 @@ namespace Zdravo
             ordersWindow.Show();
             this.Close();
         }
+
+        private void Vacations_Click(object sender, RoutedEventArgs e)
+        {
+            VacationsWindow vacationsWindow = new VacationsWindow();
+            vacationsWindow.Show();
+            this.Close();
+        }
     }
 }
