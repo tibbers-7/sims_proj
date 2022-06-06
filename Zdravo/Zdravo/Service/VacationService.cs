@@ -3,6 +3,7 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+
 namespace Service
 {
     public class VacationService
@@ -28,6 +29,16 @@ namespace Service
             return repo.AddNew(vacation);
         }
 
+        internal ObservableCollection<VacationRecord> getPendingVacationRecords()
+        {
+            return repo.getPendingVacationRecords();
+        }
+
+        internal void processVacation(int id, int option)
+        {
+            repo.processVacation(id, option);
+        }
+
         internal string GetDoctorInfo(int doctorId)
         {
             return doctorRepo.GetDoctorInfo(doctorId);
@@ -37,14 +48,7 @@ namespace Service
         {
             return repo.GetById(vacationId);
         }
-        internal void processVacation(int id,int option)
-        {
-            repo.processVacation(id,option);
-        }
-        internal ObservableCollection<VacationRecord> getPendingVacationRecords()
-        {
-            return repo.getPendingVacationRecords();
-        }
+
         internal List<VacationString> GetDoctorVacationStrings(int doctorId)
         {
             return repo.GetDoctorVacationStrings(doctorId);

@@ -15,11 +15,10 @@ namespace Model
         public Zdravo.Status Status { get { return status; } set { status = value;} }
         private string description;
         public string Description { get { return description; } set { description = value; } }
-
-        private int alternativeDrugId;
-        public int AlternativeDrugId { get { return alternativeDrugId; } set { alternativeDrugId = value; } }
         private bool isAllergic;
         public bool IsAllergic { get { return isAllergic; } set { isAllergic = value; } }
+        private int alternativeDrugId;
+        public int AlternativeDrugId { get { return alternativeDrugId; } set { alternativeDrugId = value; } }
         public List<string> AllergenConflicts;
         public string StatusString
         {
@@ -44,45 +43,24 @@ namespace Model
                 return retVal;
             
             }
-
-            set { 
-                switch (value)
-                {
-                    case ("ODOBRENO"):
-                        status = Zdravo.Status.accepted;
-                        break;
-                    case ("ODBIJENO"):
-                        status = Zdravo.Status.accepted;
-                        break;
-                    case ("PRIJEVLJENO"):
-                        status = Zdravo.Status.reported;
-                        break;
-                    case ("NA ČEKANJU"):
-                        status = Zdravo.Status.waiting;
-                        break;
-                    default:
-                        status = Zdravo.Status.waiting;
-                        break;
-                } 
-            }
         }
         private List<string> ingredients;
         public List<string> Ingredients { get { return ingredients; } set { ingredients = value; } }
-
-        public Drug()
-        {
-            ingredients = new List<string>();
-        }
 
         public Drug(int id, string name, Zdravo.Status status, string type, string description, List<string> ingredients, int alternativeDrugId)
         {
             this.id = id;
             this.name = name;
-            this.status = status; 
+            this.status = status;
             this.type = type;
             this.description = description;
             this.ingredients = ingredients;
             this.alternativeDrugId = alternativeDrugId;
+        }
+
+        public Drug()
+        {
+            ingredients=new List<string>();
         }
 
         internal void FromCSV(GroupCollection csvValues)
@@ -112,7 +90,7 @@ namespace Model
                 ingredients.Add(ingredient);
             }
             description=csvValues[6].Value;
-            alternativeDrugId= int.Parse(csvValues[7].Value);
+            alternativeDrugId = int.Parse(csvValues[7].Value);
         }
 
         internal string ToCSV()
@@ -143,7 +121,7 @@ namespace Model
                 }
 
             }
-            string res = "#" + id.ToString() + "#" + name+ "#" + type + "#" + statusChar + "#"+ingredientsString+"#"+description+"#" + alternativeDrugId.ToString();
+            string res = "#" + id.ToString() + "#" + name+ "#" + type + "#" + statusChar + "#"+ingredientsString+"#"+description;
             
             return res;
 

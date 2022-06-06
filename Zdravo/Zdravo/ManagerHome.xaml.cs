@@ -224,17 +224,5 @@ namespace Zdravo
             EquipmentReview equipmentReview = new EquipmentReview();
             equipmentReview.Show();
         }
-
-        private void Button_Click_11(object sender, RoutedEventArgs e)
-        {
-            DrugReportsReview drugReportsReview = new DrugReportsReview();
-            drugReportsReview.Show();
-        }
-
-        private void Button_Click_12(object sender, RoutedEventArgs e)
-        {
-            AddDrug addDrug = new AddDrug();
-            addDrug.Show();
-        }
     }
 }

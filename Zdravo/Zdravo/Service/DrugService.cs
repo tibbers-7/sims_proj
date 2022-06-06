@@ -22,16 +22,6 @@ namespace Zdravo.Service
             this.reportRepo = reportRepo;
         }
 
-        public void AddNew(Drug newDrug)
-        {
-            drugRepo.AddNew(newDrug);
-        }
-
-        public void Update(Drug newDrug)
-        {
-            drugRepo.Update(newDrug);
-        }
-
         internal List<Drug> GetValidDrugs()
         {
             List<Drug> validDrugs = new List<Drug>();
@@ -52,6 +42,11 @@ namespace Zdravo.Service
             return drugRepo.GetById(drugId);
         }
 
+        internal List<DrugReport> GetAllReports()
+        {
+            return reportRepo.GetAll();
+        }
+
         internal int ChangeStatus(bool isAccepted, int drugId)
         {
             Drug drug = GetById(drugId);
@@ -68,6 +63,16 @@ namespace Zdravo.Service
             reportRepo.AddNew(report);
         }
 
+        internal Drug GetByName(string selectedDrug)
+        {
+            return drugRepo.GetByName(selectedDrug);
+        }
+
+        internal List<string> GetAllDrugNames()
+        {
+            return drugRepo.GetAllDrugNames();
+        }
+
         internal ObservableCollection<Drug> SetAllergies(ObservableCollection<Drug> drugs, Patient patient)
         {
             if (patient.Allergens == null) return drugs;
@@ -81,6 +86,21 @@ namespace Zdravo.Service
             }
 
             return drugsUpdated;
+        }
+
+        internal void Update(Drug newDrug)
+        {
+            drugRepo.Update(newDrug);
+        }
+
+        internal void DeleteReport(int id)
+        {
+            reportRepo.Delete(id);
+        }
+
+        internal void AddNew(Drug newDrug)
+        {
+            drugRepo.AddNew(newDrug);
         }
 
         private Drug CompareDrugToAllergens(Drug drug, Patient patient)

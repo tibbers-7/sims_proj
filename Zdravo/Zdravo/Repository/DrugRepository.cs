@@ -76,6 +76,25 @@ namespace Zdravo.Repository
             return errorCode;
         }
 
+        internal Drug GetByName(string selectedDrug)
+        {
+            foreach (Drug drug in drugs)
+            {
+                if (drug.Name.Equals(selectedDrug)) return drug;
+            }
+            return null;
+        }
+
+        internal List<string> GetAllDrugNames()
+        {
+            List<string> names = new List<string>();
+            foreach (Drug drug in drugs)
+            {
+                names.Add(drug.Name);
+            }
+            return names;
+        }
+
         public List<Drug> GetAll()
         {
             return drugs;

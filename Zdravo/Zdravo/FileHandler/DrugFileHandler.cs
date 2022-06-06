@@ -9,7 +9,7 @@ namespace Zdravo.FileHandler
     internal class DrugFileHandler : FileHandlerInterface
     {
         private static readonly string filePath = "data/drugs.csv";
-        private static readonly string regexString = "#(\\d+)#(\\w+)#([\\w\\s]+)#(A|D|W|R)#([\\w\\s;]*)#([\\w\\s.,;\"()-]*)";
+        private static readonly string regexString = "#(\\d+)#(\\w+)#([\\w\\s]+)#(A|D|W|R)#([\\w\\s;]*)#([\\w\\s.,;\"()-]*)#(\\d*)";
                                                       // id  # ime  #    tip    #  status #  sastojci  #   opis
         public List<object> Read()
         {

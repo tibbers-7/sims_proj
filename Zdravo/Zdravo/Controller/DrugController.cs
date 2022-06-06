@@ -20,18 +20,6 @@ namespace Zdravo.Controller
             this.service = service;
         }
 
-        public void AddNew(int id, string drugName, Status status, string type, string description, List<string> ingredients, int alternativeDrugId)
-        {
-            Drug newDrug = new Drug(id, drugName, status, type, description, ingredients, alternativeDrugId);
-            service.AddNew(newDrug);
-        }
-
-        public void Update(int id, string drugName, Status status, string type, string description, List<string> ingredients, int alternativeDrugId)
-        {
-            Drug newDrug = new Drug(id, drugName, status, type, description, ingredients, alternativeDrugId);
-            service.Update(newDrug);
-        }
-
         internal List<Drug> GetValidDrugs()
         {
             return service.GetValidDrugs();
@@ -54,6 +42,11 @@ namespace Zdravo.Controller
             return service.ChangeStatus(isAccepted, drugId);
         }
 
+        internal List<DrugReport> GetAllReports()
+        {
+            return service.GetAllReports();
+        }
+
         internal void CreateDrugReport(int drugId, string reason)
         {
             service.CreateDrugReport(drugId, reason);
@@ -67,6 +60,33 @@ namespace Zdravo.Controller
         internal bool GetAllergenConflicts(int drugId, ObservableCollection<Drug> drugs)
         {
             return service.GetAllergenConflicts(drugId, drugs);
+        }
+
+        internal List<string> GetAllDrugNames()
+        {
+            return service.GetAllDrugNames();
+        }
+
+        internal Drug GetByName(string selectedDrug)
+        {
+            return service.GetByName(selectedDrug);
+        }
+
+        public void AddNew(int id, string drugName, Status status, string type, string description, List<string> ingredients, int alternativeDrugId)
+        {
+            Drug newDrug = new Drug(id, drugName, status, type, description, ingredients, alternativeDrugId);
+            service.AddNew(newDrug);
+        }
+
+        internal void Update(int id, string drugName, Status status, string type, string description, List<string> ingredients, int alternativeDrugId)
+        {
+            Drug newDrug = new Drug(id, drugName, status, type, description, ingredients, alternativeDrugId);
+            service.Update(newDrug);
+        }
+
+        internal void DeleteReport(int reportId)
+        {
+            service.DeleteReport(reportId);
         }
     }
 }

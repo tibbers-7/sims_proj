@@ -56,8 +56,8 @@ namespace Zdravo
             var equipmentService = new EquipmentService();
             var roomService = new RoomService();
             var timeService = new TimeService();
-            var ingredientService = new IngredientService(ingredientRepository);
             var reportPrescriptionService = new ReportPrescriptionService(reportRepository,patientRepository,prescriptionRepository);
+            var ingredientService = new IngredientService(ingredientRepository);
 
             drugController = new DrugController(drugService);
             patientController = new PatientController();
@@ -68,6 +68,7 @@ namespace Zdravo
             roomController = new RoomController();
             vacationController = new VacationController(vacationService);
             ingredientController = new IngredientController(ingredientService);
+
             
         }
     }

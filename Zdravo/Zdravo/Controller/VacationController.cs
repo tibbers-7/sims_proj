@@ -21,17 +21,10 @@ namespace Zdravo.Controller
             DateOnly _endDate = Tools.ParseDate(endDate);
             return service.ScheduleVacation(doctorId,_startDate, _endDate, reason,emergency);
         }
-        internal void processVacation(int id,int option)
-        {
-            service.processVacation(id,option);
-        }
+
         internal List<VacationString> GetDoctorVacationStrings(int doctorId)
         {
             return service.GetDoctorVacationStrings(doctorId);
-        }
-        internal ObservableCollection<VacationRecord> getPendingVacationRecords()
-        {
-            return service.getPendingVacationRecords();
         }
 
         internal Vacation GetById(int vacationId)
@@ -42,6 +35,17 @@ namespace Zdravo.Controller
         internal string GetDoctorInfo(int doctorId)
         {
             return service.GetDoctorInfo(doctorId);
+        }
+
+        internal ObservableCollection<VacationRecord> getPendingVacationRecords()
+        {
+            return service.getPendingVacationRecords();
+        }
+
+        internal void processVacation(int id, int option)
+        {
+            service.processVacation(id, option);
+
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,18 +57,9 @@ namespace Zdravo.Repository
             InitDrugReports();
         }
 
-        public void Delete(int id)
+        internal void Delete(object id)
         {
-            DrugReport drugReportToDelte = GetById(id);
-            drugReports.Remove(drugReportToDelte);
-            int listCount = drugReports.Count;
-            string[] newLines = new string[listCount];
-            for (int i = 0; i < listCount; i++)
-            {
-                newLines[i] = drugReports[i].ToCSV();
-            }
-            fileHandler.Write(newLines);
-            InitDrugReports();
+            throw new NotImplementedException();
         }
     }
 }

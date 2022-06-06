@@ -69,6 +69,14 @@ namespace Model
             }
             return res;
         }
+
+        /* public Patient(string fn, string ln, int i, string un, string pas, string pn, DateTime date, Gender g, string ad, bool gu, string mejl) : base(fn, ln, i, un, pas, pn, date, g, ad, gu, mejl)
+{
+    appointments = new List<Appointment>();
+    prescriptions = new List<Prescription>();
+    reports = new List<Report>();
+    this.allergens = new ObservableCollection<Allergen>() { new Allergen(1, "bez", "B") };
+}*/
         public void AddReport(Report rpt)
         {
             reports.Add(rpt);

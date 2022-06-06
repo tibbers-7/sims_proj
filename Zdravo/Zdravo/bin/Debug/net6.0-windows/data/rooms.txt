@@ -5,4 +5,3 @@
 20,4,laboratory
 21,4,operatingRoom
 22,6,laboratory
-0,0,operatingRoom
