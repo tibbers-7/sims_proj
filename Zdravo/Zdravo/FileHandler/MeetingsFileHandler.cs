@@ -21,17 +21,18 @@ namespace FileHandler
                 string[] parameters = line.Split(',');
                 int id=int.Parse(parameters[0]);
                 DateOnly date=DateOnly.Parse(parameters[1]);
-                TimeOnly time=TimeOnly.Parse(parameters[2]);
-                List<int> userIds = new List<int>();
-                if (parameters.Length == 4)
+                string time = parameters[2];
+                ObservableCollection<string> users = new ObservableCollection<string>();
+                string description = parameters[3];
+                if(parameters.Length > 4)
                 {
-                    string[] idParameters = parameters[3].Split(".");
-                    foreach(string idString in idParameters)
+                    string[] usersParameter=parameters[3].Split('.');
+                    foreach(string userString in usersParameter)
                     {
-                        userIds.Add(int.Parse(idString));
+                        users.Add(userString);
                     }
                 }
-                Meeting meeting = new Meeting(id, date, time, userIds);
+                Meeting meeting = new Meeting(id,description, date, time, users);
                 meetings.Add(meeting);
 
             }
