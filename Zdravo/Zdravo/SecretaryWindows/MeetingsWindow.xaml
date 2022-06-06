@@ -26,16 +26,17 @@
         </DataGrid>
         <TextBlock HorizontalAlignment="Left" Margin="30,367,0,0" TextWrapping="Wrap" Text="Participants" VerticalAlignment="Top" FontSize="20"/>
         <TextBlock x:Name="participantsTextBox" HorizontalAlignment="Left" Margin="32,399,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="200,412,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" FontSize="20"/>
-        <TextBlock x:Name="tbDesc" HorizontalAlignment="Left" Margin="188,465,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.521,1.97"/>
-        <TextBlock HorizontalAlignment="Left" Margin="190,512,0,0" TextWrapping="Wrap" Text="Date" VerticalAlignment="Top" FontSize="20"/>
-        <TextBlock HorizontalAlignment="Left" Margin="188,556,0,0" TextWrapping="Wrap" Text="Time" VerticalAlignment="Top" FontSize="20"/>
-        <TextBox x:Name="tbId" HorizontalAlignment="Left" Margin="297,421,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="103" Height="18"/>
-        <TextBox HorizontalAlignment="Left" Margin="297,474,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="103" Height="18"/>
-        <TextBox x:Name="tbTime" HorizontalAlignment="Left" Margin="297,556,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="103" Height="18"/>
-        <DatePicker x:Name="datePicker" HorizontalAlignment="Left" Margin="297,512,0,0" VerticalAlignment="Top" Height="27" Width="90"/>
+        <TextBlock HorizontalAlignment="Left" Margin="199,430,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock  HorizontalAlignment="Left" Margin="188,483,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.521,1.97"/>
+        <TextBlock HorizontalAlignment="Left" Margin="188,551,0,0" TextWrapping="Wrap" Text="Date" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="188,603,0,0" TextWrapping="Wrap" Text="Time" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox x:Name="tbId" HorizontalAlignment="Left" Margin="297,439,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="103" Height="18"/>
+        <TextBox x:Name="tbDesc" HorizontalAlignment="Left" Margin="297,492,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="103" Height="18"/>
+        <TextBox x:Name="tbTime" HorizontalAlignment="Left" Margin="297,607,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="103" Height="18"/>
+        <DatePicker x:Name="datePicker" HorizontalAlignment="Left" Margin="297,551,0,0" VerticalAlignment="Top" Height="27" Width="90"/>
         <TextBlock HorizontalAlignment="Left" Margin="253,367,0,0" TextWrapping="Wrap" Text="New meeting" VerticalAlignment="Top" FontSize="20"/>
-        <Button Content="Create" HorizontalAlignment="Left" Margin="268,616,0,0" VerticalAlignment="Top" Height="35" Width="74" Click="CreateMeetingClick"/>
+        <Button Content="Create" HorizontalAlignment="Left" Margin="297,658,0,0" VerticalAlignment="Top" Height="35" Width="74" Click="CreateMeetingClick"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="32,658,0,0" VerticalAlignment="Top" Height="35" Width="49" Click="BackClick"/>
 
     </Grid>
 </Window>

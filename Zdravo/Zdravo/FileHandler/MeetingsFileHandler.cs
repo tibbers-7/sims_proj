@@ -45,9 +45,25 @@ namespace FileHandler
             {
                 newLines[i] = lines[i];
             }
-            newLines[lines.Length] = newMeeting.Id.ToString() + "," + newMeeting.Description + "," + newMeeting.Date + "," + newMeeting.Time;
+            newLines[lines.Length] = newMeeting.Id.ToString() + "," + newMeeting.Description + "," + newMeeting.Date + "," + newMeeting.Time+",";
             System.IO.File.WriteAllText(filepath, "");
             System.IO.File.WriteAllLines(filepath, newLines);
+        }
+        public void addParticipant(Participant participant,int id) {
+            string[] lines = System.IO.File.ReadAllLines(filepath);
+            for (int i = 0; i < lines.Length; i++)
+            {
+
+                string[] parameters = lines[i].Split(',');
+                int idFromFile = int.Parse(parameters[0]);
+                if (idFromFile == id)
+                {
+                    lines[i] = lines[i] + participant.Name+".";
+                }
+
+            }
+            System.IO.File.WriteAllText(filepath, "");
+            System.IO.File.WriteAllLines(filepath, lines);
         }
     }
 }
