@@ -16,22 +16,23 @@ namespace Model
 
         public string Description=> description;
 
-        private DateOnly date;
-        public DateOnly Date => date;
+        private string date;
+        public string Date => date;
 
         private string time;
 
-        private string Time => time;
+        public string Time => time;
 
         private ObservableCollection<String> users;
         public ObservableCollection<String> Users => users;
 
-        public Meeting(int id,string description,DateOnly date,string time, ObservableCollection<String> users)
+        public Meeting(int id,string description,string date,string time, ObservableCollection<String> users)
         {
             this.id = id;
+            this.description = description;
             this.date = date;
             this.time= time;
-            //popunjavanje liste
+            this.users = users;
         }
     }
 }

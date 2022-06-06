@@ -10,7 +10,7 @@ namespace FileHandler
 {
     public class MeetingsFileHandler
     {
-        private const string filepath= "data/Meetings.txt";
+        private const string filepath= "data/meetings.txt";
         public ObservableCollection<Meeting> Load()
         {
 
@@ -20,13 +20,13 @@ namespace FileHandler
             {
                 string[] parameters = line.Split(',');
                 int id=int.Parse(parameters[0]);
-                DateOnly date=DateOnly.Parse(parameters[1]);
-                string time = parameters[2];
+                string description=parameters[1];
+                string date = parameters[2];
                 ObservableCollection<string> users = new ObservableCollection<string>();
-                string description = parameters[3];
+                string time = parameters[3];
                 if(parameters.Length > 4)
                 {
-                    string[] usersParameter=parameters[3].Split('.');
+                    string[] usersParameter=parameters[4].Split('.');
                     foreach(string userString in usersParameter)
                     {
                         users.Add(userString);
@@ -37,6 +37,17 @@ namespace FileHandler
 
             }
             return meetings;
+        }
+        public void addNewMeeting(Meeting newMeeting){
+            string[] lines = System.IO.File.ReadAllLines(filepath);
+            string[] newLines = new string[lines.Length + 1];
+            for (int i = 0; i < lines.Length; i++)
+            {
+                newLines[i] = lines[i];
+            }
+            newLines[lines.Length] = newMeeting.Id.ToString() + "," + newMeeting.Description + "," + newMeeting.Date + "," + newMeeting.Time;
+            System.IO.File.WriteAllText(filepath, "");
+            System.IO.File.WriteAllLines(filepath, newLines);
         }
     }
 }
