@@ -10,7 +10,7 @@
     <Grid Margin="0,0,0,3">
         <TextBox Name="tbUsername"  HorizontalAlignment="Center" Margin="0,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" Height="30"/>
         <PasswordBox Name="tbPassword" HorizontalAlignment="Center" Margin="0,385,0,0" VerticalAlignment="Top" Width="208" Height="28"/>
-        <Button Content="Log in&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,472,0,0" VerticalAlignment="Top" Height="41" Width="126" Click="Button_Click"/>
+        <Button Content="Log in&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,472,0,0" VerticalAlignment="Top" Height="41" Width="126" Click="Login_Click"/>
         <Label Content="Username" FontFamily="Italic" HorizontalAlignment="Left" Margin="111,230,0,0" VerticalAlignment="Top"/>
         <Label Content="Password" FontFamily="Italic" HorizontalAlignment="Left" Margin="111,350,0,0" VerticalAlignment="Top"/>
         <Label Content="" Name="errorLabel" HorizontalAlignment="Left" Margin="82,438,0,0" VerticalAlignment="Top" Foreground="Red" FontWeight="Bold" Width="276"/>

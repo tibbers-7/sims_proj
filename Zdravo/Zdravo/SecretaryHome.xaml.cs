@@ -27,23 +27,23 @@ namespace Zdravo
 
         private void PatientsWindowClick(object sender, RoutedEventArgs e)
         {
-            SekretarHome s=new SekretarHome();
-            s.Show();
+            SekretarHome patientsWindow = new SekretarHome();
+            patientsWindow.Show();
             this.Close();
         }
 
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void LogOut_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow m = new MainWindow();
-            m.Show();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
             this.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Appointments_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentManagement am = new AppointmentManagement();
-            am.Show();
+            AppointmentManagement appointmentsWindow = new AppointmentManagement();
+            appointmentsWindow.Show();
             this.Close();
         }
 
@@ -54,17 +54,25 @@ namespace Zdravo
             this.Close();
         }
 
+        private void VacationsClick(object sender, RoutedEventArgs e)
+        {
+            VacationsWindow vacationsWindow=new VacationsWindow();
+            vacationsWindow.Show();
+            this.Close();
+        }
+
         private void MeetingsClick(object sender, RoutedEventArgs e)
         {
-            MeetingsWindow meetingsWindow=new MeetingsWindow();
+            MeetingsWindow meetingsWindow = new MeetingsWindow();
             meetingsWindow.Show();
             this.Close();
         }
 
-        private void VacationsClick(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            VacationsWindow vacationsWindow = new VacationsWindow();
-            vacationsWindow.Show();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

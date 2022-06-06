@@ -21,16 +21,16 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Click="Button_Click_5">Allergens</Button>
+                            <Button Click="Allergens_Click">Allergens</Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="30,629,0,0" VerticalAlignment="Top" Height="34" Width="95" Click="Button_Click"/>
-        <Button Content="Edit" HorizontalAlignment="Left" Margin="288,670,0,0" VerticalAlignment="Top" Height="30" Width="95" Click="Button_Click_2"/>
-        <Button Content="Remove" HorizontalAlignment="Left" Margin="288,629,0,0" VerticalAlignment="Top" Height="34" Width="95" Click="Button_Click_3"/>
-        <Button Content="Back" HorizontalAlignment="Left" Margin="30,670,0,0" VerticalAlignment="Top" Width="98" Height="30" Click="Button_Click_4"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="30,629,0,0" VerticalAlignment="Top" Height="34" Width="95" Click="Add_Click"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="288,670,0,0" VerticalAlignment="Top" Height="30" Width="95" Click="Update_Click"/>
+        <Button Content="Remove" HorizontalAlignment="Left" Margin="288,629,0,0" VerticalAlignment="Top" Height="34" Width="95" Click="Delete_Click"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="30,670,0,0" VerticalAlignment="Top" Width="98" Height="30" Click="Back_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="144,10,0,0" TextWrapping="Wrap" Text="Patients" FontSize="35" VerticalAlignment="Top"/>
 
     </Grid>

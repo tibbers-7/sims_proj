@@ -13,7 +13,7 @@ namespace Zdravo.ViewModel
     public class PatientsViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<Patient> patients;
-        PatientFileHandler p;
+        PatientFileHandler patientFileHandler;
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<Patient> Patients
         {
@@ -25,19 +25,19 @@ namespace Zdravo.ViewModel
             {
                 if (patients == value)
                     return;
-                patients = p.read();
+                patients = patientFileHandler.read();
                 NotifyPropertyChanged("Patients");
             }
         }
 
         public PatientsViewModel()
         {
-            p = new PatientFileHandler();
-            patients = p.read();
+            patientFileHandler = new PatientFileHandler();
+            patients = patientFileHandler.read();
         }
         public void Refresh()
         {
-            patients = p.read();
+            patients = patientFileHandler.read();
         }
         protected void NotifyPropertyChanged(string propertyName)
         {

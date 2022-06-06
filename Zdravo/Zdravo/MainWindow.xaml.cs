@@ -25,46 +25,45 @@ namespace Zdravo
         public MainWindow()
         {
             InitializeComponent();
-            TimeService ts = new TimeService();
-            Thread th = new Thread(new ThreadStart(ts.ThreadFunction));
-            th.IsBackground = true;
-            th.Start();
+            TimeService timeService = new TimeService();
+            Thread thread = new Thread(new ThreadStart(timeService.ThreadFunction));
+            thread.IsBackground = true;
+            thread.Start();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Login_Click(object sender, RoutedEventArgs e)
         {
-            bool pronadjen=false;
+            bool found = false;
             string[] lines = System.IO.File.ReadAllLines("data/accounts.txt");
-            foreach(string s in lines)
+            foreach (string line in lines)
             {
-                string[] parameters = s.Split(',');
-                String lozinka = tbPassword.Password.ToString();
-                if (tbUsername.Text.Equals(parameters[0]) && lozinka.Equals(parameters[1]))
+                string[] parameters = line.Split(',');
+                String password = tbPassword.Password.ToString();
+                if (tbUsername.Text.Equals(parameters[0]) && password.Equals(parameters[1]))
                 {
-                    pronadjen = true;
-                    if (parameters[2].Equals("S")){
-                        //otvara se sekretar page
-                       
-                       SecretaryHome sh = new SecretaryHome();
-                        sh.Show();
+                    found = true;
+                    if (parameters[2].Equals("S"))
+                    {
+                        SecretaryHome secretaryWindow = new SecretaryHome();
+                        secretaryWindow.Show();
                         this.Close();
                     }
-                    if (parameters[2].Equals("U")){
-                        //otvara se upravnik page
-                        ManagerHome mh = new ManagerHome();
-                        mh.Show();
+                    if (parameters[2].Equals("U"))
+                    {
+                        ManagerHome managerWindow = new ManagerHome();
+                        managerWindow.Show();
                         this.Close();
                     }
-                    if (parameters[2].Equals("L")) {
-                        DoctorHome dh=new DoctorHome(int.Parse(parameters[3]));
-                        dh.Show();
+                    if (parameters[2].Equals("L"))
+                    {
+                        DoctorHome doctorWindow = new DoctorHome(int.Parse(parameters[3]));
+                        doctorWindow.Show();
                         this.Close();
-                        //otvara se lekar page
                     }
                 }
-                
+
             }
-            if (!pronadjen)
+            if (!found)
             {
                 errorLabel.Content = "Pogresno korisnicko ime ili lozinka!";
             }

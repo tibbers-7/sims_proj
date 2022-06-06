@@ -23,7 +23,6 @@ namespace Zdravo.SecretaryWindows
     {
         VacationsViewModel vacationsViewModel;
         VacationController vacationController;
-        Notification notificationWindow;
         public VacationsWindow()
         {
             InitializeComponent();
@@ -49,10 +48,9 @@ namespace Zdravo.SecretaryWindows
             }
             else {
                 successLabel.Content = "";
-                errorLabel.Content = "No vacation selected."; 
+                errorLabel.Content = "No request selected";
             }
-            notificationWindow = new Notification();
-            notificationWindow.Show();
+            RefreshTableData();
         }
 
         private void denyVacationClick(object sender, RoutedEventArgs e)
@@ -67,13 +65,20 @@ namespace Zdravo.SecretaryWindows
             else
             {
                 successLabel.Content = "";
-                errorLabel.Content = "No vacation selected.";
+                errorLabel.Content = "No request selected";
             }
+            RefreshTableData();
         }
-
+        private void RefreshTableData()
+        {
+            vacationsViewModel = new VacationsViewModel();
+            this.DataContext = null;
+            this.DataContext = vacationsViewModel;
+        }
         private void BackClick(object sender, RoutedEventArgs e)
         {
-            if(notificationWindow!=null) notificationWindow.Close();
+            SecretaryHome secretaryHomeWindow = new SecretaryHome();
+            secretaryHomeWindow.Show();
             this.Close();
         }
     }

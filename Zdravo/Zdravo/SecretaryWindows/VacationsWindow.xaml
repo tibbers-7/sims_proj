@@ -39,7 +39,7 @@
         <Label x:Name="errorLabel" Content="" Foreground="Red" HorizontalAlignment="Left" Margin="117,373,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label x:Name="successLabel" Content="" Foreground="Green" HorizontalAlignment="Left" Margin="117,373,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Button Content="Back" HorizontalAlignment="Left" Margin="267,656,0,0" VerticalAlignment="Top" Height="32" Width="103" Click="BackClick"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,539,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="82"/>
+        <TextBox x:Name="reasonTextBox" HorizontalAlignment="Center" Margin="0,539,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="82"/>
         <TextBlock HorizontalAlignment="Left" Margin="32,507,0,0" TextWrapping="Wrap" Text="Reason" VerticalAlignment="Top" FontSize="20"/>
 
     </Grid>

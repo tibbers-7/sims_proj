@@ -28,67 +28,59 @@ namespace Zdravo
         public SekretarHome()
         {
             InitializeComponent();
-            // PatientRepository p = new PatientRepository();
-            //   List<Patient> patients = p.GetAll();
-            //  table.ItemsSource = patients;
             DataContext = viewModel;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+ 
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.Refresh();
+            this.DataContext = null;
+            this.DataContext = viewModel;
+        }
+
+        private void Update_Click(object sender, RoutedEventArgs e)
+        {
+            Patient selectedPatient = (Patient)table.SelectedValue;
+            if (selectedPatient != null)
+            {
+                PatientView.UpdatePatient updateWindow = new PatientView.UpdatePatient(selectedPatient.Ime, selectedPatient.Prezime, selectedPatient.Id, selectedPatient.KorisnickoIme, selectedPatient.Lozinka, selectedPatient.BrojTelefona, selectedPatient.DatumRodjenja, selectedPatient.pol, selectedPatient.GuestNalog, selectedPatient.Adresa, selectedPatient.Mail, this);
+                updateWindow.Show();
+            }
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            Patient selectedPatient = (Patient)table.SelectedValue;
+            PatientController patientController = new PatientController();
+            patientController.DeletePatient(selectedPatient);
+            viewModel.Refresh();
+            this.DataContext = null;
+            this.DataContext = viewModel;
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryHome secretaryHomeWindow = new SecretaryHome();
+            secretaryHomeWindow.Show();
+            this.Close();
+        }
+
+        private void Allergens_Click(object sender, RoutedEventArgs e)
+        {
+            Patient selectedPatient = (Patient)table.SelectedValue;
+            Allergens allergensWindow = new Allergens(selectedPatient);
+            allergensWindow.Show();
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
         {
             Patient izabran = (Patient)table.SelectedValue;
             PatientService service = new PatientService();
             service.checkId();
             AddPatient addp = new AddPatient(this);
             addp.Show();
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            //  PatientRepository p = new PatientRepository();
-            //List<Patient> patients = p.GetAll();
-            //table.ItemsSource = patients;
-            viewModel.Refresh();
-            this.DataContext = null;
-             this.DataContext = viewModel;
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            Patient izabran = (Patient)table.SelectedValue;
-            if (izabran != null)
-            {
-                PatientView.UpdatePatient update = new PatientView.UpdatePatient(izabran.Ime, izabran.Prezime, izabran.Id, izabran.KorisnickoIme, izabran.Lozinka, izabran.BrojTelefona, izabran.DatumRodjenja, izabran.pol, izabran.GuestNalog, izabran.Adresa, izabran.Mail,this);
-                update.Show();
-            }
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            Patient izabran = (Patient)table.SelectedValue;
-            PatientController controller = new PatientController();
-            controller.DeletePatient(izabran);
-            // PatientRepository p = new PatientRepository();
-            //  List<Patient> patients = p.GetAll();
-            //  table.ItemsSource = patients;
-            viewModel.Refresh();
-            this.DataContext = null;
-            this.DataContext = viewModel;
-        }
-
-        private void Button_Click_4(object sender, RoutedEventArgs e)
-        {
-            SecretaryHome s = new SecretaryHome();
-            s.Show();
-            this.Close();
-        }
-
-        private void Button_Click_5(object sender, RoutedEventArgs e)
-        {
-            Patient selectedPatient = (Patient)table.SelectedValue;
-            Allergens a = new Allergens(selectedPatient);
-            a.Show();
         }
     }
 }

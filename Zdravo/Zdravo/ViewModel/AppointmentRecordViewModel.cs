@@ -11,9 +11,6 @@ namespace Zdravo.ViewModel
     public class AppointmentRecordViewModel
     {
         private ObservableCollection<AppointmentRecord> records;
-        // private AllergenService service;
-        //     private Patient patient;
-        //    private AllergenRepository repo;
         private AppointmentController controller;
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<AppointmentRecord> Records
@@ -32,17 +29,12 @@ namespace Zdravo.ViewModel
         }
         public AppointmentRecordViewModel()
         {
-            //  service = new AllergenService();
             var app = Application.Current as App;
             controller = app.appointmentController;
-            //   repo=new AllergenRepository();
             records = controller.GetAllRecords();
         }
         public AppointmentRecordViewModel(ObservableCollection<AppointmentRecord> rec)
         {
-            //  service = new AllergenService();
-
-            //   repo=new AllergenRepository();
             var app = Application.Current as App;
             controller = app.appointmentController;
             records = rec;

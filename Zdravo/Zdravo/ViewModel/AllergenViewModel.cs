@@ -8,11 +8,9 @@ namespace Zdravo.ViewModel
 {
     public class AllergenViewModel : INotifyPropertyChanged
     {
-        
+
         private ObservableCollection<Allergen> allergens;
-        private AllergenService service;
         private Patient patient;
-        private AllergenRepository repo;
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<Allergen> Allergens
         {
@@ -25,25 +23,23 @@ namespace Zdravo.ViewModel
                 if (allergens == value)
                     return;
                 allergens = patient.Allergens;
-                   NotifyPropertyChanged("Allergens");
+                NotifyPropertyChanged("Allergens");
             }
         }
-        public AllergenViewModel(Patient p)
+        public AllergenViewModel(Patient patient)
         {
-          //  service = new AllergenService();
-            this.patient = p;
-         //   repo=new AllergenRepository();
+            this.patient = patient;
             allergens = patient.Allergens;
         }
+
         public void Refresh()
         {
-            PatientRepository repo = new PatientRepository();
-            ObservableCollection<Patient> patients=repo.GetAll();
-            foreach(Patient pat in patients)
+            PatientRepository patientRepository = new PatientRepository();
+            ObservableCollection<Patient> patients = patientRepository.GetAll();
+            foreach (Patient patientFromList in patients)
             {
-                if (pat.Id == patient.Id) allergens = pat.Allergens;
+                if (patientFromList.Id == patient.Id) allergens = patientFromList.Allergens;
             }
-            //allergens = service.GetAllergensByPatient(patient);
         }
         protected void NotifyPropertyChanged(string propertyName)
         {

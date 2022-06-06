@@ -31,8 +31,8 @@
             <ComboBoxItem Content="Muski"/>
             <ComboBoxItem Content="Zenski"/>
         </ComboBox>
-        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="296,687,0,0" VerticalAlignment="Top" Click="Button_Click" Height="34" Width="81"/>
-        <Button Content="Otkazi" HorizontalAlignment="Left" Margin="71,687,0,0" VerticalAlignment="Top" Height="34" Width="81" Click="Button_Click_1"/>
+        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="296,687,0,0" VerticalAlignment="Top" Click="CreatePatient_Click" Height="34" Width="81"/>
+        <Button Content="Otkazi" HorizontalAlignment="Left" Margin="71,687,0,0" VerticalAlignment="Top" Height="34" Width="81" Click="Back_Click"/>
         <DatePicker HorizontalAlignment="Left" Margin="190,418,0,0" VerticalAlignment="Top" Height="32" Width="138"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,42,0,0" TextWrapping="Wrap" Text="Add new patient" FontSize="30" VerticalAlignment="Top"/>
     </Grid>

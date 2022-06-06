@@ -16,81 +16,76 @@ namespace FileHandler
         public List<Patient> Load()
         {
             // TODO: implement
+            List<Patient> patients = new List<Patient>();
             string[] lines = System.IO.File.ReadAllLines(filepath);
-            List<Patient> pacijenti = new List<Patient>();
-            foreach (var s in lines)
+            foreach (var line in lines)
             {
-                if (s.Equals("")) break;
-                string[] ss = s.Split(',');
-                //(string fn, string ln, int i, string un, string pas, string pn, DateTime date, Gender g, string ad, bool gu,int cardNumber)
-                //ime prez id
-                int id = Int32.Parse(ss[2]);
-                DateTime datum;
-                datum = Convert.ToDateTime(ss[6]);
-                Gender pol;
-                if (ss[7].Equals("M")) pol = Gender.male;
-                else pol = Gender.female;
+                string[] parameters = line.Split(',');
+                int id = Int32.Parse(parameters[2]);
+                DateTime dateOfBirth;
+                dateOfBirth = Convert.ToDateTime(parameters[6]);
+                Gender gender;
+                if (parameters[7].Equals("M")) gender = Gender.male;
+                else gender = Gender.female;
                 bool guest = false;
-                if (ss[9].Equals("true")) guest = true;
+                if (parameters[9].Equals("true")) guest = true;
                 List<int> allergenIds = new List<int>();
-                if (ss.Length == 12)
+                if (parameters.Length == 12)
                 {
-                    String[] ids = ss[11].Split('.');
-                    foreach (string stringic in ids)
+                    String[] idList = parameters[11].Split('.');
+                    int idInteger;
+                    foreach (string idString in idList)
                     {
-                        if (!stringic.Equals(""))
+                        if (!idString.Equals(""))
                         {
-
-                            allergenIds.Add(Int32.Parse(stringic));
+                            idInteger = Int32.Parse(idString);
+                            allergenIds.Add(idInteger);
                         }
                     }
                 }
-                // darko,filipovic,2
-                Patient p = new Patient(ss[0], ss[1], id, ss[3], ss[4], ss[5], datum, pol, ss[8], guest, ss[10], allergenIds);
-                pacijenti.Add(p);
+
+                Patient patient = new Patient(parameters[0], parameters[1], id, parameters[3], parameters[4], parameters[5], dateOfBirth, gender, parameters[8], guest, parameters[10], allergenIds);
+                patients.Add(patient);
             }
-            Console.WriteLine("ISPIIIIIIIIS");
-            return pacijenti;
+            return patients;
         }
 
 
         public ObservableCollection<Patient> read()
         {
-            
-            ObservableCollection<Patient> pacijenti = new ObservableCollection<Patient>();
+
+            ObservableCollection<Patient> patients = new ObservableCollection<Patient>();
             string[] lines = System.IO.File.ReadAllLines(filepath);
-            foreach (var s in lines)
+            foreach (var line in lines)
             {
-                string[] ss = s.Split(',');
-                //(string fn, string ln, int i, string un, string pas, string pn, DateTime date, Gender g, string ad, bool gu,int cardNumber)
-                int id = Int32.Parse(ss[2]);
-                DateTime datum;
-                datum = Convert.ToDateTime(ss[6]);
-                Gender pol;
-                if (ss[7].Equals("M")) pol = Gender.male;
-                else pol = Gender.female;
+                string[] parameters = line.Split(',');
+                int id = Int32.Parse(parameters[2]);
+                DateTime dateOfBirth;
+                dateOfBirth = Convert.ToDateTime(parameters[6]);
+                Gender gender;
+                if (parameters[7].Equals("M")) gender = Gender.male;
+                else gender = Gender.female;
                 bool guest = false;
-                if (ss[9].Equals("true")) guest = true;
+                if (parameters[9].Equals("true")) guest = true;
                 List<int> allergenIds = new List<int>();
-                if (ss.Length == 12)
+                if (parameters.Length == 12)
                 {
-                    String[] ids = ss[11].Split('.');
-                    int jedan;
-                    foreach (string idJedan in ids)
+                    String[] idList = parameters[11].Split('.');
+                    int idInteger;
+                    foreach (string idString in idList)
                     {
-                        if (!idJedan.Equals(""))
+                        if (!idString.Equals(""))
                         {
-                            jedan = Int32.Parse(idJedan);
-                            allergenIds.Add(jedan);
+                            idInteger = Int32.Parse(idString);
+                            allergenIds.Add(idInteger);
                         }
                     }
                 }
-                
-                Patient p = new Patient(ss[0], ss[1], id, ss[3], ss[4], ss[5], datum, pol, ss[8], guest, ss[10], allergenIds);
-                pacijenti.Add(p);
+
+                Patient patient = new Patient(parameters[0], parameters[1], id, parameters[3], parameters[4], parameters[5], dateOfBirth, gender, parameters[8], guest, parameters[10], allergenIds);
+                patients.Add(patient);
             }
-            Console.WriteLine("ISPIIIIIIIIS");
-            return pacijenti;
+            return patients;
 
         }
         public void deleteById(int id)
