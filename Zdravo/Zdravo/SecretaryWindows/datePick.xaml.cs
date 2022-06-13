@@ -37,8 +37,8 @@ namespace Zdravo.SecretaryWindows
 
             RectangleF bounds = new RectangleF(0, 0, document.Pages[0].GetClientSize().Width, 50);
 
-            graphics.DrawString("Klinika Zdravo", new PdfStandardFont(PdfFontFamily.Helvetica, 10), PdfBrushes.Black, new System.Drawing.PointF(220, 0));
-            
+            graphics.DrawString("Klinika Zdravo,Futoski put 16", new PdfStandardFont(PdfFontFamily.Helvetica, 10), PdfBrushes.Black, new System.Drawing.PointF(10, 0));
+            graphics.DrawString("Tel: 021/731/6421", new PdfStandardFont(PdfFontFamily.Helvetica, 10), PdfBrushes.Black, new System.Drawing.PointF(10, 10));
             graphics.DrawString("Izvestaj o zauzetosti prostorija", new PdfStandardFont(PdfFontFamily.Helvetica, 25), PdfBrushes.Black, new System.Drawing.PointF(100, 40));
 
             string date = datePicker.SelectedDate.ToString().Split(" ")[0];
@@ -71,7 +71,8 @@ namespace Zdravo.SecretaryWindows
             PdfGrid grid = new PdfGrid();
             grid.DataSource = table;
             grid.Draw(page, 40, 120);
-            var filename = "report" + ".pdf";
+            string[] parameters= date.Split("/");
+            var filename =parameters[0]+"-"+parameters[1]+"-"+parameters[2]+"-"+ "report.pdf";
             document.Save(filename);
             document.Close();
             this.Close();

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Darko\\Desktop\\hciNovi\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj": {}
+    "C:\\Users\\Darko\\Desktop\\novi2hci\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Darko\\Desktop\\hciNovi\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj": {
+    "C:\\Users\\Darko\\Desktop\\novi2hci\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darko\\Desktop\\hciNovi\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
+        "projectUniqueName": "C:\\Users\\Darko\\Desktop\\novi2hci\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
         "projectName": "Zdravo",
-        "projectPath": "C:\\Users\\Darko\\Desktop\\hciNovi\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
+        "projectPath": "C:\\Users\\Darko\\Desktop\\novi2hci\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
         "packagesPath": "C:\\Users\\Darko\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darko\\Desktop\\hciNovi\\sims_proj\\Zdravo\\Zdravo\\obj\\",
+        "outputPath": "C:\\Users\\Darko\\Desktop\\novi2hci\\sims_proj\\Zdravo\\Zdravo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Syncfusion\\Essential Studio\\WPF\\20.1.0.55\\ToolboxNuGetPackages",
