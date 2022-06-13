@@ -90,5 +90,18 @@ namespace Zdravo
             Allergens a = new Allergens(selectedPatient);
             a.Show();
         }
+
+        private void table_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Patient selected=(Patient)table.SelectedValue;
+            if (selected != null)
+            {
+                labelDateOfBirth.Text=selected.DatumRodjenja.ToString().Split(" ")[0];
+                labelGuest.Text = selected.GuestNalog.ToString();
+                labelMail.Text = selected.Mail;
+                labelPassword.Text = selected.Lozinka;
+                labelUsername.Text = selected.KorisnickoIme;
+            }
+        }
     }
 }

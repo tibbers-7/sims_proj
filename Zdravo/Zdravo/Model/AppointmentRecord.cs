@@ -30,7 +30,6 @@ namespace Model
         public string Jmbg => jmbg;
         private DateOnly date;
         public DateOnly Date => date;
-
         private TimeOnly time;
         public TimeOnly Time => time;
 

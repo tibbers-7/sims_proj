@@ -7,31 +7,46 @@
         mc:Ignorable="d"
         Title="SekretarHome" Height="750" Width="430" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,10,-6">
-        <DataGrid ColumnWidth="*" Name="table"  IsReadOnly ="True"  SelectionMode="Single"
-                              ItemsSource="{Binding Patients, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Margin="10,81,20,116">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Ime}"/>
-                <DataGridTextColumn Header="Last name" Binding="{Binding Prezime}"/>
-                <DataGridTextColumn Width="0.3*" Header="ID" Binding="{Binding Id}"  />
-                <DataGridTextColumn Header="Username" Binding="{Binding KorisnickoIme}" />
-                <DataGridTextColumn Header="Password" Binding="{Binding Lozinka}"/>
-                <DataGridTextColumn Header="Gender" Binding="{Binding pol}" />
-                <DataGridTextColumn Header="Adress" Binding="{Binding Adresa}"/>
-                <DataGridTextColumn Width="0.5*" Header="Guest" Binding="{Binding GuestNalog}" />
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Click="Button_Click_5">Allergens</Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
         <Button Content="Add" HorizontalAlignment="Left" Margin="30,629,0,0" VerticalAlignment="Top" Height="34" Width="95" Click="Button_Click"/>
         <Button Content="Edit" HorizontalAlignment="Left" Margin="288,670,0,0" VerticalAlignment="Top" Height="30" Width="95" Click="Button_Click_2"/>
         <Button Content="Remove" HorizontalAlignment="Left" Margin="288,629,0,0" VerticalAlignment="Top" Height="34" Width="95" Click="Button_Click_3"/>
         <Button Content="Back" HorizontalAlignment="Left" Margin="30,670,0,0" VerticalAlignment="Top" Width="98" Height="30" Click="Button_Click_4"/>
         <TextBlock HorizontalAlignment="Left" Margin="144,10,0,0" TextWrapping="Wrap" Text="Patients" FontSize="35" VerticalAlignment="Top"/>
+        <ListView x:Name="table" ItemsSource="{Binding Patients}"  Margin="20,112,20,286" SelectionChanged="table_SelectionChanged">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Height" Value="60" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn Width="55" Header="Name" DisplayMemberBinding="{Binding Ime}"/>
+                    <GridViewColumn Width="65" Header="Last name" DisplayMemberBinding="{Binding Prezime}"/>
+                    <GridViewColumn Width="55" Header="JMBG" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Width="95" Header="Address" DisplayMemberBinding="{Binding Adresa}"/>
+                    <GridViewColumn Header="">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="Button_Click_5" Height="35" Width="69" OpacityMask="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Foreground="#FF3E4040" BorderBrush="{DynamicResource {x:Static SystemColors.InfoBrushKey}}">
+                                    Allergens
+                                </Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
 
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Rectangle HorizontalAlignment="Left" Height="136" Margin="50,465,0,0" Stroke="Black" VerticalAlignment="Top" Width="310"/>
+        <TextBlock HorizontalAlignment="Left" Margin="69,485,0,0" TextWrapping="Wrap" Text="Date of birth:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="labelDateOfBirth" HorizontalAlignment="Left" Margin="190,485,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="69,505,0,0" TextWrapping="Wrap" Text="Username:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="labelUsername" HorizontalAlignment="Left" Margin="190,505,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="69,525,0,0" TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="labelPassword" HorizontalAlignment="Left" Margin="190,525,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="69,545,0,0" TextWrapping="Wrap" Text="Email:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="labelMail" HorizontalAlignment="Left" Margin="190,545,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="69,565,0,0" TextWrapping="Wrap" Text="Guest:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="labelGuest" HorizontalAlignment="Left" Margin="190,565,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
     </Grid>
 </Window>

@@ -86,5 +86,21 @@ namespace Zdravo.PatientView
             emergencyAppointmentWindow.Show();
             this.Close();
         }
+
+        private void ListViewRowDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            
+        }
+
+        private void table_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            AppointmentRecord selected=(AppointmentRecord)table.SelectedItem;
+            if (selected != null)
+            {
+                idText.Text = "ID:                     " + selected.Id.ToString();
+                doctorText.Text = "Doctor:             " + selected.DoctorInfo + "," + selected.DoctorSpecialization;
+                jmbgText.Text = "Patient JMBG:   " + selected.Jmbg;
+            }
+        }
     }
 }

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zdravo.PatientView"
-        mc:Ignorable="d"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="EditAppointmentDate" Height="285" Width="451">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="99,73,0,0" TextWrapping="Wrap" FontSize="18" Text="Date:" VerticalAlignment="Top"/>

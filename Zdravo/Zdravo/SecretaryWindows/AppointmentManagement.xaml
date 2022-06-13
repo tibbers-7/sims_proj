@@ -11,41 +11,6 @@
             <RowDefinition Height="19*"/>
             <RowDefinition Height="43*"/>
         </Grid.RowDefinitions>
-        <DataGrid Name="table" ColumnWidth="*" IsReadOnly ="True"  SelectionMode="Single"
-                              ItemsSource="{Binding Records, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Margin="38,76,37,68" Grid.RowSpan="2" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Width="0.3*" Header="ID" Binding="{Binding Id}"/>
-                <DataGridTextColumn  Header="Patient" Binding="{Binding PatientInfo}"/>
-                <DataGridTextColumn  Header="JMBG" Binding="{Binding Jmbg}"/>
-                <DataGridTextColumn  Header="Doctor" Binding="{Binding DoctorInfo}"/>
-                <DataGridTextColumn  Header="Specialization" Binding="{Binding DoctorSpecialization}"/>
-                <DataGridTextColumn  Header="Date" Binding="{Binding Date}"/>
-                <DataGridTextColumn  Header="Time" Binding="{Binding Time}"/>
-                <DataGridTemplateColumn Width="0.3*">
-                    <DataGridTemplateColumn.CellTemplate >
-                        <DataTemplate>
-                            <Button Click="CancelAppointment">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="/Resources/close.png"/>
-                                </Button.Background>
-                            </Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-                <DataGridTemplateColumn Width="0.3*">
-                    <DataGridTemplateColumn.CellTemplate >
-                        <DataTemplate>
-                            <Button Click="EditAppointment">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="/Resources/edit.png"/>
-                                </Button.Background>
-                            </Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
         <TextBox Name="searchTb" HorizontalAlignment="Left" Margin="106,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" Height="23"/>
         <Button Content="" HorizontalAlignment="Left" Margin="222,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.601,0.083" Width="27" Height="27" Click="SearchButtonClick">
             <Button.Background>
@@ -61,6 +26,48 @@
             </Button.Background>
         </Button>
         <Button Content="Emergency appointment" HorizontalAlignment="Left" Margin="62,454,0,0" Grid.Row="1" VerticalAlignment="Top" Height="33" Width="141" Click="EmergencyAppointmentClick"/>
-
+        <ListView x:Name="table" Margin="20,112,10,224" Grid.RowSpan="2" MouseDoubleClick="ListViewRowDoubleClick" ItemsSource="{Binding Records}"  SelectionChanged="table_SelectionChanged">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Height" Value="60" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Width="90" Header="Patient" DisplayMemberBinding="{Binding PatientInfo}"/>
+                        <GridViewColumn Width="90" Header="Date" DisplayMemberBinding="{Binding Date}"/>
+                        <GridViewColumn Width="75" Header="Time" DisplayMemberBinding="{Binding Time}"/>
+                        <GridViewColumn Header="">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Click="CancelAppointment" Height="35" Width="35">
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="/Resources/close.png"/>
+                                        </Button.Background>
+                                    </Button>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Click="EditAppointment" Height="35" Width="35">
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="/Resources/edit.png"/>
+                                        </Button.Background>
+                                    </Button>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Rectangle HorizontalAlignment="Center" Height="109" Margin="0,313,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="355"/>
+        <TextBlock HorizontalAlignment="Left" Margin="38,292,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Appointment info" VerticalAlignment="Top" FontStyle="Italic"/>
+        <TextBlock x:Name="doctorText" HorizontalAlignment="Left" Margin="48,355,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBlock x:Name="jmbgText" HorizontalAlignment="Left" Margin="48,375,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBlock x:Name="idText" HorizontalAlignment="Left" Margin="48,335,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
     </Grid>
 </Window>

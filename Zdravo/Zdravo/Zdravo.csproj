@@ -22,6 +22,7 @@
   <ItemGroup>
     <None Remove="Resources\acceptWhite.png" />
     <None Remove="Resources\cancelWhite.png" />
+    <None Remove="Resources\hospital.png" />
     <None Remove="Resources\reportInvalid.png" />
   </ItemGroup>
 
@@ -85,6 +86,7 @@
     <Resource Include="Resources\historyGrey.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\hospital.png" />
     <Resource Include="Resources\key.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
