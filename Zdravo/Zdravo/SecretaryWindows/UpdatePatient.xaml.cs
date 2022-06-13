@@ -53,7 +53,7 @@ namespace Zdravo.PatientView
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             PatientController controller = new PatientController();
-            Patient p = controller.CreatePatient(tbIme, tbPrezime, Int16.Parse(tbId.Text), tbUsername, tbSifra, tbTelefon, tbDatum, cbPol, tbAdresa, checkBoxGuest, tbMail);
+            Patient p = controller.CreatePatient(tbIme, tbPrezime, Int16.Parse(tbId.Text), tbUsername, tbSifra, tbTelefon, tbDatum.Text, cbPol, tbAdresa, checkBoxGuest, tbMail);
             PatientRepository repo = new PatientRepository();
             repo.updatePatient(p);
             SekretarHome s = new SekretarHome();

@@ -18,7 +18,7 @@ namespace Zdravo.Controller
    {
         private PatientService service=new PatientService();
         private PatientRepository p;
-      public Patient CreatePatient(TextBox tbIme, TextBox tbPrezime, int tbId, TextBox tbUsername, TextBox tbSifra, TextBox tbTelefon, TextBox tbDatum,ComboBox cbPol, TextBox tbAdresa,CheckBox checkBoxGuest, TextBox tbMail)
+      public Patient CreatePatient(TextBox tbIme, TextBox tbPrezime, int tbId, TextBox tbUsername, TextBox tbSifra, TextBox tbTelefon, string tbDatum,ComboBox cbPol, TextBox tbAdresa,CheckBox checkBoxGuest, TextBox tbMail)
         {
             // TODO: implement
             string ime = tbIme.Text;
@@ -27,7 +27,7 @@ namespace Zdravo.Controller
             string username = tbUsername.Text;
             string sifra = tbSifra.Text;
             string telefon = tbTelefon.Text;
-            string datumString = tbDatum.Text;
+            string datumString = tbDatum;
             DateTime datumRodjenja = Convert.ToDateTime(datumString);
             Gender pol;
             if (cbPol.SelectedItem.Equals("Muski")) pol = Gender.male;

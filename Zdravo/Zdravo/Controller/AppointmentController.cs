@@ -55,7 +55,7 @@ namespace Zdravo.Controller
 
         public int CreateAppointment(int patientId, int doctor, int roomId, int hours, int minutes, int duration, string date, bool emergency)
         {
-            Appointment appt = new Appointment() { Date = Tools.ParseDate(date), Time = new TimeOnly(hours, minutes), Doctor = doctor, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency, Status = Status.accepted, DoctorSchedules = doctor, Type = 'A' };
+            Appointment appt = new Appointment() { Date = DateOnly.Parse(date), Time = new TimeOnly(hours, minutes), Doctor = doctor, Duration = duration, Patient = patientId, Room = roomId, Emergency = emergency, Status = Status.accepted, DoctorSchedules = doctor, Type = 'A' };
             return service.CreateAppointment(appt,patientId,null);
         }
 

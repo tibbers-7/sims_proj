@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JZ88/qY2l4BahFxiIWpAmYU9VQxDsFG+U9fiAmeDviMsgSozRciJ1QCE2yzp+tBQ40PRPX4CRpPmwS1ySN+Tcg==",
+  "dgSpecHash": "CI2befpULuZBA70QVeCrYOreBK7mDdNSqSz2IM8YhDIwFIlwAsHfsVm+QH2dXRv0kwoi81gw+dvzZHXK5wzbhw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Darko\\Desktop\\hci\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
+  "projectFilePath": "C:\\Users\\Darko\\Desktop\\hciNovi\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Darko\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\Darko\\.nuget\\packages\\syncfusion.compression.base\\20.1.0.59\\syncfusion.compression.base.20.1.0.59.nupkg.sha512",

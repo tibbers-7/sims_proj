@@ -58,7 +58,7 @@ namespace Zdravo
         {
             PatientRepository repo = new PatientRepository();
             PatientController controller = new PatientController();
-            //  repo.addPatient(controller.CreatePatient(tbIme, tbPrezime, Int16.Parse(tbId.Text), tbUsername, tbSifra, tbTelefon, tbDatum, cbPol, tbAdresa, checkBoxGuest, tbMail));
+            repo.addPatient(controller.CreatePatient(tbIme, tbPrezime, Int16.Parse(tbId.Text), tbUsername, tbSifra, tbTelefon, datePicker.SelectedDate.ToString(), cbPol, tbAdresa, checkBoxGuest, tbMail));
             patientsViewModel.Refresh();
             secretaryHomeWindow.DataContext = null;
             secretaryHomeWindow.DataContext = patientsViewModel;
