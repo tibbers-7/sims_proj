@@ -17,6 +17,7 @@ using Model;
 using Service;
 using System.ComponentModel;
 using Repository;
+using System.Text.RegularExpressions;
 
 namespace Zdravo.SecretaryWindows
 {
@@ -78,6 +79,39 @@ namespace Zdravo.SecretaryWindows
             this.DataContext = null;
             this.DataContext = viewModel;
         }
-
+        private bool validateName(string s)
+        {
+            Regex regex = new Regex("^[A-Z][a-zA-Z]*$");
+            return regex.IsMatch(s);
+        }
+        private void nameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            bool result = validateName(nameTextBox.Text);
+            if (!result)
+            {
+                nameError.Text = "not valid name!";
+            }
+            if (result)
+            {
+                nameError.Text = "";
+            }
+        }
+        private bool validateNumbers(string s)
+        {
+            Regex regex = new Regex(@"^\d+$");
+            return regex.IsMatch(s);
+        }
+        private void quantityTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            bool result = validateNumbers(quantityTextBox.Text);
+            if (!result)
+            {
+                quantityError.Text = "not valid quantity!";
+            }
+            if (result)
+            {
+                quantityError.Text = "";
+            }
+        }
     }
 }

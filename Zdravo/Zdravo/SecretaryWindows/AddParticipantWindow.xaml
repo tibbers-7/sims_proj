@@ -9,7 +9,7 @@
     <Grid>
         <Border BorderBrush="Black" BorderThickness="1">
             <DataGrid Name="table" ColumnWidth="*" IsReadOnly ="True"  SelectionMode="Single"
-                              ItemsSource="{Binding userssss, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Margin="32,47,32,366">
+                              ItemsSource="{Binding userssss, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Margin="39,348,39,163">
                 <DataGrid.Columns>
                     <DataGridTextColumn  Header="Name" Width="0.6*" Binding="{Binding Name}" />
                     <DataGridTextColumn  Header="Occupation" Width="0.5*" Binding="{Binding Occupation}" />
@@ -23,8 +23,16 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Border>
-        <Button Content="Back" HorizontalAlignment="Center" Margin="0,504,0,0" VerticalAlignment="Top" Height="30" Width="160" Click="BackClick"/>
-        <Label  x:Name="successLabel" Content="" Foreground="Green" HorizontalAlignment="Left" Margin="35,396,0,0" VerticalAlignment="Top"/>
-        <Label  x:Name="errorLabel" Content="" Foreground="Red" HorizontalAlignment="Left" Margin="35,396,0,0" VerticalAlignment="Top"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="35,658,0,0" VerticalAlignment="Top" Height="32" Width="71" Click="BackClick"/>
+        <Label  x:Name="successLabel" Content="" Foreground="Green" HorizontalAlignment="Left" Margin="66,581,0,0" VerticalAlignment="Top"/>
+        <Label  x:Name="errorLabel" Content="" Foreground="Red" HorizontalAlignment="Left" Margin="66,581,0,0" VerticalAlignment="Top"/>
+        <TextBlock  HorizontalAlignment="Left" Margin="56,125,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.521,1.97"/>
+        <TextBlock HorizontalAlignment="Left" Margin="56,183,0,0" TextWrapping="Wrap" Text="Date" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="56,231,0,0" TextWrapping="Wrap" Text="Time" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox x:Name="tbDesc" HorizontalAlignment="Left" Margin="231,134,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="103" Height="18"/>
+        <TextBox x:Name="tbTime" HorizontalAlignment="Left" Margin="231,244,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="103" Height="18"/>
+        <DatePicker x:Name="datePicker" HorizontalAlignment="Left" Margin="231,183,0,0" VerticalAlignment="Top" Height="27" Width="90"/>
+        <TextBlock HorizontalAlignment="Left" Margin="145,49,0,0" TextWrapping="Wrap" Text="New meeting" VerticalAlignment="Top" FontSize="20"/>
+        <Button Content="Create" HorizontalAlignment="Left" Margin="297,658,0,0" VerticalAlignment="Top" Height="35" Width="74" Click="CreateMeetingClick"/>
     </Grid>
 </Window>

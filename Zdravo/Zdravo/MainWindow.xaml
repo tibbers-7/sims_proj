@@ -8,13 +8,13 @@
         Title="Log in" Height="750" Width="430"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,0,3">
-        <TextBox Name="tbUsername"  HorizontalAlignment="Center" Margin="0,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" Height="30"/>
-        <PasswordBox Name="tbPassword" HorizontalAlignment="Center" Margin="0,385,0,0" VerticalAlignment="Top" Width="208" Height="28"/>
-        <Button Content="Log in&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,472,0,0" VerticalAlignment="Top" Height="41" Width="126" Click="Button_Click"/>
-        <Label Content="Username" FontFamily="Italic" HorizontalAlignment="Left" Margin="111,230,0,0" VerticalAlignment="Top"/>
-        <Label Content="Password" FontFamily="Italic" HorizontalAlignment="Left" Margin="111,350,0,0" VerticalAlignment="Top"/>
-        <Label Content="" Name="errorLabel" HorizontalAlignment="Left" Margin="82,438,0,0" VerticalAlignment="Top" Foreground="Red" FontWeight="Bold" Width="276"/>
-        <Rectangle HorizontalAlignment="Center" Height="375" Margin="0,189,0,0" Stroke="Black" VerticalAlignment="Top" Width="362" RenderTransformOrigin="0.5,0.5">
+        <TextBox Name="tbUsername"  HorizontalAlignment="Center" Margin="0,400,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" Height="30"/>
+        <PasswordBox Name="tbPassword" HorizontalAlignment="Center" Margin="0,500,0,0" VerticalAlignment="Top" Width="208" Height="28"/>
+        <Button Content="Log in&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,562,0,0" VerticalAlignment="Top" Height="41" Width="126" Click="Button_Click"/>
+        <Label Content="Username" FontFamily="Italic" HorizontalAlignment="Left" Margin="111,380,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password" FontFamily="Italic" HorizontalAlignment="Left" Margin="111,480,0,0" VerticalAlignment="Top"/>
+        <Label Content="" Name="errorLabel" HorizontalAlignment="Left" Margin="82,610,0,0" VerticalAlignment="Top" Foreground="Red" FontWeight="Bold" Width="276"/>
+        <Rectangle HorizontalAlignment="Center" Height="335" Margin="0,312,0,0" Stroke="Black" VerticalAlignment="Top" Width="362" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="-1"/>
@@ -24,8 +24,10 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <TextBlock HorizontalAlignment="Left" FontSize="36" Margin="48,38,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="48,91,0,0" FontSize="17" TextWrapping="Wrap" Text="Please sing in to continue" VerticalAlignment="Top" Height="49" Width="291"/>
+        <TextBlock HorizontalAlignment="Left" FontSize="36" Margin="48,165,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="48,218,0,0" FontSize="17" TextWrapping="Wrap" Text="Please sign in to continue" VerticalAlignment="Top" Height="49" Width="291"/>
         <Image  HorizontalAlignment="Left" Height="100" Margin="298,38,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBlock FontStyle="Italic" FontSize="30" HorizontalAlignment="Left" Margin="152,46,0,0" TextWrapping="Wrap" Text="Klinika Zdravo" VerticalAlignment="Top"/>
+        <Image HorizontalAlignment="Left" Height="62" Margin="66,38,0,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="0.676,0.514" Source="/Resources/hospital.png"/>
     </Grid>
 </Window>

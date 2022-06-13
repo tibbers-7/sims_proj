@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "sPIcm2U6v13KAmX++zuhsbm0/QSSIJYM016PSe6N/Nhibu/q+CC5oZsoafhURJ+o8FYcd7eaJ0HQccOzq1AHCw==",
+  "dgSpecHash": "JZ88/qY2l4BahFxiIWpAmYU9VQxDsFG+U9fiAmeDviMsgSozRciJ1QCE2yzp+tBQ40PRPX4CRpPmwS1ySN+Tcg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Darko\\Desktop\\hci\\sims_proj\\Zdravo\\Zdravo\\Zdravo.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Darko\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\Darko\\.nuget\\packages\\syncfusion.compression.base\\20.1.0.59\\syncfusion.compression.base.20.1.0.59.nupkg.sha512",
+    "C:\\Users\\Darko\\.nuget\\packages\\syncfusion.licensing\\20.1.0.59\\syncfusion.licensing.20.1.0.59.nupkg.sha512",
+    "C:\\Users\\Darko\\.nuget\\packages\\syncfusion.pdf.wpf\\20.1.0.59\\syncfusion.pdf.wpf.20.1.0.59.nupkg.sha512",
+    "C:\\Users\\Darko\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

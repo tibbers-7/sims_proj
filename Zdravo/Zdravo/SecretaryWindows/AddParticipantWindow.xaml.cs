@@ -16,6 +16,8 @@ using System.Collections.ObjectModel;
 using Model;
 using System.ComponentModel;
 using FileHandler;
+using System.Text.RegularExpressions;
+
 namespace Zdravo.SecretaryWindows
 {
     /// <summary>
@@ -23,11 +25,9 @@ namespace Zdravo.SecretaryWindows
     /// </summary>
     public partial class AddParticipantWindow : Window
     {
-        private int meetingId;
-        public AddParticipantWindow(int id)
+        public AddParticipantWindow()
         {
             InitializeComponent();
-            this.meetingId = id;
             this.DataContext = this;
             DoctorRepository doctorRepository=new DoctorRepository();
             ObservableCollection<Doctor> doctors = doctorRepository.getAll();
@@ -63,7 +63,7 @@ namespace Zdravo.SecretaryWindows
             Participant participant = (Participant)table.SelectedValue;
             if (participant != null)
             {
-                meetingsFileHandler.addParticipant(participant, meetingId);
+                meetingsFileHandler.addParticipant(participant, 7);
                 successLabel.Content=participant.Name+ " successfully added to meeting";
                 errorLabel.Content = "";
             }
@@ -72,6 +72,17 @@ namespace Zdravo.SecretaryWindows
                 successLabel.Content = "";
                 errorLabel.Content = "No user selected";
             }
+        }
+
+        private void CreateMeetingClick(object sender, RoutedEventArgs e)
+        {
+            int id = 7; ;
+            string desc = tbDesc.Text;
+            string time = tbTime.Text;
+            string date = datePicker.SelectedDate.ToString();
+            Meeting newMeeting = new Meeting(id, desc, date.Split(" ")[0], time, null);
+            MeetingsFileHandler fileHandler = new MeetingsFileHandler();
+            fileHandler.addNewMeeting(newMeeting);
         }
     }
 }

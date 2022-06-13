@@ -31,7 +31,7 @@ namespace Zdravo.SecretaryWindows
         private void MoreClick(object sender, RoutedEventArgs e)
         {
             Meeting selected = (Meeting)table.SelectedValue;
-            AddParticipantWindow addParticipantWindow = new AddParticipantWindow(selected.Id);
+            AddParticipantWindow addParticipantWindow = new AddParticipantWindow();
             addParticipantWindow.Show();
             this.Close();
         }
@@ -57,14 +57,9 @@ namespace Zdravo.SecretaryWindows
 
         private void CreateMeetingClick(object sender, RoutedEventArgs e)
         {
-            int id =int.Parse(tbId.Text);
-            string desc = tbDesc.Text;
-            string time = tbTime.Text;
-            string date = datePicker.SelectedDate.ToString();
-            Meeting newMeeting = new Meeting(id, desc, date.Split(" ")[0], time, null);
-            MeetingsFileHandler fileHandler = new MeetingsFileHandler();
-            fileHandler.addNewMeeting(newMeeting);
-            refreshTableData();
+            AddParticipantWindow addParticipantWindow = new AddParticipantWindow();
+            addParticipantWindow.Show();
+            this.Close();
         }
         private void refreshTableData()
         {

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Darko\Desktop\hci\sims_proj\Zdravo\Zdravo\App.xaml
-37196601485
+38244744379
 
-154-1003333909
-1942030480316
-DoctorHome.xaml;DoctorView\ChoosePatient.xaml;DoctorView\DrugReportWindow.xaml;DoctorView\DrugWindow.xaml;DoctorView\NewAppointment.xaml;DoctorView\PatientChart.xaml;DoctorView\PrescriptionWindow.xaml;DoctorView\ReferralWindow.xaml;DoctorView\ReportWindow.xaml;DoctorView\VacationWindow.xaml;MainWindow.xaml;ManagerHome.xaml;managerView\AddDrug.xaml;managerView\AddEquipment.xaml;managerView\BasicRenovation.xaml;managerView\ComplexRenovation.xaml;managerView\DrugReportsReview.xaml;managerView\Equipment.xaml;managerView\EquipmentRelocation.xaml;managerView\EquipmentReview.xaml;managerView\MergedRoomsInfo.xaml;managerView\SplitedRoomsInfo.xaml;SecretaryHome.xaml;SecretaryWindows\AddParticipantWindow.xaml;SecretaryWindows\AddPatient.xaml;SecretaryWindows\AllergenDescription.xaml;SecretaryWindows\Allergens.xaml;SecretaryWindows\AppointmentManagement.xaml;SecretaryWindows\DoctorPriority.xaml;SecretaryWindows\EditAppointmentDate.xaml;SecretaryWindows\EmergencyAppointmentWindow.xaml;SecretaryWindows\MeetingsWindow.xaml;SecretaryWindows\Notification.xaml;SecretaryWindows\OrdersWindow.xaml;SecretaryWindows\UpdatePatient.xaml;SecretaryWindows\VacationsWindow.xaml;SekretarHome.xaml;
+155889999927
+1981348103639
+DoctorHome.xaml;DoctorView\ChoosePatient.xaml;DoctorView\DrugReportWindow.xaml;DoctorView\DrugWindow.xaml;DoctorView\NewAppointment.xaml;DoctorView\PatientChart.xaml;DoctorView\PrescriptionWindow.xaml;DoctorView\ReferralWindow.xaml;DoctorView\ReportWindow.xaml;DoctorView\VacationWindow.xaml;MainWindow.xaml;ManagerHome.xaml;managerView\AddDrug.xaml;managerView\AddEquipment.xaml;managerView\BasicRenovation.xaml;managerView\ComplexRenovation.xaml;managerView\DrugReportsReview.xaml;managerView\Equipment.xaml;managerView\EquipmentRelocation.xaml;managerView\EquipmentReview.xaml;managerView\MergedRoomsInfo.xaml;managerView\SplitedRoomsInfo.xaml;SecretaryHome.xaml;SecretaryWindows\AddParticipantWindow.xaml;SecretaryWindows\AddPatient.xaml;SecretaryWindows\AllergenDescription.xaml;SecretaryWindows\Allergens.xaml;SecretaryWindows\AppointmentManagement.xaml;SecretaryWindows\datePick.xaml;SecretaryWindows\DoctorPriority.xaml;SecretaryWindows\EditAppointmentDate.xaml;SecretaryWindows\EmergencyAppointmentWindow.xaml;SecretaryWindows\MeetingsWindow.xaml;SecretaryWindows\Notification.xaml;SecretaryWindows\OrdersWindow.xaml;SecretaryWindows\UpdatePatient.xaml;SecretaryWindows\VacationsWindow.xaml;SekretarHome.xaml;
 
-True
+False
 

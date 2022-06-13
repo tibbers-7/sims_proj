@@ -22,8 +22,15 @@
   <ItemGroup>
     <None Remove="Resources\acceptWhite.png" />
     <None Remove="Resources\cancelWhite.png" />
+    <None Remove="Resources\english.png" />
     <None Remove="Resources\hospital.png" />
     <None Remove="Resources\reportInvalid.png" />
+    <None Remove="Resources\serbia.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.Pdf.Wpf" Version="20.1.0.59" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
 
 
@@ -83,6 +90,7 @@
     <Resource Include="Resources\editWhite.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\english.png" />
     <Resource Include="Resources\historyGrey.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -133,6 +141,7 @@
     <Resource Include="Resources\searchGrey.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\serbia.png" />
     <Resource Include="Resources\user.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

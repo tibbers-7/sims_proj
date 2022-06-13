@@ -284,3 +284,9 @@ C:\Users\Darko\Desktop\hci\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\refi
 C:\Users\Darko\Desktop\hci\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo.pdb
 C:\Users\Darko\Desktop\hci\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo.genruntimeconfig.cache
 C:\Users\Darko\Desktop\hci\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\ref\Zdravo.dll
+C:\Users\Darko\Desktop\hci\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Syncfusion.Compression.Base.dll
+C:\Users\Darko\Desktop\hci\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Syncfusion.Licensing.dll
+C:\Users\Darko\Desktop\hci\sims_proj\Zdravo\Zdravo\bin\Debug\net6.0-windows\Syncfusion.Pdf.Base.dll
+C:\Users\Darko\Desktop\hci\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\Zdravo.csproj.CopyComplete
+C:\Users\Darko\Desktop\hci\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\datePick.g.cs
+C:\Users\Darko\Desktop\hci\sims_proj\Zdravo\Zdravo\obj\Debug\net6.0-windows\SecretaryWindows\datePick.baml

@@ -7,6 +7,7 @@ using Repository;
 using Controller;
 using Zdravo.Controller;
 using Zdravo.Repository;
+using System.Text.RegularExpressions;
 
 namespace Zdravo.PatientView
 {
@@ -34,17 +35,6 @@ namespace Zdravo.PatientView
             String selectedDate=datePicker.SelectedDate.ToString();
             String dateStringForParsing = selectedDate.Split(" ")[0];
             DateOnly dateonly = DateOnly.Parse(dateStringForParsing);
-            foreach(Appointment appointment in appointments)
-            {
-                int doctorId = Int32.Parse(comboBoxDoctors.SelectedItem.ToString().Split("-")[0]);
-                if (doctorId == appointment.Doctor)
-                {
-                    if (dateonly == appointment.Date)
-                    {
-                        busySlots.Items.Add(appointment.Date.ToString() + "   " + appointment.Time.ToString());
-                    }
-                }
-            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -61,23 +51,22 @@ namespace Zdravo.PatientView
             this.appointmentManagementWindow.DataContext = this.appointmentManagementWindow.viewModel;
             this.Close();
         }
-
-        private void datePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private bool validateNumbers(string s)
         {
-            busySlots.Items.Clear();
-            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(appointmentController.GetAll());
-            String selectedDate = datePicker.SelectedDate.ToString();
-            String dateForParsing = selectedDate.Split(" ")[0];
-            DateOnly dateonly = DateOnly.Parse(dateForParsing);
-            int doctorId = Int32.Parse(comboBoxDoctors.SelectedItem.ToString().Split("-")[0]);
-            foreach (Appointment appointment in appointments)
+            Regex regex = new Regex(@"^\d+$");
+            return regex.IsMatch(s);
+        }
+        private void jmbgTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            bool result = validateNumbers(jmbgTb.Text);
+            if (!result)
             {
-                if (doctorId == appointment.Doctor && dateonly==appointment.Date)
-                {
-                        busySlots.Items.Add(appointment.Time.ToString()+"("+appointment.Duration.ToString()+" mins)");
-                }
+                emailError.Text = "not valid jmbg!";
             }
-            busySlots.SelectedIndex = 0;
+            if (result)
+            {
+                emailError.Text = "";
+            }
         }
     }
 }

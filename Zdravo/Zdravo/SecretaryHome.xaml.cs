@@ -13,6 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Zdravo.PatientView;
 using Zdravo.SecretaryWindows;
+using Syncfusion.Pdf;
+using Syncfusion.Pdf.Graphics;
+using Syncfusion.Pdf.Grid;
+using System.Drawing;
+using System.Data;
+
 namespace Zdravo
 {
     /// <summary>
@@ -23,6 +29,30 @@ namespace Zdravo
         public SecretaryHome()
         {
             InitializeComponent();
+            int index = comboBoxJezik.SelectedIndex;
+            string selected = comboBoxJezik.SelectedValue.ToString();
+            if (index == 0)
+            {
+                vacationLabel.Text = "Vacations";
+                meetingsLabel.Text = "Meetings";
+                ordersLabel.Text = "Orders";
+                patientsLabel.Text = "Patients";
+                appsLabel.Text = "Appointments";
+                accountsLabel.Text = " Report";
+                logOutButton.Content = "Log out";
+                comboBoxJezik.SelectedIndex = 0;
+            }
+            else if (index == 1)
+            {
+                vacationLabel.Text = "  Odmori";
+                meetingsLabel.Text = "Sastanci";
+                ordersLabel.Text = "Porudzbine";
+                patientsLabel.Text = "Pacijenti";
+                appsLabel.Text = "   Pregledi";
+                accountsLabel.Text = " Izvestaj";
+                logOutButton.Content = "Odjavi se";
+                comboBoxJezik.SelectedIndex = 1;
+            }
         }
 
         private void PatientsWindowClick(object sender, RoutedEventArgs e)
@@ -66,6 +96,39 @@ namespace Zdravo
             MeetingsWindow meetingsWindow = new MeetingsWindow();
             meetingsWindow.Show();
             this.Close();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index=comboBoxJezik.SelectedIndex;
+            string selected = comboBoxJezik.SelectedValue.ToString();
+            if (index == 0) {
+                vacationLabel.Text = "Vacations";
+                meetingsLabel.Text = "Meetings";
+                ordersLabel.Text = "Orders";
+                patientsLabel.Text = "Patients";
+                appsLabel.Text = "Appointments";
+                accountsLabel.Text = " Report";
+                logOutButton.Content = "Log out";
+                comboBoxJezik.SelectedIndex = 0;
+            }
+            else if (index == 1)
+            {
+                vacationLabel.Text = "  Odmori";
+                meetingsLabel.Text = "Sastanci";
+                ordersLabel.Text = "Porudzbine";
+                patientsLabel.Text = "Pacijenti";
+                appsLabel.Text = "   Pregledi";
+                accountsLabel.Text = " Izvestaj";
+                logOutButton.Content = "Odjavi se";
+                comboBoxJezik.SelectedIndex = 1;
+            }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            datePick datePickWindow = new datePick();
+            datePickWindow.Show();
         }
     }
 }

@@ -61,6 +61,9 @@
     <Compile Update="SecretaryWindows\AppointmentManagement.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="SecretaryWindows\datePick.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="SecretaryWindows\DoctorPriority.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -147,6 +150,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SecretaryWindows\AppointmentManagement.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SecretaryWindows\datePick.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SecretaryWindows\DoctorPriority.xaml">

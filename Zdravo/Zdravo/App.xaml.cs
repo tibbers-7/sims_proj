@@ -29,7 +29,7 @@ namespace Zdravo
         public VacationController vacationController;
         public DrugController drugController;
         public IngredientController ingredientController;
-        public App()
+      public App()
         {
             
             var allergenRepository = new AllergenRepository();

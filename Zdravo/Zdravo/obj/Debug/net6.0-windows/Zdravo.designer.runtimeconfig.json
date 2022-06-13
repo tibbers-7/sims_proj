@@ -14,6 +14,7 @@
     "additionalProbingPaths": [
       "C:\\Users\\Darko\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\Darko\\.nuget\\packages",
+      "D:\\Program Files (x86)\\Syncfusion\\Essential Studio\\WPF\\20.1.0.55\\ToolboxNuGetPackages",
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
     ],
     "configProperties": {

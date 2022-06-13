@@ -16,6 +16,7 @@ using Repository;
 using Controller;
 using Zdravo.ViewModel;
 using Zdravo.Controller;
+using System.Text.RegularExpressions;
 
 namespace Zdravo
 {
@@ -37,17 +38,84 @@ namespace Zdravo
         {
             this.Close();
         }
-
+        private bool validateMail(string s)
+        {
+            Regex regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+            return regex.IsMatch(s);
+        }
+        private bool validateName(string s)
+        {
+            Regex regex = new Regex("^[A-Z][a-zA-Z]*$");
+            return regex.IsMatch(s);
+        }
+        
+        private bool validateNumbers(string s)
+        {
+            Regex regex = new Regex(@"^\d+$");
+            return regex.IsMatch(s);
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             PatientRepository repo = new PatientRepository();
             PatientController controller = new PatientController();
-          //  repo.addPatient(controller.CreatePatient(tbIme, tbPrezime, Int16.Parse(tbId.Text), tbUsername, tbSifra, tbTelefon, tbDatum, cbPol, tbAdresa, checkBoxGuest, tbMail));
+            //  repo.addPatient(controller.CreatePatient(tbIme, tbPrezime, Int16.Parse(tbId.Text), tbUsername, tbSifra, tbTelefon, tbDatum, cbPol, tbAdresa, checkBoxGuest, tbMail));
             patientsViewModel.Refresh();
             secretaryHomeWindow.DataContext = null;
             secretaryHomeWindow.DataContext = patientsViewModel;
             this.Close();
 
+        }
+
+        private void tbMail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            bool result = validateMail(tbMail.Text);
+            if (!result)
+            {
+                emailError.Text = "not valid email!";
+            }
+            if (result)
+            {
+                emailError.Text = "";
+            }
+        }
+
+        private void tbIme_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            bool result = validateName(tbIme.Text);
+            if (!result)
+            {
+                imeError.Text = "not valid name!";
+            }
+            if (result)
+            {
+                imeError.Text = "";
+            }
+        }
+
+        private void tbPrezime_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            bool result = validateName(tbPrezime.Text);
+            if (!result)
+            {
+                prezimeError.Text = "not valid lastname!";
+            }
+            if (result)
+            {
+                prezimeError.Text = "";
+            }
+        }
+
+        private void tbId_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            bool result = validateNumbers(tbId.Text);
+            if (!result)
+            {
+                idError.Text = "not valid ID!";
+            }
+            if (result)
+            {
+                idError.Text = "";
+            }
         }
     }
 }
